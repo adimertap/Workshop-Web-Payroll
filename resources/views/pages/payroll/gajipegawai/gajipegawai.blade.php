@@ -82,13 +82,10 @@
                                                 style="width: 40px;">Bulan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 130px;">Nama Pegawai</th>
+                                                style="width: 100px;">Total Gaji</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 50px;">Jabatan</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 100px;">Gaji diterima</th>
+                                                style="width: 100px;">Total Tunjangan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Start date: activate to sort column ascending"
                                                 style="width: 50px;">Status diterima</th>
@@ -103,9 +100,8 @@
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->tahun_gaji }}</td>
                                             <td>{{ $item->bulan_gaji}}</td>
-                                            <td>{{ $item->Pegawai->nama_pegawai }}</td>
-                                            <td>{{ $item->Pegawai->Jabatan->nama_jabatan }}</td>
-                                            <td>Rp. {{ number_format($item->gaji_diterima,2,',','.') }}</td>
+                                            <td>Rp. {{ number_format($item->grand_total_gaji,2,',','.') }}</td>
+                                            <td>Rp. {{ number_format($item->grand_total_tunjangan,2,',','.') }}</td>
                                             <td> @if($item->status_diterima == 'Belum Dibayarkan')
                                                 <span class="badge badge-danger">
                                                     @elseif($item->status_diterima == 'Dibayarkan')
@@ -191,7 +187,7 @@
 {{-- MODAL TAMBAH --}}
 <div class="modal fade" id="Modaltambah" tabindex="-1" role="dialog" data-backdrop="static"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Gaji Pegawai</h5>
@@ -240,129 +236,36 @@
                             @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
                         </div>
-                        
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-5">
-                            <label class="small mb-1" for="nama_pegawai">Pilih Pegawai</label>
-                            <div class="input-group input-group-joined">
-                                <input class="form-control" type="text" placeholder="Pilih Pegawai" aria-label="Search"
-                                    id="detailpegawai">
-                                <div class="input-group-append">
-                                    <a href="" class="input-group-text" type="button" data-toggle="modal"
-                                        data-target="#Modalpegawai">
-                                        <i class="fas fa-folder-open"></i>
-                                    </a>
-                                </div>
+                    {{-- <div class="form-group">
+                        <label class="small mb-1 mr-1" for="id_jenis_transaksi">Pilih Jenis
+                            Transaksi</label><span class="mr-4 mb-3" style="color: red">*</span>
+                        <div class="input-group input-group-joined">
+                            <div class="input-group-append">
+                                <a href="" class="btn btn-sm btn-secondary" type="button" data-toggle="modal"
+                                    data-target="#Modaltransaksi">
+                                    Tambah
+                                </a>
                             </div>
-                        </div>
-                        <div class="form-group col-md-3">
-                            <label class="small mb-1" for="id_jabatan">Jabatan</label>
-                            <input class="form-control" id="detailjabatan" type="text" name="id_jabatan" placeholder=""
-                                value="{{ old('id_jabatan') }}"
-                                class="form-control @error('id_jabatan') is-invalid @enderror" readonly />
-                            @error('id_jabatan')<div class="text-danger small mb-1">{{ $message }}
+                            <select class="form-control" name="id_jenis_transaksi" id="id_jenis_transaksi"
+                                class="form-control @error('id_jenis_transaksi') is-invalid @enderror">
+                                <option>Pilih Jenis Transaksi</option>
+                                @foreach ($jenis_transaksi as $transaksi)
+                                <option value="{{ $transaksi->id_jenis_transaksi }}">
+                                    {{ $transaksi->nama_transaksi }}
+                                </option>
+                                @endforeach
+                            </select>
+                            @error('id_jenis_transaksi')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
                         </div>
-                        <div class="form-group col-md-4">
-                            <label class="small mb-1" for="id_gaji_pokok">Gaji Pokok</label>
-                            <input class="form-control" id="detailgajipokok" type="text" name="id_gaji_pokok"
-                                placeholder="" value="{{ old('id_gaji_pokok') }}"
-                                class="form-control @error('id_gaji_pokok') is-invalid @enderror" readonly />
-                            @error('id_gaji_pokok')<div class="text-danger small mb-1">{{ $message }}
-                            </div> @enderror
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-success" onclick="submit1()" type="button">Selanjutnya!</button>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="Modalpegawai" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title">Pilih Pegawai</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
-            </div>
-            <div class="modal-body">
-                <div class="datatable">
-                    {{-- TABLE --}}
-                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table class="table table-bordered table-hover dataTable" id="dataTablePegawai"
-                                    width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
-                                    style="width: 100%;">
-                                    <thead>
-                                        <tr role="row">
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-sort="ascending"
-                                                aria-label="Name: activate to sort column descending"
-                                                style="width: 20px;">
-                                                No</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 130px;">Nama Pegawai</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 50px;">Jabatan</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 100px;">Gaji Pokok</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 50px;">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($pegawai as $item)
-                                        <tr id="item-{{ $item->id_pegawai }}" role="row" class="odd">
-                                            <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td class="nama_pegawai">{{ $item->nama_pegawai }}</td>
-                                            <td class="nama_jabatan">{{ $item->Jabatan->nama_jabatan }}</td>
-                                            <td>
-                                                @if ($item->jabatan->gajipokok == '')
-                                                <div class="small text-muted d-none d-md-block">Tidak ada data
-                                                    <a href="{{ route('gaji-pokok.index') }}"
-                                                        class="btn btn-light btn-sm btn-datatable" type="button">
-                                                        <i class="fas fa-plus"></i>
-                                                    </a>
-                                                </div>
-                                                @else
-                                                <div class="small text-muted d-none d-md-block gaji_pokok">
-                                                    Rp.{{ number_format($item->jabatan->gajipokok->besaran_gaji,2,',','.') }}
-                                                </div>
-                                                @endif
-                                            </td>
-                                            <td>
-                                                <button class="btn btn-success btn-sm"
-                                                    onclick="tambahpo(event, {{ $item->id_pegawai }})" type="button"
-                                                    data-dismiss="modal">Tambah
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        @empty
-                                        <tr>
-                                            <td colspan="7" class="text-center">
-                                                Tidak ada Data Pegawai
-                                            </td>
-                                        </tr>
-                                        @endforelse
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -380,10 +283,9 @@
             <form action="{{ route('gaji-pegawai-status', $item->id_gaji_pegawai) }}?status=Dibayarkan" method="POST"
                 class="d-inline">
                 @csrf
-                <div class="modal-body text-center">Apakah Anda Yakin untuk Melakukan Pembayaran Gaji Pegawai <span
-                        class="font-weight-700">{{ $item->Pegawai->nama_pegawai }}</span>, bulan
-                    {{ $item->bulan_gaji }}, tahun {{ $item->tahun_gaji }} Sebesar <b>Rp.
-                        {{ number_format($item->gaji_diterima,2,',','.') }}</b>  ?</div>
+                <div class="modal-body text-center">Apakah Anda Yakin untuk Melakukan Pembayaran Gaji Pegawai bulan
+                    {{ $item->bulan_gaji }}, tahun {{ $item->tahun_gaji }} Sebesar Rp.
+                    {{ number_format($item->grand_total_gaji,2,',','.') }} ?</div>
                 <div class="modal-footer ">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-success" type="submit">Ya! Bayar</button>
@@ -408,9 +310,8 @@
             <form action="{{ route('gaji-pegawai.destroy', $item->id_gaji_pegawai) }}" method="POST" class="d-inline">
                 @csrf
                 @method('delete')
-                <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Pembayaran Gaji Pegawai <span
-                        class="font-weight-700">{{ $item->Pegawai->nama_pegawai }}</span>, bulan
-                    {{ $item->bulan_gaji }}, tahun {{ $item->tahun_gaji }}?</div>
+                <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Pembayaran Gaji Pegawai bulan
+                   <b>{{ $item->bulan_gaji }}</b> , tahun <b>{{ $item->tahun_gaji }}</b> ?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-danger" type="submit">Ya! Hapus</button>
@@ -423,35 +324,49 @@
 
 @endforelse
 
-<script>
-    function tambahpo(event, id_pegawai) {
-        var data = $('#item-' + id_pegawai)
-        var _token = $('#form1').find('input[name="_token"]').val()
-        var nama_pegawai = $(data.find('.nama_pegawai')[0]).text()
-        var nama_jabatan = $(data.find('.nama_jabatan')[0]).text()
-        var gaji_pokok = $(data.find('.gaji_pokok')[0]).text().trim()
+<div class="modal fade" id="Modaltransaksi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Jenis Transaksi</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <form action="{{ route('jenis-transaksi.store') }}" method="POST" class="d-inline">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="small mb-1" for="nama_transaksi">Jenis Transaksi</label>
+                        <textarea class="form-control" name="nama_transaksi" type="text" id="nama_transaksi"
+                            placeholder="Input Jenis Transaksi" value="{{ old('nama_transaksi') }}"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" type="submit">Ya! Tambah</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-        $('#detailpegawai').val(nama_pegawai)
-        $('#detailjabatan').val(nama_jabatan)
-        $('#detailgajipokok').val(gaji_pokok)
-    }
+<script>
 
     function submit1() {
         var _token = $('#form1').find('input[name="_token"]').val()
         var bulan_gaji = $('#bulan_gaji').val()
         var tahun_gaji = $('#tahun_gaji').val()
-        var nama_pegawai = $('#detailpegawai').val()
-        var gaji_pokok = $('#detailgajipokok').val()
+        // var id_jenis_transaksi = $('#id_jenis_transaksi').val()
 
         var data = {
             _token: _token,
             bulan_gaji: bulan_gaji,
             tahun_gaji: tahun_gaji,
-            nama_pegawai: nama_pegawai,
+            // id_jenis_transaksi: id_jenis_transaksi
         }
 
-        if (gaji_pokok == 0 | gaji_pokok == '' | bulan_gaji == 0 | bulan_gaji == '' | tahun_gaji == 0 | tahun_gaji ==
-            'Pilih Bulan Gaji' | nama_pegawai == 0 | nama_pegawai == '') {
+        if (tahun_gaji == 0 | tahun_gaji == '' | bulan_gaji == 0 | bulan_gaji == 'Pilih Bulan Gaji') {
             $('#alertdatakosong').show()
         } else {
 
@@ -468,18 +383,7 @@
                 }
             });
         }
-    }
-
-    $(document).ready(function () {
-        var table_pegawai = $('#dataTablePegawai').DataTable({
-            "pageLength": 5,
-            "lengthMenu": [
-                [5, 10, 20, -1],
-                [5, 10, 20, ]
-            ]
-        })
-    });
-    
+    }    
 
     setInterval(displayclock, 500);
 

@@ -11,6 +11,7 @@ use App\Model\Payroll\Detailgaji;
 use App\Model\Payroll\Detailpegawai;
 use App\Model\Payroll\Detailtunjangan;
 use App\Model\Payroll\Gajipegawai;
+use App\Model\Payroll\Masterpph21;
 use App\Model\Payroll\Mastertunjangan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,7 +42,7 @@ class GajipegawaiController extends Controller
         // ->where('nama_jabatan', '!=', 'Owner')->get();
        
 
-        return view('pages.payroll.gajipegawai.revisigajipegawai', compact('gaji','tahun_bayar','today','tanggal','jenis_transaksi'));
+        return view('pages.payroll.gajipegawai.gajipegawai', compact('gaji','tahun_bayar','today','tanggal','jenis_transaksi'));
     }
 
     /**
@@ -73,7 +74,7 @@ class GajipegawaiController extends Controller
                 'bulan_gaji'=>$request->bulan_gaji,
                 'tahun_gaji'=>$request->tahun_gaji,
                 'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
-                'id_jenis_transaksi' => $request->id_jenis_transaksi
+                'id_jenis_transaksi' => '8'
             ]); 
             
             return $gaji;
@@ -122,11 +123,12 @@ class GajipegawaiController extends Controller
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->get();
 
-        $jabatan = Jabatan::all();
+        $jabatan = Jabatan::get();
+        $pph21 = Masterpph21::get();
         $tunjangan = Mastertunjangan::all();
         $today = Carbon::now()->format('D, d/m/Y');
 
-        return view('pages.payroll.gajipegawai.revisicreate',['gaji_total' => Gajipegawai::sum('grand_total_gaji')], compact('gaji','pegawai','tunjangan','today','jenis_transaksi','jabatan'));
+        return view('pages.payroll.gajipegawai.create',['gaji_total' => Gajipegawai::sum('grand_total_gaji')], compact('gaji','pegawai','tunjangan','today','jenis_transaksi','jabatan','pph21'));
     }
 
     public function edit2(Request $request, $id_gaji_pegawai)
