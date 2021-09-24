@@ -119,7 +119,7 @@ class GajipegawaiController extends Controller
        
         $jenis_transaksi = Jenistransaksi::all();
         $pegawai = Pegawai::with([
-            'Jabatan.Gajipokok'
+            'Jabatan.Gajipokok','PTKP'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->get();
 
@@ -168,7 +168,6 @@ class GajipegawaiController extends Controller
         $gaji->grand_total_tunjangan = $request->grand_total_tunjangan;
         $gaji->grand_total_pph21 = $request->grand_total_pph21;
         $gaji->keterangan = $request->keterangan;
-        $gaji->id_jenis_transaksi = $request->id_jenis_transaksi;
         $gaji->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
         
         $gaji->save();

@@ -153,12 +153,16 @@
                             </div>
                             <div class="form-group text-right">
                                 <hr>
+                                <a href="{{ route('laporanabsensi') }}" target="_blank" class="btn btn-secondary btn-sm"
+                                    type="button">
+                                    Absensi
+                                </a>
                                 <a href="" class="btn btn-sm btn-secondary" type="button" data-toggle="modal"
                                     data-target="#Modalpph21">
-                                    Aturan Pph21
+                                    Pph21
                                 </a>
-
-                                <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
+                                
+                                    <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
                                     data-target="#Modalsumbit">Simpan Data</button>
                             </div>
                     </div>
@@ -167,14 +171,6 @@
 
             <div class="col-lg-8">
                 <div class="card mb-4">
-                    <div class="card card-header-actions">
-                        <div class="card-header ">List Penggajian
-                            <a href="{{ route('laporanabsensi') }}" target="_blank" class="btn btn-secondary btn-sm"
-                                type="button">
-                                Cek Absensi Pegawai
-                            </a>
-                        </div>
-                    </div>
                     <div class="collapse show" id="collapseCardExample">
                         <div class="card-body">
                             <div class="datatable">
@@ -194,18 +190,17 @@
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
-                                                            style="width: 150px;">
-                                                            Nama Pegawai</th>
-                                                        {{-- <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 80px;">
-                                                            NPWP Pegawai</th> --}}
+                                                            style="width: 150px;">Nama Pegawai</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
                                                             style="width: 80px;">
                                                             Jabatan</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1"
+                                                            aria-label="Position: activate to sort column ascending"
+                                                            style="width: 30px;">
+                                                            Status</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
@@ -227,6 +222,8 @@
                                                             {{ $item->nama_pegawai}}</td>
                                                         <td id="jabatan-{{ $item->id_pegawai }}">
                                                             {{ $item->Jabatan->nama_jabatan}}</td>
+                                                        <td id="ptkp-{{ $item->id_pegawai }}">
+                                                                {{ $item->PTKP->nama_ptkp}}</td>
                                                         <td id="gajipokok-{{ $item->id_pegawai }}">
                                                             @if ($item->Jabatan->Gajipokok == null |
                                                             $item->Jabatan->Gajipokok == '' )
@@ -493,6 +490,9 @@
                         Pilih tunjangan dengan cara mencentang pada bagian pilih
                     </div>
                 </div>
+                <div class="small mb-2">
+                    <span class="">Status Pegawai: <span class="small text-primary  font-weight-500">{{ $items->PTKP->nama_ptkp }}</span>,dengan besaran <span class="small text-primary  font-weight-500" id="besaran_ptkp-{{ $items->id_pegawai }}"> Rp.{{ number_format($items->PTKP->besaran_ptkp,2,',','.') }}</span></span>
+                </div>
                 <div class="form-group">
                     <div class="datatable">
                         <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
@@ -632,10 +632,6 @@
         var row = $(`#pegawai-${id_pegawai}`).parent().parent()
         table.row(row).remove().draw();
 
-        var totaltambahtunjangan = $('#gaji_diterima').val()
-        var jumlahfix = totalgaji + parseInt(totaltambahtunjangan)
-        $('#gaji_diterima').val(jumlahfix)
-
         var totalgajipokok = $('#total_gaji').val()
         var splitgajipokok = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '')
             .trim())
@@ -648,9 +644,7 @@
         $('#total_tunjangan').val(jumlahfix3)
 
 
-        // PPH21 ---------------------------------------------------------- BELUM SELESAi
-        var gajitahunan = totalgaji * 12
-        console.log(gajitahunan)
+        // DATA PPH21 -----------------------------------------------------------------------------------------
         var datapph21 = $('#pph21').children()
         var children = $(datapph21).children()
 
@@ -679,39 +673,173 @@
         var tdpersen4= children[15]
         var pphpersen4 = $($(tdpersen4)).html()
 
-        if (gajitahunan <= pph1){
-            var pphlevel1 = gajitahunan * pphpersen1
-            var pphlevel1hampir = pphlevel1 / 100
-            var pphlevel1fix = pphlevel1hampir / 12
-         
-        }else if (gajitahunan > pph1 <= pph2){
-            var pphlevel2 = gajitahunan * pphpersen2
-            var pphlevel2hampir = pphlevel2 / 100
-            var pphlevel2fix = pphlevel2hampir / 12
-            console.log(pphlevel2, pphlevel2hampir, pphlevel2fix)
-        }else if (gajitahunan > pph2 <= pph3 ){
-            var pphlevel3 = gajitahunan * pphpersen3
-            var pphlevel3hampir = pphlevel3 / 100
-            var pphlevel3fix = pphlevel3hampir / 12
+        // PERHITUNGAN DENGAN PPH21 dan PTKP ---------------------------------------------------------------
+        var besaranptkp = $(`#besaran_ptkp-${id_pegawai}`).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
+            '').trim()
+        console.log(besaranptkp)
+        var gajitahunan = totalgaji * 12
+        var gajikenapajak = gajitahunan - besaranptkp
+        console.log(gajitahunan, gajikenapajak)
+        
+
+        if (gajikenapajak <= pph1){
+            var pphlevel1 = gajikenapajak * pphpersen1
+            var pphlevel1fix = pphlevel1 / 100
+            // FIX PPH Level 2
+            var pphlevel1bulan = pphlevel1fix / 12
+
+            if(pphlevel1bulan < 0){
+
+                var totaltambahtunjangan = $('#gaji_diterima').val()
+                var jumlahfix3 = totalgaji + parseInt(totaltambahtunjangan)
+                $('#gaji_diterima').val(jumlahfix3)
+
+                alert('Berhasil Menambahkan Gaji Pegawai, Pegawai tidak dikenakan Pajak')
+
+                $('#dataTableKonfirmasi').DataTable().row.add([
+                nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                new Intl.NumberFormat('id', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(tunjangan),
+                new Intl.NumberFormat('id', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(totalgaji),
+                new Intl.NumberFormat('id', {
+                        style: 'currency',
+                        currency: 'IDR'
+                        }).format(0),
+                ]).draw();
+
+            }else{
+
+                // Total gaji - PPH perbulan dan Penambahan pada Grand Total
+                var totaltambahtunjangan = $('#gaji_diterima').val()
+                var totalgajisangatfix = totalgaji - pphlevel1bulan
+                var jumlahfix3 = totalgajisangatfix + parseInt(totaltambahtunjangan)
+                $('#gaji_diterima').val(jumlahfix3)
+                alert('Berhasil Menambahkan Pegawai dan Tunjangan')
+
+                $('#dataTableKonfirmasi').DataTable().row.add([
+                    nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                    new Intl.NumberFormat('id', {
+                        style: 'currency',
+                        currency: 'IDR'
+                        }).format(tunjangan),
+                    new Intl.NumberFormat('id', {
+                        style: 'currency',
+                        currency: 'IDR'
+                        }).format(totalgajisangatfix),
+                    new Intl.NumberFormat('id', {
+                        style: 'currency',
+                        currency: 'IDR'
+                        }).format(pphlevel1bulan),
+                ]).draw();
+
+
+                var totalpph21 = $('#total_pph21').val()
+                var jumlahpph21fix = parseInt(pphlevel1bulan) + parseInt(totalpph21)
+                $('#total_pph21').val(jumlahpph21fix)
+
+               
+            }
+
             
-        }
-          
-        // else if(totalgaji > pph21jt )
+        }else if (gajikenapajak > pph1 && gajikenapajak <= pph2){
+
+            // Perhitungan 5%
+            var pphkena5 = pph1
+            var pphkena5fix = pphkena5 * pphpersen1
+            var pphkena5sangat = pphkena5fix / 100
+           
+            // Perhitungan 15%
+            var pphkena15 = gajikenapajak - pph1
+            var pphkena15fix = pphkena15 * pphpersen2
+            var pphkena15sangat = pphkena15fix / 100
+
+            // Penambahan
+            var pphlevel2 = pphkena5sangat + pphkena15sangat
+            var pphlevel2hampir = pphlevel2 / 12
+            // Memecah Bilangan Decimal
+            var str=pphlevel2hampir.toString();
+            var numarray=str.split('.');    
+            var a=new Array();
+            a=numarray;
+
+            // FIX PPH Level 2
+            var pphlevel2bulan = a[0];
+
+            // Total gaji - PPH perbulan dan Penambahan pada Grand Total
+            var totaltambahtunjangan = $('#gaji_diterima').val()
+            var totalgajisangatfix1 = totalgaji - pphlevel2bulan
+            var jumlahfix3 = totalgajisangatfix1 + parseInt(totaltambahtunjangan)
+            $('#gaji_diterima').val(jumlahfix3)
 
 
+            alert('Berhasil Menambahkan Gaji Pegawai')
+            
 
-
-        var pph = 0
-        if (totalgaji > 4500000) {
-            var pph22 = totalgaji * 5
-            var pph21fix = pph22 / 100
+            $('#dataTableKonfirmasi').DataTable().row.add([
+                nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                new Intl.NumberFormat('id', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(tunjangan),
+                new Intl.NumberFormat('id', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(totalgajisangatfix1),
+                new Intl.NumberFormat('id', {
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(pphlevel2bulan),
+            ]).draw();
 
             var totalpph21 = $('#total_pph21').val()
-            var jumlahpph21 = pph21fix + parseInt(totalpph21)
-            $('#total_pph21').val(jumlahpph21)
+            var jumlahpph21fix = parseInt(pphlevel2bulan) + parseInt(totalpph21)
+            $('#total_pph21').val(jumlahpph21fix)
+           
+        }else if (gajikenapajak > pph2 && gajikenapajak <= pph3){
+            
+            // Perhitungan 5%
+            var pph3kena5 = pph1
+            var pph3kena5fix = pph3kena5 * pphpersen1
+            var pph3kena5sangat = pph3kena5fix / 100
+           
 
-            alert('Berhasil Menambahkan Pegawai dan Tunjangan')
+            // Perhitungan 15 %
+            var pph3kena15 = pph2
+            var pph3kena15fix = pph3kena15 * pphpersen2
+            var pph3kena15sangat = pph3kena15fix / 100
+        
 
+            // Perhitungan 25%
+            var pph3kena25 = parseInt(pph3kena15) + parseInt(pph3kena5)
+            var tespph3kena25 = parseInt(gajikenapajak - pph3kena25)
+            var pph3kena25fix = tespph3kena25 * pphpersen3
+            var pph3kena25sangat = pph3kena25fix / 100
+            
+
+            var pphlevel3 = parseInt(pph3kena5sangat + pph3kena15sangat + pph3kena25sangat)
+            var pphlevel3hampir = pphlevel3 / 12
+
+            var str=pphlevel3hampir.toString();
+            var numarray=str.split('.');    
+            var a=new Array();
+            a=numarray;
+
+            // FIX PPH Level 2
+            var pphlevel3bulan = a[0];
+
+             // Total gaji - PPH perbulan dan Penambahan pada Grand Total
+             var totaltambahtunjangan = $('#gaji_diterima').val()
+             var totalgajisangatfix2 = totalgaji - pphlevel3bulan
+             var jumlahfix3 = totalgajisangatfix2 + parseInt(totaltambahtunjangan)
+             $('#gaji_diterima').val(jumlahfix3)
+
+             alert('Berhasil Menambahkan Gaji Pegawai')
+            
             $('#dataTableKonfirmasi').DataTable().row.add([
                 nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                 new Intl.NumberFormat('id', {
@@ -721,31 +849,17 @@
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(totalgaji),
+                }).format(totalgajisangatfix2),
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(pph21fix),
+                }).format(pphlevel3bulan),
             ]).draw();
-        } else {
 
-            alert('Berhasil Menambahkan Pegawai dan Tunjangan')
-
-            $('#dataTableKonfirmasi').DataTable().row.add([
-                nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
-                new Intl.NumberFormat('id', {
-                    style: 'currency',
-                    currency: 'IDR'
-                }).format(tunjangan),
-                new Intl.NumberFormat('id', {
-                    style: 'currency',
-                    currency: 'IDR'
-                }).format(totalgaji),
-                new Intl.NumberFormat('id', {
-                    style: 'currency',
-                    currency: 'IDR'
-                }).format(pph),
-            ]).draw();
+            var totalpph21 = $('#total_pph21').val()
+            var jumlahpph21fix = parseInt(pphlevel3bulan) + parseInt(totalpph21)
+            $('#total_pph21').val(jumlahpph21fix)
+            
         }
     }
 
@@ -792,8 +906,6 @@
                 total_pph21: total_pph21
             })
 
-
-
             var tbody = $(`#tunjangan-${id}`)
             var check = tbody.find('.checktunjangan').each(function (index, element) {
                 var value = $(element).is(':checked')
@@ -812,16 +924,13 @@
             })
         }
 
-        if (id_jenis_transaksi == 'Pilih Jenis Transaksi' | id_jenis_transaksi == '' | tahun_gaji == '' |
-            bulan_gaji ==
-            '') {
+        if ( tahun_gaji == '' | bulan_gaji == '') {
             var alert = $('#alertdatakosong').show()
         } else {
             var data = {
                 _token: _token,
                 tahun_gaji: tahun_gaji,
                 bulan_gaji: bulan_gaji,
-                id_jenis_transaksi: id_jenis_transaksi,
                 grand_total_gaji: grand_total_gaji,
                 grand_total_tunjangan: grand_total_tunjangan,
                 grand_total_pph21: grand_total_pph21,
@@ -894,9 +1003,9 @@
 
         var totalpph21 = $('#total_pph21').val()
         var pph21 = $(row2.children()[6]).html()
-        var splitpph = parseInt(totalpph21) - parseInt(pph21.split('Rp')[1].replace('&nbsp;', '').replace('.', '')
-            .replace(',00', '').trim())
-
+        var pph21fix = pph21.split('Rp')[1].replace('&nbsp;', '').replace('.', '').replace('.', '').replace(',00', '').trim()
+        var splitpph = parseInt(totalpph21) - parseInt(pph21fix)
+            console.log(totalpph21, pph21, pph21fix, splitpph)
         $('#total_pph21').val(splitpph)
 
         // Pengurangan Grand Total Keseluruhan
