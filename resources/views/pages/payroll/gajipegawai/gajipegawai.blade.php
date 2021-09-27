@@ -85,13 +85,16 @@
                                                 style="width: 100px;">Total Gaji</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 100px;">Total Tunjangan</th>
+                                                style="width: 70px;">Total Tunjangan</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Office: activate to sort column ascending"
+                                                style="width: 100px;">Total Pph21</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Start date: activate to sort column ascending"
-                                                style="width: 50px;">Status diterima</th>
+                                                style="width: 40px;">Status diterima</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 150px;">Actions</th>
+                                                style="width: 160px;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -102,6 +105,7 @@
                                             <td>{{ $item->bulan_gaji}}</td>
                                             <td>Rp. {{ number_format($item->grand_total_gaji,2,',','.') }}</td>
                                             <td>Rp. {{ number_format($item->grand_total_tunjangan,2,',','.') }}</td>
+                                            <td>Rp. {{ number_format($item->grand_total_pph21,2,',','.') }}</td>
                                             <td> @if($item->status_diterima == 'Belum Dibayarkan')
                                                 <span class="badge badge-danger">
                                                     @elseif($item->status_diterima == 'Dibayarkan')
