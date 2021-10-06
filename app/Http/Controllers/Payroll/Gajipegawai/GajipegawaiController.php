@@ -212,8 +212,11 @@ class GajipegawaiController extends Controller
     {
         $gaji = Gajipegawai::with('Detailpegawai','Detailpegawai.Jabatan.Gajipokok','Detailtunjangan','Detailpegawai.Detailtunjangan')
         ->find($id_gaji_pegawai);
-        
-        $now = Carbon::now();
+
+        // return $gaji;
+
+
+        $now = Carbon::now()->format('j F Y');
         return view('print.Payroll.cetakslip', compact('gaji','now'));
     }
 }

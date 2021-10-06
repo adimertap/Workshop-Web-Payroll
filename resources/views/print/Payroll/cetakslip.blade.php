@@ -43,29 +43,19 @@
                                 <div class="h3 text-primary">Slip Gaji</div>
                                 <span class="text-dark">Pembayaran Gaji Pegawai</span>
                                 <br>
+                                <span class="text-dark">{{ $now }}</span>
                                 {{-- <span class="text-dark">Tahun {{ $gaji->tahun_gaji }}, Bulan {{ $gaji->bulan_gaji }}</span> --}}
                             </div>
                         </div>
                     </div>
-            @empty
-                
-            @endforelse
-           
+                    <hr class="mr-5 ml-5">
+                    <div class="card-body">
+                        <h5 class="text-center">Slip Gaji Pegawai</h5>
+                        <h6 class="text-dark text-center">Periode Bulan {{ $gaji->bulan_gaji }}, Tahun {{ $gaji->tahun_gaji }}</h6>
 
-                    {{-- <div class="card-body">
-                        <div class="row justify-content-between align-items-center">
+                        <div class="row justify-content-between align-items-center mb-4 mt-4 ml-4">
                             <div class="col-6 text-lg-left" style="line-height: 1rem">
-                                <label class="small font-weight-700">Kepada: </label>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="d-flex flex-column font-weight-bold">
-                                            <label class="small font-weight-500"> Pegawai </label>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <label class="small font-weight-500">: {{ $gaji->Pegawai->nama_pegawai }} </label>
-                                    </div>
-                                </div>
+                                <label class="font-weight-500">Pegawai: </label>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="d-flex flex-column font-weight-bold">
@@ -73,7 +63,17 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <label class="small">: {{ $gaji->Pegawai->nik_pegawai }} </label>
+                                        <label class="small">: {{ $item->nik_pegawai }} </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="d-flex flex-column font-weight-bold">
+                                            <label class="small"> Nama </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="small">: {{ $item->nama_pegawai }} </label>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -83,77 +83,154 @@
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <label class="small">: {{ $gaji->Pegawai->Jabatan->nama_jabatan }} </label>
+                                        <label class="small">: {{ $item->Jabatan->nama_jabatan }} </label>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="d-flex flex-column font-weight-bold">
-                                            <label class="small line-height-normal"> Telephone </label>
+                                            <label class="small line-height-normal">Nomor Telp.</label>
                                         </div>
                                     </div>
                                     <div class="col">
-                                        <label class="small">: {{ $gaji->Pegawai->no_telp }} </label>
+                                        <label class="small">: {{ $item->no_telp }} </label>
                                     </div>
                                 </div>
+                            </div>
+
+                            
+                            <div class="col-6 text-lg-left" style="line-height: 1rem">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="font-weight-bold">
+                                            <label class="small">NPWP </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="small">: {{ $item->npwp_pegawai }} </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="font-weight-bold">
+                                            <label class="small ">Status PTKP </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="small">: {{ $item->PTKP->nama_ptkp }} </label>
+                                    </div>
+                                </div>
+                                
                             </div>
                         </div>
                       
-                        <div class="col-lg-6" >
-                            <div class="datatable" >
-                                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <table class="hover" id="example" width="100%"
-                                                cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                                                <thead>
-                                                    <tr role="row">
-                                                        <th class="text-center" style="width: 20px;">No</th>
-                                                        <th class="text-center" style="width: 80px;">Sparepart</th>
-                                                        <th class="text-center" style="width: 80px;">Merk</th>
-                                                        <th class="text-center" style="width: 20px;">Qty</th>
-                                                        <th class="text-center" style="width: 20px;">Kemasan</th>
-                                                        <th class="text-center" style="width: 30px;">Harga</th>
-                                                        <th class="text-center" style="width: 80px;">Total</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                   
-                                                </tbody>
-                                            </table>
+
+                        <div class="row mt-4 ml-4">
+                            <div class="col-6 text-lg-left">
+                                <label class="font-weight-500">Penghasilan: </label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="d-flex flex-column font-weight-bold">
+                                            <label class="small"> Gaji Pokok </label>
                                         </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="small">= Rp. {{ number_format($item->Jabatan->Gajipokok->besaran_gaji,2,',','.') }}</label>
+                                    </div>
+                                </div>
+
+                                @forelse ($item->detailtunjangan as $tes)
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="d-flex flex-column font-weight-bold">
+                                                <label class="small">Tunjangan {{ $tes->nama_tunjangan }} </label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <span class="small">=</span>
+                                            <label class="small">Rp. {{ number_format($tes->jumlah_tunjangan,2,',','.') }}</label>
+                                        </div>
+                                    </div>
+                                @empty
+                                    
+                                @endforelse
+
+                                <hr class="mr-5">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="d-flex flex-column font-weight-bold">
+                                            <label class="small font-weight-500">Total (A) </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="small font-weight-500">=  Rp. {{ number_format($item->Jabatan->Gajipokok->besaran_gaji + $item->pivot->total_tunjangan,2,',','.') }}</label>
                                     </div>
                                 </div>
                             </div>
+
+                            
+                            <div class="col-6 text-lg-left">
+                                <label class="font-weight-500">Potongan: </label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="font-weight-bold">
+                                            <label class="small">PPh21 </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="small">= Rp. {{ number_format($item->pivot->total_pph21,2,',','.') }}</label>
+                                    </div>
+                                </div>
+                                <hr class="mr-5">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="d-flex flex-column font-weight-bold">
+                                            <label class="small font-weight-500">Total (B) </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <label class="small font-weight-500">= Rp. {{ number_format($item->pivot->total_pph21,2,',','.') }}</label>
+                                    </div>
+                                </div>
+                               
+                                
+                            </div>
                         </div>
-                    </div> --}}
-                    {{-- <div class="card-footer p-4 p-lg-5 border-top-0 bg-white">
+                        <hr class="mr-5 ml-5">
+                        <div class="row">
+                            <div class="col-6">
+                                <h6 class="font-weight-500 text-center">Penerimaan Bersih (A-B) :</h6>
+                            </div>
+                            <div class="col-6">
+                                <h6 class="font-weight-500 text-center">Rp. {{ number_format($item->pivot->total_gaji,2,',','.') }}</h6>
+
+                            </div>
+                        </div>
+                        <hr class="mr-5 ml-5">
+                        
+                      
+
+                    </div>
+                    <div class="card-footer p-4 p-lg-5 border-top-0 bg-white mr-5">
                         <div class="row">
                             <div class="mx-auto col-9 text-center d-flex justify-content-between">
                                 <div class="mb-4">
-                                    
                                 </div>
                                 <div class="mb-4">
-                                    <!-- Invoice - sent from info-->
-                                    <div class="h6 mb-0">Owner</div>
-                                    <div class="small mt-10">{{ Auth::user()->pegawai->nama_pegawai }}</div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-lg-12">
-                                <!-- Invoice - additional notes-->
-                                <div class="small text-muted text-uppercase font-weight-700 mb-2">Keterangan</div>
-                                <div class="small mb-0">Purchase Order telah disetujui oleh pemilik bengkel dan akan diteruskan kepada supplier
-                                    <br>~ Seluruh pengiriman barang yang dilakukan supplier harus disertakan Faktur dan Kwitansi
-                                    <br>~ Barang akan kami kembalikan apabila tidak sesuai pesanan
-                                    <br>~ No Purchase Order harus dicantumkan dalam Faktur dan Kwitansi
-                                    <br>~ Bila pengiriman barang akan dilaksanakan secara bertahap, 
-                                    <br>setiap pengiriman barang harap disertakan photocopy Purchase Order
+                                    <div class="small">{{ $now }}</div>
+                                    <div class="h6 mb-0">Pemilik Bengkel</div>
+                                    <div class="h6 mt-10 font-weight-500">{{ Auth::user()->Pegawai->nama_pegawai }}</div>
                                 </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
+                </div>
+            </div>
+            @empty
+                
+            @endforelse
+           
+
 
                 </div>
             </div>

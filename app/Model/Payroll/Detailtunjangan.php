@@ -15,7 +15,7 @@ class Detailtunjangan extends Model
     protected $primaryKey = 'id_detgaji';
 
     protected $fillable = [
-        'id_bengkel',
+      
         'id_gaji_pegawai',
         'id_tunjangan',
         'id_pegawai'
@@ -42,10 +42,5 @@ class Detailtunjangan extends Model
     public function Pegawai()
     {
         return $this->belongsTo(Pegawai::class, 'id_pegawai','id_pegawai');
-    }
-
-    protected static function booted()
-    {
-        static::addGlobalScope(new OwnershipScope);
     }
 }

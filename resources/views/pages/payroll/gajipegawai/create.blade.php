@@ -627,7 +627,6 @@
         var totalgaji = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '')
             .trim()) + tunjangan
 
-
         var table = $('#dataTableKonfirmasi').DataTable()
         var row = $(`#pegawai-${id_pegawai}`).parent().parent()
         table.row(row).remove().draw();
@@ -643,7 +642,17 @@
         var jumlahfix3 = tunjangan + parseInt(totaltunjangan)
         $('#total_tunjangan').val(jumlahfix3)
 
+        // PENGURANGAN 5% BIAYA JABATAN ---------------------------------------------------------
+        var biayajabatan = totalgaji * 5
+        var biayajabatanfix = biayajabatan / 100
 
+        // IF (Biaya Jabatan)
+        if(biayajabatanfix >= 500000){
+            var gajinetto = totalgaji - parseInt(500000)
+        }else{
+            var gajinetto = totalgaji - biayajabatanfix
+        }
+        
         // DATA PPH21 -----------------------------------------------------------------------------------------
         var datapph21 = $('#pph21').children()
         var children = $(datapph21).children()
@@ -676,12 +685,10 @@
         // PERHITUNGAN DENGAN PPH21 dan PTKP ---------------------------------------------------------------
         var besaranptkp = $(`#besaran_ptkp-${id_pegawai}`).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
             '').trim()
-        console.log(besaranptkp)
-        var gajitahunan = totalgaji * 12
+       
+        var gajitahunan = gajinetto * 12
         var gajikenapajak = gajitahunan - besaranptkp
-        console.log(gajitahunan, gajikenapajak)
         
-
         if (gajikenapajak <= pph1){
             var pphlevel1 = gajikenapajak * pphpersen1
             var pphlevel1fix = pphlevel1 / 100
@@ -873,7 +880,7 @@
         var grand_total_gaji = $('#gaji_diterima').val()
         var grand_total_tunjangan = $('#total_tunjangan').val()
         var grand_total_pph21 = $('#total_pph21').val()
-        var id_bengkel = $('#id_bengkel').text()
+        
         var keterangan = form1.find('textarea[name="keterangan"]').val()
         var _token = form1.find('input[name="_token"]').val()
         var pegawai = []
@@ -890,17 +897,15 @@
             var tes1 = $($(td).parent().children())
             var total_tunjangan = $($(td).parent().children()[4]).html().split('Rp')[1].replace('&nbsp;', '')
                 .replace(
-                    '.', '').replace('.', '').replace(',00', '').trim()
+                    '.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
             var total_gaji = $($(td).parent().children()[5]).html().split('Rp')[1].replace('&nbsp;', '').replace(
-                '.',
-                '').replace('.', '').replace(',00', '').trim()
+                '.','').replace('.', '').replace(',00', '').replace(',50', '').trim()
             var total_pph21 = $($(td).parent().children()[6]).html().split('Rp')[1].replace('&nbsp;', '').replace(
                 '.',
-                '').replace('.', '').replace(',00', '').trim()
+                '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
             pegawai.push({
                 id_pegawai: id,
-                id_bengkel: id_bengkel,
                 total_tunjangan: total_tunjangan,
                 total_gaji: total_gaji,
                 total_pph21: total_pph21
@@ -916,7 +921,6 @@
                     tunjangan.push({
                         id_pegawai: id,
                         id_tunjangan: id_tunjangan,
-                        id_bengkel: id_bengkel
                     })
 
                 }
@@ -1005,7 +1009,6 @@
         var pph21 = $(row2.children()[6]).html()
         var pph21fix = pph21.split('Rp')[1].replace('&nbsp;', '').replace('.', '').replace('.', '').replace(',00', '').trim()
         var splitpph = parseInt(totalpph21) - parseInt(pph21fix)
-            console.log(totalpph21, pph21, pph21fix, splitpph)
         $('#total_pph21').val(splitpph)
 
         // Pengurangan Grand Total Keseluruhan

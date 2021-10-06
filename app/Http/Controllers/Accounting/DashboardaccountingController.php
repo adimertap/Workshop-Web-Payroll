@@ -24,18 +24,18 @@ class DashboardaccountingController extends Controller
         $tanggal = Carbon::now()->format('j F Y');
         $now = Carbon::now();
 
-        return view('pages.accounting.dashboard.dashboardaccounting',
-        ['hutang_supplier' => InvoicePayable::where('status_prf','Belum Dibuat')->sum('total_pembayaran'),
-        'pendapatan_penjualan' => LaporanPenjualanSparepart::sum('total_tagihan'),
-        'pendapatan_service' => LaporanService::sum('total_tagihan'),
-        'pendapatan_marketplace' => Transaksi::where('transaksi_status','DITERIMA')->sum('harga_total'),
-        'invoice' => InvoicePayable::count(),
-        'invoice_prf_belum' => InvoicePayable::where('status_prf','Belum Dibuat')->count(),
-        'invoice_prf_sudah' => InvoicePayable::where('status_prf','Sudah Dibuat')->count(),
-        'prf' => Prf::count(),
-        'prf_pending' => Prf::where('status_prf','Pending')->count(),
-        'prf_approve' => Prf::where('status_prf','Approved')->count(),
-        'prf_tolak' => Prf::where('status_prf','Not Approved')->count(),], compact('today','tanggal'));
+        // return view('pages.accounting.dashboard.dashboardaccounting',
+        // ['hutang_supplier' => InvoicePayable::where('status_prf','Belum Dibuat')->('total_pembayaran'),
+        // 'pendapatan_penjualan' => LaporanPenjualanSparepart::sum('total_tagihan'),
+        // 'pendapatan_service' => LaporanService::sum('total_tagihan'),
+        // 'pendapatan_marketplace' => Transaksi::where('transaksi_status','DITERIMA')->sum('harga_total'),
+        // 'invoice' => InvoicePayable::count(),
+        // 'invoice_prf_belum' => InvoicePayable::where('status_prf','Belum Dibuat')->count(),
+        // 'invoice_prf_sudah' => InvoicePayable::where('status_prf','Sudah Dibuat')->count(),
+        // 'prf' => Prf::count(),
+        // 'prf_pending' => Prf::where('status_prf','Pending')->count(),
+        // 'prf_approve' => Prf::where('status_prf','Approved')->count(),
+        // 'prf_tolak' => Prf::where('status_prf','Not Approved')->count(),], compact('today','tanggal'));
     }
 
     /**
