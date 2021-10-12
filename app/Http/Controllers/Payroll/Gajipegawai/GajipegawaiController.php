@@ -157,7 +157,6 @@ class GajipegawaiController extends Controller
     public function update(Request $request, $id_gaji_pegawai)
     {
         $gaji = Gajipegawai::findOrFail($id_gaji_pegawai);
-        $gaji->bulan_gaji = $request->bulan_gaji;
         $gaji->grand_total_gaji = $request->grand_total_gaji;
         $gaji->grand_total_tunjangan = $request->grand_total_tunjangan;
         $gaji->grand_total_pph21 = $request->grand_total_pph21;

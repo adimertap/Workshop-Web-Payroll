@@ -46,13 +46,18 @@
                         <form action="{{ route('gaji-pegawai.update', $gaji->id_gaji_pegawai) }}" id="form1"
                             method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <label class="small mb-1 mr-1" for="bulan_gaji">Tahun dan Bulan Gaji</label>
-                                <input class="form-control" id="bulan_gaji" type="text" name="bulan_gaji"
-                                    placeholder="Input Tahun Gaji" value="{{ $gaji->bulan_gaji }}" readonly/>
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1 mr-1" for="bulan_gaji">Tahun Gaji</label>
+                                    <input class="form-control" id="bulan_gaji" type="text" name="bulan_gaji"
+                                        placeholder="Input Tahun Gaji" value="{{ date('Y', strtotime($item->bulan_gaji)) }}" readonly/>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label class="small mb-1 mr-1" for="bulan_gaji">Bulan Gaji</label>
+                                    <input class="form-control" id="bulan_gaji" type="text" name="bulan_gaji"
+                                        placeholder="Input Tahun Gaji" value="{{ date('F', strtotime($item->bulan_gaji)) }}" readonly/>
+                                </div>
                             </div>
-                              
-                          
                             <div class="form-group">
                                 <label class="small mb-1 mr-1" for="id_jenis_transaksi">Jenis Transaksi</label><span
                                     class="mr-4 mb-3" style="color: red">*</span>
@@ -851,12 +856,9 @@
     function tambahgaji(event, tunjangan, id_gaji_pegawai) {
         event.preventDefault()
         var form1 = $('#form1')
-        var bulan_gaji = $('#bulan_gaji').val()
-        var id_jenis_transaksi = $('#id_jenis_transaksi').val()
         var grand_total_gaji = $('#gaji_diterima').val()
         var grand_total_tunjangan = $('#total_tunjangan').val()
         var grand_total_pph21 = $('#total_pph21').val()
-        
         var keterangan = form1.find('textarea[name="keterangan"]').val()
         var _token = form1.find('input[name="_token"]').val()
         var pegawai = []
@@ -904,12 +906,11 @@
             })
         }
 
-        if ( bulan_gaji == '') {
+        if ( pegawai == '') {
             var alert = $('#alertdatakosong').show()
         } else {
             var data = {
                 _token: _token,
-                bulan_gaji: bulan_gaji,
                 grand_total_gaji: grand_total_gaji,
                 grand_total_tunjangan: grand_total_tunjangan,
                 grand_total_pph21: grand_total_pph21,
