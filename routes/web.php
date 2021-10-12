@@ -59,7 +59,7 @@ Route::group(
             ->namespace('Payroll\Perampungan')
             ->middleware(['owner', 'verified'])
             ->group(function () {
-                Route::resource('perampungan', 'PerampunganController');
+                Route::resource('perampungan', 'PerampunganControllerr');
             });
 
         Route::prefix('payroll/tunjangan')
