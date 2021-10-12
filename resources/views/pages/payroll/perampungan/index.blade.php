@@ -147,7 +147,8 @@
                     </hr>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="tanggal_perampungan">Tanggal</label>
+                            <label class="small mb-1" for="tanggal_perampungan">Tanggal</label><span class="mr-4 mb-3"
+                                style="color: red">*</span>
                             <input class="form-control" id="tanggal_perampungan" type="date" name="tanggal_perampungan"
                                 value="<?php echo date('Y-m-d'); ?>">
                         </div>
@@ -165,23 +166,24 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="small mb-1">Masa Perolehan Penghasilan</label>
+                        <label class="small mb-1">Masa Perolehan Penghasilan</label><span class="mr-4 mb-3"
+                            style="color: red">*</span>
                         <div class="row">
                             <div class="col-md-5">
                                 <input class="form-control" id="masa_perolehan_awal" type="month"
                                     name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <h3 class="mt-2 ml-2"> - </h3>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <input class="form-control" id="masa_perolehan_akhir" type="month"
                                     name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6"><span class="mr-4 mb-3" style="color: red">*</span>
                             <label class="small mb-1" for="karyawan_asing">Karyawan Asing</label>
                             <select name="karyawan_asing" id="karyawan_asing" class="form-control"
                                 class="form-control @error('karyawan_asing') is-invalid @enderror">
@@ -197,39 +199,14 @@
                                 value="{{ old('kode_negara') }}">
                         </div>
                     </div>
-
-                    {{-- <div class="row">
-                        
-                        <div class="form-group col-md-6">
-                            <label class="small mb-1" for="bulan_gaji">Bulan</label>
-                            <select name="bulan_gaji" id="bulan_gaji" class="form-control"
-                                class="form-control @error('bulan_gaji') is-invalid @enderror">
-                                <option value="{{ old('bulan_gaji')}}">Pilih Bulan Gaji</option>
-                    <option value="Januari">Januari</option>
-                    <option value="Februari">Februari</option>
-                    <option value="Maret">Maret</option>
-                    <option value="April">April</option>
-                    <option value="Mei">Mei</option>
-                    <option value="Juni">Juni</option>
-                    <option value="Juli">Juli</option>
-                    <option value="Agustus">Agustus</option>
-                    <option value="September">September</option>
-                    <option value="Oktober">Oktober</option>
-                    <option value="November">November</option>
-                    <option value="Desember">Desember</option>
-                    </select>
-                    @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
-                    </div> @enderror
                 </div>
-        </div> --}}
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-success" onclick="submit1()" type="button">Selanjutnya!</button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div class="modal-footer">
-        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-        <button class="btn btn-success" onclick="submit1()" type="button">Selanjutnya!</button>
-    </div>
-    </form>
-</div>
-</div>
 </div>
 
 
@@ -261,37 +238,48 @@
 @endforelse
 
 <script>
-    // function submit1() {
-    //     var _token = $('#form1').find('input[name="_token"]').val()
-    //     var bulan_gaji = $('#bulan_gaji').val()
-    //     var tahun_gaji = $('#tahun_gaji').val()
-    //     // var id_jenis_transaksi = $('#id_jenis_transaksi').val()
 
-    //     var data = {
-    //         _token: _token,
-    //         bulan_gaji: bulan_gaji,
-    //         tahun_gaji: tahun_gaji,
-    //         // id_jenis_transaksi: id_jenis_transaksi
-    //     }
+    function submit1() {
+        var _token = $('#form1').find('input[name="_token"]').val()
+        var tanggal_perampungan = $('#tanggal_perampungan').val()
+        var id_pegawai = $('#id_pegawai').val()
+        var masa_perolehan_awal = $('#masa_perolehan_awal').val()
+        var masa_perolehan_akhir = $('#masa_perolehan_akhir').val()
+        var karyawan_asing = $('#karyawan_asing').val()
+        var kode_negara = form.find('input[name="kode_negara"]').val()
 
-    //     if (tahun_gaji == 0 | tahun_gaji == '' | bulan_gaji == 0 | bulan_gaji == 'Pilih Bulan Gaji') {
-    //         $('#alertdatakosong').show()
-    //     } else {
+        var data = {
+            _token: _token,
+            tanggal_perampungan: tanggal_perampungan,
+            id_pegawai: id_pegawai,
+            masa_perolehan_awal: masa_perolehan_awal,
+            masa_perolehan_akhir: masa_perolehan_akhir,
+            karyawan_asing: karyawan_asing,
+            kode_negara: kode_negara
+        }
 
-    //         $.ajax({
-    //             method: 'post',
-    //             url: "/payroll/gaji-pegawai",
-    //             data: data,
-    //             success: function (response) {
-    //                 window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
-    //             },
-    //             error: function (error) {
-    //                 console.log(error)
-    //                 alert(error.responseJSON.message)
-    //             }
-    //         });
-    //     }
-    // }    
+        console.log(data)
+
+        if ( tanggal_perampungan == '' | id_pegawai == 'Pilih Pegawai' | masa_perolehan_awal == '' | masa_perolehan_akhir == '') {
+            $('#alertdatakosong').show()
+        } else {
+
+            // $.ajax({
+            //     method: 'post',
+            //     url: "/payroll/gaji-pegawai",
+            //     data: data,
+            //     success: function (response) {
+            //         window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
+            //         console.log(response)
+            //     },
+            //     error: function (error) {
+            //         console.log(error)
+            //         alert(error.responseJSON.message)
+            //     }
+            // });
+        }
+    }    
+    
 
     setInterval(displayclock, 500);
 

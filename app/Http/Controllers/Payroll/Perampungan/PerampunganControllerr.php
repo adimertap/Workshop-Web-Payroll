@@ -7,6 +7,7 @@ use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PhpParser\Node\Expr\New_;
 
 class PerampunganControllerr extends Controller
 {
@@ -49,7 +50,7 @@ class PerampunganControllerr extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
