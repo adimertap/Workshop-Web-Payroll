@@ -173,7 +173,7 @@
                                         name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                                 </div>
                                 <div class="col-md-2">
-                                    <label class="small mt-2"> sampai </label>
+                                    <h3 class="mt-2"> - </h3>
                                 </div>
                                 <div class="col-md-5">
                                     <input class="form-control" id="masa_perolehan_akhir" type="date"
