@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Payroll\Perampungan;
 
 use App\Http\Controllers\Controller;
+use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -19,9 +20,14 @@ class PerampunganControllerr extends Controller
         $perampungan = Perampungan::with('Detail','Pegawai','Pemotong')->get();
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
+        $pegawai = Pegawai::with([
+            'Jabatan'
+        ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+        ->where('nama_jabatan', '!=', 'Owner')->get();
+        
   
 
-        return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal'));
+        return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal','pegawai'));
     }
 
     /**

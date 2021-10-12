@@ -27,6 +27,7 @@ class Perampungan extends Model
         'pph21',
         'karyawan_asing',
         'kode_negara',
+        'tanggal_perampungan'
     ];
 
     protected $hidden =[ 

@@ -97,15 +97,16 @@
                                                     data-placement="top" title="" data-original-title="Detail Slip">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
-                                                <a href="{{ route('perampungan.edit', $item->id_perampungan) }}" class="btn btn-primary btn-datatable" data-toggle="tooltip"
+                                                <a href="{{ route('perampungan.edit', $item->id_perampungan) }}"
+                                                    class="btn btn-primary btn-datatable" data-toggle="tooltip"
                                                     data-placement="top" title="" data-original-title="Edit Slip">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a href="" class="btn btn-danger btn-datatable" type="button"
                                                     data-toggle="modal"
                                                     data-target="#Modalhapus-{{ $item->id_perampungan }}">
-                                                <i class="fas fa-trash"></i>
-                                            </a>
+                                                    <i class="fas fa-trash"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         @empty
@@ -122,21 +123,22 @@
 </main>
 
 {{-- MODAL TAMBAH --}}
-{{-- <div class="modal fade" id="Modaltambah" tabindex="-1" role="dialog" data-backdrop="static"
+<div class="modal fade" id="Modaltambah" tabindex="-1" role="dialog" data-backdrop="static"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Gaji Pegawai</h5>
+                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Perampungan</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
-            <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
+            <form action="{{ route('perampungan.store') }}" method="POST" id="form1" class="d-inline">
                 @csrf
                 <div class="modal-body">
                     <label class="small mb-1">Isikan Form Dibawah Ini</label>
-                    <div class="alert alert-danger" id="alertdatakosong" role="alert" style="display:none"><i class="far fa-times-circle"></i>
-                        <span class="small">Error! Terdapat Data yang Masih Kosong!</span> 
+                    <div class="alert alert-danger" id="alertdatakosong" role="alert" style="display:none"><i
+                            class="far fa-times-circle"></i>
+                        <span class="small">Error! Terdapat Data yang Masih Kosong!</span>
                         <button class="close" type="button" onclick="$(this).parent().hide()" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
@@ -145,13 +147,63 @@
                     </hr>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="tahun_gaji">Tahun Bayar</label>
-                            <input class="form-control" id="tahun_gaji" type="input" name="tanggal_rcv"
-                                value="{{ $tahun_bayar }}"
-                                class="form-control @error('tahun_gaji') is-invalid @enderror" />
-                            @error('tahun_gaji')<div class="text-danger small mb-1">{{ $message }}
+                            <label class="small mb-1" for="tanggal_perampungan">Tanggal</label>
+                            <input class="form-control" id="tanggal_perampungan" type="date" name="tanggal_perampungan"
+                                value="{{ old('tanggal_perampungan') }}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="small mb-1 mr-1" for="id_pegawai">Pilih Pegawai</label><span class="mr-4 mb-3"
+                                style="color: red">*</span>
+                            <select class="form-control" name="id_pegawai" id="id_pegawai"
+                                class="form-control @error('id_pegawai') is-invalid @enderror">
+                                <option>Pilih Pegawai</option>
+                                @foreach ($pegawai as $pegawais)
+                                <option value="{{ $pegawais->id_pegawai }}">{{ $pegawais->nama_pegawai }}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label class="small mb-1">Masa Perolehan Penghasilan</label>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input class="form-control" id="masa_perolehan_awal" type="date" name="masa_perolehan_awal"
+                                    value="{{ old('masa_perolehan_awal') }}">
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control" id="masa_perolehan_akhir" type="date" name="masa_perolehan_akhir"
+                                    value="{{ old('masa_perolehan_akhir') }}">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label class="small mb-1" for="tahun">Tahun</label>
+                                <input class="form-control" id="tahun" type="input" name="tahun"
+                                    value="{{ old('tahun') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="small mb-1" for="karyawan_asing">Karyawan Asing</label>
+                            <select name="karyawan_asing" id="karyawan_asing" class="form-control"
+                                class="form-control @error('karyawan_asing') is-invalid @enderror">
+                                <option value="Tidak">Tidak</option>
+                                <option value="Ya">Ya</option>
+                            </select>
+                            @error('karyawan_asing')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
                         </div>
+                        <div class="form-group col-md-6">
+                            <label class="small mb-1" for="kode_negara">Kode Negara Domisili</label>
+                            <input class="form-control" id="kode_negara" type="input" name="kode_negara"
+                                value="{{ old('kode_negara') }}">
+                        </div>
+                    </div>
+                   
+                    {{-- <div class="row">
+                        
                         <div class="form-group col-md-6">
                             <label class="small mb-1" for="bulan_gaji">Bulan</label>
                             <select name="bulan_gaji" id="bulan_gaji" class="form-control"
@@ -173,7 +225,7 @@
                             @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -182,7 +234,7 @@
             </form>
         </div>
     </div>
-</div> --}}
+</div>
 
 
 @forelse ($perampungan as $item)
@@ -198,7 +250,8 @@
             <form action="{{ route('perampungan.destroy', $item->id_perampungan) }}" method="POST" class="d-inline">
                 @csrf
                 @method('delete')
-                <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Perampungan dengan Nomor <b>{{ $item->nomor }}</b> ?</div>
+                <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Perampungan dengan Nomor
+                    <b>{{ $item->nomor }}</b> ?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-danger" type="submit">Ya! Hapus</button>
@@ -212,7 +265,6 @@
 @endforelse
 
 <script>
-
     // function submit1() {
     //     var _token = $('#form1').find('input[name="_token"]').val()
     //     var bulan_gaji = $('#bulan_gaji').val()

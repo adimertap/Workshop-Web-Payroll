@@ -34,9 +34,6 @@ Route::patch('account/password', 'Account\PasswordController@update')->name('pas
 Route::group(
     ['middleware' => 'auth'],
     function () {
-        // -------------------------------------------------------------------------------------------------------PAYROLL 
-        // MODUL PAYROLL
-
         // MASTER DATA ------------------------------------------------------------ Master Data Payroll
         Route::prefix('payroll/gajipokok')
             ->namespace('Payroll\Masterdata')
@@ -53,13 +50,6 @@ Route::group(
             ->middleware(['owner', 'verified'])
             ->group(function () {
                 Route::resource('ptkp', 'PTKPController');
-            });
-
-        Route::prefix('payroll')
-            ->namespace('Payroll\Perampungan')
-            ->middleware(['owner', 'verified'])
-            ->group(function () {
-                Route::resource('perampungan', 'PerampunganControllerr');
             });
 
         Route::prefix('payroll/tunjangan')
@@ -84,6 +74,14 @@ Route::group(
                 Route::post('gaji-pegawai/{id_gaji_pegawai}/set-status', 'GajipegawaiController@setStatus')
                     ->name('gaji-pegawai-status');
                 Route::get('slip-gaji/{id}', 'GajipegawaiController@CetakSlip')->name('cetak-slip-gaji');
+            });
+
+        // PERAMPUNGAN ------------------------------------------------------------- Perampungan
+        Route::prefix('payroll')
+            ->namespace('Payroll\Perampungan')
+            ->middleware(['owner', 'verified'])
+            ->group(function () {
+                Route::resource('perampungan', 'PerampunganControllerr');
             });
     }
 );
