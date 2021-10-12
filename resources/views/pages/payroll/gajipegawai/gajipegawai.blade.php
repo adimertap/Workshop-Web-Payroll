@@ -220,6 +220,13 @@
                             </div> @enderror
                         </div>
                         <div class="form-group col-md-6">
+                            <label class="small mb-1" for="tahun_gaji">Bulan</label>
+                            <input class="form-control" id="tahun_gaji" type="month" name="tanggal_rcv"
+                                class="form-control @error('tahun_gaji') is-invalid @enderror" />
+                            @error('tahun_gaji')<div class="text-danger small mb-1">{{ $message }}
+                            </div> @enderror
+                        </div>
+                        {{-- <div class="form-group col-md-6">
                             <label class="small mb-1" for="bulan_gaji">Bulan</label>
                             <select name="bulan_gaji" id="bulan_gaji" class="form-control"
                                 class="form-control @error('bulan_gaji') is-invalid @enderror">
@@ -239,7 +246,7 @@
                             </select>
                             @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
-                        </div>
+                        </div> --}}
                     </div>
                     {{-- <div class="form-group">
                         <label class="small mb-1 mr-1" for="id_jenis_transaksi">Pilih Jenis
