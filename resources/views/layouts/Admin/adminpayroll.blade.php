@@ -107,6 +107,11 @@
                             Gaji Pegawai
                         </a>
 
+                        <a class="nav-link" href="{{ route('perampungan.index') }}">
+                            <div class="nav-link-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                            Perampungan
+                        </a>
+
                         {{-- MASTER DATA --}}
                         {{-- Master Data Side Bar --}}
                         <div class="sidenav-menu-heading">Master Data</div>

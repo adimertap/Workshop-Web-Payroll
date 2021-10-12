@@ -36,14 +36,6 @@ Route::group(
     function () {
         // -------------------------------------------------------------------------------------------------------PAYROLL 
         // MODUL PAYROLL
-        // DASHBOARD
-        Route::prefix('payroll')
-            ->namespace('payroll')
-            ->middleware(['owner', 'verified'])
-            ->group(function () {
-                Route::get('/', 'DashboardpayrollController@index')
-                    ->name('dashboardpayroll');
-            });
 
         // MASTER DATA ------------------------------------------------------------ Master Data Payroll
         Route::prefix('payroll/masterdatagajipokok')
@@ -61,6 +53,13 @@ Route::group(
             ->middleware(['owner', 'verified'])
             ->group(function () {
                 Route::resource('ptkp', 'PTKPController');
+            });
+
+        Route::prefix('payroll')
+            ->namespace('Payroll\Perampungan')
+            ->middleware(['owner', 'verified'])
+            ->group(function () {
+                Route::resource('perampungan', 'PerampunganController');
             });
 
         Route::prefix('payroll/masterdatatunjangan')
