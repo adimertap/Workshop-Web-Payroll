@@ -350,6 +350,8 @@
             // id_jenis_transaksi: id_jenis_transaksi
         }
 
+        console.log(data)
+
         if ( bulan_gaji == '') {
             $('#alertdatakosong').show()
         } else {
@@ -359,7 +361,7 @@
                 url: "/payroll/gaji-pegawai",
                 data: data,
                 success: function (response) {
-                    window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
+                    // window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
                 },
                 error: function (error) {
                     console.log(error)

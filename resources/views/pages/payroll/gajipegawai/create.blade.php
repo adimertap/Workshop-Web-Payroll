@@ -46,14 +46,13 @@
                         <form action="{{ route('gaji-pegawai.update', $gaji->id_gaji_pegawai) }}" id="form1"
                             method="POST" enctype="multipart/form-data">
                             @csrf
-                                <div class="form-group">
-                                    <label class="small mb-1 mr-1" for="tahun_gaji">Tahun Gaji</label><span
-                                        class="mr-4 mb-3" style="color: red">*</span>
-                                    <input class="form-control" id="tahun_gaji" type="text" name="tahun_gaji"
-                                        placeholder="Input Tahun Gaji" value="{{ $gaji->bulan_gaji }}" />
-                                </div>
-                              
+                            <div class="form-group">
+                                <label class="small mb-1 mr-1" for="tahun_gaji">Tahun dan Bulan Gaji</label>
+                                <input class="form-control" id="tahun_gaji" type="text" name="tahun_gaji"
+                                    placeholder="Input Tahun Gaji" value="{{ $gaji->bulan_gaji }}" readonly/>
                             </div>
+                              
+                          
                             <div class="form-group">
                                 <label class="small mb-1 mr-1" for="id_jenis_transaksi">Jenis Transaksi</label><span
                                     class="mr-4 mb-3" style="color: red">*</span>
