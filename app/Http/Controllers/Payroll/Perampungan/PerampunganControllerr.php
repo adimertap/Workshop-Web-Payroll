@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Payroll;
+namespace App\Http\Controllers\Payroll\Perampungan;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
+use App\Model\Payroll\Perampungan;
 use Illuminate\Http\Request;
 
-class DashboardpayrollController extends Controller
+class PerampunganControllerr extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,9 @@ class DashboardpayrollController extends Controller
      */
     public function index()
     {
+        $perampungan = Perampungan::with('Detail','Pegawai','Pemotong');
 
-        $today = Carbon::now()->isoFormat('dddd');
-        $tanggal = Carbon::now()->format('j F Y');
-
-        return view('pages.payroll.dashboard.dashboardpayroll', compact('today','tanggal'));
+        return view('',compact('perampungan'));
     }
 
     /**
