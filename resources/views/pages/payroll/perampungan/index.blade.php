@@ -171,10 +171,10 @@
                                 <input class="form-control" id="masa_perolehan_awal" type="month"
                                     name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <h3 class="mt-2 ml-2"> - </h3>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <input class="form-control" id="masa_perolehan_akhir" type="month"
                                     name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
                             </div>
