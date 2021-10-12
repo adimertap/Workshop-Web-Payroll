@@ -7,6 +7,7 @@ use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PhpParser\Node\Expr\New_;
 
 class PerampunganControllerr extends Controller
@@ -50,7 +51,26 @@ class PerampunganControllerr extends Controller
      */
     public function store(Request $request)
     {
-        
+        $data = Perampungan::where('id_bengkel', Auth::user()->id_bengkel)->where('id_pegawai', $request->id_pegawai)
+        ->where('masa_perolehan_awal', Carbon::create($request->masa_perolehan_awal)->startOfMonth())->where('masa_perolehan_akhir', Carbon::create($request->masa_perolehan_akhir)->startOfMonth())->first();
+        // return $data;
+
+        if (empty($data)){
+            $perampungan = Perampungan::create([
+                'masa_perolehan_awal'=> Carbon::create($request->masa_perolehan_awal)->startOfMonth(), 
+                'masa_perolehan_akhir'=> Carbon::create($request->masa_perolehan_akhir)->startOfMonth(), 
+                'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
+                'id_pegawai' => $request->id_pegawai,
+                'tanggal_perampungan' => $request->tanggal_perampungan,
+                'karyawan_asing' => $request->karyawan_asing,
+                'kode_negara' => $request->kode_negara
+               
+            ]); 
+            
+            return $perampungan;
+        }else{
+            throw new \Exception('Data Perampungan Sudah Ada');
+        }
     }
 
     /**

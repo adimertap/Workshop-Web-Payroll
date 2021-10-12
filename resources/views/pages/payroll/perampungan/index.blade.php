@@ -238,7 +238,6 @@
 @endforelse
 
 <script>
-
     function submit1() {
         var _token = $('#form1').find('input[name="_token"]').val()
         var tanggal_perampungan = $('#tanggal_perampungan').val()
@@ -248,38 +247,50 @@
         var karyawan_asing = $('#karyawan_asing').val()
         var kode_negara = $('#form1').find('input[name="kode_negara"]').val()
 
-        var data = {
-            _token: _token,
-            tanggal_perampungan: tanggal_perampungan,
-            id_pegawai: id_pegawai,
-            masa_perolehan_awal: masa_perolehan_awal,
-            masa_perolehan_akhir: masa_perolehan_akhir,
-            karyawan_asing: karyawan_asing,
-            kode_negara: kode_negara
+        if (kode_negara == '') {
+            var data = {
+                _token: _token,
+                tanggal_perampungan: tanggal_perampungan,
+                id_pegawai: id_pegawai,
+                masa_perolehan_awal: masa_perolehan_awal,
+                masa_perolehan_akhir: masa_perolehan_akhir,
+                karyawan_asing: karyawan_asing,
+                kode_negara: 0
+            }
+        }else{
+            var data = {
+                _token: _token,
+                tanggal_perampungan: tanggal_perampungan,
+                id_pegawai: id_pegawai,
+                masa_perolehan_awal: masa_perolehan_awal,
+                masa_perolehan_akhir: masa_perolehan_akhir,
+                karyawan_asing: karyawan_asing,
+                kode_negara: kode_negara
+            }
         }
 
-        console.log(data)
 
-        if ( tanggal_perampungan == '' | id_pegawai == 'Pilih Pegawai' | masa_perolehan_awal == '' | masa_perolehan_akhir == '') {
+        if (tanggal_perampungan == '' | id_pegawai == 'Pilih Pegawai' | masa_perolehan_awal == '' |
+            masa_perolehan_akhir == '') {
             $('#alertdatakosong').show()
         } else {
 
-            // $.ajax({
-            //     method: 'post',
-            //     url: "/payroll/gaji-pegawai",
-            //     data: data,
-            //     success: function (response) {
-            //         window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
-            //         console.log(response)
-            //     },
-            //     error: function (error) {
-            //         console.log(error)
-            //         alert(error.responseJSON.message)
-            //     }
-            // });
+            $.ajax({
+                method: 'post',
+                url: "/payroll/perampungan",
+                data: data,
+                success: function (response) {
+                    window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
+                    console.log(response)
+                },
+                error: function (error) {
+                    console.log(error)
+                    alert(error.responseJSON.message)
+                }
+            });
         }
-    }    
-    
+    }
+
 
     setInterval(displayclock, 500);
 
