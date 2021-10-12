@@ -50,12 +50,12 @@
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1 mr-1" for="bulan_gaji">Tahun Gaji</label>
                                     <input class="form-control" id="bulan_gaji" type="text" name="bulan_gaji"
-                                        placeholder="Input Tahun Gaji" value="{{ date('Y', strtotime($item->bulan_gaji)) }}" readonly/>
+                                        placeholder="Input Tahun Gaji" value="{{ date('Y', strtotime($gaji->bulan_gaji)) }}" readonly/>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label class="small mb-1 mr-1" for="bulan_gaji">Bulan Gaji</label>
                                     <input class="form-control" id="bulan_gaji" type="text" name="bulan_gaji"
-                                        placeholder="Input Tahun Gaji" value="{{ date('F', strtotime($item->bulan_gaji)) }}" readonly/>
+                                        placeholder="Input Tahun Gaji" value="{{ date('F', strtotime($gaji->bulan_gaji)) }}" readonly/>
                                 </div>
                             </div>
                             <div class="form-group">
