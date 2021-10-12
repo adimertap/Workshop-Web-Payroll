@@ -246,7 +246,7 @@
         var masa_perolehan_awal = $('#masa_perolehan_awal').val()
         var masa_perolehan_akhir = $('#masa_perolehan_akhir').val()
         var karyawan_asing = $('#karyawan_asing').val()
-        var kode_negara = form.find('input[name="kode_negara"]').val()
+        var kode_negara = $('#form1').find('input[name="kode_negara"]').val()
 
         var data = {
             _token: _token,
