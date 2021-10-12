@@ -125,7 +125,7 @@
 {{-- MODAL TAMBAH --}}
 <div class="modal fade" id="Modaltambah" tabindex="-1" role="dialog" data-backdrop="static"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Perampungan</h5>
@@ -164,27 +164,20 @@
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="form-group col-md-8">
-                            <label class="small mb-1">Masa Perolehan Penghasilan</label>
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <input class="form-control" id="masa_perolehan_awal" type="date"
-                                        name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
-                                </div>
-                                <div class="col-md-1">
-                                    <h3 class="mt-2 ml-2"> - </h3>
-                                </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" id="masa_perolehan_akhir" type="date"
-                                        name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
-                                </div>
+                    <div class="form-group">
+                        <label class="small mb-1">Masa Perolehan Penghasilan</label>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <input class="form-control" id="masa_perolehan_awal" type="month"
+                                    name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                             </div>
-
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label class="small mb-1" for="tahun">Tahun</label>
-                            <input class="form-control" id="tahun" type="input" name="tahun" value="{{ $tahun }}">
+                            <div class="col-md-1">
+                                <h3 class="mt-2 ml-2"> - </h3>
+                            </div>
+                            <div class="col-md-6">
+                                <input class="form-control" id="masa_perolehan_akhir" type="month"
+                                    name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
+                            </div>
                         </div>
                     </div>
                     <div class="row">
