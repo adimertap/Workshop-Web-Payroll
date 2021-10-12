@@ -269,6 +269,8 @@
             }
         }
 
+        console.log(data)
+
 
         if (tanggal_perampungan == '' | id_pegawai == 'Pilih Pegawai' | masa_perolehan_awal == '' |
             masa_perolehan_akhir == '') {
