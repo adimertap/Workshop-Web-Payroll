@@ -101,7 +101,7 @@
                                         @forelse ($gaji as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td>{{ date('j', strtotime($item->bulan_gaji)) }}</td>
+                                            <td>{{ date('Y', strtotime($item->bulan_gaji)) }}</td>
                                             <td>{{ date('F', strtotime($item->bulan_gaji)) }}</td>
                                             <td>Rp. {{ number_format($item->grand_total_gaji,2,',','.') }}</td>
                                             <td>Rp. {{ number_format($item->grand_total_tunjangan,2,',','.') }}</td>
