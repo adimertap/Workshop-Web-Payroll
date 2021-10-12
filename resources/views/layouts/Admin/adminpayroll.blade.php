@@ -25,7 +25,7 @@
 
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-        <a class="navbar-brand" href="{{ route('dashboardpayroll')}}"><i class="fas fa-calculator mr-3"></i>Payroll</a>
+        <a class="navbar-brand" href="{{ route('gaji-pegawai.index')}}"><i class="fas fa-calculator mr-3"></i>Payroll</a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i
                 data-feather="menu"></i></button>
 
