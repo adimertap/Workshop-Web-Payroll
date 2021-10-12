@@ -38,7 +38,7 @@ Route::group(
         // MODUL PAYROLL
 
         // MASTER DATA ------------------------------------------------------------ Master Data Payroll
-        Route::prefix('payroll/masterdatagajipokok')
+        Route::prefix('payroll/gajipokok')
             ->namespace('Payroll\Masterdata')
             ->middleware(['owner', 'verified'])
             ->group(function () {
@@ -62,7 +62,7 @@ Route::group(
                 Route::resource('perampungan', 'PerampunganController');
             });
 
-        Route::prefix('payroll/masterdatatunjangan')
+        Route::prefix('payroll/tunjangan')
             ->namespace('Payroll\Masterdata')
             ->middleware(['owner', 'verified'])
             ->group(function () {
