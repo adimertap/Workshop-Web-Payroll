@@ -201,7 +201,7 @@
             <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
                 @csrf
                 <div class="modal-body">
-                    <label class="small mb-1">Isikan Form Dibawah Ini</label>
+                    <label class="small mb-1">Tentukan Tanggal dan Tahun Bayar Gaji Pegawai</label>
                     <div class="alert alert-danger" id="alertdatakosong" role="alert" style="display:none"><i class="far fa-times-circle"></i>
                         <span class="small">Error! Terdapat Data yang Masih Kosong!</span> 
                         <button class="close" type="button" onclick="$(this).parent().hide()" aria-label="Close">
@@ -210,7 +210,7 @@
                     </div>
                     <hr>
                     </hr>
-                    <div class="form-group col-md-6">
+                    <div class="form-group">
                         <label class="small mb-1" for="bulan_gaji">Bulan Bayar</label>
                         <input class="form-control" id="bulan_gaji" type="month" name="bulan_gaji"
                             class="form-control @error('bulan_gaji') is-invalid @enderror" />
