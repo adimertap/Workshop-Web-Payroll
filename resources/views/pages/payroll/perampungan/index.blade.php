@@ -88,7 +88,7 @@
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->nomor }}</td>
-                                            <td>{{ $item->tahun}}</td>
+                                            <td>{{ date('Y', strtotime($item->masa_periode_awal)) }}</td>
                                             <td>{{ $item->Pegawai->nama_pegawai}}</td>
                                             <td>{{ $item->Pegawai->npwp_pegawai}}</td>
                                             <td>
