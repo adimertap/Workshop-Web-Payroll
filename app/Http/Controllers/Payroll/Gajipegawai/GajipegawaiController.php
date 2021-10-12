@@ -64,14 +64,13 @@ class GajipegawaiController extends Controller
     {
         // $pegawai = Pegawai::where('nama_pegawai',$request->nama_pegawai)->first();
         // $id_pegawai = $pegawai->id_pegawai;
-        $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)->where('tahun_gaji', $request->tahun_gaji)
+        $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
         ->where('bulan_gaji', $request->bulan_gaji)->first();
 
         if (empty($data)){
 
             $gaji = Gajipegawai::create([
-                'bulan_gaji'=>$request->bulan_gaji,
-                'tahun_gaji'=>$request->tahun_gaji,
+                'bulan_gaji'=> Carbon::create($request->bulan_gaji)->startOfMonth(), 
                 'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
                 'id_jenis_transaksi' => '8'
             ]); 

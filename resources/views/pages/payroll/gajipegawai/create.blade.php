@@ -46,35 +46,13 @@
                         <form action="{{ route('gaji-pegawai.update', $gaji->id_gaji_pegawai) }}" id="form1"
                             method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="row">
-                                <div class="form-group col-md-6">
+                                <div class="form-group">
                                     <label class="small mb-1 mr-1" for="tahun_gaji">Tahun Gaji</label><span
                                         class="mr-4 mb-3" style="color: red">*</span>
                                     <input class="form-control" id="tahun_gaji" type="text" name="tahun_gaji"
-                                        placeholder="Input Tahun Gaji" value="{{ $gaji->tahun_gaji }}" />
+                                        placeholder="Input Tahun Gaji" value="{{ $gaji->bulan_gaji }}" />
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label class="small mb-1 mr-1" for="bulan_gaji">Bulan Gaji</label><span
-                                        class="mr-4 mb-3" style="color: red">*</span>
-                                    <select name="bulan_gaji" id="bulan_gaji" class="form-control"
-                                        class="form-control @error('bulan_gaji') is-invalid @enderror">
-                                        <option value="{{ $gaji->bulan_gaji }}">{{ $gaji->bulan_gaji }}</option>
-                                        <option value="Januari">Januari</option>
-                                        <option value="Februari">Februari</option>
-                                        <option value="Maret">Maret</option>
-                                        <option value="April">April</option>
-                                        <option value="Mei">Mei</option>
-                                        <option value="Juni">Juni</option>
-                                        <option value="Juli">Juli</option>
-                                        <option value="Agustus">Agustus</option>
-                                        <option value="September">September</option>
-                                        <option value="Oktober">Oktober</option>
-                                        <option value="November">November</option>
-                                        <option value="Desember">Desember</option>
-                                    </select>
-                                    @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
-                                    </div> @enderror
-                                </div>
+                              
                             </div>
                             <div class="form-group">
                                 <label class="small mb-1 mr-1" for="id_jenis_transaksi">Jenis Transaksi</label><span

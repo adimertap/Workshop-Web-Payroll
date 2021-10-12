@@ -210,7 +210,7 @@
                     </div>
                     <hr>
                     </hr>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="form-group col-md-6">
                             <label class="small mb-1" for="tahun_gaji">Tahun Bayar</label>
                             <input class="form-control" id="tahun_gaji" type="input" name="tanggal_rcv"
@@ -218,12 +218,12 @@
                                 class="form-control @error('tahun_gaji') is-invalid @enderror" />
                             @error('tahun_gaji')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
-                        </div>
+                        </div> --}}
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="tahun_gaji">Bulan</label>
-                            <input class="form-control" id="tahun_gaji" type="month" name="tanggal_rcv"
-                                class="form-control @error('tahun_gaji') is-invalid @enderror" />
-                            @error('tahun_gaji')<div class="text-danger small mb-1">{{ $message }}
+                            <label class="small mb-1" for="bulan_gaji">Bulan Bayar</label>
+                            <input class="form-control" id="bulan_gaji" type="month" name="bulan_gaji"
+                                class="form-control @error('bulan_gaji') is-invalid @enderror" />
+                            @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
                         </div>
                         {{-- <div class="form-group col-md-6">
@@ -247,7 +247,7 @@
                             @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
                             </div> @enderror
                         </div> --}}
-                    </div>
+                    {{-- </div> --}}
                     {{-- <div class="form-group">
                         <label class="small mb-1 mr-1" for="id_jenis_transaksi">Pilih Jenis
                             Transaksi</label><span class="mr-4 mb-3" style="color: red">*</span>
@@ -340,17 +340,17 @@
     function submit1() {
         var _token = $('#form1').find('input[name="_token"]').val()
         var bulan_gaji = $('#bulan_gaji').val()
-        var tahun_gaji = $('#tahun_gaji').val()
+        // var tahun_gaji = $('#tahun_gaji').val()
         // var id_jenis_transaksi = $('#id_jenis_transaksi').val()
 
         var data = {
             _token: _token,
             bulan_gaji: bulan_gaji,
-            tahun_gaji: tahun_gaji,
+            // tahun_gaji: tahun_gaji,
             // id_jenis_transaksi: id_jenis_transaksi
         }
 
-        if (tahun_gaji == 0 | tahun_gaji == '' | bulan_gaji == 0 | bulan_gaji == 'Pilih Bulan Gaji') {
+        if ( bulan_gaji == '') {
             $('#alertdatakosong').show()
         } else {
 
