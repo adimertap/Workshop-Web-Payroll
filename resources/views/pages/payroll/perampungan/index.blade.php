@@ -172,8 +172,8 @@
                                     <input class="form-control" id="masa_perolehan_awal" type="date"
                                         name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                                 </div>
-                                <div class="col-md-1">
-                                    <label class="small mt-2"> - </label>
+                                <div class="col-md-2">
+                                    <label class="small mt-2"> sampai </label>
                                 </div>
                                 <div class="col-md-5">
                                     <input class="form-control" id="masa_perolehan_akhir" type="date"
@@ -184,7 +184,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label class="small mb-1" for="tahun">Tahun</label>
-                            <input class="form-control" id="tahun" type="input" name="tahun" value="{{ old('tahun') }}">
+                            <input class="form-control" id="tahun" type="input" name="tahun" value="{{ $tahun }}">
                         </div>
                     </div>
                     <div class="row">
