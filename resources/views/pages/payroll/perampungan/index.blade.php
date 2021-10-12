@@ -125,7 +125,7 @@
 {{-- MODAL TAMBAH --}}
 <div class="modal fade" id="Modaltambah" tabindex="-1" role="dialog" data-backdrop="static"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Perampungan</h5>
@@ -172,8 +172,8 @@
                                     <input class="form-control" id="masa_perolehan_awal" type="date"
                                         name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                                 </div>
-                                <div class="col-md-2">
-                                    <label class="small">sampai</label>
+                                <div class="col-md-1">
+                                    <label class="small mt-1">sampai</label>
                                 </div>
                                 <div class="col-md-5">
                                     <input class="form-control" id="masa_perolehan_akhir" type="date"
