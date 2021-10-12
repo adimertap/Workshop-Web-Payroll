@@ -22,7 +22,6 @@ class Gajipegawai extends Model
         'id_bengkel',
         'id_jenis_transaksi',
         'bulan_gaji',
-        'tahun_gaji',
         'grand_total_gaji',
         'grand_total_tunjangan',
         'grand_total_pph21',

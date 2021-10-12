@@ -47,8 +47,8 @@
                             method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label class="small mb-1 mr-1" for="tahun_gaji">Tahun dan Bulan Gaji</label>
-                                <input class="form-control" id="tahun_gaji" type="text" name="tahun_gaji"
+                                <label class="small mb-1 mr-1" for="bulan_gaji">Tahun dan Bulan Gaji</label>
+                                <input class="form-control" id="bulan_gaji" type="text" name="bulan_gaji"
                                     placeholder="Input Tahun Gaji" value="{{ $gaji->bulan_gaji }}" readonly/>
                             </div>
                               
@@ -851,7 +851,6 @@
     function tambahgaji(event, tunjangan, id_gaji_pegawai) {
         event.preventDefault()
         var form1 = $('#form1')
-        var tahun_gaji = form1.find('input[name="tahun_gaji"]').val()
         var bulan_gaji = $('#bulan_gaji').val()
         var id_jenis_transaksi = $('#id_jenis_transaksi').val()
         var grand_total_gaji = $('#gaji_diterima').val()
@@ -905,12 +904,11 @@
             })
         }
 
-        if ( tahun_gaji == '' | bulan_gaji == '') {
+        if ( bulan_gaji == '') {
             var alert = $('#alertdatakosong').show()
         } else {
             var data = {
                 _token: _token,
-                tahun_gaji: tahun_gaji,
                 bulan_gaji: bulan_gaji,
                 grand_total_gaji: grand_total_gaji,
                 grand_total_tunjangan: grand_total_tunjangan,

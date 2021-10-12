@@ -62,14 +62,12 @@ class GajipegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        // $pegawai = Pegawai::where('nama_pegawai',$request->nama_pegawai)->first();
-        // $id_pegawai = $pegawai->id_pegawai;
+        
         $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
         ->where('bulan_gaji', Carbon::create($request->bulan_gaji)->startOfMonth())->first();
         // return $data;
 
         if (empty($data)){
-
             $gaji = Gajipegawai::create([
                 'bulan_gaji'=> Carbon::create($request->bulan_gaji)->startOfMonth(), 
                 'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
@@ -93,8 +91,6 @@ class GajipegawaiController extends Controller
     public function show($id_gaji_pegawai)
     {
         $gaji = Gajipegawai::with('Detailpegawai.Detailtunjangan')->findOrFail($id_gaji_pegawai);
-        // $gaji2 = Gajipegawai::with('Detailtunjangan')->findOrFail($id_gaji_pegawai);
-        // return $gaji;    
 
         return view('pages.payroll.gajipegawai.detail')->with([
             'gaji' => $gaji,
@@ -161,7 +157,6 @@ class GajipegawaiController extends Controller
     public function update(Request $request, $id_gaji_pegawai)
     {
         $gaji = Gajipegawai::findOrFail($id_gaji_pegawai);
-        $gaji->tahun_gaji = $request->tahun_gaji;
         $gaji->bulan_gaji = $request->bulan_gaji;
         $gaji->grand_total_gaji = $request->grand_total_gaji;
         $gaji->grand_total_tunjangan = $request->grand_total_tunjangan;
