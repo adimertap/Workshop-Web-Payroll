@@ -149,7 +149,7 @@
                         <div class="form-group col-md-6">
                             <label class="small mb-1" for="tanggal_perampungan">Tanggal</label>
                             <input class="form-control" id="tanggal_perampungan" type="date" name="tanggal_perampungan"
-                                value="{{ old('tanggal_perampungan') }}">
+                                value="<?php echo date('Y-m-d'); ?>">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="small mb-1 mr-1" for="id_pegawai">Pilih Pegawai</label><span class="mr-4 mb-3"
@@ -173,7 +173,7 @@
                                         name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                                 </div>
                                 <div class="col-md-1">
-                                    <label class="small mt-1">sampai</label>
+                                    <label class="small mt-2"> - </label>
                                 </div>
                                 <div class="col-md-5">
                                     <input class="form-control" id="masa_perolehan_akhir" type="date"
