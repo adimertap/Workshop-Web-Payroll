@@ -16,6 +16,7 @@ class Perampungan extends Model
     protected $primaryKey = 'id_perampungan';
 
     protected $fillable = [
+        'nomor',
         'id_pegawai',
         'id_bengkel',
         'id_pemotong',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Payroll\Perampungan;
 
 use App\Http\Controllers\Controller;
 use App\Model\Payroll\Perampungan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PerampunganControllerr extends Controller
@@ -16,8 +17,11 @@ class PerampunganControllerr extends Controller
     public function index()
     {
         $perampungan = Perampungan::with('Detail','Pegawai','Pemotong');
+        $today = Carbon::now()->isoFormat('dddd');
+        $tanggal = Carbon::now()->format('j F Y');
+  
 
-        return view('',compact('perampungan'));
+        return view('',compact('perampungan','today','tanggal'));
     }
 
     /**

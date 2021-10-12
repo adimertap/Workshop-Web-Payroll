@@ -34,7 +34,6 @@ class GajipegawaiController extends Controller
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
-        $jenis_transaksi = Jenistransaksi::all();
         $tahun_bayar = Carbon::now()->format('Y');
         // $pegawai = Pegawai::with([
         //     'Jabatan.Gajipokok'
@@ -42,7 +41,7 @@ class GajipegawaiController extends Controller
         // ->where('nama_jabatan', '!=', 'Owner')->get();
        
 
-        return view('pages.payroll.gajipegawai.gajipegawai', compact('gaji','tahun_bayar','today','tanggal','jenis_transaksi'));
+        return view('pages.payroll.gajipegawai.gajipegawai', compact('gaji','tahun_bayar','today','tanggal'));
     }
 
     /**
