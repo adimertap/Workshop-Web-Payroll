@@ -153,7 +153,7 @@
                             </div>
                             <div class="form-group text-right">
                                 <hr>
-                                <a href="{{ route('laporanabsensi') }}" target="_blank" class="btn btn-secondary btn-sm"
+                                <a href="{{ url('https://employee.bengkel-kuy.com/kepegawaian/LaporanAbsensi')}}" target="_blank" class="btn btn-secondary btn-sm"
                                     type="button">
                                     Absensi
                                 </a>
