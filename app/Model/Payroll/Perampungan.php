@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Perampungan extends Model
 {
-    use SoftDeletes;
+   
 
     protected $table = "tb_payroll_perampungan";
 
@@ -33,7 +33,7 @@ class Perampungan extends Model
     protected $hidden =[ 
         'created_at',
         'updated_at',
-        'deleted_at'
+       
     ];
 
     public $timestamps = true;
