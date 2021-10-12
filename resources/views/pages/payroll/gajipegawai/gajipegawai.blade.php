@@ -361,7 +361,7 @@
                 url: "/payroll/gaji-pegawai",
                 data: data,
                 success: function (response) {
-                    // window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
+                    window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
                     console.log(response)
                 },
                 error: function (error) {
