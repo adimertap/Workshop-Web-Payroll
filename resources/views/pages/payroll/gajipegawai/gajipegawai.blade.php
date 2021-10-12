@@ -328,33 +328,6 @@
 
 @endforelse
 
-<div class="modal fade" id="Modaltransaksi" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-light">
-                <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Jenis Transaksi</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">×</span></button>
-            </div>
-            <form action="{{ route('jenis-transaksi.store') }}" method="POST" class="d-inline">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label class="small mb-1" for="nama_transaksi">Jenis Transaksi</label>
-                        <textarea class="form-control" name="nama_transaksi" type="text" id="nama_transaksi"
-                            placeholder="Input Jenis Transaksi" value="{{ old('nama_transaksi') }}"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-success" type="submit">Ya! Tambah</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
 <script>
 
     function submit1() {
