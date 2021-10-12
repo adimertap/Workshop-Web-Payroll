@@ -101,8 +101,8 @@
                                         @forelse ($gaji as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td>{{ $item->tahun_gaji }}</td>
-                                            <td>{{ $item->bulan_gaji}}</td>
+                                            <td>{{ date('j', strtotime($item->bulan_gaji)) }}</td>
+                                            <td>{{ date('F', strtotime($item->bulan_gaji)) }}</td>
                                             <td>Rp. {{ number_format($item->grand_total_gaji,2,',','.') }}</td>
                                             <td>Rp. {{ number_format($item->grand_total_tunjangan,2,',','.') }}</td>
                                             <td>Rp. {{ number_format($item->grand_total_pph21,2,',','.') }}</td>
@@ -210,67 +210,13 @@
                     </div>
                     <hr>
                     </hr>
-                    {{-- <div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="small mb-1" for="tahun_gaji">Tahun Bayar</label>
-                            <input class="form-control" id="tahun_gaji" type="input" name="tanggal_rcv"
-                                value="{{ $tahun_bayar }}"
-                                class="form-control @error('tahun_gaji') is-invalid @enderror" />
-                            @error('tahun_gaji')<div class="text-danger small mb-1">{{ $message }}
-                            </div> @enderror
-                        </div> --}}
-                        <div class="form-group col-md-6">
-                            <label class="small mb-1" for="bulan_gaji">Bulan Bayar</label>
-                            <input class="form-control" id="bulan_gaji" type="month" name="bulan_gaji"
-                                class="form-control @error('bulan_gaji') is-invalid @enderror" />
-                            @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
-                            </div> @enderror
-                        </div>
-                        {{-- <div class="form-group col-md-6">
-                            <label class="small mb-1" for="bulan_gaji">Bulan</label>
-                            <select name="bulan_gaji" id="bulan_gaji" class="form-control"
-                                class="form-control @error('bulan_gaji') is-invalid @enderror">
-                                <option value="{{ old('bulan_gaji')}}">Pilih Bulan Gaji</option>
-                                <option value="Januari">Januari</option>
-                                <option value="Februari">Februari</option>
-                                <option value="Maret">Maret</option>
-                                <option value="April">April</option>
-                                <option value="Mei">Mei</option>
-                                <option value="Juni">Juni</option>
-                                <option value="Juli">Juli</option>
-                                <option value="Agustus">Agustus</option>
-                                <option value="September">September</option>
-                                <option value="Oktober">Oktober</option>
-                                <option value="November">November</option>
-                                <option value="Desember">Desember</option>
-                            </select>
-                            @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
-                            </div> @enderror
-                        </div> --}}
-                    {{-- </div> --}}
-                    {{-- <div class="form-group">
-                        <label class="small mb-1 mr-1" for="id_jenis_transaksi">Pilih Jenis
-                            Transaksi</label><span class="mr-4 mb-3" style="color: red">*</span>
-                        <div class="input-group input-group-joined">
-                            <div class="input-group-append">
-                                <a href="" class="btn btn-sm btn-secondary" type="button" data-toggle="modal"
-                                    data-target="#Modaltransaksi">
-                                    Tambah
-                                </a>
-                            </div>
-                            <select class="form-control" name="id_jenis_transaksi" id="id_jenis_transaksi"
-                                class="form-control @error('id_jenis_transaksi') is-invalid @enderror">
-                                <option>Pilih Jenis Transaksi</option>
-                                @foreach ($jenis_transaksi as $transaksi)
-                                <option value="{{ $transaksi->id_jenis_transaksi }}">
-                                    {{ $transaksi->nama_transaksi }}
-                                </option>
-                                @endforeach
-                            </select>
-                            @error('id_jenis_transaksi')<div class="text-danger small mb-1">{{ $message }}
-                            </div> @enderror
-                        </div>
-                    </div> --}}
+                    <div class="form-group col-md-6">
+                        <label class="small mb-1" for="bulan_gaji">Bulan Bayar</label>
+                        <input class="form-control" id="bulan_gaji" type="month" name="bulan_gaji"
+                            class="form-control @error('bulan_gaji') is-invalid @enderror" />
+                        @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
+                        </div> @enderror
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
