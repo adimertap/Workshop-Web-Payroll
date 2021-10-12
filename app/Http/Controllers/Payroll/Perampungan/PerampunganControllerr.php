@@ -16,12 +16,12 @@ class PerampunganControllerr extends Controller
      */
     public function index()
     {
-        $perampungan = Perampungan::with('Detail','Pegawai','Pemotong');
+        $perampungan = Perampungan::with('Detail','Pegawai','Pemotong')->get();
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
   
 
-        return view('',compact('perampungan','today','tanggal'));
+        return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal'));
     }
 
     /**
