@@ -125,7 +125,7 @@
 {{-- MODAL TAMBAH --}}
 <div class="modal fade" id="Modaltambah" tabindex="-1" role="dialog" data-backdrop="static"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header bg-light">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Tambah Data Perampungan</h5>
@@ -168,20 +168,23 @@
                         <div class="form-group col-md-8">
                             <label class="small mb-1">Masa Perolehan Penghasilan</label>
                             <div class="row">
-                                <div class="col-md-6">
-                                    <input class="form-control" id="masa_perolehan_awal" type="date" name="masa_perolehan_awal"
-                                    value="{{ old('masa_perolehan_awal') }}">
+                                <div class="col-md-5">
+                                    <input class="form-control" id="masa_perolehan_awal" type="date"
+                                        name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                                 </div>
-                                <div class="col-md-6">
-                                    <input class="form-control" id="masa_perolehan_akhir" type="date" name="masa_perolehan_akhir"
-                                    value="{{ old('masa_perolehan_akhir') }}">
+                                <div class="col-md-2">
+                                    <label class="small">sampai</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input class="form-control" id="masa_perolehan_akhir" type="date"
+                                        name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label class="small mb-1" for="tahun">Tahun</label>
-                                <input class="form-control" id="tahun" type="input" name="tahun"
-                                    value="{{ old('tahun') }}">
-                            </div>
+
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="small mb-1" for="tahun">Tahun</label>
+                            <input class="form-control" id="tahun" type="input" name="tahun" value="{{ old('tahun') }}">
                         </div>
                     </div>
                     <div class="row">
@@ -201,7 +204,7 @@
                                 value="{{ old('kode_negara') }}">
                         </div>
                     </div>
-                   
+
                     {{-- <div class="row">
                         
                         <div class="form-group col-md-6">
@@ -209,38 +212,38 @@
                             <select name="bulan_gaji" id="bulan_gaji" class="form-control"
                                 class="form-control @error('bulan_gaji') is-invalid @enderror">
                                 <option value="{{ old('bulan_gaji')}}">Pilih Bulan Gaji</option>
-                                <option value="Januari">Januari</option>
-                                <option value="Februari">Februari</option>
-                                <option value="Maret">Maret</option>
-                                <option value="April">April</option>
-                                <option value="Mei">Mei</option>
-                                <option value="Juni">Juni</option>
-                                <option value="Juli">Juli</option>
-                                <option value="Agustus">Agustus</option>
-                                <option value="September">September</option>
-                                <option value="Oktober">Oktober</option>
-                                <option value="November">November</option>
-                                <option value="Desember">Desember</option>
-                            </select>
-                            @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
-                            </div> @enderror
-                        </div>
-                    </div> --}}
+                    <option value="Januari">Januari</option>
+                    <option value="Februari">Februari</option>
+                    <option value="Maret">Maret</option>
+                    <option value="April">April</option>
+                    <option value="Mei">Mei</option>
+                    <option value="Juni">Juni</option>
+                    <option value="Juli">Juli</option>
+                    <option value="Agustus">Agustus</option>
+                    <option value="September">September</option>
+                    <option value="Oktober">Oktober</option>
+                    <option value="November">November</option>
+                    <option value="Desember">Desember</option>
+                    </select>
+                    @error('bulan_gaji')<div class="text-danger small mb-1">{{ $message }}
+                    </div> @enderror
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-success" onclick="submit1()" type="button">Selanjutnya!</button>
-                </div>
-            </form>
-        </div>
+        </div> --}}
     </div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+        <button class="btn btn-success" onclick="submit1()" type="button">Selanjutnya!</button>
+    </div>
+    </form>
+</div>
+</div>
 </div>
 
 
 @forelse ($perampungan as $item)
 <div class="modal fade" id="Modalhapus-{{ $item->id_perampungan }}" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-dialog-centered " role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger-soft">
                 <h5 class="modal-title" id="exampleModalCenterTitle">Konfirmasi Hapus Data</h5>
