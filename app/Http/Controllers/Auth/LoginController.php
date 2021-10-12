@@ -53,7 +53,7 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return redirect()->to('/payroll');
+        return redirect()->to('/payroll/gaji-pegawai');
     }
 
     public function username()
