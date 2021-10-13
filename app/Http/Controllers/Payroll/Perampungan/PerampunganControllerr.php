@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Payroll\Perampungan;
 use App\Http\Controllers\Controller;
 use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\DetailPerampungan;
+use App\Model\Payroll\MasterPTKP;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -103,9 +104,10 @@ class PerampunganControllerr extends Controller
      */
     public function edit($id)
     {
-        $perampungan = Perampungan::with('Pegawai','Pegawai.Jabatan','Pemotong','Detail')->find($id);
+        $perampungan = Perampungan::with('Pegawai','Pegawai.Jabatan','Pegawai.PTKP','Pemotong','Detail')->find($id);
+        $ptkp = MasterPTKP::get();
 
-        return view('pages.payroll.perampungan.edit',compact('perampungan'));
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp'));
     }
 
     /**

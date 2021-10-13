@@ -115,14 +115,19 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="status_pegawai" class="col-sm-4 col-form-label col-form-label-sm">6.
+                            <label for="id_ptkp" class="col-sm-4 col-form-label col-form-label-sm">6.
                                 Status/Jumlah Tanggungan Keluarga</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="status_pegawai"
-                                    value="{{ Auth::user()->pegawai->nama_pegawai }}" readonly>
+                                <select class="form-control" name="id_ptkp" id="id_ptkp">
+                                    <option value="{{ $perampungan->Pegawai->PTKP->id_ptkp }}">{{ $perampungan->Pegawai->PTKP->nama_ptkp }}</option>
+                                    @foreach ($ptkp as $itemptkp)
+                                        <option value="{{ $itemptkp->id_ptkp }}">{{ $itemptkp->nama_ptkp }}
+                                    </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -186,14 +191,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="alamat_pegawai" class="col-sm-4 col-form-label col-form-label-sm">4.
-                                Alamat</label>
+                            <label for="jenis_kelamin" class="col-sm-4 col-form-label col-form-label-sm">5.
+                                Jenis Kelamin</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="alamat_pegawai"
-                                    value="{{ $perampungan->Pegawai->alamat }}" readonly>
+                                <input type="input" class="form-control form-control-sm" id="jenis_kelamin"
+                                    value="{{ $perampungan->Pegawai->jenis_kelamin }}" readonly>
                             </div>
                         </div>
                     </div>
@@ -205,8 +210,14 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="kode_negara"
-                                    value="{{ $perampungan->kode_negara }}" readonly>
+                                @if ($perampungan->kode_negara == '0')
+                                    <input type="input" class="form-control form-control-sm" id="kode_negara"
+                                        value="{{ old('kode_negara') }}" readonly>
+                                @else
+                                    <input type="input" class="form-control form-control-sm" id="kode_negara"
+                                        value="{{ $perampungan->kode_negara }}" readonly>
+                                @endif
+                                
                             </div>
                         </div>
                     </div>
@@ -214,14 +225,14 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="jenis_kelamin" class="col-sm-4 col-form-label col-form-label-sm">5.
-                                Jenis Kelamin</label>
+                            <label for="alamat_pegawai" class="col-sm-4 col-form-label col-form-label-sm">4.
+                                Alamat</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="jenis_kelamin"
-                                    value="{{ $perampungan->Pegawai->jenis_kelamin }}" readonly>
+                                <input type="input" class="form-control form-control-sm" id="alamat_pegawai"
+                                    value="{{ $perampungan->Pegawai->alamat }}" readonly>
                             </div>
                         </div>
                     </div>
