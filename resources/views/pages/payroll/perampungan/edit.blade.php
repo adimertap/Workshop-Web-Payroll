@@ -272,7 +272,9 @@
 
                     </div>
                 </div>
-                <p class="font-italic">Penghasilan Bruto</p>
+
+                {{-- PENGHASILAN BRUTO --------------------------------------------------------------------------------PENGHASILAN BRUTO --}}
+                <p class="font-italic">Penghasilan Bruto :</p>
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -383,16 +385,73 @@
                                 <div class="input-group input-group-joined">
                                     <div class="input-group-prepend">
                                         <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanbruto()"
-                                            type="button">Tambah</button>
+                                            type="button">Hitung</button>
                                     </div>
                                     <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
-                                        placeholder="Klik Tombol Hitung">
+                                        placeholder="Jumlah Penghasilan">
                                 </div>
 
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {{-- PENGURANGAN --------------------------------------------------------------------------------PENGURANGAN --}}
+                <p class="font-italic">Pengurangan :</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">9. Biaya Jabatan/Biaya Pensiun</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="Biaya Jabatan">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">10. Iuran Pensiun atau Iuran THT/JHT</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    placeholder="Iuran">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">11. Jumlah Pengurangan (9 s.d. 10)</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-joined">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" onclick="hitungpengurangan()"
+                                            type="button">Hitung</button>
+                                    </div>
+                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                        placeholder="Jumlah Pengurangan">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        
+                    </div>
+                </div>
+                 {{-- Penghitungan PPh Pasal 21 -----------------------------------------------Penghitungan PPh Pasal 21 --}}
+                 <p class="font-italic">Penghitungan PPh Pasal 21 :</p>
+                
+
             </div>
         </div>
     </div>
