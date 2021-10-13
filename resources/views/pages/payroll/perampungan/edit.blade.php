@@ -20,8 +20,59 @@
             </div>
         </div>
     </header>
-
     <div class="container-fluid">
+        <div class="card">
+            <div class="card-header">Basic Card Example</div>
+            <div class="card-body">
+                <h6>Enter your account information</h6>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="form-group row">
+                            <label for="tanggal_perampungan"
+                                class="col-sm-2 col-form-label small">Tanggal</label>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control" id="tanggal_perampungan"
+                                    value="{{ $perampungan->tanggal_perampungan }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <div class="form-group row">
+                            <label for="nomor" class="col-sm-2 col-form-label small">Nomor</label>
+                            <div class="col-sm-8">
+                                <input type="input" class="form-control" id="nomor"
+                                    value="{{ $perampungan->nomor }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <div class="form-group row">
+                            <label for="nomor" class="col-sm-2 col-form-label small">Masa Perolehan
+                                Penghasilan</label>
+                            <div class="col-sm-3">
+                                <input type="input" class="form-control" id="nomor"
+                                    value="{{ $perampungan->masa_perolehan_awal }}" readonly>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="input" class="form-control" id="nomor"
+                                    value="{{ $perampungan->masa_perolehan_awal }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    {{-- <div class="container-fluid">
         <div class="card">
             <div class="card-header border-bottom">
                 <div class="nav nav-pills nav-justified flex-column flex-xl-row nav-wizard" id="cardTab" role="tablist">
@@ -43,6 +94,7 @@
                     </a>
                 </div>
             </div>
+
             <div class="card-body">
                 <div class="tab-content" id="cardTabContent">
                     <div class="tab-pane py-5 py-xl-10 fade active show" id="wizard1" role="tabpanel"
@@ -51,48 +103,7 @@
                             <div class="col-xxl-6 col-xl-10">
                                 <h5 class="card-title">Enter your account information</h5>
                                 <form>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <div class="form-group row">
-                                                <label for="tanggal_perampungan"
-                                                    class="col-sm-2 col-form-label small">Tanggal</label>
-                                                <div class="col-sm-6">
-                                                    <input type="input" class="form-control" id="tanggal_perampungan"
-                                                        value="{{ $perampungan->tanggal_perampungan }}" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="form-group col-md-6">
-                                            <div class="form-group row">
-                                                <label for="nomor" class="col-sm-2 col-form-label small">Nomor</label>
-                                                <div class="col-sm-8">
-                                                    <input type="input" class="form-control" id="nomor"
-                                                        value="{{ $perampungan->nomor }}" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <div class="form-group row">
-                                                <label for="nomor" class="col-sm-2 col-form-label small">Masa Perolehan
-                                                    Penghasilan</label>
-                                                <div class="col-sm-3">
-                                                    <input type="input" class="form-control" id="nomor"
-                                                        value="{{ $perampungan->masa_perolehan_awal }}" readonly>
-                                                </div>
-                                                <div class="col-sm-3">
-                                                    <input type="input" class="form-control" id="nomor"
-                                                        value="{{ $perampungan->masa_perolehan_awal }}" readonly>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
+                                  
 
 
 
@@ -126,7 +137,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </main>
 
 
