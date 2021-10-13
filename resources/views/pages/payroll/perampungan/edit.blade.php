@@ -484,24 +484,32 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <div class="form-group row">
                             <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">14. Jumlah Penghasilan Neto untuk Penghitungan PPh Pasal 21 (Setahun/Disetahunkan)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
-                            <div class="col-sm-3">
-                                <input class="mr-1 small" value="setahun" type="radio" name="radiosetahun" checked><span class="small">Setahun</span>
-                                <input class="mr-1 small" value="disetahunkan" type="radio" name="radiodisetahunkan"><span class="small">Disetahunkan</span>
+                            <div class="col-sm-6">
+                                <div class="row" id="radio2">
+                                    <div class="col-md-6">
+                                        <input class="mr-1 small" value="setahun" type="radio" name="radiosetahun"
+                                            checked><span class="small">Setahun</span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="mr-1 small" value="disetahunkan" type="radio" name="radiodisetahunkan"><span
+                                            class="small">Disetahunkan</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-3">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
-                                    placeholder="Jumlah Penghasilan Netto">
-                            </div>
+                         
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        
+                        <div class="col-sm-6">
+                            <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                placeholder="Jumlah Penghasilan Netto">
+                        </div>
                     </div>
                 </div>
 
