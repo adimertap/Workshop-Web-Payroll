@@ -121,7 +121,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <select class="form-control" name="id_ptkp" id="id_ptkp">
+                                <select class="form-control form-control-sm" name="id_ptkp" id="id_ptkp">
                                     <option value="{{ $perampungan->Pegawai->PTKP->id_ptkp }}">{{ $perampungan->Pegawai->PTKP->nama_ptkp }}</option>
                                     @foreach ($ptkp as $itemptkp)
                                         <option value="{{ $itemptkp->id_ptkp }}">{{ $itemptkp->nama_ptkp }}
