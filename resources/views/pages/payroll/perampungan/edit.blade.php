@@ -53,11 +53,14 @@
                         <div class="form-group row">
                             <label for="nomor" class="col-sm-3 col-form-label col-form-label-sm">Masa Perolehan
                                 Penghasilan</label>
-                            <div class="col-sm-1">
+                            <div class="col-sm-2">
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('m', strtotime($perampungan->masa_perolehan_awal)) }}" readonly>
                             </div>
                             <div class="col-sm-1">
+                                <span> - </span>
+                            </div>
+                            <div class="col-sm-2">
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('m', strtotime($perampungan->masa_perolehan_akhir)) }}" readonly>
                             </div>
