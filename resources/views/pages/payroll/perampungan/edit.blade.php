@@ -25,27 +25,26 @@
             <div class="card-header">Basic Card Example</div>
             <div class="card-body">
                 <h6>Enter your account information</h6>
-                <div class="row">
+                <div class="form-row">
                     <div class="form-group col-md-6">
                         <div class="form-group row">
-                            <label for="tanggal_perampungan"
-                                class="col-sm-2 col-form-label small">Tanggal</label>
+                            <label for="tanggal_perampungan" class="col-sm-2 col-form-label col-form-label-sm">Tanggal</label>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control" id="tanggal_perampungan"
+                                <input type="input" class="form-control form-control-sm" id="tanggal_perampungan"
                                     value="{{ $perampungan->tanggal_perampungan }}" readonly>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-5">
 
                     </div>
                 </div>
-                <div class="row">
+                <div class="form-row">
                     <div class="form-group col-md-6">
                         <div class="form-group row">
-                            <label for="nomor" class="col-sm-2 col-form-label small">Nomor</label>
+                            <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                             <div class="col-sm-8">
-                                <input type="input" class="form-control" id="nomor"
+                                <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ $perampungan->nomor }}" readonly>
                             </div>
                         </div>
