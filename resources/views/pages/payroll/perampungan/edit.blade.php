@@ -75,8 +75,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="id_pemotong" class="col-sm-2 col-form-label col-form-label-sm">Nama Pemotong</label>
-                            <div class="col-sm-6">
+                            <label for="id_pemotong" class="col-sm-3 col-form-label col-form-label-sm">Nama Pemotong</label>
+                            <div class="col-sm-8">
                                 <input type="input" class="form-control form-control-sm" id="id_pemotong"
                                     value="{{ Auth::user()->pegawai->nama_pegawai }}" readonly>
                             </div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="npwp_pemotong" class="col-sm-2 col-form-label col-form-label-sm">NPWP Pemotong</label>
+                            <label for="npwp_pemotong" class="col-sm-3 col-form-label col-form-label-sm">NPWP Pemotong</label>
                             <div class="col-sm-6">
                                 <input type="input" class="form-control form-control-sm" id="npwp_pemotong"
                                     value="{{ Auth::user()->pegawai->npwp_pegawai }}" readonly>
