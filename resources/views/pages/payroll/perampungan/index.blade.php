@@ -147,8 +147,7 @@
                     </hr>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="tanggal_perampungan">Tanggal</label><span class="mr-4 mb-3"
-                                style="color: red">*</span>
+                            <label class="small mb-1" for="tanggal_perampungan">Tanggal</label><span class="mr-4 mb-3" style="color: red">*</span>
                             <input class="form-control" id="tanggal_perampungan" type="date" name="tanggal_perampungan"
                                 value="<?php echo date('Y-m-d'); ?>">
                         </div>
@@ -183,8 +182,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6"><span class="mr-4 mb-3" style="color: red">*</span>
-                            <label class="small mb-1" for="karyawan_asing">Karyawan Asing</label>
+                        <div class="form-group col-md-6">
+                            <label class="small mb-1" for="karyawan_asing">Karyawan Asing</label><span class="mr-4 mb-3" style="color: red">*</span>
                             <select name="karyawan_asing" id="karyawan_asing" class="form-control"
                                 class="form-control @error('karyawan_asing') is-invalid @enderror">
                                 <option value="Tidak">Tidak</option>

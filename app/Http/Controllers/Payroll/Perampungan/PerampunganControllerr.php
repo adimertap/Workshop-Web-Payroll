@@ -103,7 +103,9 @@ class PerampunganControllerr extends Controller
      */
     public function edit($id)
     {
-        //
+        $perampungan = Perampungan::find($id);
+
+        return view('pages.payroll.perampungan.edit',compact('perampungan'));
     }
 
     /**
