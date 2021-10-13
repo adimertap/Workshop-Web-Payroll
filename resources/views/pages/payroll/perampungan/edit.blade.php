@@ -212,7 +212,7 @@
                             <div class="col-sm-6">
                                 @if ($perampungan->kode_negara == '0')
                                     <input type="input" class="form-control form-control-sm" id="kode_negara"
-                                        value="{{ old('kode_negara') }}" readonly>
+                                        value="-" readonly>
                                 @else
                                     <input type="input" class="form-control form-control-sm" id="kode_negara"
                                         value="{{ $perampungan->kode_negara }}" readonly>
@@ -240,6 +240,7 @@
 
                     </div>
                 </div>
+                <hr class="mb-1">
             </div>
         </div>
     </div>
