@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">Basic Card Example</div>
-            < class="card-body">
+            <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -622,8 +622,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
+</div>
 </main>
 
 
