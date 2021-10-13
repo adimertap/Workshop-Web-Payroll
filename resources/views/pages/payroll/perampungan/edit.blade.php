@@ -65,7 +65,7 @@
                                     value="{{ date('m', strtotime($perampungan->masa_perolehan_akhir)) }}" readonly>
                             </div>
                             <label for="nomor"
-                                class="col-sm-2 text-center  col-form-label col-form-label-sm">Th.</label>
+                                class="col-sm-2 text-center  col-form-label col-form-label-sm">Tahun</label>
                             <div class="col-sm-2">
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('Y', strtotime($perampungan->masa_perolehan_awal)) }}" readonly>
@@ -98,7 +98,7 @@
 
                 {{-- BAGIAN A IDENTITAS ---------------------------------------------------------------------- --}}
                 <hr class="mt-2">
-                <h7>A. Identitas Penerima Penghasil yang Dipotong</h7>
+                <h6>A. Identitas Penerima Penghasil yang Dipotong</h6>
                 <hr class="mb-4">
                 <div class="row">
                     <div class="col-sm-6">
@@ -241,7 +241,33 @@
 
                     </div>
                 </div>
-                <hr class="mb-1">
+                <hr class="mt-2">
+                <h6>B. Rincian Penghasilan dan Penghitungan PPh Pasal 21</h6>
+                <hr class="mb-4">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="alamat_pegawai" class="col-sm-4 col-form-label col-form-label-sm">Kode Objek Pajak</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="row" id="radio1">
+                                    <div class="col-md-6">
+                                        <input class="mr-1" value="21-100-01" type="radio" name="radio2" checked>21-100-01
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input class="mr-1" value="21-100-02" type="radio" name="radio2">21-100-02
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+
+                    </div>
+                </div>
+                <p class="font-italic">Penghasilan Bruto</p>
             </div>
         </div>
     </div>
