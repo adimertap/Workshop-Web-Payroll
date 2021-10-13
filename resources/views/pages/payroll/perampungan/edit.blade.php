@@ -347,6 +347,40 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">7. Tantiem, Bonus, Gratifikasi, Jasa Produksi dan THR</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
+                                    value="" placeholder="Bonus THR">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">8. Jumlah Penghasilan Bruto (1 s.d. 7)</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-joined">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanbruto()" type="button">Tambah</button>
+                                        </span>
+                                    </div>
+                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
+                                        value="" placeholder="Klik Tombol Hitung">
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
