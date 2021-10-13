@@ -99,7 +99,7 @@
                 {{-- BAGIAN A IDENTITAS ---------------------------------------------------------------------- --}}
                 <hr class="mt-2">
                 <h6>A. IDENTITAS PENERIMA PENGHASIL YANG DIPOTONG</h6>
-                <hr class="mb-1">
+                <hr class="mb-2">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
