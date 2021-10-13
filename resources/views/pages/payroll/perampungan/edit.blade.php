@@ -64,7 +64,7 @@
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('m', strtotime($perampungan->masa_perolehan_akhir)) }}" readonly>
                             </div>
-                            <label for="nomor" class="col-sm-2 ml-1 col-form-label col-form-label-sm">Tahun</label>
+                            <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Tahun</label>
                             <div class="col-sm-2">
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('Y', strtotime($perampungan->masa_perolehan_awal)) }}" readonly>
