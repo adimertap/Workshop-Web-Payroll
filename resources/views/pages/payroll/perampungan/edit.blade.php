@@ -49,10 +49,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class=" col-sm-5">
+                    <div class=" col-sm-6">
                         <div class="form-group row">
-                            <label for="nomor" class="col-sm-3 col-form-label col-form-label-sm">Masa Perolehan
-                                Penghasilan</label>
+                            <label for="nomor" class="col-sm-3 col-form-label col-form-label-sm">Masa Perolehan</label>
                             <div class="col-sm-2">
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('m', strtotime($perampungan->masa_perolehan_awal)) }}" readonly>
@@ -64,7 +63,7 @@
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('m', strtotime($perampungan->masa_perolehan_akhir)) }}" readonly>
                             </div>
-                            <label for="nomor" class="col-sm-1 text-center  col-form-label col-form-label-sm">Th.</label>
+                            <label for="nomor" class="col-sm-2 text-center  col-form-label col-form-label-sm">Th.</label>
                             <div class="col-sm-2">
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('Y', strtotime($perampungan->masa_perolehan_awal)) }}" readonly>
@@ -76,7 +75,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="id_pemotong" class="col-sm-2 col-form-label col-form-label-sm">Nama Pemotong</label>
+                            <label for="id_pemotong" class="col-sm-2 col-form-label col-form-label-sm">Pemotong</label>
                             <div class="col-sm-8">
                                 <input type="input" class="form-control form-control-sm" id="id_pemotong"
                                     value="{{ Auth::user()->pegawai->nama_pegawai }}" readonly>
