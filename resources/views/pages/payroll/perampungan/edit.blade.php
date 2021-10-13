@@ -22,7 +22,7 @@
     </header>
     <div class="container-fluid">
         <div class="card">
-            <div class="card-header">Basic Card Example</div>
+            <div class="card-header">FORM 1721 A1</div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
@@ -623,6 +623,16 @@
                                 <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
                                     placeholder="PPh21 dan PPh26">
                             </div>
+                        </div>
+                    </div>
+                    <div class="row justify-content-between">
+                        <div class="col-auto mt-4">
+                            <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                type="button">Simpan Data!</button>
+                        </div>
+                        <div class="col-12 col-xl-auto">
+                            <a href="{{ route('perampungan.index') }}"
+                                class="btn btn-sm btn-light text-primary">Kembali</a>
                         </div>
                     </div>
                 </div>
