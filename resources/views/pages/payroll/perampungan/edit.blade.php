@@ -123,9 +123,10 @@
                             </div>
                             <div class="col-sm-6">
                                 <select class="form-control form-control-sm" name="id_ptkp" id="id_ptkp">
-                                    <option value="{{ $perampungan->Pegawai->PTKP->id_ptkp }}">{{ $perampungan->Pegawai->PTKP->nama_ptkp }}</option>
+                                    <option value="{{ $perampungan->Pegawai->PTKP->id_ptkp }}">
+                                        {{ $perampungan->Pegawai->PTKP->nama_ptkp }}</option>
                                     @foreach ($ptkp as $itemptkp)
-                                        <option value="{{ $itemptkp->id_ptkp }}">{{ $itemptkp->nama_ptkp }}
+                                    <option value="{{ $itemptkp->id_ptkp }}">{{ $itemptkp->nama_ptkp }}
                                     </option>
                                     @endforeach
                                 </select>
@@ -212,13 +213,13 @@
                             </div>
                             <div class="col-sm-6">
                                 @if ($perampungan->kode_negara == '0')
-                                    <input type="input" class="form-control form-control-sm" id="kode_negara"
-                                        value="-" readonly>
+                                <input type="input" class="form-control form-control-sm" id="kode_negara" value="-"
+                                    readonly>
                                 @else
-                                    <input type="input" class="form-control form-control-sm" id="kode_negara"
-                                        value="{{ $perampungan->kode_negara }}" readonly>
+                                <input type="input" class="form-control form-control-sm" id="kode_negara"
+                                    value="{{ $perampungan->kode_negara }}" readonly>
                                 @endif
-                                
+
                             </div>
                         </div>
                     </div>
@@ -248,17 +249,20 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="alamat_pegawai" class="col-sm-5 col-form-label col-form-label-sm">Kode Objek Pajak</label>
+                            <label for="alamat_pegawai" class="col-sm-5 col-form-label col-form-label-sm">Kode Objek
+                                Pajak</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
                                 <div class="row" id="radio1">
                                     <div class="col-md-6">
-                                        <input class="mr-1 small" value="21-100-01" type="radio" name="radio2" checked><span class="small">21-100-01</span>
+                                        <input class="mr-1 small" value="21-100-01" type="radio" name="radio2"
+                                            checked><span class="small">21-100-01</span>
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="mr-1 small" value="21-100-02" type="radio" name="radio2"><span class="small">21-100-02</span>
+                                        <input class="mr-1 small" value="21-100-02" type="radio" name="radio2"><span
+                                            class="small">21-100-02</span>
                                     </div>
                                 </div>
                             </div>
@@ -272,51 +276,27 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">1. Gaji/Pensiun Atau THT/JHT</label>
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">1. Gaji/Pensiun
+                                Atau THT/JHT</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
-                                    value="" placeholder="Gaji/Pensiun Atau THT/JHT">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="Gaji/Pensiun Atau THT/JHT">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">2. Tunjangan PPh</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">2. Tunjangan
+                                PPh</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
-                                    value="" placeholder="Tunj PPh">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">3. Tunjangan Lainnya, Uang Lembur dan Sebagainya</label>
-                            <div class="col-sm-1 text-center">
-                                <span> : </span>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
-                                    value="" placeholder="Tunj Lain">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">4. Honorarium dan Imbalan Lain Sejenisnya</label>
-                            <div class="col-sm-1 text-center">
-                                <span> : </span>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
-                                    value="" placeholder="Honorarium">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    placeholder="Tunj PPh">
                             </div>
                         </div>
                     </div>
@@ -324,25 +304,27 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">5. Premi Asuransi yang Dibayar Pemberi Kerja</label>
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">3. Tunjangan
+                                Lainnya, Uang Lembur dan Sebagainya</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
-                                    value="" placeholder="Premi Asuransi">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="Tunj Lain">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">6. Penerimaan dalam Bentuk Natura dan Kenikmatan Lainnya yang Dikenakan Pemotongan PPh Pasal 21</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">4. Honorarium
+                                dan Imbalan Lain Sejenisnya</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
-                                    value="" placeholder="Natura">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    placeholder="Honorarium">
                             </div>
                         </div>
                     </div>
@@ -350,33 +332,63 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">7. Tantiem, Bonus, Gratifikasi, Jasa Produksi dan THR</label>
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">5. Premi Asuransi
+                                yang Dibayar Pemberi Kerja</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
-                                    value="" placeholder="Bonus THR">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="Premi Asuransi">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">8. Jumlah Penghasilan Bruto (1 s.d. 7)</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">6. Penerimaan
+                                dalam Bentuk Natura dan Kenikmatan Lainnya yang Dikenakan Pemotongan PPh Pasal
+                                21</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    placeholder="Natura">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">7. Tantiem, Bonus,
+                                Gratifikasi, Jasa Produksi dan THR</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="Bonus THR">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">8. Jumlah
+                                Penghasilan Bruto (1 s.d. 7)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
                                 <div class="input-group input-group-joined">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanbruto()" type="button">Tambah</button>
-                                        </span>
+                                        <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanbruto()"
+                                            type="button">Tambah</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
-                                        value="" placeholder="Klik Tombol Hitung">
+                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                        placeholder="Klik Tombol Hitung">
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
