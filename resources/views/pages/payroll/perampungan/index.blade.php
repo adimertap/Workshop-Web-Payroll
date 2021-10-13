@@ -94,12 +94,12 @@
                                             <td>
                                                 <a href="{{ route('perampungan.show', $item->id_perampungan) }}"
                                                     class="btn btn-secondary btn-datatable" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Detail Slip">
+                                                    data-placement="top" title="" data-original-title="Detail">
                                                     <i class="fa fa-eye"></i>
                                                 </a>
                                                 <a href="{{ route('perampungan.edit', $item->id_perampungan) }}"
                                                     class="btn btn-primary btn-datatable" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Edit Slip">
+                                                    data-placement="top" title="" data-original-title="Edit">
                                                     <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a href="" class="btn btn-danger btn-datatable" type="button"

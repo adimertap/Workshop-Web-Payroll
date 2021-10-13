@@ -39,12 +39,12 @@ class PrfController extends Controller
         $kode_prf = 'PRF-'.$idbaru.'/'.$blt;
 
         $jenis_transaksi = Jenistransaksi::all();
-        $supplier = Supplier::all();
+      
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
 
-        return view('pages.accounting.payable.prf.prf', compact('prf','jenis_transaksi','supplier','kode_prf','today','tanggal'));
+        return view('pages.accounting.payable.prf.prf', compact('prf','jenis_transaksi','kode_prf','today','tanggal'));
     }
 
     /**
@@ -56,7 +56,7 @@ class PrfController extends Controller
     {
         $jenis_transaksi = Jenistransaksi::all();
         $pegawai = Pegawai::all();
-        $supplier = Supplier::all();
+       
         $fop = Fop::all();
         $akun_bank = Bankaccount::all();
 
@@ -79,18 +79,7 @@ class PrfController extends Controller
      */
     public function store(Request $request)
     {
-        $supplier = Supplier::where('nama_supplier',$request->nama_supplier)->first();
-        $id_supplier = $supplier->id_supplier;
-
-        // 
-        $prf = Prf::create([
-            'id_jenis_transaksi'=>$request->id_jenis_transaksi,
-            'id_supplier'=>$id_supplier,
-            'kode_prf'=>$request->kode_prf,
-            'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel
-        ]);
-        
-        return $prf;
+       
     }
 
     /**
@@ -119,55 +108,13 @@ class PrfController extends Controller
     public function edit($id_prf)
     {
 
-        $prf = Prf::with([
-            'Jenistransaksi','Supplier.InvoicePayable','Supplier.InvoicePayable.Detailinvoice','FOP','Akunbank','Detailprf','Detailprf.Detailinvoice'
-        ])->find($id_prf);
-        
-        // return $prf;
-
-        $jenis_transaksi = Jenistransaksi::all();
-        $pegawai = Pegawai::all();
-        $supplier = Supplier::all();
-        $fop = Fop::all();
-        $akun_bank = Bankaccount::all();
-        $invoice = InvoicePayable::all();
-
-        $id = Prf::getId();
-        foreach($id as $value);
-        $idlama = $value->id_prf;
-        $idbaru = $idlama + 1;
-        $blt = date('y-m');
-
-        $kode_prf = 'PRF-'.$blt.'/'.$idbaru;
-
-        return view('pages.accounting.payable.prf.create', compact('invoice','jenis_transaksi','pegawai','supplier','fop','akun_bank','kode_prf','prf'));  
+       
     }
 
     public function edit2($id_prf)
     {
 
-        $prf = Prf::with([
-            'Jenistransaksi','Supplier.InvoiceEdit','Supplier.InvoiceEdit.Detailinvoice','FOP','Akunbank','Detailprf','Detailprf.Detailinvoice'
-        ])->find($id_prf);
-        
-        // return $prf;
-
-        $jenis_transaksi = Jenistransaksi::all();
-        $pegawai = Pegawai::all();
-        $supplier = Supplier::all();
-        $fop = Fop::all();
-        $akun_bank = Bankaccount::all();
-        $invoice = InvoicePayable::all();
-
-        $id = Prf::getId();
-        foreach($id as $value);
-        $idlama = $value->id_prf;
-        $idbaru = $idlama + 1;
-        $blt = date('y-m');
-
-        $kode_prf = 'PRF-'.$blt.'/'.$idbaru;
-
-        return view('pages.accounting.payable.prf.edit', compact('prf2','invoice','jenis_transaksi','pegawai','supplier','fop','akun_bank','kode_prf','prf'));  
+       
     }
 
     /**
