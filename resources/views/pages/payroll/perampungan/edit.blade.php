@@ -241,6 +241,7 @@
 
                     </div>
                 </div>
+                {{-- BAGIAN B RINCIAN ------------------------------------------------------------- --}}
                 <hr class="mt-2">
                 <h6>B. Rincian Penghasilan dan Penghitungan PPh Pasal 21</h6>
                 <hr class="mb-4">
@@ -254,10 +255,10 @@
                             <div class="col-sm-6">
                                 <div class="row" id="radio1">
                                     <div class="col-md-6">
-                                        <input class="mr-1" value="21-100-01" type="radio" name="radio2" checked>21-100-01
+                                        <input class="mr-1 small" value="21-100-01" type="radio" name="radio2" checked>21-100-01
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="mr-1" value="21-100-02" type="radio" name="radio2">21-100-02
+                                        <input class="mr-1 small" value="21-100-02" type="radio" name="radio2">21-100-02
                                     </div>
                                 </div>
                             </div>
@@ -268,6 +269,84 @@
                     </div>
                 </div>
                 <p class="font-italic">Penghasilan Bruto</p>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">1. Gaji/Pensiun Atau THT/JHT</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
+                                    value="" placeholder="Gaji/Pensiun Atau THT/JHT">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">2. Tunjangan PPh</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
+                                    value="" placeholder="Tunj PPh">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">3. Tunjangan Lainnya, Uang Lembur dan Sebagainya</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
+                                    value="" placeholder="Tunj Lain">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">4. Honorarium dan Imbalan Lain Sejenisnya</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
+                                    value="" placeholder="Honorarium">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">5. Premi Asuransi yang Dibayar Pemberi Kerja</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok"
+                                    value="" placeholder="Premi Asuransi">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">6. Penerimaan dalam Bentuk Natura dan Kenikmatan Lainnya yang Dikenakan Pemotongan PPh Pasal 21</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
+                                    value="" placeholder="Natura">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
