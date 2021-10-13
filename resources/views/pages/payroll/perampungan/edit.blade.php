@@ -14,13 +14,13 @@
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-                       
+
                     </div>
                 </div>
             </div>
         </div>
     </header>
-    
+
     <div class="container-fluid">
         <div class="card">
             <div class="card-header border-bottom">
@@ -49,10 +49,53 @@
                         aria-labelledby="wizard1-tab">
                         <div class="row justify-content-center">
                             <div class="col">
-                                <h3 class="text-primary">Step 1</h3>
                                 <h5 class="card-title">Enter your account information</h5>
                                 <form>
-                                    
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group row">
+                                                <label for="tanggal_perampungan"
+                                                    class="col-sm-2 col-form-label">Tanggal</label>
+                                                <div class="col-sm-10">
+                                                    <input type="input" class="form-control" id="tanggal_perampungan"
+                                                        value="{{ $perampungan->tanggal_perampungan }}" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group row">
+                                                <label for="nomor" class="col-sm-2 col-form-label">Nomor</label>
+                                                <div class="col-sm-10">
+                                                    <input type="input" class="form-control" id="nomor"
+                                                        value="{{ $perampungan->nomor }}" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group row">
+                                                <label for="nomor" class="col-sm-2 col-form-label">Masa Perolehan
+                                                    Penghasilan</label>
+                                                <div class="col-sm-5">
+                                                    <input type="input" class="form-control" id="nomor"
+                                                        value="{{ $perampungan->masa_perolehan_awal }}" readonly>
+                                                </div>
+                                                <div class="col-sm-5">
+                                                    <input type="input" class="form-control" id="nomor"
+                                                        value="{{ $perampungan->masa_perolehan_awal }}" readonly>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
                                     <hr class="my-4">
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-light disabled" type="button"
@@ -70,7 +113,7 @@
                                 <h3 class="text-primary">Step 2</h3>
                                 <h5 class="card-title">Enter your billing details</h5>
                                 <form>
-                                   
+
                                     <hr class="my-4">
                                     <div class="d-flex justify-content-between">
                                         <button class="btn btn-light" type="button">Previous</button>
