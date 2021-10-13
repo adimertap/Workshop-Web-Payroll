@@ -64,10 +64,30 @@
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('m', strtotime($perampungan->masa_perolehan_akhir)) }}" readonly>
                             </div>
-                            <label for="nomor" class="col-sm-2 text-center col-form-label col-form-label-sm">Tahun</label>
+                            <label for="nomor" class="col-sm-2 text-center  col-form-label col-form-label-sm">Tahun</label>
                             <div class="col-sm-2">
                                 <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ date('Y', strtotime($perampungan->masa_perolehan_awal)) }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="id_pemotong" class="col-sm-2 col-form-label col-form-label-sm">Nama Pemotong</label>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="id_pemotong"
+                                    value="{{ Auth::user()->pegawai->nama_pegawai }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="npwp_pemotong" class="col-sm-2 col-form-label col-form-label-sm">NPWP Pemotong</label>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="npwp_pemotong"
+                                    value="{{ Auth::user()->pegawai->npwp_pegawai }}" readonly>
                             </div>
                         </div>
                     </div>
