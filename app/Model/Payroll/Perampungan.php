@@ -54,7 +54,7 @@ class Perampungan extends Model
 
     public static function getId(){
         // return $this->orderBy('id_sparepart')->take(1)->get();
-        $getId = DB::table('tb_payroll_perampungan')->orderBy('id_perampungan','DESC')->where(Auth::user()->id_bengkel)->take(1)->get();
+        $getId = DB::table('tb_payroll_perampungan')->orderBy('id_perampungan','DESC')->take(1)->get();
         if(count($getId) > 0) return $getId;
         return (object)[
             (object)[
