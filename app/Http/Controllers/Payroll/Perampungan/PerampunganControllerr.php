@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Payroll\Perampungan;
 
 use App\Http\Controllers\Controller;
 use App\Model\Kepegawaian\Pegawai;
+use App\Model\Payroll\DetailPerampungan;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -123,8 +124,12 @@ class PerampunganControllerr extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id_perampungan)
     {
-        //
+        $perampungan = Perampungan::find($id_perampungan);
+        DetailPerampungan::where('id_perampungan', $id_perampungan)->delete();
+        $perampungan->delete();
+
+        return redirect()->back()->with('messagehapus','Berhasil menghapus data perampungan');
     }
 }

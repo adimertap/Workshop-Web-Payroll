@@ -25,9 +25,7 @@ class InvoicePayableController extends Controller
             'Rcv.Detail','Rcv'
         ])->get();
 
-        $rcv = Rcv::with([
-            'PO'
-        ])->where([['status_invoice', '=', 'Belum diBuat']])->get();
+      
 
         $jenis_transaksi = Jenistransaksi::all();
         $today = Carbon::now()->isoFormat('dddd');
@@ -55,25 +53,7 @@ class InvoicePayableController extends Controller
      */
     public function store(Request $request)
     {
-        $rcv = Rcv::where('kode_rcv',$request->kode_rcv)->first();
-        $id_rcv = $rcv->id_rcv;
-        $id_supplier = $rcv->id_supplier;
-        $id_po = $rcv->id_po;
-
-        $rcv->status_invoice = 'Sudah dibuat';
-        $rcv->save();
-
-        $invoice = InvoicePayable::create([
-            'id_rcv'=>$id_rcv,
-            'id_supplier'=>$id_supplier,
-            'id_jenis_transaksi'=>$request->id_jenis_transaksi,
-            'id_po' => $id_po,
-            'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel
-
-           
-        ]);
-        
-        return $invoice;
+      
     }
 
     /**
@@ -99,23 +79,7 @@ class InvoicePayableController extends Controller
      */
     public function edit($id)
     {
-        $invoice = InvoicePayable::with([
-            'Rcv.Detailrcv','Rcv','Jenistransaksi','Detailinvoice'
-        ])->find($id);
-
-        $jenis_transaksi = Jenistransaksi::all();
-        $pegawai = Pegawai::all();
-        $rcv = Rcv::all();
-
-        $id = InvoicePayable::getId();
-        foreach($id as $value);
-        $idlama = $value->id_payable_invoice;
-        $idbaru = $idlama + 1;
-        $blt = date('y-m');
-
-        $kode_invoice = 'INVC-'.$blt.'/'.$idbaru;
-
-        return view('pages.accounting.payable.invoice.create', compact('invoice','jenis_transaksi','pegawai','kode_invoice','rcv'));
+      
     }
 
     /**
