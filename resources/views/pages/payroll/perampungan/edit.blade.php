@@ -246,7 +246,7 @@
                 <h6>B. Rincian Penghasilan dan Penghitungan PPh Pasal 21</h6>
                 <hr class="mb-4">
                 <div class="row">
-                    <div class="col-sm-10">
+                    <div class="col-sm-6">
                         <div class="form-group row">
                             <label for="alamat_pegawai" class="col-sm-5 col-form-label col-form-label-sm">Kode Objek Pajak</label>
                             <div class="col-sm-1 text-center">
@@ -264,7 +264,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-6">
 
                     </div>
                 </div>
