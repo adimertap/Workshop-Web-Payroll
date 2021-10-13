@@ -23,7 +23,7 @@
     <div class="container-fluid">
         <div class="card">
             <div class="card-header">Basic Card Example</div>
-            <div class="card-body">
+            < class="card-body">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -401,7 +401,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">9. Biaya Jabatan/Biaya Pensiun</label>
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">9. Biaya
+                                Jabatan/Biaya Pensiun</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
@@ -413,7 +414,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">10. Iuran Pensiun atau Iuran THT/JHT</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">10. Iuran
+                                Pensiun atau Iuran THT/JHT</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
@@ -427,7 +429,8 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">11. Jumlah Pengurangan (9 s.d. 10)</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">11. Jumlah
+                                Pengurangan (9 s.d. 10)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
@@ -445,15 +448,16 @@
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        
+
                     </div>
                 </div>
-                 {{-- Penghitungan PPh Pasal 21 -----------------------------------------------Penghitungan PPh Pasal 21 --}}
-                 <p class="font-italic">Penghitungan PPh Pasal 21 :</p>
-                 <div class="row">
+                {{-- Penghitungan PPh Pasal 21 -----------------------------------------------Penghitungan PPh Pasal 21 --}}
+                <p class="font-italic">Penghitungan PPh Pasal 21 :</p>
+                <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">12. Jumlah Penghasilan Neto (8-11)</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">12. Jumlah
+                                Penghasilan Neto (8-11)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
@@ -472,7 +476,8 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">13. Penghasilan Neto Masa Sebelumnya</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">13. Penghasilan
+                                Neto Masa Sebelumnya</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
@@ -486,35 +491,139 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">14. Jumlah Penghasilan Neto untuk Penghitungan PPh Pasal 21 (Setahun/Disetahunkan)</label>
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">14. Jumlah
+                                Penghasilan Neto untuk Penghitungan PPh Pasal 21 (Setahun/Disetahunkan)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
                                 <div class="row" id="radio2">
                                     <div class="col-md-6">
-                                        <input class="mr-1 small" value="setahun" type="radio" name="radiosetahun"
-                                            checked><span class="small">Setahun</span>
+                                        <input class="mr-1 small" value="setahun" type="radio" name="radiosetahun"><span
+                                            class="small">Setahun</span>
                                     </div>
                                     <div class="col-md-6">
-                                        <input class="mr-1 small" value="disetahunkan" type="radio" name="radiodisetahunkan"><span
-                                            class="small">Disetahunkan</span>
+                                        <input class="mr-1 small" value="disetahunkan" type="radio"
+                                            name="radiodisetahunkan"><span class="small">Disetahunkan</span>
                                     </div>
                                 </div>
                             </div>
-                         
+
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="col-sm-6">
-                            <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
-                                placeholder="Jumlah Penghasilan Netto">
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    placeholder="Jumlah Penghasilan Netto">
+                            </div>
                         </div>
                     </div>
                 </div>
-
-            </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">15. Penghasilan
+                                Tidak Kena Pajak (PTKP)</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="Besaran PTKP">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">16. Penghasilan
+                                Kena Pajak Setahun/Disetahunkan (14-15)</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-joined">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                            type="button">Hitung</button>
+                                    </div>
+                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                        placeholder="Jumlah Penghasilan Kena Pajak">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">17. PPh Pasal
+                                21 Atas Penghasilan Kena Pajak Setahun/Disetahunkan</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-joined">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                            type="button">Hitung</button>
+                                    </div>
+                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                        placeholder="PPh Pasal 21 PKP">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">18. PPh Pasal 21
+                                Yang Telah Dipotong Masa Sebelumnya</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="PPh21 Telah Pot">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">19. PPh Pasal
+                                21 Terutang</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group input-group-joined">
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                            type="button">Hitung</button>
+                                    </div>
+                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                        placeholder="PPh Pasal 21 Terutang">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">20. PPh Pasal 21
+                                dan PPh Pasal 26 Yang Telah Dipotong dan Dilunasi</label>
+                            <div class="col-sm-1 text-center">
+                                <span> : </span>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                    placeholder="PPh21 dan PPh26">
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </div>
+    </div>
     </div>
 </main>
 
