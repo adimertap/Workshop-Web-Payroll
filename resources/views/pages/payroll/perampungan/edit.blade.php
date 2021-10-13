@@ -426,6 +426,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -443,7 +444,6 @@
                                     <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
                                         placeholder="Jumlah Pengurangan">
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -488,6 +488,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -520,6 +521,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -554,6 +556,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -588,6 +591,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
@@ -625,7 +629,6 @@
             </div>
         </div>
     </div>
-</div>
 </main>
 
 
