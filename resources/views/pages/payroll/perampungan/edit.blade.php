@@ -98,8 +98,8 @@
 
                 {{-- BAGIAN A IDENTITAS ---------------------------------------------------------------------- --}}
                 <hr class="mt-2">
-                <h6>A. IDENTITAS PENERIMA PENGHASIL YANG DIPOTONG</h6>
-                <hr class="mb-2">
+                <h7>A. Identitas Penerima Penghasil yang Dipotong</h7>
+                <hr class="mb-4">
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
