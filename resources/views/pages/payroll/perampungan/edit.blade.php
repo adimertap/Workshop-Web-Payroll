@@ -50,21 +50,19 @@
                         </div>
                     </div>
                     <div class=" col-sm-6">
-                    </div>
-                    {{-- <div class="form-group col-sm-6">
                         <div class="form-group row">
-                            <label for="nomor" class="col-sm-2 col-form-label small">Masa Perolehan
+                            <label for="nomor" class="col-sm-5 col-form-label col-form-label-sm">Masa Perolehan
                                 Penghasilan</label>
                             <div class="col-sm-3">
-                                <input type="input" class="form-control" id="nomor"
+                                <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ $perampungan->masa_perolehan_awal }}" readonly>
                             </div>
                             <div class="col-sm-3">
-                                <input type="input" class="form-control" id="nomor"
+                                <input type="input" class="form-control form-control-sm" id="nomor"
                                     value="{{ $perampungan->masa_perolehan_awal }}" readonly>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
 
 
