@@ -25,8 +25,8 @@
             <div class="card-header">Basic Card Example</div>
             <div class="card-body">
                 <h6>Enter your account information</h6>
-                <div class="form-row">
-                    <div class="form-group col-6">
+                <div class="row">
+                    <div class="form-group col-sm-6">
                         <div class="form-group row">
                             <label for="tanggal_perampungan" class="col-sm-2 col-form-label col-form-label-sm">Tanggal</label>
                             <div class="col-sm-6">
@@ -35,12 +35,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-5">
+                    <div class="form-group col-sm-5">
 
                     </div>
                 </div>
-                <div class="form-row pt-0">
-                    <div class="form-group col-6">
+                <div class="row">
+                    <div class="form-group col-sm-6">
                         <div class="form-group row">
                             <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                             <div class="col-sm-8">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-sm-6">
                         <div class="form-group row">
                             <label for="nomor" class="col-sm-2 col-form-label small">Masa Perolehan
                                 Penghasilan</label>
