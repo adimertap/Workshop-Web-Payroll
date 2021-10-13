@@ -626,6 +626,7 @@
                         </div>
                     </div>
                 </div>
+                <hr class="mt-4">
                 <div class="row justify-content-between">
                     <div class="col-auto mt-4">
                         <a href="{{ route('perampungan.index') }}"
