@@ -625,14 +625,16 @@
                             </div>
                         </div>
                     </div>
-                    <hr class="my-4">
-                    <div class="d-flex justify-content-between">
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-auto mt-4">
                         <a href="{{ route('perampungan.index') }}"
-                            class="btn btn-light text-primary">Kembali
-                        </a>
+                            class="btn btn-light text-primary">Kembali</a>
+                       
+                    </div>
+                    <div class="col-12 col-xl-auto">
                         <button class="btn btn-primary" onclick="hitungpenghasilanneto()"
-                                type="button">Simpan Data!
-                        </button>
+                        type="button">Simpan Data!</button>
                     </div>
                 </div>
             </div>
