@@ -284,7 +284,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="{{ $gajipokoktahun }}"
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="{{ $gajipokoktahun ?? '0' }}"
                                     placeholder="Gaji/Pensiun Atau THT/JHT">
                             </div>
                         </div>
@@ -297,7 +297,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
                                     placeholder="Tunj PPh">
                             </div>
                         </div>
@@ -313,7 +313,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
-                                    placeholder="{{ $sumtunjangan }}">
+                                    placeholder="{{ $sumtunjangan ?? '0'}}">
                             </div>
                         </div>
                     </div>
@@ -325,7 +325,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
                                     placeholder="Honorarium">
                             </div>
                         </div>
@@ -340,7 +340,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="0"
                                     placeholder="Premi Asuransi">
                             </div>
                         </div>
@@ -354,7 +354,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
                                     placeholder="Natura">
                             </div>
                         </div>
@@ -369,7 +369,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="0"
                                     placeholder="Bonus THR">
                             </div>
                         </div>
@@ -387,7 +387,7 @@
                                         <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanbruto()"
                                             type="button">Hitung</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
                                         placeholder="Jumlah Penghasilan">
                                 </div>
 
