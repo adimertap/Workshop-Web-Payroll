@@ -773,7 +773,7 @@
         var gaji_bruto =  $('#bruto').val()
         var total_pengurangan = $('#total_pengurangan').val()
 
-        if(gaji_bruto == 0 && total_pengurangan == 0 | gaji_bruto == 0 | total_pengurangan == 0){
+        if(gaji_bruto == 0 && total_pengurangan == 0){
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto dan Jumlah Pengurangan')
         }else{
             var neto = parseInt(gaji_bruto) - parseInt(total_pengurangan)
@@ -938,7 +938,15 @@
             $('#pph21_terutang').val(pph21_terutang)
 
             var pph_final_bulan = pph21_terutang / 12
-            $('#pph21_lunas').val(pph_final_bulan)
+            var str=pph_final_bulan.toString();
+            var numarray=str.split('.');    
+            var a=new Array();
+            a=numarray;
+
+            pph_final_bulan_fix = a[0];
+
+
+            $('#pph21_lunas').val(pph_final_bulan_fix)
 
             alert('Berhasil Melakukan Perhitungan PPh21 Final')
         }
