@@ -119,8 +119,9 @@ class PerampunganControllerr extends Controller
         ->get();
 
         $gajipokok = Mastergajipokok::where('id_jabatan', $perampungan->Pegawai->id_jabatan)->sum('besaran_gaji');
-        
-        return $gajipokok;
+        $gajipokoktahun = $gajipokok * 12;
+
+        return $gajipokoktahun;
 
         $ptkp = MasterPTKP::get();
 
