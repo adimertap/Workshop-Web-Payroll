@@ -284,7 +284,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="{{ $gajipokoktahun }}"
                                     placeholder="Gaji/Pensiun Atau THT/JHT">
                             </div>
                         </div>
@@ -313,7 +313,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
-                                    placeholder="Tunj Lain">
+                                    placeholder="{{ $sumtunjangan }}">
                             </div>
                         </div>
                     </div>

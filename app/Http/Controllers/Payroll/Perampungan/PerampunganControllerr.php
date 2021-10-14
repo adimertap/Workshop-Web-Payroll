@@ -118,14 +118,18 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
+        $sumtunjangan = Detailgaji::with([
+            'Gaji'
+        ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        ->where('id_pegawai', $perampungan->id_pegawai)
+        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        ->sum('total_tunjangan');
+
         $gajipokok = Mastergajipokok::where('id_jabatan', $perampungan->Pegawai->id_jabatan)->sum('besaran_gaji');
         $gajipokoktahun = $gajipokok * 12;
-
-        return $gajipokoktahun;
-
+        
         $ptkp = MasterPTKP::get();
-
-        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp'));
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','sumtunjangan','gajipokoktahun'));
     }
 
     /**
