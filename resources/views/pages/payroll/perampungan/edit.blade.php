@@ -836,9 +836,9 @@
 
             if(pphlevel1fix <= 0){
                 var pajaknull = 0
-                $('#pkp').val(pajaknull)
+                $('#pph21_pkp').val(pajaknull)
             }else{
-                $('#pkp').val(pphlevel1fix)
+                $('#pph21_pkp').val(pphlevel1fix)
             }
         }else if (pkp > pph1 && pkp <= pph2){
              // Perhitungan 5%
@@ -863,7 +863,7 @@
 
              // FIX PPH Level 2
             var pphlevel2tahun = a[0];
-            $('#pkp').val(pphlevel2tahun)
+            $('#pph21_pkp').val(pphlevel2tahun)
         }else if (pkp > pph2 && pkp <= pph3){
              // Perhitungan 5%
             var pph3kena5 = pph1
@@ -892,7 +892,7 @@
 
             // FIX PPH Level 2
             var pphlevel3 = a[0];
-            $('#pkp').val(pphlevel3)
+            $('#pph21_pkp').val(pphlevel3)
         }
 
     }
