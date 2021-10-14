@@ -7,6 +7,7 @@ use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\Detailgaji;
 use App\Model\Payroll\DetailPerampungan;
 use App\Model\Payroll\Gajipegawai;
+use App\Model\Payroll\Mastergajipokok;
 use App\Model\Payroll\MasterPTKP;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
@@ -117,8 +118,8 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        return $detailgaji;
-
+        $gajipokok = Mastergajipokok::where('id_pegawai', $perampungan->id_pegawai)->sum('besaran_gaji');
+        return $gajipokok;
 
         $ptkp = MasterPTKP::get();
 
