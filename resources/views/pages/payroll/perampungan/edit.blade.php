@@ -242,7 +242,7 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <span class="small" style="color: gray">Cek aturan PTKP <a
+                            <span class="small" style="color: gray">Cek aturan PPh21 <a
                                 data-toggle="modal" data-target="#Modalpph21"
                                 class="font-weight-500 text-primary"> disini </a></span>
                         </div>
@@ -793,6 +793,106 @@
         }else{
             var pkp = parseInt(netto_pph21) - parseInt(ptkp)
             $('#pkp').val(pkp)
+        }
+
+    }
+
+    function hitungpph21(){
+        var datapph21 = $('#pph21').children()
+        var children = $(datapph21).children()
+
+          // 50JT
+          var td1 = children[2]
+        var pph1 = $($(td1)).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
+            '').trim()
+        var tdpersen1= children[3]
+        var pphpersen1 = $($(tdpersen1)).html()
+        
+        // 250JT
+        var td2 = children[6]
+        var pph2 = $($(td2)).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
+            '').trim()
+        var tdpersen2 = children[7]
+        var pphpersen2 = $($(tdpersen2)).html()
+       
+        // 500JT
+        var td3 = children[10]
+        var pph3 = $($(td3)).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
+            '').trim()
+        var tdpersen3= children[11]
+        var pphpersen3 = $($(tdpersen3)).html()
+        
+        // DIATAS 500JT
+        var tdpersen4= children[15]
+        var pphpersen4 = $($(tdpersen4)).html()
+
+        
+        // Penghasilan Kena Pajak
+        var pkp = $('#pkp').val()
+
+        if (pkp <= pph1){
+            var pphlevel1 = pkp * pphpersen1
+            var pphlevel1fix = pphlevel1 / 100
+
+            if(pphlevel1fix <= 0){
+                var pajaknull = 0
+                $('#pkp').val(pajaknull)
+            }else{
+                $('#pkp').val(pphlevel1fix)
+            }
+        }else if (pkp > pph1 && pkp <= pph2){
+             // Perhitungan 5%
+            var pphkena5 = pph1
+            var pphkena5fix = pphkena5 * pphpersen1
+            var pphkena5sangat = pphkena5fix / 100
+           
+            // Perhitungan 15%
+            var pphkena15 = pkp - pph1
+            var pphkena15fix = pphkena15 * pphpersen2
+            var pphkena15sangat = pphkena15fix / 100
+
+            // Penambahan
+            var pphlevel2 = pphkena5sangat + pphkena15sangat
+            // var pphlevel2hampir = pphlevel2 / 12
+
+            // Memecah Bilangan Decimal
+            var str=pphlevel2.toString();
+            var numarray=str.split('.');    
+            var a=new Array();
+            a=numarray;
+
+             // FIX PPH Level 2
+            var pphlevel2tahun = a[0];
+            $('#pkp').val(pphlevel2tahun)
+        }else if (pkp > pph2 && pkp <= pph3){
+             // Perhitungan 5%
+            var pph3kena5 = pph1
+            var pph3kena5fix = pph3kena5 * pphpersen1
+            var pph3kena5sangat = pph3kena5fix / 100
+           
+
+            // Perhitungan 15 %
+            var pph3kena15 = pph2
+            var pph3kena15fix = pph3kena15 * pphpersen2
+            var pph3kena15sangat = pph3kena15fix / 100
+        
+
+            // Perhitungan 25%
+            var pph3kena25 = parseInt(pph3kena15) + parseInt(pph3kena5)
+            var tespph3kena25 = parseInt(pkp - pph3kena25)
+            var pph3kena25fix = tespph3kena25 * pphpersen3
+            var pph3kena25sangat = pph3kena25fix / 100
+
+            var pphlevel3 = parseInt(pph3kena5sangat + pph3kena15sangat + pph3kena25sangat)
+
+            var str=pphlevel3.toString();
+            var numarray=str.split('.');    
+            var a=new Array();
+            a=numarray;
+
+            // FIX PPH Level 2
+            var pphlevel3 = a[0];
+            $('#pkp').val(pphlevel3)
         }
 
     }
