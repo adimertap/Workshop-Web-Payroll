@@ -688,9 +688,23 @@
         }else{
             $('#biaya_jabatan').val(biayajabatanfix)
         }
-        
+
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
     }
+
+    function hitungpengurangan(){
+        var biaya_jabatan =  $('#biaya_jabatan').val()
+        var iuran_jht = $('#iuran_jht').val()
+
+        var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
+        $('#total_pengurangan').val(total_pengurangan)
+        console.log(biaya_jabatan)
+
+        alert('Jumlah Pengurangan Berhasil dihitung')
+
+    }
+
+
 </script>
 
 
