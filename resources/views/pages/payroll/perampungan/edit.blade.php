@@ -828,7 +828,7 @@
 
         
         // Penghasilan Kena Pajak
-        var pkp = $('#netto_pph21').val()
+        var pkp = $('#pkp').val()
 
         if (pkp <= pph1){
             var pphlevel1 = pkp * pphpersen1
