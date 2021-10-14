@@ -667,11 +667,14 @@
         var premi_prsh = $('#premi_prsh').val()
         var natura = $('#natura').val()
         var bonusthr = $('#bonusthr').val()
-        var bruto = $('#bruto').val()
+       
         
         var brutofix = parseInt(gaji_pokok) + parseInt(tunjangan_pph) + parseInt(tunjangan_lain) + parseInt(honorarium)
                         + parseInt(premi_prsh) + parseInt(natura) + parseInt(bonusthr)
 
+        console.log(gaji_pokok, tunjangan_lain, tunjangan_pph, bonusthr, natura, honorarium, premi_prsh)
+        console.log(brutofix)
+        
         $('#bruto').val(brutofix)
         alert('Penghasilan Bruto Berhasil Dihitung')
     }
