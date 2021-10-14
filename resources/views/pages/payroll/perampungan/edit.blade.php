@@ -619,7 +619,7 @@
                                 <div class="col-sm-6">
                                     <div class="input-group input-group-joined">
                                         <div class="input-group-prepend">
-                                            <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                            <button class="btn btn-sm btn-primary" onclick="pph21terutang()"
                                                 type="button">Hitung</button>
                                         </div>
                                         <input type="input" class="form-control form-control-sm" id="pph21_terutang"
@@ -831,92 +831,119 @@
         var pkpasik = $('#pkp').val()
         var pkp = parseInt(pkpasik)
 
-        if (pkp <= pph1){
-            var pphlevel1 = pkp * pphpersen1
-            var pphlevel1fix = pphlevel1 / 100
+        if(pkp == 0){
+            alert('Anda Belum Melakukan Perhitungan PKP')
+        }else{
+                if (pkp <= pph1){
+                var pphlevel1 = pkp * pphpersen1
+                var pphlevel1fix = pphlevel1 / 100
 
-            var str=pphlevel1fix.toString();
-            var numarray=str.split('.');    
-            var a=new Array();
-            a=numarray;
+                var str=pphlevel1fix.toString();
+                var numarray=str.split('.');    
+                var a=new Array();
+                a=numarray;
 
-             // FIX PPH Level 2
-            var pphlevel1tahun = a[0];
-            console.log(pphlevel1fix, pphlevel1tahun)
+                // FIX PPH Level 2
+                var pphlevel1tahun = a[0];
+                console.log(pphlevel1fix, pphlevel1tahun)
 
-            // $('#pph21_pkp').val(pphlevel1tahun)
-            // alert('PPH LEVEL 1')
+                // $('#pph21_pkp').val(pphlevel1tahun)
+                // alert('PPH LEVEL 1')
 
-            if(pphlevel1tahun < 0){
-                var pajaknull = 0
-                $('#pph21_pkp').val(pajaknull)
-                alert('BEBAS PAJAK')
-            }else{
-                $('#pph21_pkp').val(pphlevel1tahun)
-                alert('PPH LEVEL 1')
+                if(pphlevel1tahun <= 0){
+                    var pajaknull = 0
+                    $('#pph21_pkp').val(pajaknull)
+                    alert('BEBAS PAJAK')
+                }else{
+                    $('#pph21_pkp').val(pphlevel1tahun)
+                    alert('PPH LEVEL 1')
+                }
+
+            }else if (pkp > pph1 && pkp <= pph2){
+                // Perhitungan 5%
+                var pphkena5 = pph1
+                var pphkena5fix = pphkena5 * pphpersen1
+                var pphkena5sangat = pphkena5fix / 100
+            
+                // Perhitungan 15%
+                var pphkena15 = pkp - pph1
+                var pphkena15fix = pphkena15 * pphpersen2
+                var pphkena15sangat = pphkena15fix / 100
+                console.log(pphkena15sangat, pphkena5sangat)
+
+                // Penambahan
+                var pphlevel2 = parseInt(pphkena5sangat + pphkena15sangat)
+                console.log(pphlevel2)
+                // var pphlevel2hampir = pphlevel2 / 12
+
+                // Memecah Bilangan Decimal
+                var str=pphlevel2.toString();
+                var numarray=str.split('.');    
+                var a=new Array();
+                a=numarray;
+
+                // FIX PPH Level 2
+                var pphlevel2tahun = a[0];
+
+                console.log(pphlevel2tahun)
+                $('#pph21_pkp').val(pphlevel2tahun)
+                alert('PPH LEVEL 2')
+
+            }else if (pkp > pph2 && pkp <= pph3){
+                // Perhitungan 5%
+                var pph3kena5 = pph1
+                var pph3kena5fix = pph3kena5 * pphpersen1
+                var pph3kena5sangat = pph3kena5fix / 100
+            
+
+                // Perhitungan 15 %
+                var pph3kena15 = pph2
+                var pph3kena15fix = pph3kena15 * pphpersen2
+                var pph3kena15sangat = pph3kena15fix / 100
+            
+
+                // Perhitungan 25%
+                var pph3kena25 = parseInt(pph3kena15) + parseInt(pph3kena5)
+                var tespph3kena25 = parseInt(pkp - pph3kena25)
+                var pph3kena25fix = tespph3kena25 * pphpersen3
+                var pph3kena25sangat = pph3kena25fix / 100
+
+                var pphlevel3 = parseInt(pph3kena5sangat + pph3kena15sangat + pph3kena25sangat)
+
+                var str=pphlevel3.toString();
+                var numarray=str.split('.');    
+                var a=new Array();
+                a=numarray;
+
+                // FIX PPH Level 2
+                var pphlevel3tahun = a[0];
+                $('#pph21_pkp').val(pphlevel3tahun)
+                alert('PPH LEVEL 3')
             }
+        }
 
-        }else if (pkp > pph1 && pkp <= pph2){
-             // Perhitungan 5%
-            var pphkena5 = pph1
-            var pphkena5fix = pphkena5 * pphpersen1
-            var pphkena5sangat = pphkena5fix / 100
-           
-            // Perhitungan 15%
-            var pphkena15 = pkp - pph1
-            var pphkena15fix = pphkena15 * pphpersen2
-            var pphkena15sangat = pphkena15fix / 100
-            console.log(pphkena15sangat, pphkena5sangat)
 
-            // Penambahan
-            var pphlevel2 = parseInt(pphkena5sangat + pphkena15sangat)
-            console.log(pphlevel2)
-            // var pphlevel2hampir = pphlevel2 / 12
-
-            // Memecah Bilangan Decimal
-            var str=pphlevel2.toString();
-            var numarray=str.split('.');    
-            var a=new Array();
-            a=numarray;
-
-             // FIX PPH Level 2
-            var pphlevel2tahun = a[0];
-
-            console.log(pphlevel2tahun)
-            $('#pph21_pkp').val(pphlevel2tahun)
-            alert('PPH LEVEL 2')
-
-        }else if (pkp > pph2 && pkp <= pph3){
-             // Perhitungan 5%
-            var pph3kena5 = pph1
-            var pph3kena5fix = pph3kena5 * pphpersen1
-            var pph3kena5sangat = pph3kena5fix / 100
-           
-
-            // Perhitungan 15 %
-            var pph3kena15 = pph2
-            var pph3kena15fix = pph3kena15 * pphpersen2
-            var pph3kena15sangat = pph3kena15fix / 100
         
 
-            // Perhitungan 25%
-            var pph3kena25 = parseInt(pph3kena15) + parseInt(pph3kena5)
-            var tespph3kena25 = parseInt(pkp - pph3kena25)
-            var pph3kena25fix = tespph3kena25 * pphpersen3
-            var pph3kena25sangat = pph3kena25fix / 100
+    }
 
-            var pphlevel3 = parseInt(pph3kena5sangat + pph3kena15sangat + pph3kena25sangat)
+    function pph21terutang(){
+        var pph21_pkp =  $('#pph21_pkp').val()
+        var pph21_telah_pot = $('#pph21_telah_pot').val()
 
-            var str=pphlevel3.toString();
-            var numarray=str.split('.');    
-            var a=new Array();
-            a=numarray;
+        if(pph21_pkp == 0){
+            alert('Anda Belum Melakukan Perhitungan PPh21')
+        }else{
+            var pph21_terutang = parseInt(pph21_pkp) + parseInt(pph21_telah_pot)
+            $('#pph21_terutang').val(pph21_terutang)
 
-            // FIX PPH Level 2
-            var pphlevel3tahun = a[0];
-            $('#pph21_pkp').val(pphlevel3tahun)
-            alert('PPH LEVEL 3')
+            var pph_final_bulan = pph21_terutang / 12
+            $('#pph21_lunas').val(pph_final_bulan)
+
+            alert('Berhasil Melakukan Perhitungan PPh21 Final')
         }
+
+      
 
     }
 
