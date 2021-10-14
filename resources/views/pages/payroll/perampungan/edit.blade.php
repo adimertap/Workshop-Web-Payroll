@@ -284,7 +284,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" name="gaji_pokok" value="{{ $gajipokoktahun ?? '0' }}"
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" name="gaji_pokok" value="{{ $sumpokok ?? '0' }}"
                                     placeholder="Gaji/Pensiun Atau THT/JHT">
                             </div>
                         </div>
