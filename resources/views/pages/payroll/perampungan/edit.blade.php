@@ -676,7 +676,20 @@
         console.log(brutofix)
 
         $('#bruto').val(brutofix)
-        alert('Penghasilan Bruto Berhasil Dihitung')
+       
+
+        var biayajabatan = brutofix * 5
+        var biayajabatanfix = biayajabatan / 100
+        var maxbiayajabatan = 6000000
+        console.log(biayajabatanfix)
+
+        if(biayajabatanfix >= maxbiayajabatan){
+            $('#biaya_jabatan').val(maxbiayajabatan)
+        }else{
+            $('#biaya_jabatan').val(biayajabatanfix)
+        }
+        
+        alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
     }
 </script>
 
