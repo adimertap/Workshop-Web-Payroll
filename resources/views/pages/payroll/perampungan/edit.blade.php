@@ -320,7 +320,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="tunjangan_lain"
-                                        name="tunjangan_lain" value="" placeholder="{{ $sumtunjangan ?? '0'}}">
+                                        name="tunjangan_lain" value="{{ $sumtunjangan ?? '0'}}" placeholder="Tunj Lain">
                                 </div>
                             </div>
                         </div>
@@ -674,7 +674,7 @@
 
         console.log(gaji_pokok, tunjangan_lain, tunjangan_pph, bonusthr, natura, honorarium, premi_prsh)
         console.log(brutofix)
-        
+
         $('#bruto').val(brutofix)
         alert('Penghasilan Bruto Berhasil Dihitung')
     }
