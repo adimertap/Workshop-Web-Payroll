@@ -628,12 +628,12 @@
                 </div>
                 <hr class="mt-4">
                 <div class="row justify-content-between">
-                    <div class="col-auto mt-4">
+                    <div class="col-auto">
                         <a href="{{ route('perampungan.index') }}"
                             class="btn btn-light text-primary">Kembali</a>
                        
                     </div>
-                    <div class="col-12 col-xl-auto">
+                    <div class="col-auto">
                         <button class="btn btn-primary" onclick="hitungpenghasilanneto()"
                         type="button">Simpan Data!</button>
                     </div>
