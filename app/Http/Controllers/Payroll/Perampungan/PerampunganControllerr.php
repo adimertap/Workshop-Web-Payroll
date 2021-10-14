@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Kepegawaian\Pegawai;
 use App\Model\Payroll\Detailgaji;
 use App\Model\Payroll\DetailPerampungan;
+use App\Model\Payroll\Gajipegawai;
 use App\Model\Payroll\MasterPTKP;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
@@ -109,13 +110,13 @@ class PerampunganControllerr extends Controller
 
         $detailgaji = Detailgaji::with('Gaji')->where('id_pegawai', $perampungan->id_pegawai)->get();
         
-        for($i = 0;  $i < count($detailgaji->Gaji); $i++ ){
-            for($j = 0;  $j < count($detailgaji); $j++ ){
-               if ($detailgaji->Gaji[$i]->id_gaji_pegawai == $detailgaji[$j]->id_gaji_pegawai ){
-                $detailgaji[$j]->masa_perolehan = $detailgaji->Gaji[$i]->bulan_gaji;
-               };
-            }
-        }
+        // for($i = 0;  $i < count($detailgaji->Gaji); $i++ ){
+        //     for($j = 0;  $j < count($detailgaji); $j++ ){
+        //        if ($detailgaji->Gaji[$i]->id_gaji_pegawai == $detailgaji[$j]->id_gaji_pegawai ){
+        //         $detailgaji[$j]->masa_perolehan = $detailgaji->Gaji[$i]->bulan_gaji;
+        //        };
+        //     }
+        // }
 
         return $detailgaji;
 
