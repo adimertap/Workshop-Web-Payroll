@@ -693,7 +693,7 @@
                                                 style="width: 90px;">Besaran Pph21 (%)</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="pph21">
+                                    <tbody id="tablepph21">
                                         @forelse ($pph21 as $items)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">
@@ -733,8 +733,7 @@
         var brutofix = parseInt(gaji_pokok) + parseInt(tunjangan_pph) + parseInt(tunjangan_lain) + parseInt(honorarium)
                         + parseInt(premi_prsh) + parseInt(natura) + parseInt(bonusthr)
 
-        console.log(gaji_pokok, tunjangan_lain, tunjangan_pph, bonusthr, natura, honorarium, premi_prsh)
-        console.log(brutofix)
+       
 
         $('#bruto').val(brutofix)
        
@@ -742,7 +741,7 @@
         var biayajabatan = brutofix * 5
         var biayajabatanfix = biayajabatan / 100
         var maxbiayajabatan = 6000000
-        console.log(biayajabatanfix)
+     
 
         if(biayajabatanfix >= maxbiayajabatan){
             $('#biaya_jabatan').val(maxbiayajabatan)
@@ -763,7 +762,7 @@
         }else{
             var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
             $('#total_pengurangan').val(total_pengurangan)
-            console.log(biaya_jabatan)
+        
 
             alert('Jumlah Pengurangan Berhasil dihitung')
         }
@@ -798,11 +797,11 @@
     }
 
     function hitungpph21(){
-        var datapph21 = $('#pph21').children()
+        var datapph21 = $('#tablepph21').children()
         var children = $(datapph21).children()
 
           // 50JT
-          var td1 = children[2]
+        var td1 = children[2]
         var pph1 = $($(td1)).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
             '').trim()
         var tdpersen1= children[3]
@@ -826,9 +825,11 @@
         var tdpersen4= children[15]
         var pphpersen4 = $($(tdpersen4)).html()
 
+        console.log(pph1, pph2, pph3)
         
         // Penghasilan Kena Pajak
         var pkp = $('#pkp').val()
+        console.log(pkp)
 
         if (pkp <= pph1){
             var pphlevel1 = pkp * pphpersen1
@@ -841,9 +842,10 @@
 
              // FIX PPH Level 2
             var pphlevel1tahun = a[0];
+            console.log(pphlevel1fix, pphlevel1tahun)
 
 
-            if(pphlevel1fix <= 0){
+            if(pphlevel1tahun <= 0){
                 var pajaknull = 0
                 $('#pph21_pkp').val(pajaknull)
                 alert('BEBAS PAJAK')
