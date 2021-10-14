@@ -514,7 +514,7 @@
                                     <div class="row" id="radio2">
                                         <div class="col-md-6">
                                             <input class="mr-1 small" value="setahun" type="radio"
-                                                name="jenis_netto"><span class="small">Setahun</span>
+                                                name="jenis_netto"><span class="small" checked>Setahun</span>
                                         </div>
                                         <div class="col-md-6">
                                             <input class="mr-1 small" value="disetahunkan" type="radio"
@@ -837,9 +837,12 @@
             if(pphlevel1fix <= 0){
                 var pajaknull = 0
                 $('#pph21_pkp').val(pajaknull)
+                alert('BEBAS PAJAK')
             }else{
                 $('#pph21_pkp').val(pphlevel1fix)
+                alert('PPH LEVEL 1')
             }
+
         }else if (pkp > pph1 && pkp <= pph2){
              // Perhitungan 5%
             var pphkena5 = pph1
@@ -864,6 +867,8 @@
              // FIX PPH Level 2
             var pphlevel2tahun = a[0];
             $('#pph21_pkp').val(pphlevel2tahun)
+            alert('PPH LEVEL 2')
+
         }else if (pkp > pph2 && pkp <= pph3){
              // Perhitungan 5%
             var pph3kena5 = pph1
@@ -891,8 +896,9 @@
             a=numarray;
 
             // FIX PPH Level 2
-            var pphlevel3 = a[0];
-            $('#pph21_pkp').val(pphlevel3)
+            var pphlevel3tahun = a[0];
+            $('#pph21_pkp').val(pphlevel3tahun)
+            alert('PPH LEVEL 3')
         }
 
     }
