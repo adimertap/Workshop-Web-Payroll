@@ -8,6 +8,7 @@ use App\Model\Payroll\Detailgaji;
 use App\Model\Payroll\DetailPerampungan;
 use App\Model\Payroll\Gajipegawai;
 use App\Model\Payroll\Mastergajipokok;
+use App\Model\Payroll\Masterpph21;
 use App\Model\Payroll\MasterPTKP;
 use App\Model\Payroll\Perampungan;
 use Carbon\Carbon;
@@ -136,9 +137,9 @@ class PerampunganControllerr extends Controller
         $gajipokok = Mastergajipokok::where('id_jabatan', $perampungan->Pegawai->id_jabatan)->sum('besaran_gaji');
         $gajipokoktahun = $gajipokok * 12;
 
-        
+        $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
-        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','sumtunjangan','gajipokoktahun','sumpokok'));
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','sumtunjangan','gajipokoktahun','sumpokok','pph21'));
     }
 
     /**

@@ -242,7 +242,9 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-
+                            <span class="small" style="color: gray">Cek aturan PTKP <a
+                                data-toggle="modal" data-target="#Modalpph21"
+                                class="font-weight-500 text-primary"> disini </a></span>
                         </div>
                     </div>
                     {{-- BAGIAN B RINCIAN ------------------------------------------------------------- --}}
@@ -658,6 +660,65 @@
     </div>
 </main>
 
+<div class="modal fade" id="Modalpph21" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title" id="staticBackdropLabel">Aturan Pph21</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="datatable">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%"
+                                    cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Name: activate to sort column descending"
+                                                style="width: 30px;">No</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 250px;">Nama Pph21</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 100px;">Kumulatif Tahunan</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 90px;">Besaran Pph21 (%)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="pph21">
+                                        @forelse ($pph21 as $items)
+                                        <tr role="row" class="odd">
+                                            <th scope="row" class="small" class="sorting_1">
+                                                {{ $loop->iteration}}</th>
+                                            <td>{{ $items->nama_pph21 }}</td>
+                                            <td class="jumlah_pph21">Rp.{{ number_format($items->kumulatif_tahunan,2,',','.') }}</td>
+                                            <td class="text-center">{{ $items->besaran_pph21 }}</td>
+                                        </tr>
+                                        @empty
+
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     function hitungpenghasilanbruto() {
         var gaji_pokok = $('#gaji_pokok').val()
@@ -695,13 +756,17 @@
     function hitungpengurangan(){
         var biaya_jabatan =  $('#biaya_jabatan').val()
         var iuran_jht = $('#iuran_jht').val()
+        var bruto = $('#bruto').val()
 
-        var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
-        $('#total_pengurangan').val(total_pengurangan)
-        console.log(biaya_jabatan)
+        if(bruto == 0){
+            alert('Anda Belum Melakukan Perhitungan Gaji Bruto')
+        }else{
+            var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
+            $('#total_pengurangan').val(total_pengurangan)
+            console.log(biaya_jabatan)
 
-        alert('Jumlah Pengurangan Berhasil dihitung')
-
+            alert('Jumlah Pengurangan Berhasil dihitung')
+        }
     }
 
     function hitungpenghasilanneto(){
