@@ -828,8 +828,8 @@
         console.log(pph1, pph2, pph3)
         
         // Penghasilan Kena Pajak
-        var pkp = $('#pkp').val()
-        console.log(pkp)
+        var pkpasik = $('#pkp').val()
+        var pkp = parseInt(pkpasik)
 
         if (pkp <= pph1){
             var pphlevel1 = pkp * pphpersen1
