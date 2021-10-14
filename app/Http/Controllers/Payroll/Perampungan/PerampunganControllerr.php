@@ -108,6 +108,15 @@ class PerampunganControllerr extends Controller
         $perampungan = Perampungan::with('Pegawai','Pegawai.Jabatan','Pegawai.PTKP','Pemotong','Detail')->find($id);
 
         $detailgaji = Detailgaji::with('Gaji')->where('id_pegawai', $perampungan->id_pegawai)->get();
+        
+        for($i = 0;  $i < count($detailgaji->Gaji); $i++ ){
+            for($j = 0;  $j < count($detailgaji); $j++ ){
+               if ($detailgaji->Gaji[$i]->id_gaji_pegawai == $detailgaji[$j]->id_gaji_pegawai ){
+                $detailgaji[$j]->masa_perolehan = $detailgaji->Gaji[$i]->bulan_gaji;
+               };
+            }
+        }
+
         return $detailgaji;
 
 
