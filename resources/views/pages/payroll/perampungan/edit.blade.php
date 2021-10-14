@@ -704,6 +704,21 @@
 
     }
 
+    function hitungpenghasilanneto(){
+
+        var gaji_bruto =  $('#bruto').val()
+        var total_pengurangan = $('#total_pengurangan').val()
+
+        if(gaji_bruto == '0' && total_pengurangan == '0'){
+            alert('Anda Belum Melakukan Perhitungan Gaji Bruto dan Jumlah Pengurangan')
+        }else{
+            var neto = parseInt(gaji_bruto) - parseInt(total_pengurangan)
+            $('#netto').val(neto)
+            console.log(neto)
+        }
+
+
+    }
 
 </script>
 
