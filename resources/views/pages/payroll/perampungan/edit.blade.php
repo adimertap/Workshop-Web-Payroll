@@ -709,16 +709,30 @@
         var gaji_bruto =  $('#bruto').val()
         var total_pengurangan = $('#total_pengurangan').val()
 
-        if(gaji_bruto == 0 && total_pengurangan == 0){
+        if(gaji_bruto == 0 && total_pengurangan == 0 | gaji_bruto == 0 | total_pengurangan == 0){
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto dan Jumlah Pengurangan')
         }else{
             var neto = parseInt(gaji_bruto) - parseInt(total_pengurangan)
             $('#netto').val(neto)
-            console.log(neto)
+            $('#netto_pph21').val(neto)
+        }
+    }
+
+    function hitungpenghasilankenapajak(){
+        var netto_pph21 = $('#netto_pph21').val()
+        var ptkp = $('#ptkp').val()
+        var netto = $('#netto').val()
+
+        if(netto == 0){
+            alert('Anda Belum Melakukan Perhitungan Gaji Netto')
+        }else{
+            var pkp = parseInt(netto_pph21) - parseInt(ptkp)
+            $('#pkp').val(pkp)
         }
 
-
     }
+
+
 
 </script>
 
