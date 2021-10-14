@@ -114,8 +114,7 @@ class PerampunganControllerr extends Controller
             'Gaji'
         ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
         ->where('id_pegawai', $perampungan->id_pegawai)
-        ->whereDate('bulan_gaji', '>=', $perampungan->masa_perolehan_awal)
-        ->whereDate('bulan_gaji', '>=', $perampungan->masa_perolehan_akhir)
+        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
         return $detailgaji;
