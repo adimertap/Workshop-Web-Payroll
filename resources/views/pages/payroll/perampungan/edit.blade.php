@@ -452,7 +452,7 @@
                                                 type="button">Hitung</button>
                                         </div>
                                         <input type="input" class="form-control form-control-sm" id="total_pengurangan"
-                                            name="total_pengurangan" value="" placeholder="Jumlah Pengurangan">
+                                            name="total_pengurangan" value="0" placeholder="Jumlah Pengurangan">
                                     </div>
                                 </div>
                             </div>
