@@ -118,7 +118,8 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        $gajipokok = Mastergajipokok::where('id_pegawai', $perampungan->id_pegawai)->sum('besaran_gaji');
+        $gajipokok = Mastergajipokok::where('id_jabatan', $perampungan->Pegawai->id_jabatan)->sum('besaran_gaji');
+        
         return $gajipokok;
 
         $ptkp = MasterPTKP::get();
