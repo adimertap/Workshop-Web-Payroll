@@ -844,15 +844,17 @@
             var pphlevel1tahun = a[0];
             console.log(pphlevel1fix, pphlevel1tahun)
 
+            $('#pph21_pkp').val(pphlevel1tahun)
+            alert('PPH LEVEL 1')
 
-            if(pphlevel1tahun <= 0){
-                var pajaknull = 0
-                $('#pph21_pkp').val(pajaknull)
-                alert('BEBAS PAJAK')
-            }else{
-                $('#pph21_pkp').val(pphlevel1tahun)
-                alert('PPH LEVEL 1')
-            }
+            // if(pphlevel1tahun < 0){
+            //     var pajaknull = 0
+            //     $('#pph21_pkp').val(pajaknull)
+            //     alert('BEBAS PAJAK')
+            // }else{
+            //     $('#pph21_pkp').val(pphlevel1tahun)
+            //     alert('PPH LEVEL 1')
+            // }
 
         }else if (pkp > pph1 && pkp <= pph2){
              // Perhitungan 5%
@@ -877,6 +879,7 @@
 
              // FIX PPH Level 2
             var pphlevel2tahun = a[0];
+            console.log(pphlevel2tahun)
             $('#pph21_pkp').val(pphlevel2tahun)
             alert('PPH LEVEL 2')
 
