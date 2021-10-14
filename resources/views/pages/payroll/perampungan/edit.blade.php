@@ -284,7 +284,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="{{ $gajipokoktahun ?? '0' }}"
+                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" name="gaji_pokok" value="{{ $gajipokoktahun ?? '0' }}"
                                     placeholder="Gaji/Pensiun Atau THT/JHT">
                             </div>
                         </div>
@@ -297,7 +297,7 @@
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" name="tunjangan_pph" value="0"
                                     placeholder="Tunj PPh">
                             </div>
                         </div>
@@ -306,26 +306,26 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">3. Tunjangan
+                            <label for="tunjangan_lain" class="col-sm-5 col-form-label col-form-label-sm">3. Tunjangan
                                 Lainnya, Uang Lembur dan Sebagainya</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="tunjangan_lain" name="tunjangan_lain" value=""
                                     placeholder="{{ $sumtunjangan ?? '0'}}">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">4. Honorarium
+                            <label for="honorarium" class="col-sm-5 col-form-label col-form-label-sm">4. Honorarium
                                 dan Imbalan Lain Sejenisnya</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
+                                <input type="input" class="form-control form-control-sm" id="honorarium" name="honorarium" value="0"
                                     placeholder="Honorarium">
                             </div>
                         </div>
@@ -334,27 +334,27 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">5. Premi Asuransi
+                            <label for="premi_prsh" class="col-sm-5 col-form-label col-form-label-sm">5. Premi Asuransi
                                 yang Dibayar Pemberi Kerja</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="0"
+                                <input type="input" class="form-control form-control-sm" id="premi_prsh" name="premi_prsh" value="0"
                                     placeholder="Premi Asuransi">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">6. Penerimaan
+                            <label for="natura" class="col-sm-5 col-form-label col-form-label-sm">6. Penerimaan
                                 dalam Bentuk Natura dan Kenikmatan Lainnya yang Dikenakan Pemotongan PPh Pasal
                                 21</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
+                                <input type="input" class="form-control form-control-sm" id="natura" name="natura" value="0"
                                     placeholder="Natura">
                             </div>
                         </div>
@@ -363,20 +363,20 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">7. Tantiem, Bonus,
+                            <label for="bonusthr" class="col-sm-5 col-form-label col-form-label-sm">7. Tantiem, Bonus,
                                 Gratifikasi, Jasa Produksi dan THR</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value="0"
+                                <input type="input" class="form-control form-control-sm" id="bonusthr" name="bonusthr" value="0"
                                     placeholder="Bonus THR">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">8. Jumlah
+                            <label for="bruto" class="col-sm-5 col-form-label col-form-label-sm">8. Jumlah
                                 Penghasilan Bruto (1 s.d. 7)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
@@ -387,7 +387,7 @@
                                         <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanbruto()"
                                             type="button">Hitung</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value="0"
+                                    <input type="input" class="form-control form-control-sm" id="bruto" name="bruto" value="0"
                                         placeholder="Jumlah Penghasilan">
                                 </div>
 
@@ -401,26 +401,26 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">9. Biaya
+                            <label for="biaya_jabatan" class="col-sm-5 col-form-label col-form-label-sm">9. Biaya
                                 Jabatan/Biaya Pensiun</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="biaya_jabatan" name="biaya_jabatan" value="0"
                                     placeholder="Biaya Jabatan">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">10. Iuran
+                            <label for="iuran_jht" class="col-sm-5 col-form-label col-form-label-sm">10. Iuran
                                 Pensiun atau Iuran THT/JHT</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                <input type="input" class="form-control form-control-sm" id="iuran_jht" name="iuran_jht" value="0"
                                     placeholder="Iuran">
                             </div>
                         </div>
@@ -430,7 +430,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">11. Jumlah
+                            <label for="total_pengurangan" class="col-sm-5 col-form-label col-form-label-sm">11. Jumlah
                                 Pengurangan (9 s.d. 10)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
@@ -441,7 +441,7 @@
                                         <button class="btn btn-sm btn-primary" onclick="hitungpengurangan()"
                                             type="button">Hitung</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    <input type="input" class="form-control form-control-sm" id="total_pengurangan" name="total_pengurangan" value=""
                                         placeholder="Jumlah Pengurangan">
                                 </div>
                             </div>
@@ -456,7 +456,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">12. Jumlah
+                            <label for="netto" class="col-sm-5 col-form-label col-form-label-sm">12. Jumlah
                                 Penghasilan Neto (8-11)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
@@ -467,7 +467,7 @@
                                         <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
                                             type="button">Hitung</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    <input type="input" class="form-control form-control-sm" id="netto" name="netto" value="0"
                                         placeholder="Jumlah Penghasilan Netto">
                                 </div>
 
@@ -476,13 +476,13 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">13. Penghasilan
+                            <label for="netto_sebelumnya" class="col-sm-5 col-form-label col-form-label-sm">13. Penghasilan
                                 Neto Masa Sebelumnya</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                <input type="input" class="form-control form-control-sm" id="netto_sebelumnya" name="netto_sebelumnya" value="0"
                                     placeholder="Netto Sebelumnya">
                             </div>
                         </div>
@@ -500,12 +500,12 @@
                             <div class="col-sm-6">
                                 <div class="row" id="radio2">
                                     <div class="col-md-6">
-                                        <input class="mr-1 small" value="setahun" type="radio" name="radiosetahun"><span
+                                        <input class="mr-1 small" value="setahun" type="radio" name="jenis_netto"><span
                                             class="small">Setahun</span>
                                     </div>
                                     <div class="col-md-6">
                                         <input class="mr-1 small" value="disetahunkan" type="radio"
-                                            name="radiodisetahunkan"><span class="small">Disetahunkan</span>
+                                            name="jenis_netto"><span class="small">Disetahunkan</span>
                                     </div>
                                 </div>
                             </div>
@@ -515,7 +515,7 @@
                     <div class="col-sm-6">
                         <div class="form-group row">
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                <input type="input" class="form-control form-control-sm" id="netto_pph21" name="netto_pph21" value="0"
                                     placeholder="Jumlah Penghasilan Netto">
                             </div>
                         </div>
@@ -525,20 +525,20 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">15. Penghasilan
+                            <label for="ptkp" class="col-sm-5 col-form-label col-form-label-sm">15. Penghasilan
                                 Tidak Kena Pajak (PTKP)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="ptkp" name="ptkp" value="{{ $perampungan->Pegawai->PTKP->besaran_ptkp }}"
                                     placeholder="Besaran PTKP">
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">16. Penghasilan
+                            <label for="pkp" class="col-sm-5 col-form-label col-form-label-sm">16. Penghasilan
                                 Kena Pajak Setahun/Disetahunkan (14-15)</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
@@ -546,10 +546,10 @@
                             <div class="col-sm-6">
                                 <div class="input-group input-group-joined">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                        <button class="btn btn-sm btn-primary" onclick="hitungpenghasilankenapajak()"
                                             type="button">Hitung</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    <input type="input" class="form-control form-control-sm" id="pkp" name="pkp" value="0"
                                         placeholder="Jumlah Penghasilan Kena Pajak">
                                 </div>
                             </div>
@@ -560,7 +560,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">17. PPh Pasal
+                            <label for="pph21_pkp" class="col-sm-5 col-form-label col-form-label-sm">17. PPh Pasal
                                 21 Atas Penghasilan Kena Pajak Setahun/Disetahunkan</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
@@ -568,10 +568,10 @@
                             <div class="col-sm-6">
                                 <div class="input-group input-group-joined">
                                     <div class="input-group-prepend">
-                                        <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                        <button class="btn btn-sm btn-primary" onclick="hitungpph21()"
                                             type="button">Hitung</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    <input type="input" class="form-control form-control-sm" id="pph21_pkp" name="pph21_pkp" value="0"
                                         placeholder="PPh Pasal 21 PKP">
                                 </div>
                             </div>
@@ -579,13 +579,13 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">18. PPh Pasal 21
+                            <label for="pph21_telah_pot" class="col-sm-5 col-form-label col-form-label-sm">18. PPh Pasal 21
                                 Yang Telah Dipotong Masa Sebelumnya</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="pph21_telah_pot" name="pph21_telah_pot" value="0"
                                     placeholder="PPh21 Telah Pot">
                             </div>
                         </div>
@@ -595,7 +595,7 @@
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">19. PPh Pasal
+                            <label for="pph21_terutang" class="col-sm-5 col-form-label col-form-label-sm">19. PPh Pasal
                                 21 Terutang</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
@@ -606,7 +606,7 @@
                                         <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
                                             type="button">Hitung</button>
                                     </div>
-                                    <input type="input" class="form-control form-control-sm" id="tunjangan_pph" value=""
+                                    <input type="input" class="form-control form-control-sm" id="pph21_terutang" name="pph21_terutang" value="0"
                                         placeholder="PPh Pasal 21 Terutang">
                                 </div>
                             </div>
@@ -614,13 +614,13 @@
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group row">
-                            <label for="gaji_pokok" class="col-sm-5 col-form-label col-form-label-sm">20. PPh Pasal 21
+                            <label for="pph21_lunas" class="col-sm-5 col-form-label col-form-label-sm">20. PPh Pasal 21
                                 dan PPh Pasal 26 Yang Telah Dipotong dan Dilunasi</label>
                             <div class="col-sm-1 text-center">
                                 <span> : </span>
                             </div>
                             <div class="col-sm-6">
-                                <input type="input" class="form-control form-control-sm" id="gaji_pokok" value=""
+                                <input type="input" class="form-control form-control-sm" id="pph21_lunas" name="pph21_lunas" value="0"
                                     placeholder="PPh21 dan PPh26">
                             </div>
                         </div>
