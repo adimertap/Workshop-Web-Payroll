@@ -866,9 +866,11 @@
             var pphkena15 = pkp - pph1
             var pphkena15fix = pphkena15 * pphpersen2
             var pphkena15sangat = pphkena15fix / 100
+            console.log(pphkena15sangat, pphkena5sangat)
 
             // Penambahan
-            var pphlevel2 = pphkena5sangat + pphkena15sangat
+            var pphlevel2 = parseInt(pphkena5sangat + pphkena15sangat)
+            console.log(pphlevel2)
             // var pphlevel2hampir = pphlevel2 / 12
 
             // Memecah Bilangan Decimal
@@ -879,6 +881,7 @@
 
              // FIX PPH Level 2
             var pphlevel2tahun = a[0];
+
             console.log(pphlevel2tahun)
             $('#pph21_pkp').val(pphlevel2tahun)
             alert('PPH LEVEL 2')
