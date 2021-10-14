@@ -667,7 +667,7 @@
         // PERHITUNGAN DENGAN PPH21 dan PTKP ---------------------------------------------------------------
         var besaranptkp = $(`#besaran_ptkp-${id_pegawai}`).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
             '').trim()
-       
+        
         var gajitahunan = gajinetto * 12
         var gajikenapajak = gajitahunan - besaranptkp
         
@@ -678,7 +678,6 @@
             var pphlevel1bulan = pphlevel1fix / 12
 
             if(pphlevel1bulan < 0){
-
                 var totaltambahtunjangan = $('#gaji_diterima').val()
                 var jumlahfix3 = totalgaji + parseInt(totaltambahtunjangan)
                 $('#gaji_diterima').val(jumlahfix3)
@@ -873,20 +872,21 @@
             var id_pegawai = $(span).attr('id')
             var id = id_pegawai.split('pegawai-')[1]
             var tes1 = $($(td).parent().children())
+            var total_pokok = $($(td).parent().children()[3]).html().split('Rp.')[1].replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
             var total_tunjangan = $($(td).parent().children()[4]).html().split('Rp')[1].replace('&nbsp;', '')
-                .replace(
-                    '.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_gaji = $($(td).parent().children()[5]).html().split('Rp')[1].replace('&nbsp;', '').replace(
-                '.','').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_pph21 = $($(td).parent().children()[6]).html().split('Rp')[1].replace('&nbsp;', '').replace(
-                '.',
-                '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+            var total_gaji = $($(td).parent().children()[5]).html().split('Rp')[1].replace('&nbsp;', '')
+            .replace('.','').replace('.', '').replace(',00', '').replace(',50', '').trim()
+            var total_pph21 = $($(td).parent().children()[6]).html().split('Rp')[1].replace('&nbsp;', '')
+            .replace('.','').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
             pegawai.push({
                 id_pegawai: id,
                 total_tunjangan: total_tunjangan,
                 total_gaji: total_gaji,
-                total_pph21: total_pph21
+                total_pph21: total_pph21,
+                total_pokok: total_pokok
             })
 
             var tbody = $(`#tunjangan-${id}`)
