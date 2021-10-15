@@ -25,17 +25,16 @@ class PerampunganControllerr extends Controller
      */
     public function index()
     {
-        $perampungan = Perampungan::with('Detail','Pegawai','Pemotong')->get();
+        $perampungan = Perampungan::with('Detail','Pemotong')->get();
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
         $tahun = Carbon::now()->format('Y');
+
         $pegawai = Pegawai::with([
             'Jabatan'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->get();
         
-  
-
         return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal','pegawai','tahun'));
     }
 

@@ -12,6 +12,10 @@ class DetailPerampungan extends Model
 
     protected $fillable = [
         'id_perampungan',
+        'id_pegawai',
+        'nomor',
+        'karyawan_asing',
+        'kode_negara',
         'kode_objek_pajak',
         'gaji_pokok',
         'tunjangan_pph',
@@ -44,5 +48,9 @@ class DetailPerampungan extends Model
 
     public function Perampungan(){
         return $this->belongsTo(Perampungan::class,'id_perampungan','id_perampungan');
+    }
+
+    public function Pegawai(){
+        return $this->belongsTo(Pegawai::class,'id_pegawai','id_pegawai');
     }
 }

@@ -68,16 +68,16 @@
                                                 No</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 80px;">Nomor</th>
+                                                style="width: 40px;">Nama Pemotong</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 40px;">NPWP Pemotong</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 40px;">Tahun</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 100px;">Pegawai</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Office: activate to sort column ascending"
-                                                style="width: 100px;">NPWP</th>
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 150px;">Total PPh Terutang</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 90px;">Actions</th>
@@ -87,10 +87,10 @@
                                         @forelse ($perampungan as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td>{{ $item->nomor }}</td>
+                                            <td>{{ $item->Pemotong->nama_pegawai}}</td>
+                                            <td>{{ $item->Pemotong->npwp_pegawai}}</td>
                                             <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
-                                            <td>{{ $item->Pegawai->nama_pegawai}}</td>
-                                            <td>{{ $item->Pegawai->npwp_pegawai}}</td>
+                                            <td>{{ $item->total_pph_terutang}}</td>
                                             <td>
                                                 <a href="{{ route('perampungan.show', $item->id_perampungan) }}"
                                                     class="btn btn-secondary btn-datatable" data-toggle="tooltip"
@@ -152,6 +152,27 @@
                                 value="<?php echo date('Y-m-d'); ?>">
                         </div>
                         <div class="form-group col-md-6">
+                            <label class="small mb-1" for="id_pegawai">Pilih Pegawai</label><span class="mr-4 mb-3" style="color: red">*</span>
+                            <div class="input-group input-group-joined">
+                                <input class="form-control" type="text" placeholder="Pilih Pegawai" aria-label="Search"
+                                    id="detailpegawai">
+                                <div class="input-group-append">
+                                    <a href="" class="input-group-text" type="button" data-toggle="modal"
+                                        data-target="#Modalpegawai">
+                                        <i class="fas fa-folder-open"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="small" id="alertsupplier" style="display:none">
+                                <span class="font-weight-500 text-danger">Error! Anda Belum Memilih Pegawai!</span>
+                                <button class="close" type="button" onclick="$(this).parent().hide()" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        </div>
+                           
+                       
+                        {{-- <div class="form-group col-md-6">
                             <label class="small mb-1 mr-1" for="id_pegawai">Pilih Pegawai</label><span class="mr-4 mb-3"
                                 style="color: red">*</span>
                             <select class="form-control" name="id_pegawai" id="id_pegawai"
@@ -162,7 +183,7 @@
                                 </option>
                                 @endforeach
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="form-group">
                         <label class="small mb-1">Masa Perolehan Penghasilan</label><span class="mr-4 mb-3"
@@ -235,6 +256,84 @@
 @empty
 
 @endforelse
+
+
+<div class="modal fade" id="Modalpegawai" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content ">
+            <div class="modal-header bg-light ">
+                <h5 class="modal-title">Pilih Supplier</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="datatable">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover dataTable" id="dataTablePegawai" width="100%"
+                                    cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Name: activate to sort column descending"
+                                                style="width: 20px;">No</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 50px;">Nama Pegawai</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 120px;">NPWP Pegawai</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Start date: activate to sort column ascending"
+                                                style="width: 70px;">Jabatan</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                style="width: 60px;">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($pegawai as $item)
+                                        <tr id="item-{{ $item->id_pegawai }}" role="row" class="odd">
+                                            <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
+                                            <td class="nama_pegawai">{{ $item->nama_pegawai }}</td>
+                                            <td class="npwp_pegawai">{{ $item->npwp_pegawai }}</td>
+                                            <td class="nama_jabatan">{{ $item->Jabatan->nama_jabatan }}</td>
+                                            <td>
+                                                <div class="">
+                                                    <input class="checkpegawai"
+                                                        id="customCheck1-{{ $item->id_pegawai }}"
+                                                        type="checkbox" />
+                                                    <label class="" for="customCheck1">Pilih</label>
+                                                </div>
+                                                
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="7" class="tex-center">
+                                                Data Supplier Kosong
+                                            </td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-success btn-xs"
+                onclick="tambahpegawai(event)" type="button"
+                data-dismiss="modal">Tambah
+            </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
     function submit1() {
