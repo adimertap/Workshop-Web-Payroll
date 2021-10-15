@@ -232,7 +232,7 @@
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
         <div class="modal-content ">
             <div class="modal-header bg-light ">
-                <h5 class="modal-title">Pilih Supplier</h5>
+                <h5 class="modal-title">Pilih Pegawai</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
@@ -398,7 +398,12 @@
     }
 
     $(document).ready(function () {
-        $('#dataTablePegawai').DataTable()
+        $('#dataTablePegawai').DataTable({"pageLength": 5,
+            "lengthMenu": [
+                [5, 10, 20, -1],
+                [5, 10, 20, ]
+            ]
+        })
     });
 
 </script>
