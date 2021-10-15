@@ -147,7 +147,7 @@
                     </hr>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="tanggal_perampungan">Tanggal</label><span class="mr-4 mb-3" style="color: red">*</span>
+                            <label class="small mb-1" for="tanggal_perampungan">Tanggal Perampungan</label><span class="mr-4 mb-3" style="color: red">*</span>
                             <input class="form-control" id="tanggal_perampungan" type="date" name="tanggal_perampungan"
                                 value="<?php echo date('Y-m-d'); ?>">
                         </div>
@@ -170,20 +170,6 @@
                                 </button>
                             </div>
                         </div>
-                           
-                       
-                        {{-- <div class="form-group col-md-6">
-                            <label class="small mb-1 mr-1" for="id_pegawai">Pilih Pegawai</label><span class="mr-4 mb-3"
-                                style="color: red">*</span>
-                            <select class="form-control" name="id_pegawai" id="id_pegawai"
-                                class="form-control @error('id_pegawai') is-invalid @enderror">
-                                <option>Pilih Pegawai</option>
-                                @foreach ($pegawai as $pegawais)
-                                <option value="{{ $pegawais->id_pegawai }}">{{ $pegawais->nama_pegawai }}
-                                </option>
-                                @endforeach
-                            </select>
-                        </div> --}}
                     </div>
                     <div class="form-group">
                         <label class="small mb-1">Masa Perolehan Penghasilan</label><span class="mr-4 mb-3"
@@ -200,23 +186,6 @@
                                 <input class="form-control" id="masa_perolehan_akhir" type="month"
                                     name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="form-group col-md-6">
-                            <label class="small mb-1" for="karyawan_asing">Karyawan Asing</label><span class="mr-4 mb-3" style="color: red">*</span>
-                            <select name="karyawan_asing" id="karyawan_asing" class="form-control"
-                                class="form-control @error('karyawan_asing') is-invalid @enderror">
-                                <option value="Tidak">Tidak</option>
-                                <option value="Ya">Ya</option>
-                            </select>
-                            @error('karyawan_asing')<div class="text-danger small mb-1">{{ $message }}
-                            </div> @enderror
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="small mb-1" for="kode_negara">Kode Negara Domisili</label>
-                            <input class="form-control" id="kode_negara" type="input" name="kode_negara"
-                                value="{{ old('kode_negara') }}">
                         </div>
                     </div>
                 </div>
@@ -282,16 +251,16 @@
                                                 style="width: 20px;">No</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 50px;">Nama Pegawai</th>
+                                                style="width: 150px;">Nama Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 120px;">NPWP Pegawai</th>
+                                                style="width: 70px;">NPWP Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Start date: activate to sort column ascending"
-                                                style="width: 70px;">Jabatan</th>
+                                                style="width: 40px;">Jabatan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 60px;">Actions</th>
+                                                style="width: 50px;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -326,7 +295,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success btn-xs"
+                <button class="btn btn-success"
                 onclick="tambahpegawai(event)" type="button"
                 data-dismiss="modal">Tambah
             </button>
@@ -427,6 +396,10 @@
 
         document.getElementById('clock').innerHTML = hrs + ':' + min + ':' + sec + ' ' + en;
     }
+
+    $(document).ready(function () {
+        $('#dataTablePegawai').DataTable()
+    });
 
 </script>
 
