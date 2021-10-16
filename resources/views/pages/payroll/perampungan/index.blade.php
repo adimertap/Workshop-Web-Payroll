@@ -267,7 +267,7 @@
                                         @forelse ($pegawai as $item)
                                         <tr id="item-{{ $item->id_pegawai }}" role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td class="nama_pegawai">{{ $item->nama_pegawai }}</td>
+                                            <td class="nama_pegawai"><span id="{{ $sparepart->kode_sparepart }}">{{ $item->nama_pegawai }}</span></td>
                                             <td class="npwp_pegawai">{{ $item->npwp_pegawai }}</td>
                                             <td class="nama_jabatan">{{ $item->Jabatan->nama_jabatan }}</td>
                                             <td>
@@ -307,7 +307,7 @@
 <script>
     function submit1(event, id_pegawai) {
         var tbody = $(`#pegawai`)
-        var tunjangan = []
+        var pegawai = []
         var check = tbody.find('.checkpegawai').each(function (index, element) {
             var value = $(element).is(':checked')
             if (value == true) {
@@ -315,9 +315,13 @@
                 var td = $(tr).find('.nama_pegawai')[0]
                 var nama = $(td).html()
 
-                tunjangan = nama
+                var span = $(td).children()[0]
+                var id = $(span).attr('id')
 
-                console.log(check, td, nama)
+                pegawai = id
+
+                console.log(span, nama, pegawai)
+
             }
         })
         
