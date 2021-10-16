@@ -77,7 +77,14 @@ class PerampunganControllerr extends Controller
             $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
             $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
 
-            $perampungan->Detail()->save($request->pegawai);
+            $pegawaiModel = [];
+            foreach ($request->pegawai as $item) {
+                $pegawaiModel[] = new DetailPerampungan($item);
+            }
+
+            $perampungan->Detail()->saveMany($pegawaiModel);
+
+            // $perampungan->Detail()->save($request->pegawai);
             
             return $request;
         }else{
