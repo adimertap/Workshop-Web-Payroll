@@ -139,11 +139,12 @@ class PerampunganControllerr extends Controller
     public function edit($id)
     {
         $perampungan = Perampungan::with('Detail')->find($id);
-        $tes = DetailPerampungan::where('id_perampungan','=', $perampungan->id_perampungan)->get();
+        $tes = DetailPerampungan::where('id_perampungan','=', $perampungan->id_perampungan)->pluck('id_pegawai');
         // $id_pegawai = Perampungan::join('tb_payroll_detail_perampungan', 'tb_payroll_perampungan.id_perampungan', 'tb_payroll_detail_perampungan.id_perampungan')
         // ->where('id_perampungan', $id);
 
         return $tes;
+
 
         $detailgaji = Detailgaji::with([
             'Gaji'])
