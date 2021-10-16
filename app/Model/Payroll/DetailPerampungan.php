@@ -11,7 +11,6 @@ class DetailPerampungan extends Model
     protected $primaryKey = 'id_1721a1';
 
     protected $fillable = [
-        'id_perampungan',
         'id_pegawai',
         'nomor',
         'karyawan_asing',
@@ -36,7 +35,8 @@ class DetailPerampungan extends Model
         'pph21_pkp',
         'pph21_telah_pot',
         'pph21_terutang',
-        'pph21_lunas'
+        'pph21_lunas',
+        'id_perampungan'
     ];
 
     protected $hidden =[ 
