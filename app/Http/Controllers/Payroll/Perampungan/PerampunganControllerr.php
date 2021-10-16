@@ -90,6 +90,7 @@ class PerampunganControllerr extends Controller
             }
 
             $perampungan->Detail()->saveMany($pegawaiModel);
+            $perampungan->save();
 
             // $perampungan->Detail()->save($request->pegawai);
             
