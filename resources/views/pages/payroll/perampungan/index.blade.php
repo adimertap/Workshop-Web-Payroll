@@ -88,8 +88,8 @@
                                         @forelse ($perampungan as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td>{{ $item->Pemotong->nama_pegawai}}</td>
-                                            <td>{{ $item->Pemotong->npwp_pegawai}}</td>
+                                            <td>{{ $item->nama_pemotong}}</td>
+                                            <td>{{ $item->npwp_pemotong}}</td>
                                             <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
                                             <td>{{ $item->total_pph_terutang}}</td>
                                             <td>
