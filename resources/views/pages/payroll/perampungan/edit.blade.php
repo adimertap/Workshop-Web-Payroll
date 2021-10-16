@@ -20,7 +20,59 @@
             </div>
         </div>
     </header>
+
     <div class="container-fluid">
+        <div class="card mb-4">
+            <div class="card-body ">
+                <div class="datatable">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%"
+                                    cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-sort="ascending"
+                                                aria-label="Name: activate to sort column descending"
+                                                style="width: 20px;">
+                                                No</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 40px;">Nama Pegawai</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 40px;">NPWP Pegawai</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                style="width: 90px;">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($detailgaji as $item)
+                                        <tr role="row" class="odd">
+                                            <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
+                                            <td>{{ $item->Pegawai->nama_pegawai}}</td>
+                                            <td>{{ $item->Pegawai->npwp_pegawai}}</td>
+                                            <td>
+                                               
+                                            </td>
+                                        </tr>
+                                        @empty
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {{-- <div class="container-fluid">
         <div class="card">
             <div class="card-header">FORM 1721 A1</div>
             <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
@@ -99,7 +151,7 @@
                         </div>
                     </div>
 
-                    {{-- BAGIAN A IDENTITAS ---------------------------------------------------------------------- --}}
+                  
                     <hr class="mt-2">
                     <h6>A. Identitas Penerima Penghasil yang Dipotong</h6>
                     <hr class="mb-4">
@@ -247,7 +299,8 @@
                                 class="font-weight-500 text-primary"> disini </a></span>
                         </div>
                     </div>
-                    {{-- BAGIAN B RINCIAN ------------------------------------------------------------- --}}
+                   
+
                     <hr class="mt-2">
                     <h6>B. Rincian Penghasilan dan Penghitungan PPh Pasal 21</h6>
                     <hr class="mb-4">
@@ -278,7 +331,7 @@
                         </div>
                     </div>
 
-                    {{-- PENGHASILAN BRUTO --------------------------------------------------------------------------------PENGHASILAN BRUTO --}}
+                   
                     <p class="font-italic">Penghasilan Bruto :</p>
                     <div class="row">
                         <div class="col-sm-6">
@@ -407,7 +460,7 @@
                         </div>
                     </div>
 
-                    {{-- PENGURANGAN --------------------------------------------------------------------------------PENGURANGAN --}}
+                   
                     <p class="font-italic">Pengurangan :</p>
                     <div class="row">
                         <div class="col-sm-6">
@@ -463,7 +516,7 @@
 
                         </div>
                     </div>
-                    {{-- Penghitungan PPh Pasal 21 -----------------------------------------------Penghitungan PPh Pasal 21 --}}
+                  
                     <p class="font-italic">Penghitungan PPh Pasal 21 :</p>
                     <div class="row">
                         <div class="col-sm-6">
@@ -657,7 +710,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 </main>
 
 <div class="modal fade" id="Modalpph21" data-backdrop="static" tabindex="-1" role="dialog"

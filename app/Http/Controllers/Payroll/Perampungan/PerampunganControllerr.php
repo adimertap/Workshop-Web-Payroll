@@ -146,27 +146,27 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        $sumtunjangan = Detailgaji::with([
-            'Gaji'
-        ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        ->sum('total_tunjangan');
+        // $sumtunjangan = Detailgaji::with([
+        //     'Gaji'
+        // ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        // ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        // ->sum('total_tunjangan');
         
-        $sumpokok= Detailgaji::with([
-            'Gaji'
-        ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        ->sum('total_pokok');
+        // $sumpokok= Detailgaji::with([
+        //     'Gaji'
+        // ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        // ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        // ->sum('total_pokok');
 
-        return $detailgaji;
+        // return $detailgaji;
   
 
-        $gajipokok = Mastergajipokok::sum('besaran_gaji');
-        $gajipokoktahun = $gajipokok * 12;
+        // $gajipokok = Mastergajipokok::sum('besaran_gaji');
+        // $gajipokoktahun = $gajipokok * 12;
 
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
-        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','sumtunjangan','gajipokoktahun','sumpokok','pph21'));
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21'));
     }
 
     /**
