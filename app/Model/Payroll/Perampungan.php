@@ -39,7 +39,7 @@ class Perampungan extends Model
         return $this->belongsToMany(Pegawai::class,'tb_payroll_detail_perampungan','id_perampungan','id_pegawai')
         ->withPivot(
             'nomor','karyawan_asing','kode_negara','kode_objek_pajak','gaji_pokok','tunjangan_pph','tunjangan_lain',
-            'honorium','premi_prsh','natura','bruto','biaya_jabatan','iuran_jht','total_pengurangan',
+            'honorarium','premi_prsh','natura','bruto','biaya_jabatan','iuran_jht','total_pengurangan',
             'netto','netto_sebelumnnya','jenis_netto','netto_pph21','ptkp','pkp','pph21_pkp',
             'pph21_telah_pot','pph21_terutang','pph21_lunas'
         );
