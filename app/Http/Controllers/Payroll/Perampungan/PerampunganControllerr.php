@@ -155,21 +155,20 @@ class PerampunganControllerr extends Controller
         $sumtunjangan = Detailgaji::with([
             'Gaji'
         ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->where('id_pegawai', $detail->id_pegawai)
+        ->where('id_pegawai', $perampungan->detail->id_pegawai)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->sum('total_tunjangan');
         
         $sumpokok= Detailgaji::with([
             'Gaji'
         ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->where('id_pegawai', $detail->id_pegawai)
+        ->where('id_pegawai',$perampungan->detail->id_pegawai)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->sum('total_pokok');
 
-        return $detail;
+  
 
-
-        $gajipokok = Mastergajipokok::where('id_jabatan', $detail->Pegawai->id_jabatan)->sum('besaran_gaji');
+        $gajipokok = Mastergajipokok::where('id_jabatan', $perampungan->detail->pegawai->id_jabatan)->sum('besaran_gaji');
         $gajipokoktahun = $gajipokok * 12;
 
         $pph21 = Masterpph21::get();
