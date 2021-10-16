@@ -88,7 +88,9 @@ class PerampunganControllerr extends Controller
 
             $perampungan->save();
             $perampungan->Detail()->sync($request->pegawai);
-            return $request;
+            return $perampungan;
+
+           
 
             // $pegawaiModel = [];
             // foreach ($request->pegawai as $item) {
