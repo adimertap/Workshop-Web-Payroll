@@ -142,15 +142,15 @@ class PerampunganControllerr extends Controller
         $id_pegawai = Perampungan::join('tb_payroll_detail_perampungan', 'tb_payroll_perampungan.id_perampungan', 'tb_payroll_detail_perampungan.id_perampungan')
         ->pluck('id_pegawai')->toArray();
 
-        return $id_pegawai;
 
         $detailgaji = Detailgaji::with([
             'Gaji'])
         ->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-
-        ->where('id_pegawai', $perampungan->detail->id_pegawai)
+        ->where('id_pegawai', $id_pegawai)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
+
+        return $detailgaji;
        
 
         // $sumtunjangan = Detailgaji::with([
