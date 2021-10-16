@@ -56,33 +56,30 @@ class PerampunganControllerr extends Controller
      */
     public function store(Request $request)
     {
-        $id = Perampungan::getId();
-        foreach($id as $value);
-        $idlama = $value->id_perampungan;
-        $idbaru = $idlama + 1;
-        $blt = date('m');
-        $year = date('y');
+        // $id = Perampungan::getId();
+        // foreach($id as $value);
+        // $idlama = $value->id_perampungan;
+        // $idbaru = $idlama + 1;
+        // $blt = date('m');
+        // $year = date('y');
         
-        $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
+        // $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
 
-        $data = Perampungan::where('id_bengkel', Auth::user()->id_bengkel)->where('id_pegawai', $request->id_pegawai)
-        ->where('masa_perolehan_awal', Carbon::create($request->masa_perolehan_awal)->startOfMonth())->where('masa_perolehan_akhir', Carbon::create($request->masa_perolehan_akhir)->startOfMonth())->first();
-        // return $data;
+        $data = Perampungan::where('id_bengkel', Auth::user()->id_bengkel)
+        ->where('masa_perolehan_awal', Carbon::create($request->masa_perolehan_awal)->startOfMonth())
+        ->where('masa_perolehan_akhir', Carbon::create($request->masa_perolehan_akhir)->startOfMonth())
+        ->first();
 
         if (empty($data)){
-            $perampungan = Perampungan::create([
-                'masa_perolehan_awal'=> Carbon::create($request->masa_perolehan_awal)->startOfMonth(), 
-                'masa_perolehan_akhir'=> Carbon::create($request->masa_perolehan_akhir)->startOfMonth(), 
-                'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
-                'id_pegawai' => $request->id_pegawai,
-                'tanggal_perampungan' => $request->tanggal_perampungan,
-                'karyawan_asing' => $request->karyawan_asing,
-                'kode_negara' => $request->kode_negara,
-                'nomor' => $kode_perampungan
-               
-            ]); 
+            $perampungan = new Perampungan;
+            $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
+            $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_akhir)->startOfMonth();
+            $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+            $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
+
+            $perampungan->Detail()->save($request->pegawai);
             
-            return $perampungan;
+            return $request;
         }else{
             throw new \Exception('Data Perampungan Sudah Ada');
         }
