@@ -139,10 +139,6 @@ class PerampunganControllerr extends Controller
     public function edit($id)
     {
         $perampungan = Perampungan::with('Detail')->find($id);
-      
-        // $detail = DetailPerampungan::with('Pegawai','Pegawai.Jabatan','Pegawai.PTKP')->where('id_perampungan', $perampungan->id_perampungan)->get();
-
-        // $detailgaji = Detailgaji::with('Gaji')->where('id_pegawai', $perampungan->id_pegawai)->get();
         
         $detailgaji = Detailgaji::with([
             'Gaji'
@@ -150,25 +146,22 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        return $detailgaji;
-
         $sumtunjangan = Detailgaji::with([
             'Gaji'
         ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->where('id_pegawai', $perampungan->detail['id_pegawai'])
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->sum('total_tunjangan');
         
         $sumpokok= Detailgaji::with([
             'Gaji'
         ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->where('id_pegawai',$perampungan->detail->id_pegawai)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->sum('total_pokok');
 
+        return $sumpokok;
   
 
-        $gajipokok = Mastergajipokok::where('id_jabatan', $perampungan->detail->pegawai->id_jabatan)->sum('besaran_gaji');
+        $gajipokok = Mastergajipokok::sum('besaran_gaji');
         $gajipokoktahun = $gajipokok * 12;
 
         $pph21 = Masterpph21::get();
