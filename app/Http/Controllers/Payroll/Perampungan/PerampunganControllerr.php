@@ -158,7 +158,7 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->sum('total_pokok');
 
-        return $sumpokok;
+        return $detailgaji;
   
 
         $gajipokok = Mastergajipokok::sum('besaran_gaji');
