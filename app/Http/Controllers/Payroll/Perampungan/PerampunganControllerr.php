@@ -139,7 +139,7 @@ class PerampunganControllerr extends Controller
     public function edit($id)
     {
         $perampungan = Perampungan::with('Detail')->find($id);
-        return $perampungan->detail['id_pegawai'];
+      
         // $detail = DetailPerampungan::with('Pegawai','Pegawai.Jabatan','Pegawai.PTKP')->where('id_perampungan', $perampungan->id_perampungan)->get();
 
         // $detailgaji = Detailgaji::with('Gaji')->where('id_pegawai', $perampungan->id_pegawai)->get();
@@ -147,7 +147,6 @@ class PerampunganControllerr extends Controller
         $detailgaji = Detailgaji::with([
             'Gaji'
         ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->where('id_pegawai', $perampungan->detail->id_pegawai)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
