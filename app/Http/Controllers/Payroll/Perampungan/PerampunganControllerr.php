@@ -33,6 +33,8 @@ class PerampunganControllerr extends Controller
         $model = Perampungan::getId();
         foreach($model as $value);
         $id_perampungan = $value->id_perampungan;
+        return $id_perampungan;
+
 
         $pegawai = Pegawai::with([
             'Jabatan'
