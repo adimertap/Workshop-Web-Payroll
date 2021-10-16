@@ -362,7 +362,8 @@
                 url: "/payroll/perampungan",
                 data: data,
                 success: function (response) {
-                    window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
+                    console.log(response)
+                    // window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
                 },
                 error: function (error) {
                     console.log(error)
