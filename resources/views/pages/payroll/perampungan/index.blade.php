@@ -193,8 +193,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <span class="font-weight-500 text-primary" id="id_perampungan"
+                      >{{ $id_perampungan }}</span>
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-success" onclick="submit1(event, {{ $id_perampungan }})" type="button">Selanjutnya!</button>
+                    <button class="btn btn-success" onclick="submit1(event)" type="button">Selanjutnya!</button>
                 </div>
             </form>
         </div>
@@ -308,7 +310,7 @@
 
 <script>
     function submit1(event, id_pegawai, id_perampungan) {
-        console.log(id_perampungan)
+
         var tbody = $(`#pegawai`)
         var pegawai = []
         for (let index = 0; index < tbody.length; index++) {
