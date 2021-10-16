@@ -139,8 +139,8 @@ class PerampunganControllerr extends Controller
     public function edit($id)
     {
         $perampungan = Perampungan::with('Detail')->find($id);
-        $id_pegawai = Perampungan::join('tb_payroll_detail_perampungan', 'tb_payroll_perampungan.id_perampungan', 'tb_payroll_detail_perampungan.id_perampungan')->pluck('id_pegawai')
-        ->where('id_perampungan', $id);
+        $id_pegawai = Perampungan::join('tb_payroll_detail_perampungan', 'tb_payroll_perampungan.id_perampungan', 'tb_payroll_detail_perampungan.id_perampungan')
+        ->where('id_perampungan', $id)->toArray();
 
         // return $id_pegawai;
 
