@@ -92,10 +92,13 @@ class PerampunganControllerr extends Controller
             // }
 
             foreach($request->pegawai as $key=>$item){
-                $pegawai = new DetailPerampungan;
-                $pegawai->id_pegawai = $item['id_pegawai'];
-                $pegawai->id_perampungan = $item['id_perampungan'];
-                $pegawai->save();
+
+                $tes = Perampungan::where('id_perampungan', $item['id_perampungan'])->first();
+
+                $tes = new DetailPerampungan;
+                $tes->id_pegawai = $item['id_pegawai'];
+                $tes->id_perampungan = $tes->id_perampungan;
+                $tes->save();
             }
 
             // $perampungan->Detail()->saveMany($pegawaiModel);
