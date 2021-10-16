@@ -146,7 +146,7 @@ class PerampunganControllerr extends Controller
         ->where('id_pegawai', $perampungan->detail->id_pegawai)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
-        return $detailgaji;
+        return $perampungan;
 
         // $sumtunjangan = Detailgaji::with([
         //     'Gaji'
