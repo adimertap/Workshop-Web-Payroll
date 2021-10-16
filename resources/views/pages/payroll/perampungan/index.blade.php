@@ -194,7 +194,7 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-success" onclick="submit1()" type="button">Selanjutnya!</button>
+                    <button class="btn btn-success" onclick="submit1(event)" type="button">Selanjutnya!</button>
                 </div>
             </form>
         </div>
@@ -311,27 +311,7 @@
 
 
 
-        var tbody = $(`#pegawai`)
-        var pegawai = [];
-
-        // for (var i = 0; i < pegawai.length; i++) {
       
-        for (let index = 0; index < tbody.length; index++) {
-            var tes = $(tbody[index]).children()
-            var check = tes.find('.checkpegawai').each(function (index, element) {
-                var value = $(element).is(':checked')
-                if (value == true) {
-                    var tr = $(element).parent().parent().parent()
-                    var td = $(tr).find('.nama_pegawai')[0]
-                    var nama = $(td).html()
-
-                    var span = $(td).children()[0]
-                    var id = $(span).attr('id')
-
-                    pegawai = id
-                }
-            })
-        }
 
         var _token = $('#form1').find('input[name="_token"]').val()
         var tanggal_perampungan = $('#tanggal_perampungan').val()
@@ -345,7 +325,6 @@
             tanggal_perampungan: tanggal_perampungan,
             masa_perolehan_awal: masa_perolehan_awal,
             masa_perolehan_akhir: masa_perolehan_akhir,
-            pegawai: pegawai
         }
 
         console.log(data)
@@ -361,6 +340,33 @@
                 data: data,
                 success: function (response) {
                     window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
+
+                    var tbody = $(`#pegawai`)
+                    var pegawai = [];
+
+                    // for (var i = 0; i < pegawai.length; i++) {
+                
+                    for (let index = 0; index < tbody.length; index++) {
+                        var tes = $(tbody[index]).children()
+                        var check = tes.find('.checkpegawai').each(function (index, element) {
+                            var value = $(element).is(':checked')
+                            if (value == true) {
+                                var tr = $(element).parent().parent().parent()
+                                var td = $(tr).find('.nama_pegawai')[0]
+                                var nama = $(td).html()
+
+                                var span = $(td).children()[0]
+                                var id = $(span).attr('id')
+
+                                pegawai = id
+
+                                pegawai.push({
+                                    id_pegawai: id,
+                                    id_perampungan: response.id_perampungan
+                                })
+                            }
+                        })
+                    }
 
                 },
                 error: function (error) {
