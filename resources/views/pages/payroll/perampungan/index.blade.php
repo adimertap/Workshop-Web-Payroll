@@ -263,7 +263,7 @@
                                                 style="width: 50px;">Actions</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="pegawai">
                                         @forelse ($pegawai as $item)
                                         <tr id="item-{{ $item->id_pegawai }}" role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
@@ -283,7 +283,7 @@
                                         @empty
                                         <tr>
                                             <td colspan="7" class="tex-center">
-                                                Data Supplier Kosong
+                                                Data Pegawai Kosong
                                             </td>
                                         </tr>
                                         @endforelse
@@ -305,7 +305,22 @@
 </div>
 
 <script>
-    function submit1() {
+    function submit1(event, id_pegawai) {
+        var tbody = $(`#pegawai`)
+        var tunjangan = []
+        var check = tbody.find('.checkpegawai').each(function (index, element) {
+            var value = $(element).is(':checked')
+            if (value == true) {
+                var tr = $(element).parent().parent().parent()
+                var td = $(tr).find('.nama_pegawai')[0]
+                var nama = $(td).html()
+
+                tunjangan = nama
+
+                console.log(check, td, nama)
+            }
+        })
+        
         var _token = $('#form1').find('input[name="_token"]').val()
         var tanggal_perampungan = $('#tanggal_perampungan').val()
         var id_pegawai = $('#id_pegawai').val()
