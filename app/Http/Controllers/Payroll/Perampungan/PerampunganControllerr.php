@@ -72,12 +72,12 @@ class PerampunganControllerr extends Controller
         
         // $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
 
-        $data = Perampungan::where('id_bengkel', Auth::user()->id_bengkel)
-        ->where('masa_perolehan_awal', Carbon::create($request->masa_perolehan_awal)->startOfMonth())
-        ->where('masa_perolehan_akhir', Carbon::create($request->masa_perolehan_akhir)->startOfMonth())
-        ->first();
+        // $data = Perampungan::where('id_bengkel', Auth::user()->id_bengkel)
+        // ->where('masa_perolehan_awal', Carbon::create($request->masa_perolehan_awal)->startOfMonth())
+        // ->where('masa_perolehan_akhir', Carbon::create($request->masa_perolehan_akhir)->startOfMonth())
+        // ->first();
 
-        if (empty($data)){
+        // if (empty($data)){
             $perampungan = new Perampungan;
             $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
             $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_akhir)->startOfMonth();
@@ -93,10 +93,10 @@ class PerampunganControllerr extends Controller
 
             // $perampungan->Detail()->save($request->pegawai);
             
-            return $perampungan;
-        }else{
-            throw new \Exception('Data Perampungan Sudah Ada');
-        }
+            return $request;
+        // }else{
+        //     throw new \Exception('Data Perampungan Sudah Ada');
+        // }
     }
 
     /**
