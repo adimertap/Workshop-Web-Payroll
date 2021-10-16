@@ -193,7 +193,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close {{ $id_perampungan }}</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-success" onclick="submit1(event, {{ $id_perampungan }})" type="button">Selanjutnya!</button>
                 </div>
             </form>
@@ -308,9 +308,9 @@
 
 <script>
     function submit1(event, id_pegawai, id_perampungan) {
+        console.log(id_perampungan)
         var tbody = $(`#pegawai`)
         var pegawai = []
-
         for (let index = 0; index < tbody.length; index++) {
             var tes = $(tbody[index]).children()
             var check = tes.find('.checkpegawai').each(function (index, element) {
