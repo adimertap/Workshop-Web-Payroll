@@ -326,8 +326,6 @@
                     var span = $(td).children()[0]
                     var id = $(span).attr('id')
 
-                    pegawai = id
-
                     pegawai.push({
                         id_pegawai: id,
                         id_perampungan:id_perampungan
