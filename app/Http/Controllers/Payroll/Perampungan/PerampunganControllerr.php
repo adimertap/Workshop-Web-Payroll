@@ -85,24 +85,28 @@ class PerampunganControllerr extends Controller
             $perampungan->id_pemotong = Auth::user()->pegawai->id_pegawai;
             $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
 
+            $perampungan->save();
+            $perampungan->Detail()->sync($request->pegawai);
+            return $request;
+
             // $pegawaiModel = [];
             // foreach ($request->pegawai as $item) {
             //     $pegawaiModel[] = new DetailPerampungan($item);
             //     $pegawaiModel->id_perampungan = $perampungan->id_perampungan;
             // }
 
-            foreach($request->pegawai as $key=>$item){
+            // foreach($request->pegawai as $key=>$item){
 
-                $tes = Perampungan::where('id_perampungan', $item['id_perampungan'])->first();
+            //     $tes = Perampungan::where('id_perampungan', $item['id_perampungan'])->first();
 
-                $tes = new DetailPerampungan;
-                $tes->id_pegawai = $item['id_pegawai'];
-                $tes->id_perampungan = $tes->id_perampungan;
-                $tes->save();
-            }
+            //     $tes = new DetailPerampungan;
+            //     $tes->id_pegawai = $item['id_pegawai'];
+            //     $tes->id_perampungan = $tes->id_perampungan;
+            //     $tes->save();
+            // }
 
             // $perampungan->Detail()->saveMany($pegawaiModel);
-            $perampungan->save();
+            // $perampungan->save();
 
             // $perampungan->Detail()->save($request->pegawai);
             
