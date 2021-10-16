@@ -36,7 +36,8 @@ class DetailPerampungan extends Model
         'pph21_telah_pot',
         'pph21_terutang',
         'pph21_lunas',
-        'id_perampungan'
+        'id_perampungan',
+        'status_hitung'
     ];
 
     protected $hidden =[ 
