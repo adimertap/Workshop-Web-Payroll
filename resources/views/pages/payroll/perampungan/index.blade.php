@@ -147,12 +147,14 @@
                     </hr>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="tanggal_perampungan">Tanggal Perampungan</label><span class="mr-4 mb-3" style="color: red">*</span>
+                            <label class="small mb-1" for="tanggal_perampungan">Tanggal Perampungan</label><span
+                                class="mr-4 mb-3" style="color: red">*</span>
                             <input class="form-control" id="tanggal_perampungan" type="date" name="tanggal_perampungan"
                                 value="<?php echo date('Y-m-d'); ?>">
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="small mb-1" for="id_pegawai">Pilih Pegawai</label><span class="mr-4 mb-3" style="color: red">*</span>
+                            <label class="small mb-1" for="id_pegawai">Pilih Pegawai</label><span class="mr-4 mb-3"
+                                style="color: red">*</span>
                             <div class="input-group input-group-joined">
                                 <input class="form-control" type="text" placeholder="Pilih Pegawai" aria-label="Search"
                                     id="detailpegawai">
@@ -165,7 +167,8 @@
                             </div>
                             <div class="small" id="alertsupplier" style="display:none">
                                 <span class="font-weight-500 text-danger">Error! Anda Belum Memilih Pegawai!</span>
-                                <button class="close" type="button" onclick="$(this).parent().hide()" aria-label="Close">
+                                <button class="close" type="button" onclick="$(this).parent().hide()"
+                                    aria-label="Close">
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
@@ -241,8 +244,9 @@
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row">
                             <div class="col-sm-12">
-                                <table class="table table-bordered table-hover dataTable" id="dataTablePegawai" width="100%"
-                                    cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <table class="table table-bordered table-hover dataTable" id="dataTablePegawai"
+                                    width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                    style="width: 100%;">
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
@@ -267,17 +271,17 @@
                                         @forelse ($pegawai as $item)
                                         <tr id="item-{{ $item->id_pegawai }}" role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td class="nama_pegawai"><span id="{{ $item->id_pegawai }}">{{ $item->nama_pegawai }}</span></td>
+                                            <td class="nama_pegawai"><span
+                                                    id="{{ $item->id_pegawai }}">{{ $item->nama_pegawai }}</span></td>
                                             <td class="npwp_pegawai">{{ $item->npwp_pegawai }}</td>
                                             <td class="nama_jabatan">{{ $item->Jabatan->nama_jabatan }}</td>
                                             <td>
                                                 <div class="">
                                                     <input class="checkpegawai"
-                                                        id="customCheck1-{{ $item->id_pegawai }}"
-                                                        type="checkbox" />
+                                                        id="customCheck1-{{ $item->id_pegawai }}" type="checkbox" />
                                                     <label class="" for="customCheck1">Pilih</label>
                                                 </div>
-                                                
+
                                             </td>
                                         </tr>
                                         @empty
@@ -295,10 +299,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-success"
-                onclick="tambahpegawai(event)" type="button"
-                data-dismiss="modal">Tambah
-            </button>
+                <button class="btn btn-success" onclick="tambahpegawai(event)" type="button" data-dismiss="modal">Tambah
+                </button>
             </div>
         </div>
     </div>
@@ -306,29 +308,35 @@
 
 <script>
     function submit1(event, id_pegawai) {
+
+
+
         var tbody = $(`#pegawai`)
         var pegawai = []
-        var check = tbody.find('.checkpegawai').each(function (index, element) {
-            var value = $(element).is(':checked')
-            if (value == true) {
-                var tr = $(element).parent().parent().parent()
-                var td = $(tr).find('.nama_pegawai')[0]
-                var nama = $(td).html()
 
-                var span = $(td).children()[0]
-                var id = $(span).attr('id')
+        for (var i = 0; i < pegawai.length; i++) {
+            var check = tbody.find('.checkpegawai').each(function (index, element) {
+                var value = $(element).is(':checked')
+                if (value == true) {
+                    var tr = $(element).parent().parent().parent()
+                    var td = $(tr).find('.nama_pegawai')[0]
+                    var nama = $(td).html()
 
-                pegawai = id
-            }
-        })
-        
+                    var span = $(td).children()[0]
+                    var id = $(span).attr('id')
+
+                    pegawai = id
+                }
+            })
+        }
+
         var _token = $('#form1').find('input[name="_token"]').val()
         var tanggal_perampungan = $('#tanggal_perampungan').val()
         var id_pegawai = $('#id_pegawai').val()
         var masa_perolehan_awal = $('#masa_perolehan_awal').val()
         var masa_perolehan_akhir = $('#masa_perolehan_akhir').val()
 
-     
+
         var data = {
             _token: _token,
             tanggal_perampungan: tanggal_perampungan,
@@ -336,7 +344,7 @@
             masa_perolehan_akhir: masa_perolehan_akhir,
             pegawai: pegawai
         }
-        
+
         console.log(data)
 
         if (tanggal_perampungan == '' | pegawai == '' | masa_perolehan_awal == '' |
@@ -350,7 +358,7 @@
                 data: data,
                 success: function (response) {
                     window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
-                    
+
                 },
                 error: function (error) {
                     console.log(error)
@@ -398,7 +406,8 @@
     }
 
     $(document).ready(function () {
-        $('#dataTablePegawai').DataTable({"pageLength": 5,
+        $('#dataTablePegawai').DataTable({
+            "pageLength": 5,
             "lengthMenu": [
                 [5, 10, 20, -1],
                 [5, 10, 20, ]
