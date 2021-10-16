@@ -83,7 +83,7 @@ class PerampunganControllerr extends Controller
             $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_akhir)->startOfMonth();
             $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
             $perampungan->nama_pemotong = Auth::user()->pegawai->nama_pegawai;
-            $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pemotong;
+            $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pegawai;
             $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
 
             $perampungan->save();
