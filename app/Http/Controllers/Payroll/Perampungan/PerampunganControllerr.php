@@ -136,11 +136,11 @@ class PerampunganControllerr extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id_perampungan)
     {
-        $perampungan = Perampungan::with('Detail')->find($id);
+        $perampungan = Perampungan::with('Detail')->find($id_perampungan);
         $tes = DetailPerampungan::with('Perampungan')->join('tb_payroll_perampungan','tb_payroll_detail_perampungan.id_perampungan','tb_payroll_perampungan.id_perampungan')
-        ->where('id_perampungan', $id)->find($id);
+        ->where('id_perampungan', $id_perampungan)->find($id_perampungan);
         // $id_pegawai = Perampungan::join('tb_payroll_detail_perampungan', 'tb_payroll_perampungan.id_perampungan', 'tb_payroll_detail_perampungan.id_perampungan')
         // ->where('id_perampungan', $id);
 
