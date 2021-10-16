@@ -193,7 +193,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Close {{ $id_perampungan }}</button>
                     <button class="btn btn-success" onclick="submit1(event, {{ $id_perampungan }})" type="button">Selanjutnya!</button>
                 </div>
             </form>
