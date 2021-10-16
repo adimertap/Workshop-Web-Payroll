@@ -166,7 +166,7 @@ class PerampunganControllerr extends Controller
 
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
-        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21'));
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji'));
     }
 
     /**
