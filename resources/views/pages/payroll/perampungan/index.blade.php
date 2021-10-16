@@ -312,10 +312,13 @@
 
 
         var tbody = $(`#pegawai`)
-        var pegawai = []
+        var pegawai = [];
 
-        for (var i = 0; i < pegawai.length; i++) {
-            var check = tbody.find('.checkpegawai').each(function (index, element) {
+        // for (var i = 0; i < pegawai.length; i++) {
+      
+        for (let index = 0; index < tbody.length; index++) {
+            var tes = $(tbody[index]).children()
+            var check = tes.find('.checkpegawai').each(function (index, element) {
                 var value = $(element).is(':checked')
                 if (value == true) {
                     var tr = $(element).parent().parent().parent()
