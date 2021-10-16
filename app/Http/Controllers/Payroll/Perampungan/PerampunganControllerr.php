@@ -148,7 +148,7 @@ class PerampunganControllerr extends Controller
         $detailgaji = Detailgaji::with([
             'Gaji'])
         ->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        // ->where('id_pegawai', $tes->id_pegawai)
+        ->where('id_pegawai', $tes->id_pegawai)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
