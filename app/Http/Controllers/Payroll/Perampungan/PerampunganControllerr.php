@@ -82,14 +82,23 @@ class PerampunganControllerr extends Controller
             $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
             $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_akhir)->startOfMonth();
             $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+            $perampungan->id_pemotong = Auth::user()->pegawai->id_pegawai;
             $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
 
-            $pegawaiModel = [];
-            foreach ($request->pegawai as $item) {
-                $pegawaiModel[] = new DetailPerampungan($item);
+            // $pegawaiModel = [];
+            // foreach ($request->pegawai as $item) {
+            //     $pegawaiModel[] = new DetailPerampungan($item);
+            //     $pegawaiModel->id_perampungan = $perampungan->id_perampungan;
+            // }
+
+            foreach($request->pegawai as $key=>$item){
+                $pegawai = new DetailPerampungan;
+                $pegawai->id_pegawai = $item['id_pegawai'];
+                $pegawai->id_perampungan = $perampungan->id_perampungan;
+                $pegawai->save();
             }
 
-            $perampungan->Detail()->saveMany($pegawaiModel);
+            // $perampungan->Detail()->saveMany($pegawaiModel);
             $perampungan->save();
 
             // $perampungan->Detail()->save($request->pegawai);

@@ -411,13 +411,7 @@
     }
 
     $(document).ready(function () {
-        $('#dataTablePegawai').DataTable({
-            "pageLength": 5,
-            "lengthMenu": [
-                [5, 10, 20, -1],
-                [5, 10, 20, ]
-            ]
-        })
+        $('#dataTablePegawai').DataTable()
     });
 
 </script>
