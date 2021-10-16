@@ -363,7 +363,7 @@
                 data: data,
                 success: function (response) {
                     console.log(response)
-                    // window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
+                    window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
                 },
                 error: function (error) {
                     console.log(error)
