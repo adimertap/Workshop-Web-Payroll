@@ -140,7 +140,7 @@ class PerampunganControllerr extends Controller
     {
         $perampungan = Perampungan::with('Detail')->find($id);
         $tes = DetailPerampungan::with('Perampungan')->join('tb_payroll_perampungan','tb_payroll_detail_perampungan.id_perampungan','tb_payroll_perampungan.id_perampungan')
-        ->where('id_perampungan', $id)->get();
+        ->where('id_perampungan', $id)->find($id);
         // $id_pegawai = Perampungan::join('tb_payroll_detail_perampungan', 'tb_payroll_perampungan.id_perampungan', 'tb_payroll_detail_perampungan.id_perampungan')
         // ->where('id_perampungan', $id);
 
