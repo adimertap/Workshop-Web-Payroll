@@ -308,12 +308,9 @@
 
 <script>
     function submit1(event, id_pegawai, id_perampungan) {
-
-
         var tbody = $(`#pegawai`)
         var pegawai = []
 
-        // for (var i = 0; i < pegawai.length; i++) {
         for (let index = 0; index < tbody.length; index++) {
             var tes = $(tbody[index]).children()
             var check = tes.find('.checkpegawai').each(function (index, element) {
@@ -328,7 +325,7 @@
 
                     pegawai.push({
                         id_pegawai: id,
-                        id_perampungan:id_perampungan
+                        id_perampungan: id_perampungan
                     })
                 }
             })
@@ -362,7 +359,7 @@
                 url: "/payroll/perampungan",
                 data: data,
                 success: function (response) {
-                    window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
+                    // window.location.href = '/payroll/perampungan/' + id_perampungan + '/edit'
 
                    
 

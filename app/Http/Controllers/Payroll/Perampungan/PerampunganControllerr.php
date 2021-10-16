@@ -93,7 +93,7 @@ class PerampunganControllerr extends Controller
 
             // $perampungan->Detail()->save($request->pegawai);
             
-            return $request;
+            return $perampungan;
         }else{
             throw new \Exception('Data Perampungan Sudah Ada');
         }
