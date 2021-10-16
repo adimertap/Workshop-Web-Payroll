@@ -25,7 +25,7 @@ class PerampunganControllerr extends Controller
      */
     public function index()
     {
-        $perampungan = Perampungan::with('Detail','Pemotong')->get();
+        $perampungan = Perampungan::with('Pemotong')->get();
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
         $tahun = Carbon::now()->format('Y');
