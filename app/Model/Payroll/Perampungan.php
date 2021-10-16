@@ -19,7 +19,8 @@ class Perampungan extends Model
 
     protected $fillable = [
         'id_bengkel',
-        'id_pemotong',
+        'nama_pemotong',
+        'npwp_pemotong',
         'masa_perolehan_awal',
         'masa_perolehan_akhir',
         'tanggal_perampungan',
@@ -44,9 +45,9 @@ class Perampungan extends Model
         );
     }
 
-    public function Pemotong(){
-        return $this->belongsTo(Pegawai::class,'id_pemotong','id_pegawai');
-    }
+    // public function Pemotong(){
+    //     return $this->belongsTo(Pegawai::class,'id_pemotong','id_pegawai');
+    // }
 
     public static function getId(){
         // return $this->orderBy('id_sparepart')->take(1)->get();

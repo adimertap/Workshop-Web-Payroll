@@ -338,7 +338,6 @@
 
         var _token = $('#form1').find('input[name="_token"]').val()
         var tanggal_perampungan = $('#tanggal_perampungan').val()
-        var id_pegawai = $('#id_pegawai').val()
         var masa_perolehan_awal = $('#masa_perolehan_awal').val()
         var masa_perolehan_akhir = $('#masa_perolehan_akhir').val()
 
@@ -363,7 +362,7 @@
                 url: "/payroll/perampungan",
                 data: data,
                 success: function (response) {
-                    window.location.href = '/payroll/perampungan/' + id_perampungan + '/edit'
+                    window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
                 },
                 error: function (error) {
                     console.log(error)
