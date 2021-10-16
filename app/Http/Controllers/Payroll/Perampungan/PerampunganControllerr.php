@@ -32,7 +32,8 @@ class PerampunganControllerr extends Controller
 
         $model = Perampungan::getId();
         foreach($model as $value);
-        $id_perampungan = $value->id_perampungan;
+        $idlama = $value->id_perampungan;
+        $id_perampungan = $idlama + 1;
         return $id_perampungan;
 
 
