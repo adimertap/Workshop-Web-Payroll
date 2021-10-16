@@ -15,6 +15,7 @@
             </div>
             <div class="small">
                 <i class="fa fa-cogs" aria-hidden="true"></i>
+                <input class="form-control" id="id_perampungan" type="text"  style="display:none" value="{{ $id_perampungan }}">
                 Bengkel
                 <span class="font-weight-500 text-primary">{{ Auth::user()->bengkel->nama_bengkel}}</span>
                 <hr>
@@ -193,8 +194,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <span class="font-weight-500 text-primary" id="id_perampungan"
-                        style="display:none">{{ $id_perampungan }}</span>
+                   
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-success" onclick="submit1(event)" type="button">Selanjutnya!</button>
                 </div>
@@ -309,9 +309,9 @@
 </div>
 
 <script>
-    function submit1(event, id_pegawai, id_perampungan) {
+    function submit1(event, id_pegawai) {
 
-        var id_perampungan  = $('#id_perampungan').html()
+        var id_perampungan  = $('#id_perampungan').val()
         console.log(id_perampungan)
         var tbody = $(`#pegawai`)
         var pegawai = []
