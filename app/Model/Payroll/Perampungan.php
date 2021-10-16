@@ -35,7 +35,7 @@ class Perampungan extends Model
     public $timestamps = true;
 
     public function Detail(){
-        return $this->hasMany(DetailPerampungan::class,'id_perampungan','id_perampungan');
+        return $this->hasMany(DetailPerampungan::class,'id_perampungan');
     }
 
     public function Pemotong(){
