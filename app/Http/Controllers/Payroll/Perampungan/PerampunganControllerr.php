@@ -34,7 +34,7 @@ class PerampunganControllerr extends Controller
         foreach($model as $value);
         $idlama = $value->id_perampungan;
         $id_perampungan = $idlama + 1;
-        return $id_perampungan;
+        // return $id_perampungan;
 
 
         $pegawai = Pegawai::with([
