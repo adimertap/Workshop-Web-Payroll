@@ -54,16 +54,19 @@
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->Pegawai->nama_pegawai}}</td>
                                             <td>{{ $item->Pegawai->npwp_pegawai}}</td>
-                                            {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}</td> --}}
+                                            {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}
+                                            </td> --}}
                                             <td>
                                                 <div id="{{ $item->id_pegawai }}-SudahTerhitung" style="display: none">
-                                                    <p class="text-danger">Sudah Terhitung! <span class="badge badge-success">
-                                                        <i class="fas fa-check"></i></span>
+                                                    <p class="text-danger">Sudah Terhitung! <span
+                                                            class="badge badge-success">
+                                                            <i class="fas fa-check"></i></span>
                                                     </p>
                                                 </div>
                                                 <div id="{{ $item->id_pegawai }}-BelumTerhitung">
-                                                    <p class="text-success">Belum Terhitung! <span class="badge badge-danger">
-                                                        <i class="fas fa-times"></i></span>
+                                                    <p class="text-success">Belum Terhitung! <span
+                                                            class="badge badge-danger">
+                                                            <i class="fas fa-times"></i></span>
                                                     </p>
                                                 </div>
                                             </td>
@@ -80,8 +83,9 @@
         </div>
     </div>
 
+
+    @forelse ($detailgaji as $item)
     <div class="container-fluid">
-        @forelse ($detailgaji as $item)
         <div class="card card-collapsable">
             <div class="card-header">FORM 1721 A1 {{ $item->Pegawai->nama_pegawai }}</div>
             <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
@@ -107,8 +111,8 @@
                             <div class="form-group row">
                                 <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                                 <div class="col-sm-8">
-                                    <input type="input" class="form-control form-control-sm" id="nomor"
-                                        value="" readonly>
+                                    <input type="input" class="form-control form-control-sm" id="nomor" value=""
+                                        readonly>
                                 </div>
                             </div>
                         </div>
@@ -248,7 +252,8 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <select name="karyawan_asing" id="karyawan_asing" class="form-control" value="{{ old('karyawan_asing') }}">
+                                    <select name="karyawan_asing" id="karyawan_asing" class="form-control"
+                                        value="{{ old('karyawan_asing') }}">
                                         <option value="{{ old('karyawan_asing')}}"> Pilih Status Karyawan Asing</option>
                                         <option value="Tidak">Tidak</option>
                                         <option value="Ya">Ya</option>
@@ -379,7 +384,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="tunjangan_lain"
-                                        name="tunjangan_lain" value="{{ $item->total_tunjangan ?? '0'}}" placeholder="Tunj Lain">
+                                        name="tunjangan_lain" value="{{ $item->total_tunjangan ?? '0'}}"
+                                        placeholder="Tunj Lain">
                                 </div>
                             </div>
                         </div>
@@ -602,8 +608,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="ptkp" name="ptkp"
-                                        value="{{ $item->Pegawai->PTKP->besaran_ptkp }}"
-                                        placeholder="Besaran PTKP">
+                                        value="{{ $item->Pegawai->PTKP->besaran_ptkp }}" placeholder="Besaran PTKP">
                                 </div>
                             </div>
                         </div>
@@ -718,7 +723,7 @@
     @empty
 
     @endforelse
-    </div>
+
 </main>
 
 <div class="modal fade" id="Modalpph21" data-backdrop="static" tabindex="-1" role="dialog"
