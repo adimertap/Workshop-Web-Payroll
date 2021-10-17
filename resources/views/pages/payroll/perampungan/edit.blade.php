@@ -375,7 +375,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="gaji_pokok-{{ $item->id_pegawai }}"
-                                            name="gaji_pokok" value="{{ number_format($item->total_pokok,2,',','.') ?? '0' }}"
+                                            name="gaji_pokok" value="{{ number_format($item->total_pokok) ?? '0' }}"
                                             placeholder="Gaji/Pensiun Atau THT/JHT">
                                     </div>
                                 </div>
