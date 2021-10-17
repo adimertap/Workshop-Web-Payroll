@@ -122,9 +122,7 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        $count = Detailgaji::join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
-        ->groupBy('id_pegawai')
-        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        $count = $detailgaji->join('tb_payroll_detail_perampungan','tb_payroll_detail_gaji.id_pegawai','tb_payroll_detail_perampungan.id_pegawai')
         ->get();
 
         return $count;
