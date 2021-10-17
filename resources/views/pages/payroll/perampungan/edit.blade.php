@@ -374,7 +374,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="gaji_pokok-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="gaji_pokok-{{ $item->id_pegawai }}"
                                             name="gaji_pokok" value="{{ number_format($item->total_pokok) ?? '0' }}"
                                             placeholder="Gaji/Pensiun Atau THT/JHT">
                                     </div>
@@ -405,7 +405,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="tunjangan_lain-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="tunjangan_lain-{{ $item->id_pegawai }}"
                                             name="tunjangan_lain" value="{{ number_format($item->total_tunjangan,2) ?? '0' }}"
                                             placeholder="Tunj Lain">
                                     </div>
@@ -633,8 +633,8 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="ptkp-{{ $item->id_pegawai }}" name="ptkp"
-                                            value="{{ $item->Pegawai->PTKP->besaran_ptkp }}" placeholder="Besaran PTKP">
+                                        <input type="input" class="form-control form-control-sm" id="ptkp-{{ $item->id_pegawai }}" name="ptkp"
+                                            value="{{ number_format($item->Pegawai->PTKP->besaran_ptkp) }}" placeholder="Besaran PTKP">
                                     </div>
                                 </div>
                             </div>
