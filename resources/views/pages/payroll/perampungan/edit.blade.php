@@ -831,8 +831,6 @@
 
         $(`#bruto-${id_pegawai}`).val( 
                 new Intl.NumberFormat('id', {
-                style: 'currency',
-                currency: 'IDR'
             }).format(brutofix))
 
 
@@ -859,7 +857,10 @@
     }
 
     function hitungpengurangan(event, id_pegawai) {
-        var biaya_jabatan = $(`#biaya_jabatan-${id_pegawai}`).val()
+        var biaya_jabatan_element = $(`#biaya_jabatan-${id_pegawai}`).val()
+        var biaya_jabatan = biaya_jabatan_element.split('Rp')[1].replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+
         var iuran_jht = $(`#iuran_jht-${id_pegawai}`).val()
         var bruto = $(`#bruto-${id_pegawai}`).val()
 
