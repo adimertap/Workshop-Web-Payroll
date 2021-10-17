@@ -375,7 +375,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="gaji_pokok-{{ $item->id_pegawai }}"
-                                            name="gaji_pokok" value="Rp {{ number_format($item->total_pokok,2,',','.') ?? '0' }}"
+                                            name="gaji_pokok" value="{{ number_format($item->total_pokok,2,',','.') ?? '0' }}"
                                             placeholder="Gaji/Pensiun Atau THT/JHT">
                                     </div>
                                 </div>
@@ -406,7 +406,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="tunjangan_lain-{{ $item->id_pegawai }}"
-                                            name="tunjangan_lain" value="Rp {{ number_format($item->total_tunjangan,2,',','.') ?? '0' }}"
+                                            name="tunjangan_lain" value="{{ number_format($item->total_tunjangan,2,',','.') ?? '0' }}"
                                             placeholder="Tunj Lain">
                                     </div>
                                 </div>
@@ -541,7 +541,7 @@
                                                     type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm"
-                                                id="total_pengurangan" name="total_pengurangan" value="0"
+                                                id="total_pengurangan-{{ $item->id_pegawai }}" name="total_pengurangan" value="0"
                                                 placeholder="Jumlah Pengurangan">
                                         </div>
                                     </div>
@@ -809,12 +809,12 @@
 <script>
     function hitungpenghasilanbruto(event, id_pegawai) {
         var gaji_pokok_element =  $(`#gaji_pokok-${id_pegawai}`).val()
-        var gaji_pokok = gaji_pokok_element.split('Rp')[1].replace('&nbsp;', '')
+        var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
         var tunjangan_pph = $(`#tunjangan_pph-${id_pegawai}`).val()
         var tunjangan_lain_element = $(`#tunjangan_lain-${id_pegawai}`).val()
-        var tunjangan_lain = tunjangan_lain_element.split('Rp')[1].replace('&nbsp;', '')
+        var tunjangan_lain = tunjangan_lain_element.replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
         var honorarium = $(`#honorarium-${id_pegawai}`).val()
@@ -842,14 +842,10 @@
         if (biayajabatanfix >= maxbiayajabatan) {
             $(`#biaya_jabatan-${id_pegawai}`).val( 
                 new Intl.NumberFormat('id', {
-                style: 'currency',
-                currency: 'IDR'
             }).format(maxbiayajabatan))
         } else {
             $(`#biaya_jabatan-${id_pegawai}`).val( 
                 new Intl.NumberFormat('id', {
-                style: 'currency',
-                currency: 'IDR'
             }).format(biayajabatanfix))
         }
 
@@ -858,7 +854,7 @@
 
     function hitungpengurangan(event, id_pegawai) {
         var biaya_jabatan_element = $(`#biaya_jabatan-${id_pegawai}`).val()
-        var biaya_jabatan = biaya_jabatan_element.split('Rp')[1].replace('&nbsp;', '')
+        var biaya_jabatan = biaya_jabatan_element.replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
         var iuran_jht = $(`#iuran_jht-${id_pegawai}`).val()
@@ -868,7 +864,8 @@
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto')
         } else {
             var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
-            $(`#total_pengurangan-${id_pegawai}`).val(total_pengurangan)
+            $(`#total_pengurangan-${id_pegawai}`).val(new Intl.NumberFormat('id', {
+            }).format(total_pengurangan))
 
 
             alert('Jumlah Pengurangan Berhasil dihitung')
