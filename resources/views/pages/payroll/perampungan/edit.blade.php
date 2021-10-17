@@ -421,7 +421,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="number" class="form-control form-control-sm" id="honorarium-{{ $item->id_pegawai }}"
-                                            name="honorarium" value="0" placeholder="Honorarium">
+                                            name="honorarium" value="0" placeholder="0">
                                     </div>
                                 </div>
                             </div>
