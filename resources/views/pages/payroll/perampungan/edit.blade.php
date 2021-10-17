@@ -389,7 +389,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="tunjangan_pph-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="tunjangan_pph-{{ $item->id_pegawai }}"
                                             name="tunjangan_pph" value="0" placeholder="Tunj PPh">
                                     </div>
                                 </div>
@@ -420,7 +420,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="honorarium-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="honorarium-{{ $item->id_pegawai }}"
                                             name="honorarium" value="0" placeholder="Honorarium">
                                     </div>
                                 </div>
@@ -436,7 +436,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="premi_prsh-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="premi_prsh-{{ $item->id_pegawai }}"
                                             name="premi_prsh" value="0" placeholder="Premi Asuransi">
                                     </div>
                                 </div>
@@ -450,7 +450,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="natura-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="natura-{{ $item->id_pegawai }}"
                                             name="natura" value="0" placeholder="Natura">
                                     </div>
                                 </div>
@@ -466,7 +466,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="bonusthr-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="bonusthr-{{ $item->id_pegawai }}"
                                             name="bonusthr" value="0" placeholder="Bonus THR">
                                     </div>
                                 </div>
@@ -484,7 +484,7 @@
                                                 <button id="hitungbruto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary"
                                                     onclick="hitungpenghasilanbruto(event, {{ $item->id_pegawai }})" type="button">Hitung</button>
                                             </div>
-                                            <input type="number" class="form-control form-control-sm" id="bruto-{{ $item->id_pegawai }}"
+                                            <input type="input" class="form-control form-control-sm" id="bruto-{{ $item->id_pegawai }}"
                                                 name="bruto" value="0" placeholder="Jumlah Penghasilan">
                                         </div>
 
@@ -505,7 +505,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="biaya_jabatan-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="biaya_jabatan-{{ $item->id_pegawai }}"
                                             name="biaya_jabatan" value="0" placeholder="Biaya Jabatan">
                                     </div>
                                 </div>
@@ -518,7 +518,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="iuran_jht-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="iuran_jht-{{ $item->id_pegawai }}"
                                             name="iuran_jht" value="0" placeholder="Iuran">
                                     </div>
                                 </div>
@@ -540,7 +540,7 @@
                                                 <button id="buttonpengurangan-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpengurangan(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="number" class="form-control form-control-sm"
+                                            <input type="input" class="form-control form-control-sm"
                                                 id="total_pengurangan-{{ $item->id_pegawai }}" name="total_pengurangan" value="0"
                                                 placeholder="Jumlah Pengurangan">
                                         </div>
@@ -567,7 +567,7 @@
                                                 <button id="buttonnetto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="number" class="form-control form-control-sm" id="netto-{{ $item->id_pegawai }}"
+                                            <input type="input" class="form-control form-control-sm" id="netto-{{ $item->id_pegawai }}"
                                                 name="netto" value="0" placeholder="Jumlah Penghasilan Netto">
                                         </div>
 
@@ -583,7 +583,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="netto_sebelumnya-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="netto_sebelumnya-{{ $item->id_pegawai }}"
                                             name="netto_sebelumnya" value="0" placeholder="Netto Sebelumnya">
                                     </div>
                                 </div>
@@ -617,7 +617,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="netto_pph21-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="netto_pph21-{{ $item->id_pegawai }}"
                                             name="netto_pph21" value="0" placeholder="Jumlah Penghasilan Netto">
                                     </div>
                                 </div>
@@ -651,7 +651,7 @@
                                                 <button class="btn btn-sm btn-primary" id="hitungpkp-{{ $item->id_pegawai }}"
                                                     onclick="hitungpenghasilankenapajak()" type="button">Hitung</button>
                                             </div>
-                                            <input type="number" class="form-control form-control-sm" id="pkp-{{ $item->id_pegawai }}" name="pkp"
+                                            <input type="input" class="form-control form-control-sm" id="pkp-{{ $item->id_pegawai }}" name="pkp"
                                                 value="0" placeholder="Jumlah Penghasilan Kena Pajak">
                                         </div>
                                     </div>
@@ -674,7 +674,7 @@
                                                 <button class="btn btn-sm btn-primary" id="hitungpph21-{{ $item->id_pegawai }}" onclick="hitungpph21(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="number" class="form-control form-control-sm" id="pph21_pkp-{{ $item->id_pegawai }}"
+                                            <input type="input" class="form-control form-control-sm" id="pph21_pkp-{{ $item->id_pegawai }}"
                                                 name="pph21_pkp" value="0" placeholder="PPh Pasal 21 PKP">
                                         </div>
                                     </div>
@@ -690,7 +690,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="pph21_telah_pot-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="pph21_telah_pot-{{ $item->id_pegawai }}"
                                             name="pph21_telah_pot" value="0" placeholder="PPh21 Telah Pot">
                                     </div>
                                 </div>
@@ -713,7 +713,7 @@
                                                 <button class="btn btn-sm btn-primary" id="hitungpph21terutang-{{ $item->id_pegawai }}" onclick="pph21terutang()"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="number" class="form-control form-control-sm" id="pph21_terutang-{{ $item->id_pegawai }}"
+                                            <input type="input" class="form-control form-control-sm" id="pph21_terutang-{{ $item->id_pegawai }}"
                                                 name="pph21_terutang" value="0" placeholder="PPh Pasal 21 Terutang">
                                         </div>
                                     </div>
@@ -729,7 +729,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="number" class="form-control form-control-sm" id="pph21_lunas-{{ $item->id_pegawai }}"
+                                        <input type="input" class="form-control form-control-sm" id="pph21_lunas-{{ $item->id_pegawai }}"
                                             name="pph21_lunas" value="0" placeholder="PPh21 dan PPh26">
                                     </div>
                                 </div>
