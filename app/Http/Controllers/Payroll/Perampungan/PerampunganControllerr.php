@@ -125,17 +125,14 @@ class PerampunganControllerr extends Controller
         $gas = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_1721a1']);
         
 
-        // return $gas;
-
         
-        $id = DetailPerampungan::getId();
-        foreach($gas as $value);
-        $idlama = $value->id_1721a1;
-        $idbaru = $idlama + 1;
+        
+      
+        
         $blt = date('m');
         $year = date('y');
         
-        $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
+        $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$gas;
 
         return $kode_perampungan;
 
