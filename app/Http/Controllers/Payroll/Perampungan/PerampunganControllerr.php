@@ -120,7 +120,7 @@ class PerampunganControllerr extends Controller
         $perampungan = Perampungan::with('Detail')->find($id_perampungan);
         $tes = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_pegawai']);
 
-        $detailgaji = Detailgaji::leftjoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        $detailgaji = Detailgaji::join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
         ->whereIn('id_pegawai', $tes)
         ->groupBy('id_pegawai')
         ->selectRaw('SUM(total_tunjangan) as total_tunjangan, SUM(total_gaji) as total_gaji, 
