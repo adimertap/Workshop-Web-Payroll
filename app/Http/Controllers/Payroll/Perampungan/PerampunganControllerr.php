@@ -122,11 +122,9 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-       $ss = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)
-       ->where('id_pegawai',$detailgaji->id_pegawai)
-       ->get();
-       
-        return $ss;
+        $aw = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->count(['id_pegawai']);
+
+        return $aw;
 
         $blt = date('m');
         $year = date('y');
