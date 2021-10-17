@@ -74,7 +74,7 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a class="btn btn-sm btn-primary" 
+                                                <a class="btn btn-xs btn-primary" 
                                                 href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse"
                                                 role="button" aria-expanded="false" aria-controls="collapseCardExample">
                                                     Form 1721-A1</a>
@@ -104,7 +104,7 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
             </a>
-            <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
+            <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1-{{ $item->id_pegawai }}" class="d-inline">
                 @csrf
                 <div class="collapse" id="collapseCardExample-{{ $item->id_pegawai }}">
                     <div class="card-body">
@@ -344,7 +344,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="row" id="radio1">
+                                        <div class="row" id="radio1-{{ $item->id_pegawai }}">
                                             <div class="col-md-6">
                                                 <input class="mr-1 small" value="21-100-01" type="radio" name="radio2"
                                                     checked><span class="small">21-100-01</span>
@@ -374,7 +374,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="gaji_pokok"
+                                        <input type="input" class="form-control form-control-sm" id="gaji_pokok-{{ $item->id_pegawai }}"
                                             name="gaji_pokok" value="{{ $item->total_pokok ?? '0' }}"
                                             placeholder="Gaji/Pensiun Atau THT/JHT">
                                     </div>
@@ -389,7 +389,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="tunjangan_pph"
+                                        <input type="input" class="form-control form-control-sm" id="tunjangan_pph-{{ $item->id_pegawai }}"
                                             name="tunjangan_pph" value="0" placeholder="Tunj PPh">
                                     </div>
                                 </div>
@@ -405,7 +405,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="tunjangan_lain"
+                                        <input type="input" class="form-control form-control-sm" id="tunjangan_lain-{{ $item->id_pegawai }}"
                                             name="tunjangan_lain" value="{{ $item->total_tunjangan ?? '0'}}"
                                             placeholder="Tunj Lain">
                                     </div>
@@ -420,7 +420,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="honorarium"
+                                        <input type="input" class="form-control form-control-sm" id="honorarium-{{ $item->id_pegawai }}"
                                             name="honorarium" value="0" placeholder="Honorarium">
                                     </div>
                                 </div>
@@ -436,7 +436,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="premi_prsh"
+                                        <input type="input" class="form-control form-control-sm" id="premi_prsh-{{ $item->id_pegawai }}"
                                             name="premi_prsh" value="0" placeholder="Premi Asuransi">
                                     </div>
                                 </div>
@@ -450,7 +450,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="natura"
+                                        <input type="input" class="form-control form-control-sm" id="natura-{{ $item->id_pegawai }}"
                                             name="natura" value="0" placeholder="Natura">
                                     </div>
                                 </div>
@@ -466,7 +466,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="bonusthr"
+                                        <input type="input" class="form-control form-control-sm" id="bonusthr-{{ $item->id_pegawai }}"
                                             name="bonusthr" value="0" placeholder="Bonus THR">
                                     </div>
                                 </div>
@@ -481,10 +481,10 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary"
-                                                    onclick="hitungpenghasilanbruto()" type="button">Hitung</button>
+                                                <button id="hitungbruto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary"
+                                                    onclick="hitungpenghasilanbruto(event, {{ $item->id_pegawai }})" type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="bruto"
+                                            <input type="input" class="form-control form-control-sm" id="bruto-{{ $item->id_pegawai }}"
                                                 name="bruto" value="0" placeholder="Jumlah Penghasilan">
                                         </div>
 
@@ -505,7 +505,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="biaya_jabatan"
+                                        <input type="input" class="form-control form-control-sm" id="biaya_jabatan-{{ $item->id_pegawai }}"
                                             name="biaya_jabatan" value="0" placeholder="Biaya Jabatan">
                                     </div>
                                 </div>
@@ -518,7 +518,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="iuran_jht"
+                                        <input type="input" class="form-control form-control-sm" id="iuran_jht-{{ $item->id_pegawai }}"
                                             name="iuran_jht" value="0" placeholder="Iuran">
                                     </div>
                                 </div>
@@ -537,7 +537,7 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" onclick="hitungpengurangan()"
+                                                <button id="buttonpengurangan-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpengurangan(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm"
@@ -564,10 +564,10 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                                <button id="buttonnetto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="netto"
+                                            <input type="input" class="form-control form-control-sm" id="netto-{{ $item->id_pegawai }}"
                                                 name="netto" value="0" placeholder="Jumlah Penghasilan Netto">
                                         </div>
 
@@ -583,7 +583,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="netto_sebelumnya"
+                                        <input type="input" class="form-control form-control-sm" id="netto_sebelumnya-{{ $item->id_pegawai }}"
                                             name="netto_sebelumnya" value="0" placeholder="Netto Sebelumnya">
                                     </div>
                                 </div>
@@ -600,7 +600,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <div class="row" id="radio2">
+                                        <div class="row" id="radio2-{{ $item->id_pegawai }}">
                                             <div class="col-md-6">
                                                 <input class="mr-1 small" value="setahun" type="radio"
                                                     name="jenis_netto" checked><span class="small">Setahun</span>
@@ -617,7 +617,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="netto_pph21"
+                                        <input type="input" class="form-control form-control-sm" id="netto_pph21-{{ $item->id_pegawai }}"
                                             name="netto_pph21" value="0" placeholder="Jumlah Penghasilan Netto">
                                     </div>
                                 </div>
@@ -633,7 +633,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="ptkp" name="ptkp"
+                                        <input type="input" class="form-control form-control-sm" id="ptkp-{{ $item->id_pegawai }}" name="ptkp"
                                             value="{{ $item->Pegawai->PTKP->besaran_ptkp }}" placeholder="Besaran PTKP">
                                     </div>
                                 </div>
@@ -648,10 +648,10 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary"
+                                                <button class="btn btn-sm btn-primary" id="hitungpkp-{{ $item->id_pegawai }}"
                                                     onclick="hitungpenghasilankenapajak()" type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="pkp" name="pkp"
+                                            <input type="input" class="form-control form-control-sm" id="pkp-{{ $item->id_pegawai }}" name="pkp"
                                                 value="0" placeholder="Jumlah Penghasilan Kena Pajak">
                                         </div>
                                     </div>
@@ -671,10 +671,10 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" onclick="hitungpph21()"
+                                                <button class="btn btn-sm btn-primary" id="hitungpph21-{{ $item->id_pegawai }}" onclick="hitungpph21()"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="pph21_pkp"
+                                            <input type="input" class="form-control form-control-sm" id="pph21_pkp-{{ $item->id_pegawai }}"
                                                 name="pph21_pkp" value="0" placeholder="PPh Pasal 21 PKP">
                                         </div>
                                     </div>
@@ -690,7 +690,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="pph21_telah_pot"
+                                        <input type="input" class="form-control form-control-sm" id="pph21_telah_pot-{{ $item->id_pegawai }}"
                                             name="pph21_telah_pot" value="0" placeholder="PPh21 Telah Pot">
                                     </div>
                                 </div>
@@ -710,10 +710,10 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" onclick="pph21terutang()"
+                                                <button class="btn btn-sm btn-primary" id="hitungpph21terutang-{{ $item->id_pegawai }}" onclick="pph21terutang()"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="pph21_terutang"
+                                            <input type="input" class="form-control form-control-sm" id="pph21_terutang-{{ $item->id_pegawai }}"
                                                 name="pph21_terutang" value="0" placeholder="PPh Pasal 21 Terutang">
                                         </div>
                                     </div>
@@ -729,7 +729,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="pph21_lunas"
+                                        <input type="input" class="form-control form-control-sm" id="pph21_lunas-{{ $item->id_pegawai }}"
                                             name="pph21_lunas" value="0" placeholder="PPh21 dan PPh26">
                                     </div>
                                 </div>
@@ -807,14 +807,16 @@
 </div>
 
 <script>
-    function hitungpenghasilanbruto() {
-        var gaji_pokok = $('#gaji_pokok').val()
-        var tunjangan_pph = $('#tunjangan_pph').val()
-        var tunjangan_lain = $('#tunjangan_lain').val()
-        var honorarium = $('#honorarium').val()
-        var premi_prsh = $('#premi_prsh').val()
-        var natura = $('#natura').val()
-        var bonusthr = $('#bonusthr').val()
+    function hitungpenghasilanbruto(event, id_pegawai) {
+
+        
+        var gaji_pokok =  $(`#gaji_pokok-${id_pegawai}`).val()
+        var tunjangan_pph = $(`#tunjangan_pph-${id_pegawai}`).val()
+        var tunjangan_lain = $(`#tunjangan_lain-${id_pegawai}`).val()
+        var honorarium = $(`#honorarium-${id_pegawai}`).val()
+        var premi_prsh = $(`#premi_prsh-${id_pegawai}`).val()
+        var natura = $(`#natura-${id_pegawai}`).val()
+        var bonusthr = $(`#bonusthr-${id_pegawai}`).val()
 
 
         var brutofix = parseInt(gaji_pokok) + parseInt(tunjangan_pph) + parseInt(tunjangan_lain) + parseInt(
@@ -823,7 +825,7 @@
 
 
 
-        $('#bruto').val(brutofix)
+        $(`#bruto-${id_pegawai}`).val(brutofix)
 
 
         var biayajabatan = brutofix * 5
@@ -832,9 +834,9 @@
 
 
         if (biayajabatanfix >= maxbiayajabatan) {
-            $('#biaya_jabatan').val(maxbiayajabatan)
+            $(`#biaya_jabatan-${id_pegawai}`).val(maxbiayajabatan)
         } else {
-            $('#biaya_jabatan').val(biayajabatanfix)
+            $(`#biaya_jabatan-${id_pegawai}`).val(biayajabatanfix)
         }
 
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
