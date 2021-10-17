@@ -564,7 +564,7 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button id="buttonnetto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto()"
+                                                <button id="buttonnetto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm" id="netto-{{ $item->id_pegawai }}"
@@ -671,7 +671,7 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" id="hitungpph21-{{ $item->id_pegawai }}" onclick="hitungpph21()"
+                                                <button class="btn btn-sm btn-primary" id="hitungpph21-{{ $item->id_pegawai }}" onclick="hitungpph21(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm" id="pph21_pkp-{{ $item->id_pegawai }}"
@@ -842,23 +842,23 @@
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
     }
 
-    function hitungpengurangan() {
-        var biaya_jabatan = $('#biaya_jabatan').val()
-        var iuran_jht = $('#iuran_jht').val()
-        var bruto = $('#bruto').val()
+    function hitungpengurangan(event, id_pegawai) {
+        var biaya_jabatan = $(`#biaya_jabatan-${id_pegawai}`).val()
+        var iuran_jht = $(`#iuran_jht-${id_pegawai}`).val()
+        var bruto = $(`#bruto-${id_pegawai}`).val()
 
         if (bruto == 0) {
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto')
         } else {
             var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
-            $('#total_pengurangan').val(total_pengurangan)
+            $(`#total_pengurangan-${id_pegawai}`).val(total_pengurangan)
 
 
             alert('Jumlah Pengurangan Berhasil dihitung')
         }
     }
 
-    function hitungpenghasilanneto() {
+    function hitungpenghasilanneto(event, id_pegawai) {
 
         var gaji_bruto = $('#bruto').val()
         var total_pengurangan = $('#total_pengurangan').val()
@@ -872,21 +872,21 @@
         }
     }
 
-    function hitungpenghasilankenapajak() {
-        var netto_pph21 = $('#netto_pph21').val()
-        var ptkp = $('#ptkp').val()
-        var netto = $('#netto').val()
+    function hitungpenghasilankenapajak(event, id_pegawai) {
+        var netto_pph21 = $(`#netto_pph21-${id_pegawai}`).val()
+        var ptkp = $(`#ptkp-${id_pegawai}`).val()
+        var netto = $(`#netto-${id_pegawai}`).val()
 
         if (netto == 0) {
             alert('Anda Belum Melakukan Perhitungan Gaji Netto')
         } else {
             var pkp = parseInt(netto_pph21) - parseInt(ptkp)
-            $('#pkp').val(pkp)
+            $(`#pkp-${id_pegawai}`).val(pkp)
         }
 
     }
 
-    function hitungpph21() {
+    function hitungpph21(event, id_pegawai) {
         var datapph21 = $('#tablepph21').children()
         var children = $(datapph21).children()
 
@@ -918,7 +918,7 @@
         console.log(pph1, pph2, pph3)
 
         // Penghasilan Kena Pajak
-        var pkpasik = $('#pkp').val()
+        var pkpasik = $(`#pkp-${id_pegawai}`).val()
         var pkp = parseInt(pkpasik)
 
         if (pkp == 0) {
@@ -942,10 +942,10 @@
 
                 if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
-                    $('#pph21_pkp').val(pajaknull)
+                    $(`#pph21_pkp-${id_pegawai}`).val(pajaknull)
                     alert('BEBAS PAJAK')
                 } else {
-                    $('#pph21_pkp').val(pphlevel1tahun)
+                    $(`#pph21_pkp-${id_pegawai}`).val(pphlevel1tahun)
                     alert('PPH LEVEL 1')
                 }
 
@@ -976,7 +976,7 @@
                 var pphlevel2tahun = a[0];
 
                 console.log(pphlevel2tahun)
-                $('#pph21_pkp').val(pphlevel2tahun)
+                $(`#pph21_pkp-${id_pegawai}`).val(pphlevel2tahun)
                 alert('PPH LEVEL 2')
 
             } else if (pkp > pph2 && pkp <= pph3) {
@@ -1007,7 +1007,7 @@
 
                 // FIX PPH Level 2
                 var pphlevel3tahun = a[0];
-                $('#pph21_pkp').val(pphlevel3tahun)
+                $(`#pph21_pkp-${id_pegawai}`).val(pphlevel3tahun)
                 alert('PPH LEVEL 3')
             }
         }
