@@ -37,7 +37,7 @@ class PerampunganControllerr extends Controller
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->get();
         
-        return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal','pegawai','tahun','kode_perampungan'));
+        return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal','pegawai','tahun'));
     }
 
     /**
