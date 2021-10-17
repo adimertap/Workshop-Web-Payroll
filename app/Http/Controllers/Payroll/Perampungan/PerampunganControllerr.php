@@ -122,25 +122,15 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        $gas = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_1721a1']);
-        
-
-        
-        
-      
-        
         $blt = date('m');
         $year = date('y');
-        
-        $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$gas;
-
-        return $kode_perampungan;
+    
 
        
 
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
-        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji'));
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji','blt','year'));
 
         // $sumtunjangan = Detailgaji::with([
         //     'Gaji'
