@@ -36,13 +36,23 @@ class PerampunganControllerr extends Controller
         $id_perampungan = $idlama + 1;
         // return $id_perampungan;
 
+        $id = DetailPerampungan::getId();
+        foreach($id as $value);
+        $idlama = $value->id_1721a1;
+        $idbaru = $idlama + 1;
+        $blt = date('m');
+        $year = date('y');
+        
+        $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
+
+
 
         $pegawai = Pegawai::with([
             'Jabatan'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->get();
         
-        return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal','pegawai','tahun','id_perampungan'));
+        return view('pages.payroll.perampungan.index',compact('perampungan','today','tanggal','pegawai','tahun','id_perampungan','kode_perampungan'));
     }
 
     /**
@@ -127,8 +137,7 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        // return $detailgaji;
-
+       
 
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();

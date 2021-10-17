@@ -3,6 +3,7 @@
 namespace App\Model\Payroll;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class DetailPerampungan extends Model
 {
@@ -54,4 +55,16 @@ class DetailPerampungan extends Model
     public function Pegawai(){
         return $this->belongsTo(Pegawai::class,'id_pegawai','id_pegawai');
     }
+
+    public static function getId(){
+        // return $this->orderBy('id_sparepart')->take(1)->get();
+        $getId = DB::table('tb_payroll_detail_perampungan')->orderBy('id_1721a1','DESC')->take(1)->get();
+        if(count($getId) > 0) return $getId;
+        return (object)[
+            (object)[
+                'id_1721a1'=> 0
+            ]
+            ];
+    }
+
 }

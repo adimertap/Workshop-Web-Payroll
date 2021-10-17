@@ -55,7 +55,7 @@
                                             <td>{{ $item->Pegawai->nama_pegawai}}</td>
                                             <td>{{ $item->Pegawai->npwp_pegawai}}</td>
                                             <td>
-                                               
+
                                             </td>
                                         </tr>
                                         @empty
@@ -70,11 +70,10 @@
         </div>
     </div>
 
-
-
-    {{-- <div class="container-fluid">
-        <div class="card">
-            <div class="card-header">FORM 1721 A1</div>
+    <div class="container-fluid">
+        @forelse ($detailgaji as $item)
+        <div class="card card-collapsable">
+            <div class="card-header">FORM 1721 A1 {{ $item->Pegawai->nama_pegawai }}</div>
             <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
                 @csrf
                 <div class="card-body">
@@ -151,7 +150,7 @@
                         </div>
                     </div>
 
-                  
+
                     <hr class="mt-2">
                     <h6>A. Identitas Penerima Penghasil yang Dipotong</h6>
                     <hr class="mb-4">
@@ -294,12 +293,11 @@
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <span class="small" style="color: gray">Cek aturan PPh21 <a
-                                data-toggle="modal" data-target="#Modalpph21"
-                                class="font-weight-500 text-primary"> disini </a></span>
+                            <span class="small" style="color: gray">Cek aturan PPh21 <a data-toggle="modal"
+                                    data-target="#Modalpph21" class="font-weight-500 text-primary"> disini </a></span>
                         </div>
                     </div>
-                   
+
 
                     <hr class="mt-2">
                     <h6>B. Rincian Penghasilan dan Penghitungan PPh Pasal 21</h6>
@@ -331,7 +329,7 @@
                         </div>
                     </div>
 
-                   
+
                     <p class="font-italic">Penghasilan Bruto :</p>
                     <div class="row">
                         <div class="col-sm-6">
@@ -460,7 +458,7 @@
                         </div>
                     </div>
 
-                   
+
                     <p class="font-italic">Pengurangan :</p>
                     <div class="row">
                         <div class="col-sm-6">
@@ -516,7 +514,7 @@
 
                         </div>
                     </div>
-                  
+
                     <p class="font-italic">Penghitungan PPh Pasal 21 :</p>
                     <div class="row">
                         <div class="col-sm-6">
@@ -566,8 +564,8 @@
                                 <div class="col-sm-6">
                                     <div class="row" id="radio2">
                                         <div class="col-md-6">
-                                            <input class="mr-1 small" value="setahun" type="radio"
-                                                name="jenis_netto" checked><span class="small">Setahun</span>
+                                            <input class="mr-1 small" value="setahun" type="radio" name="jenis_netto"
+                                                checked><span class="small">Setahun</span>
                                         </div>
                                         <div class="col-md-6">
                                             <input class="mr-1 small" value="disetahunkan" type="radio"
@@ -710,7 +708,11 @@
                 </div>
             </form>
         </div>
-    </div> --}}
+    </div>
+    @empty
+
+    @endforelse
+    </div>
 </main>
 
 <div class="modal fade" id="Modalpph21" data-backdrop="static" tabindex="-1" role="dialog"
@@ -752,7 +754,8 @@
                                             <th scope="row" class="small" class="sorting_1">
                                                 {{ $loop->iteration}}</th>
                                             <td>{{ $items->nama_pph21 }}</td>
-                                            <td class="jumlah_pph21">Rp.{{ number_format($items->kumulatif_tahunan,2,',','.') }}</td>
+                                            <td class="jumlah_pph21">
+                                                Rp.{{ number_format($items->kumulatif_tahunan,2,',','.') }}</td>
                                             <td class="text-center">{{ $items->besaran_pph21 }}</td>
                                         </tr>
                                         @empty
@@ -781,120 +784,121 @@
         var premi_prsh = $('#premi_prsh').val()
         var natura = $('#natura').val()
         var bonusthr = $('#bonusthr').val()
-       
-        
-        var brutofix = parseInt(gaji_pokok) + parseInt(tunjangan_pph) + parseInt(tunjangan_lain) + parseInt(honorarium)
-                        + parseInt(premi_prsh) + parseInt(natura) + parseInt(bonusthr)
 
-       
+
+        var brutofix = parseInt(gaji_pokok) + parseInt(tunjangan_pph) + parseInt(tunjangan_lain) + parseInt(
+                honorarium) +
+            parseInt(premi_prsh) + parseInt(natura) + parseInt(bonusthr)
+
+
 
         $('#bruto').val(brutofix)
-       
+
 
         var biayajabatan = brutofix * 5
         var biayajabatanfix = biayajabatan / 100
         var maxbiayajabatan = 6000000
-     
 
-        if(biayajabatanfix >= maxbiayajabatan){
+
+        if (biayajabatanfix >= maxbiayajabatan) {
             $('#biaya_jabatan').val(maxbiayajabatan)
-        }else{
+        } else {
             $('#biaya_jabatan').val(biayajabatanfix)
         }
 
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
     }
 
-    function hitungpengurangan(){
-        var biaya_jabatan =  $('#biaya_jabatan').val()
+    function hitungpengurangan() {
+        var biaya_jabatan = $('#biaya_jabatan').val()
         var iuran_jht = $('#iuran_jht').val()
         var bruto = $('#bruto').val()
 
-        if(bruto == 0){
+        if (bruto == 0) {
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto')
-        }else{
+        } else {
             var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
             $('#total_pengurangan').val(total_pengurangan)
-        
+
 
             alert('Jumlah Pengurangan Berhasil dihitung')
         }
     }
 
-    function hitungpenghasilanneto(){
+    function hitungpenghasilanneto() {
 
-        var gaji_bruto =  $('#bruto').val()
+        var gaji_bruto = $('#bruto').val()
         var total_pengurangan = $('#total_pengurangan').val()
 
-        if(gaji_bruto == 0 && total_pengurangan == 0){
+        if (gaji_bruto == 0 && total_pengurangan == 0) {
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto dan Jumlah Pengurangan')
-        }else{
+        } else {
             var neto = parseInt(gaji_bruto) - parseInt(total_pengurangan)
             $('#netto').val(neto)
             $('#netto_pph21').val(neto)
         }
     }
 
-    function hitungpenghasilankenapajak(){
+    function hitungpenghasilankenapajak() {
         var netto_pph21 = $('#netto_pph21').val()
         var ptkp = $('#ptkp').val()
         var netto = $('#netto').val()
 
-        if(netto == 0){
+        if (netto == 0) {
             alert('Anda Belum Melakukan Perhitungan Gaji Netto')
-        }else{
+        } else {
             var pkp = parseInt(netto_pph21) - parseInt(ptkp)
             $('#pkp').val(pkp)
         }
 
     }
 
-    function hitungpph21(){
+    function hitungpph21() {
         var datapph21 = $('#tablepph21').children()
         var children = $(datapph21).children()
 
-          // 50JT
+        // 50JT
         var td1 = children[2]
         var pph1 = $($(td1)).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
             '').trim()
-        var tdpersen1= children[3]
+        var tdpersen1 = children[3]
         var pphpersen1 = $($(tdpersen1)).html()
-        
+
         // 250JT
         var td2 = children[6]
         var pph2 = $($(td2)).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
             '').trim()
         var tdpersen2 = children[7]
         var pphpersen2 = $($(tdpersen2)).html()
-       
+
         // 500JT
         var td3 = children[10]
         var pph3 = $($(td3)).html().split('Rp')[1].replace('.', '').replace('.', '').replace('.', '').replace(',00',
             '').trim()
-        var tdpersen3= children[11]
+        var tdpersen3 = children[11]
         var pphpersen3 = $($(tdpersen3)).html()
-        
+
         // DIATAS 500JT
-        var tdpersen4= children[15]
+        var tdpersen4 = children[15]
         var pphpersen4 = $($(tdpersen4)).html()
 
         console.log(pph1, pph2, pph3)
-        
+
         // Penghasilan Kena Pajak
         var pkpasik = $('#pkp').val()
         var pkp = parseInt(pkpasik)
 
-        if(pkp == 0){
+        if (pkp == 0) {
             alert('Anda Belum Melakukan Perhitungan PKP')
-        }else{
-                if (pkp <= pph1){
+        } else {
+            if (pkp <= pph1) {
                 var pphlevel1 = pkp * pphpersen1
                 var pphlevel1fix = pphlevel1 / 100
 
-                var str=pphlevel1fix.toString();
-                var numarray=str.split('.');    
-                var a=new Array();
-                a=numarray;
+                var str = pphlevel1fix.toString();
+                var numarray = str.split('.');
+                var a = new Array();
+                a = numarray;
 
                 // FIX PPH Level 2
                 var pphlevel1tahun = a[0];
@@ -903,21 +907,21 @@
                 // $('#pph21_pkp').val(pphlevel1tahun)
                 // alert('PPH LEVEL 1')
 
-                if(pphlevel1tahun <= 0){
+                if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
                     $('#pph21_pkp').val(pajaknull)
                     alert('BEBAS PAJAK')
-                }else{
+                } else {
                     $('#pph21_pkp').val(pphlevel1tahun)
                     alert('PPH LEVEL 1')
                 }
 
-            }else if (pkp > pph1 && pkp <= pph2){
+            } else if (pkp > pph1 && pkp <= pph2) {
                 // Perhitungan 5%
                 var pphkena5 = pph1
                 var pphkena5fix = pphkena5 * pphpersen1
                 var pphkena5sangat = pphkena5fix / 100
-            
+
                 // Perhitungan 15%
                 var pphkena15 = pkp - pph1
                 var pphkena15fix = pphkena15 * pphpersen2
@@ -930,10 +934,10 @@
                 // var pphlevel2hampir = pphlevel2 / 12
 
                 // Memecah Bilangan Decimal
-                var str=pphlevel2.toString();
-                var numarray=str.split('.');    
-                var a=new Array();
-                a=numarray;
+                var str = pphlevel2.toString();
+                var numarray = str.split('.');
+                var a = new Array();
+                a = numarray;
 
                 // FIX PPH Level 2
                 var pphlevel2tahun = a[0];
@@ -942,18 +946,18 @@
                 $('#pph21_pkp').val(pphlevel2tahun)
                 alert('PPH LEVEL 2')
 
-            }else if (pkp > pph2 && pkp <= pph3){
+            } else if (pkp > pph2 && pkp <= pph3) {
                 // Perhitungan 5%
                 var pph3kena5 = pph1
                 var pph3kena5fix = pph3kena5 * pphpersen1
                 var pph3kena5sangat = pph3kena5fix / 100
-            
+
 
                 // Perhitungan 15 %
                 var pph3kena15 = pph2
                 var pph3kena15fix = pph3kena15 * pphpersen2
                 var pph3kena15sangat = pph3kena15fix / 100
-            
+
 
                 // Perhitungan 25%
                 var pph3kena25 = parseInt(pph3kena15) + parseInt(pph3kena5)
@@ -963,10 +967,10 @@
 
                 var pphlevel3 = parseInt(pph3kena5sangat + pph3kena15sangat + pph3kena25sangat)
 
-                var str=pphlevel3.toString();
-                var numarray=str.split('.');    
-                var a=new Array();
-                a=numarray;
+                var str = pphlevel3.toString();
+                var numarray = str.split('.');
+                var a = new Array();
+                a = numarray;
 
                 // FIX PPH Level 2
                 var pphlevel3tahun = a[0];
@@ -976,25 +980,25 @@
         }
 
 
-        
+
 
     }
 
-    function pph21terutang(){
-        var pph21_pkp =  $('#pph21_pkp').val()
+    function pph21terutang() {
+        var pph21_pkp = $('#pph21_pkp').val()
         var pph21_telah_pot = $('#pph21_telah_pot').val()
 
-        if(pph21_pkp == 0){
+        if (pph21_pkp == 0) {
             alert('Anda Belum Melakukan Perhitungan PPh21')
-        }else{
+        } else {
             var pph21_terutang = parseInt(pph21_pkp) + parseInt(pph21_telah_pot)
             $('#pph21_terutang').val(pph21_terutang)
 
             var pph_final_bulan = pph21_terutang / 12
-            var str=pph_final_bulan.toString();
-            var numarray=str.split('.');    
-            var a=new Array();
-            a=numarray;
+            var str = pph_final_bulan.toString();
+            var numarray = str.split('.');
+            var a = new Array();
+            a = numarray;
 
             pph_final_bulan_fix = a[0];
 
@@ -1004,11 +1008,9 @@
             alert('Berhasil Melakukan Perhitungan PPh21 Final')
         }
 
-      
+
 
     }
-
-
 
 </script>
 
