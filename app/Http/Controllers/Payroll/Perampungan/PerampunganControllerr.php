@@ -63,6 +63,19 @@ class PerampunganControllerr extends Controller
      */
     public function store(Request $request)
     {
+        $perampungan = new Perampungan;
+        $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
+        $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_akhir)->startOfMonth();
+        $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+        $perampungan->nama_pemotong = Auth::user()->pegawai->nama_pegawai;
+        $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pegawai;
+        $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
+        $perampungan->total_pph_terutang = '0';
+
+        $perampungan->save();
+        $perampungan->Detail()->sync($request->pegawai);
+        return $perampungan;
+
         // $id = Perampungan::getId();
         // foreach($id as $value);
         // $idlama = $value->id_perampungan;
@@ -78,41 +91,7 @@ class PerampunganControllerr extends Controller
         // ->first();
 
         // if (empty($data)){
-            $perampungan = new Perampungan;
-            $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
-            $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_akhir)->startOfMonth();
-            $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
-            $perampungan->nama_pemotong = Auth::user()->pegawai->nama_pegawai;
-            $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pegawai;
-            $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
-
-            $perampungan->save();
-            $perampungan->Detail()->sync($request->pegawai);
-            return $perampungan;
-
-           
-
-            // $pegawaiModel = [];
-            // foreach ($request->pegawai as $item) {
-            //     $pegawaiModel[] = new DetailPerampungan($item);
-            //     $pegawaiModel->id_perampungan = $perampungan->id_perampungan;
-            // }
-
-            // foreach($request->pegawai as $key=>$item){
-
-            //     $tes = Perampungan::where('id_perampungan', $item['id_perampungan'])->first();
-
-            //     $tes = new DetailPerampungan;
-            //     $tes->id_pegawai = $item['id_pegawai'];
-            //     $tes->id_perampungan = $tes->id_perampungan;
-            //     $tes->save();
-            // }
-
-            // $perampungan->Detail()->saveMany($pegawaiModel);
-            // $perampungan->save();
-
-            // $perampungan->Detail()->save($request->pegawai);
-            
+          
            
         // }else{
         //     throw new \Exception('Data Perampungan Sudah Ada');
@@ -140,18 +119,11 @@ class PerampunganControllerr extends Controller
     {
         $perampungan = Perampungan::with('Detail')->find($id_perampungan);
         $tes = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_pegawai']);
-        // $id_pegawai = Perampungan::join('tb_payroll_detail_perampungan', 'tb_payroll_perampungan.id_perampungan', 'tb_payroll_detail_perampungan.id_perampungan')
-        // ->where('id_perampungan', $id);
 
-        // return $tes;
-
-
-        $detailgaji = Detailgaji::with([
-            'Gaji'])
-        ->leftjoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        $detailgaji = Detailgaji::leftjoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
         ->whereIn('id_pegawai', $tes)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        ->get();
+        ->get(['id_pegawai','total_tunjangan','total_gaji','total_pph21','total_pokok','bulan_gaji']);
 
         return $detailgaji;
        
