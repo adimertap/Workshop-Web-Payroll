@@ -123,10 +123,11 @@ class PerampunganControllerr extends Controller
         $detailgaji = Detailgaji::leftjoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
         ->whereIn('id_pegawai', $tes)
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        ->select('id_pegawai')
         ->get(['id_pegawai','total_tunjangan','total_gaji','total_pph21','total_pokok','bulan_gaji']);
 
-        return $detailgaji;
+        $jos = $detailgaji->groupBy('id_pegawai');
+
+        return $jos;
 
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
