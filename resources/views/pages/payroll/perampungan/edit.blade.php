@@ -45,7 +45,7 @@
                                                 style="width: 40px;">NPWP Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 90px;">Status</th>
+                                                style="width: 40px;">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -57,12 +57,12 @@
                                             {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}</td> --}}
                                             <td>
                                                 <div id="{{ $item->id_pegawai }}-SudahTerhitung" style="display: none">
-                                                    <p>Sudah Terhitung! <span class="badge badge-success">
+                                                    <p class="text-danger">Sudah Terhitung! <span class="badge badge-success">
                                                         <i class="fas fa-check"></i></span>
                                                     </p>
                                                 </div>
                                                 <div id="{{ $item->id_pegawai }}-BelumTerhitung">
-                                                    <p>Belum Terhitung! <span class="badge badge-danger">
+                                                    <p class="text-success">Belum Terhitung! <span class="badge badge-danger">
                                                         <i class="fas fa-times"></i></span>
                                                     </p>
                                                 </div>
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    {{-- <div class="container-fluid">
+    <div class="container-fluid">
         @forelse ($detailgaji as $item)
         <div class="card card-collapsable">
             <div class="card-header">FORM 1721 A1 {{ $item->Pegawai->nama_pegawai }}</div>
@@ -108,7 +108,7 @@
                                 <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                                 <div class="col-sm-8">
                                     <input type="input" class="form-control form-control-sm" id="nomor"
-                                        value="{{ $perampungan->nomor }}" readonly>
+                                        value="" readonly>
                                 </div>
                             </div>
                         </div>
@@ -174,7 +174,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="npwp_terpotong"
-                                        value="{{ $perampungan->Pegawai->npwp_pegawai }}" readonly>
+                                        value="{{ $item->Pegawai->nama_pegawai }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -187,8 +187,8 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <select class="form-control form-control-sm" name="id_ptkp" id="id_ptkp">
-                                        <option value="{{ $perampungan->Pegawai->PTKP->id_ptkp }}">
-                                            {{ $perampungan->Pegawai->PTKP->nama_ptkp }}</option>
+                                        <option value="{{ $item->Pegawai->PTKP->id_ptkp }}">
+                                            {{ $item->Pegawai->PTKP->nama_ptkp }}</option>
                                         @foreach ($ptkp as $itemptkp)
                                         <option value="{{ $itemptkp->id_ptkp }}">{{ $itemptkp->nama_ptkp }}
                                         </option>
@@ -208,7 +208,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="nik_terpotong"
-                                        value="{{ $perampungan->Pegawai->nik_pegawai }}" readonly>
+                                        value="{{ $item->Pegawai->nik_pegawai }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -221,7 +221,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="nama_jabatan"
-                                        value="{{ $perampungan->Pegawai->Jabatan->nama_jabatan }}" readonly>
+                                        value="{{ $item->Pegawai->Jabatan->nama_jabatan }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -236,7 +236,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="nama_pegawai"
-                                        value="{{ $perampungan->Pegawai->nama_pegawai }}" readonly>
+                                        value="{{ $item->Pegawai->nama_pegawai }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -248,8 +248,11 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="input" class="form-control form-control-sm" id="karyawan_asing"
-                                        value="{{ $perampungan->karyawan_asing }}" readonly>
+                                    <select name="karyawan_asing" id="karyawan_asing" class="form-control" value="{{ old('karyawan_asing') }}">
+                                        <option value="{{ old('karyawan_asing')}}"> Pilih Status Karyawan Asing</option>
+                                        <option value="Tidak">Tidak</option>
+                                        <option value="Ya">Ya</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -264,7 +267,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="jenis_kelamin"
-                                        value="{{ $perampungan->Pegawai->jenis_kelamin }}" readonly>
+                                        value="{{ $item->Pegawai->jenis_kelamin }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -276,14 +279,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    @if ($perampungan->kode_negara == '0')
-                                    <input type="input" class="form-control form-control-sm" id="kode_negara" value="-"
-                                        readonly>
-                                    @else
-                                    <input type="input" class="form-control form-control-sm" id="kode_negara"
-                                        value="{{ $perampungan->kode_negara }}" readonly>
-                                    @endif
-
+                                    <input type="input" class="form-control form-control-sm" id="kode_negara">
                                 </div>
                             </div>
                         </div>
@@ -298,7 +294,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="alamat_pegawai"
-                                        value="{{ $perampungan->Pegawai->alamat }}" readonly>
+                                        value="{{ $item->Pegawai->alamat }}" readonly>
                                 </div>
                             </div>
                         </div>
@@ -352,7 +348,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="gaji_pokok"
-                                        name="gaji_pokok" value="{{ $sumpokok ?? '0' }}"
+                                        name="gaji_pokok" value="{{ $item->total_pokok ?? '0' }}"
                                         placeholder="Gaji/Pensiun Atau THT/JHT">
                                 </div>
                             </div>
@@ -383,7 +379,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="tunjangan_lain"
-                                        name="tunjangan_lain" value="{{ $sumtunjangan ?? '0'}}" placeholder="Tunj Lain">
+                                        name="tunjangan_lain" value="{{ $item->total_tunjangan ?? '0'}}" placeholder="Tunj Lain">
                                 </div>
                             </div>
                         </div>
@@ -606,7 +602,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <input type="input" class="form-control form-control-sm" id="ptkp" name="ptkp"
-                                        value="{{ $perampungan->Pegawai->PTKP->besaran_ptkp }}"
+                                        value="{{ $item->Pegawai->PTKP->besaran_ptkp }}"
                                         placeholder="Besaran PTKP">
                                 </div>
                             </div>
@@ -722,7 +718,7 @@
     @empty
 
     @endforelse
-    </div> --}}
+    </div>
 </main>
 
 <div class="modal fade" id="Modalpph21" data-backdrop="static" tabindex="-1" role="dialog"
