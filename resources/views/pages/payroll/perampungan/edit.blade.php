@@ -375,7 +375,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="gaji_pokok-{{ $item->id_pegawai }}"
-                                            name="gaji_pokok" value="{{ $item->total_pokok ?? '0' }}"
+                                            name="gaji_pokok" value="Rp {{ number_format($item->total_pokok,2,',','.') ?? '0' }}"
                                             placeholder="Gaji/Pensiun Atau THT/JHT">
                                     </div>
                                 </div>
@@ -406,7 +406,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="tunjangan_lain-{{ $item->id_pegawai }}"
-                                            name="tunjangan_lain" value="{{ $item->total_tunjangan ?? '0'}}"
+                                            name="tunjangan_lain" value="Rp {{ number_format($item->total_tunjangan,2,',','.') ?? '0' }}"
                                             placeholder="Tunj Lain">
                                     </div>
                                 </div>
@@ -808,11 +808,15 @@
 
 <script>
     function hitungpenghasilanbruto(event, id_pegawai) {
+        var gaji_pokok_element =  $(`#gaji_pokok-${id_pegawai}`).val()
+        var gaji_pokok = gaji_pokok_element.split('Rp')[1].replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
-        
-        var gaji_pokok =  $(`#gaji_pokok-${id_pegawai}`).val()
         var tunjangan_pph = $(`#tunjangan_pph-${id_pegawai}`).val()
-        var tunjangan_lain = $(`#tunjangan_lain-${id_pegawai}`).val()
+        var tunjangan_lain_element = $(`#tunjangan_lain-${id_pegawai}`).val()
+        var tunjangan_lain = tunjangan_lain_element.split('Rp')[1].replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+
         var honorarium = $(`#honorarium-${id_pegawai}`).val()
         var premi_prsh = $(`#premi_prsh-${id_pegawai}`).val()
         var natura = $(`#natura-${id_pegawai}`).val()
@@ -825,7 +829,11 @@
 
 
 
-        $(`#bruto-${id_pegawai}`).val(brutofix)
+        $(`#bruto-${id_pegawai}`).val( 
+                new Intl.NumberFormat('id', {
+                style: 'currency',
+                currency: 'IDR'
+            }).format(brutofix))
 
 
         var biayajabatan = brutofix * 5
@@ -834,9 +842,17 @@
 
 
         if (biayajabatanfix >= maxbiayajabatan) {
-            $(`#biaya_jabatan-${id_pegawai}`).val(maxbiayajabatan)
+            $(`#biaya_jabatan-${id_pegawai}`).val( 
+                new Intl.NumberFormat('id', {
+                style: 'currency',
+                currency: 'IDR'
+            }).format(maxbiayajabatan))
         } else {
-            $(`#biaya_jabatan-${id_pegawai}`).val(biayajabatanfix)
+            $(`#biaya_jabatan-${id_pegawai}`).val( 
+                new Intl.NumberFormat('id', {
+                style: 'currency',
+                currency: 'IDR'
+            }).format(biayajabatanfix))
         }
 
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
