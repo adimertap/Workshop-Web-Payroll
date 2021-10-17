@@ -88,7 +88,7 @@
     <div class="container">
         <div class="card card-collapsable mb-4">
             <a class="card-header collapsed" href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse"
-                role="button" aria-expanded="false" aria-controls="collapseCardExample">FORM 1721 A1
+                role="button" aria-expanded="true" aria-controls="collapseCardExample">FORM 1721 A1
                 {{ $item->Pegawai->nama_pegawai }}
                 <div class="card-collapsable-arrow">
                     <i class="fas fa-chevron-down"></i>
@@ -96,7 +96,7 @@
             </a>
             <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
                 @csrf
-                <div class="collapse show" id="collapseCardExample-{{ $item->id_pegawai }}">
+                <div class="collapse" id="collapseCardExample-{{ $item->id_pegawai }}">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-6">
