@@ -31,16 +31,6 @@ class PerampunganControllerr extends Controller
         $tahun = Carbon::now()->format('Y');
 
 
-        $id = DetailPerampungan::getId();
-        foreach($id as $value);
-        $idlama = $value->id_1721a1;
-        $idbaru = $idlama + 1;
-        $blt = date('m');
-        $year = date('y');
-        
-        $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
-
-
 
         $pegawai = Pegawai::with([
             'Jabatan'
@@ -131,6 +121,18 @@ class PerampunganControllerr extends Controller
             SUM(total_pph21) as total_pph21, SUM(total_pokok) as total_pokok, bulan_gaji, id_pegawai')
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
+
+        // $id = DetailPerampungan::getId();
+        // foreach($id as $value);
+        // $idlama = $value->id_1721a1;
+        // $idbaru = $idlama + 1;
+        // $blt = date('m');
+        // $year = date('y');
+        
+        // $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
+
+        $count = $detailgaji->count();
+        return $count;
 
        
 

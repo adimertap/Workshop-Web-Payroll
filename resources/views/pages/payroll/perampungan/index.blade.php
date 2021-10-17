@@ -27,7 +27,7 @@
     <div class="container-fluid">
         <div class="card mb-4">
             <div class="card card-header-actions">
-                <div class="card-header ">List Data Tes
+                <div class="card-header ">List Data
                     <a href="" class="btn btn-sm btn-primary" type="button" data-toggle="modal"
                         data-target="#Modaltambah">
                         Tambah Data
@@ -110,6 +110,7 @@
                                             </td>
                                         </tr>
                                         @empty
+                                        
                                         @endforelse
                                     </tbody>
                                 </table>
