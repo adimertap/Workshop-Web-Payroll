@@ -46,6 +46,9 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 40px;">Status</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                style="width: 40px;">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -70,6 +73,13 @@
                                                     </p>
                                                 </div>
                                             </td>
+                                            <td>
+                                                <a class="btn btn-primary" 
+                                                href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse"
+                                                role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                                                    Mulai Hitung</a>
+                                            </td>
+                                            
                                         </tr>
                                         @empty
                                         @endforelse
