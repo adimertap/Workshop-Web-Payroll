@@ -126,7 +126,7 @@ class PerampunganControllerr extends Controller
         $year = date('y');
     
         $kode = DetailPerampungan::join('tb_payroll_detail_perampungan','tb_payroll_detail_gaji.id_pegawai','tb_payroll_detail_perampungan.id_pegawai')
-        ->whereIn('id_pegawai', $tes)->get();
+        ->get();
 
         return $kode;
 
