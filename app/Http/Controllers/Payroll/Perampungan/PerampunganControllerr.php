@@ -123,7 +123,7 @@ class PerampunganControllerr extends Controller
         ->get();
 
         $count = Detailgaji::join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
-        ->whereIn('id_pegawai', $tes)->groupBy('id_pegawai')
+        ->groupBy('id_pegawai')
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
