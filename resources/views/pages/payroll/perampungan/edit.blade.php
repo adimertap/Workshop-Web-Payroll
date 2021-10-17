@@ -85,7 +85,7 @@
 
 
     @forelse ($detailgaji as $item)
-    <div class="container-fluid mb-4">
+    <div class="container">
         <div class="card card-collapsable">
             <a class="card-header" href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse" role="button" aria-expanded="true"
                 aria-controls="collapseCardExample">FORM 1721 A1 {{ $item->Pegawai->nama_pegawai }}
