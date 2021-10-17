@@ -87,8 +87,9 @@
     @forelse ($detailgaji as $item)
     <div class="container">
         <div class="card card-collapsable mb-4">
-            <a class="card-header" href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse" role="button" aria-expanded="true"
-                aria-controls="collapseCardExample">FORM 1721 A1 {{ $item->Pegawai->nama_pegawai }}
+            <a class="card-header" href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse"
+                role="button" aria-expanded="true" aria-controls="collapseCardExample">FORM 1721 A1
+                {{ $item->Pegawai->nama_pegawai }}
                 <div class="card-collapsable-arrow">
                     <i class="fas fa-chevron-down"></i>
                 </div>
@@ -727,7 +728,8 @@
                             </div>
                         </div>
                     </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     @empty
