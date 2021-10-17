@@ -57,7 +57,7 @@
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->Pegawai->nama_pegawai}}</td>
                                             <td>{{ $item->Pegawai->npwp_pegawai}}</td>
-                                            <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_perampungan }}</td>
+                                            <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}</td>
                                             <td>
 
                                             </td>
