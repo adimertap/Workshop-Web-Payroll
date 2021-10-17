@@ -125,7 +125,7 @@ class PerampunganControllerr extends Controller
         $gas = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_1721a1']);
         
 
-        return $gas;
+        // return $gas;
 
         
         $id = DetailPerampungan::getId();
