@@ -122,14 +122,23 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        // $id = DetailPerampungan::getId();
-        // foreach($id as $value);
-        // $idlama = $value->id_1721a1;
-        // $idbaru = $idlama + 1;
-        // $blt = date('m');
-        // $year = date('y');
+        $id_kode = Detailgaji::join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        ->whereIn('id_pegawai', $tes)->groupBy('id_pegawai')
+        ->selectRaw('id_pegawai')
+        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        ->get();
+
+        return $id_kode;
+
+
+        $id = DetailPerampungan::getId();
+        foreach($id as $value);
+        $idlama = $value->id_1721a1;
+        $idbaru = $idlama + 1;
+        $blt = date('m');
+        $year = date('y');
         
-        // $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
+        $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
 
         $count = $detailgaji->count();
         return $count;
