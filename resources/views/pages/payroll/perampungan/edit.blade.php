@@ -406,7 +406,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="tunjangan_lain-{{ $item->id_pegawai }}"
-                                            name="tunjangan_lain" value="{{ number_format($item->total_tunjangan,2,',','.') ?? '0' }}"
+                                            name="tunjangan_lain" value="{{ number_format($item->total_tunjangan,2) ?? '0' }}"
                                             placeholder="Tunj Lain">
                                     </div>
                                 </div>
@@ -810,12 +810,12 @@
     function hitungpenghasilanbruto(event, id_pegawai) {
         var gaji_pokok_element =  $(`#gaji_pokok-${id_pegawai}`).val()
         var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
 
         var tunjangan_pph = $(`#tunjangan_pph-${id_pegawai}`).val()
         var tunjangan_lain_element = $(`#tunjangan_lain-${id_pegawai}`).val()
         var tunjangan_lain = tunjangan_lain_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
 
         var honorarium = $(`#honorarium-${id_pegawai}`).val()
         var premi_prsh = $(`#premi_prsh-${id_pegawai}`).val()
@@ -855,7 +855,7 @@
     function hitungpengurangan(event, id_pegawai) {
         var biaya_jabatan_element = $(`#biaya_jabatan-${id_pegawai}`).val()
         var biaya_jabatan = biaya_jabatan_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
 
         var iuran_jht = $(`#iuran_jht-${id_pegawai}`).val()
         var bruto = $(`#bruto-${id_pegawai}`).val()
