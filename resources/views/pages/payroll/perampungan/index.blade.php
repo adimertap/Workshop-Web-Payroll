@@ -78,7 +78,7 @@
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 150px;">Total PPh Terutang</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 40px;">Nomor</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
