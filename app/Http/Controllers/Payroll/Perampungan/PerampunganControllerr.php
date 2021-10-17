@@ -126,7 +126,7 @@ class PerampunganControllerr extends Controller
         $year = date('y');
 
         $ss = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)
-        ->where('id_pegawai', $detailgaji['id_pegawai'])
+        ->where('id_pegawai', $detailgaji->id_pegawai)
         ->get();
 
         return $ss;
