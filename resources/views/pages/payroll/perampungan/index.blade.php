@@ -27,7 +27,7 @@
     <div class="container-fluid">
         <div class="card mb-4">
             <div class="card card-header-actions">
-                <div class="card-header ">List Data
+                <div class="card-header ">List Data Tes
                     <a href="" class="btn btn-sm btn-primary" type="button" data-toggle="modal"
                         data-target="#Modaltambah">
                         Tambah Data
@@ -79,9 +79,6 @@
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 150px;">Total PPh Terutang</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 40px;">Nomor</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 90px;">Actions</th>
                                         </tr>
@@ -94,7 +91,6 @@
                                             <td>{{ $item->npwp_pemotong}}</td>
                                             <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
                                             <td>{{ $item->total_pph_terutang}}</td>
-                                            <td>{{ $kode_perampungan }}</td>
                                             <td>
                                                 <a href="{{ route('perampungan.show', $item->id_perampungan) }}"
                                                     class="btn btn-secondary btn-datatable" data-toggle="tooltip"
