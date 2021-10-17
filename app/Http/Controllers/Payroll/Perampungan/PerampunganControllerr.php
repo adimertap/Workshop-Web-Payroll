@@ -124,12 +124,12 @@ class PerampunganControllerr extends Controller
 
         $blt = date('m');
         $year = date('y');
-    
-        $kode = DetailPerampungan::join('tb_payroll_detail_perampungan','tb_payroll_detail_gaji.id_pegawai','tb_payroll_detail_perampungan.id_pegawai')
+
+        $ss = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)
+        ->where('id_pegawai', $detailgaji['id_pegawai'])
         ->get();
 
-        return $kode;
-
+        return $ss;
 
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
