@@ -122,17 +122,12 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        $aw = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->count(['id_pegawai']);
-
-        return $aw;
+        
 
         $blt = date('m');
         $year = date('y');
 
         
-
-      
-
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
         return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji','blt','year'));

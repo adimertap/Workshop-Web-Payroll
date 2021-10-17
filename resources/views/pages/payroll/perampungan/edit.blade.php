@@ -44,9 +44,6 @@
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 40px;">NPWP Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 40px;">Nomor</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 90px;">Status</th>
                                         </tr>
@@ -57,9 +54,18 @@
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->Pegawai->nama_pegawai}}</td>
                                             <td>{{ $item->Pegawai->npwp_pegawai}}</td>
-                                            <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}</td>
+                                            {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}</td> --}}
                                             <td>
-
+                                                <div id="{{ $item->id_pegawai }}-SudahTerhitung" style="display: none">
+                                                    <p>Sudah Terhitung! <span class="badge badge-success">
+                                                        <i class="fas fa-check"></i></span>
+                                                    </p>
+                                                </div>
+                                                <div id="{{ $item->id_pegawai }}-BelumTerhitung">
+                                                    <p>Belum Terhitung! <span class="badge badge-danger">
+                                                        <i class="fas fa-times"></i></span>
+                                                    </p>
+                                                </div>
                                             </td>
                                         </tr>
                                         @empty
