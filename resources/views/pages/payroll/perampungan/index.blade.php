@@ -158,7 +158,7 @@
                                 style="color: red">*</span>
                             <div class="input-group input-group-joined">
                                 <input class="form-control" type="text" placeholder="Pilih Pegawai" aria-label="Search"
-                                    id="detailpegawai">
+                                    id="detailpegawai" name="detailpegawai">
                                 <div class="input-group-append">
                                     <a href="" class="input-group-text" type="button" data-toggle="modal"
                                         data-target="#Modalpegawai">
@@ -309,6 +309,12 @@
 </div>
 
 <script>
+    function tambahpegawai(event){
+        var Terpilih = 'Pegawai Telah Dipilih'
+        var detailpegawai = $('#detailpegawai').val(Terpilih)
+    }
+
+
     function submit1(event, id_pegawai) {
 
         var tbody = $(`#pegawai`)

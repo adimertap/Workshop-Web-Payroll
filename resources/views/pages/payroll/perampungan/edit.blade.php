@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <div class="container-fluid">
+    {{-- <div class="container-fluid">
         @forelse ($detailgaji as $item)
         <div class="card card-collapsable">
             <div class="card-header">FORM 1721 A1 {{ $item->Pegawai->nama_pegawai }}</div>
@@ -722,7 +722,7 @@
     @empty
 
     @endforelse
-    </div>
+    </div> --}}
 </main>
 
 <div class="modal fade" id="Modalpph21" data-backdrop="static" tabindex="-1" role="dialog"
