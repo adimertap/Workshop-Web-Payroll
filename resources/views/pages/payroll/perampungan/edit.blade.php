@@ -420,7 +420,7 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="honorarium-{{ $item->id_pegawai }}"
+                                        <input type="number" class="form-control form-control-sm" id="honorarium-{{ $item->id_pegawai }}"
                                             name="honorarium" value="0" placeholder="Honorarium">
                                     </div>
                                 </div>
@@ -855,7 +855,7 @@
     function hitungpengurangan(event, id_pegawai) {
         var biaya_jabatan_element = $(`#biaya_jabatan-${id_pegawai}`).val()
         var biaya_jabatan = biaya_jabatan_element.replace('&nbsp;', '')
-                .replace(',', '').replace(',', '').replace(',50', '').trim()
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
 
         var iuran_jht = $(`#iuran_jht-${id_pegawai}`).val()
         var bruto = $(`#bruto-${id_pegawai}`).val()
