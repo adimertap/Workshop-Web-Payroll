@@ -74,10 +74,10 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                <a class="btn btn-primary" 
+                                                <a class="btn btn-sm btn-primary" 
                                                 href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse"
                                                 role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                                                    Mulai Hitung</a>
+                                                    Form 1721-A1</a>
                                             </td>
                                             
                                         </tr>
