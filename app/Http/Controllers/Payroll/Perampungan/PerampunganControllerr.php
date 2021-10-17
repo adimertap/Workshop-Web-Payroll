@@ -125,7 +125,9 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get(['id_pegawai','total_tunjangan','total_gaji','total_pph21','total_pokok','bulan_gaji']);
 
-        $jos = $detailgaji->groupBy('id_pegawai');
+        $jos = $detailgaji
+        ->selectRaw('count(id_pegawai) as id_pegawai, id_pegawai')
+        ->groupBy('id_pegawai')->get();
 
         return $jos;
 
