@@ -88,7 +88,7 @@
     <div class="container">
         <div class="card card-collapsable mb-4">
             <a class="card-header" href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse"
-                role="button" aria-expanded="true" aria-controls="collapseCardExample">FORM 1721 A1
+                role="button" aria-expanded="false" aria-controls="collapseCardExample">FORM 1721 A1
                 {{ $item->Pegawai->nama_pegawai }}
                 <div class="card-collapsable-arrow">
                     <i class="fas fa-chevron-down"></i>
@@ -263,10 +263,8 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <select name="karyawan_asing" id="karyawan_asing" class="form-control"
+                                        <select name="karyawan_asing" id="karyawan_asing" class="form-control form-control-sm"
                                             value="{{ old('karyawan_asing') }}">
-                                            <option value="{{ old('karyawan_asing')}}"> Pilih Status Karyawan Asing
-                                            </option>
                                             <option value="Tidak">Tidak</option>
                                             <option value="Ya">Ya</option>
                                         </select>
