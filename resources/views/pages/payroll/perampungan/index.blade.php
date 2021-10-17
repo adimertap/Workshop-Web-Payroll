@@ -15,7 +15,6 @@
             </div>
             <div class="small">
                 <i class="fa fa-cogs" aria-hidden="true"></i>
-                <input class="form-control" id="id_perampungan" type="text"  style="display:none" value="{{ $id_perampungan }}">
                 Bengkel
                 <span class="font-weight-500 text-primary">{{ Auth::user()->bengkel->nama_bengkel}}</span>
                 <hr>
@@ -315,8 +314,6 @@
 <script>
     function submit1(event, id_pegawai) {
 
-        var id_perampungan  = $('#id_perampungan').val()
-        console.log(id_perampungan)
         var tbody = $(`#pegawai`)
         var pegawai = []
         for (let index = 0; index < tbody.length; index++) {
@@ -333,7 +330,6 @@
 
                     pegawai.push({
                         id_pegawai: id,
-                        // id_perampungan: id_perampungan
                     })
                 }
             })
