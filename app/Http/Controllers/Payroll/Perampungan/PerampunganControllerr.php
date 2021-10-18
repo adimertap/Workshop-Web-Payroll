@@ -112,7 +112,7 @@ class PerampunganControllerr extends Controller
      */
     public function edit($id_perampungan)
     {
-        $perampungan = Perampungan::with('Detail','Detailterakhir')->find($id_perampungan);
+        $perampungan = Perampungan::with('Detail')->find($id_perampungan);
         
         $tes = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_pegawai']);
 
