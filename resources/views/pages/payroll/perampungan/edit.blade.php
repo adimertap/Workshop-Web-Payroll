@@ -908,8 +908,9 @@
 
         var datapegawai = $('#gaji')
         for (let index = 0; index < datapegawai.length; index++) {
-            var children = $(datapegawai[index])
-            console.log(children)
+            var form = $(datapegawai[index])
+            var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
+            console.log(form, gaji_pokok_element)
             
 
 
