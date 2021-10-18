@@ -671,7 +671,7 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" id="hitungpph21-{{ $item->id_pegawai }}" onclick="hitungpph21(event, {{ $item->id_pegawai }})"
+                                                <button class="btn btn-sm btn-primary" onclick="hitungpph21(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm" id="pph21_pkp-{{ $item->id_pegawai }}"
@@ -908,8 +908,11 @@
     }
 
     function hitungpph21(event, id_pegawai) {
+        console.log(id_pegawai)
         var datapph21 = $('#tablepph21').children()
         var children = $(datapph21).children()
+
+        console.log(children)
 
         // 50JT
         var td1 = children[2]
