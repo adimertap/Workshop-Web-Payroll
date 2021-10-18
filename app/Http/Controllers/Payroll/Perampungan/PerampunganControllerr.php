@@ -128,45 +128,13 @@ class PerampunganControllerr extends Controller
         $gas = DetailPerampungan::join('tb_kepeg_master_pegawai','tb_payroll_detail_perampungan.id_pegawai','tb_kepeg_master_pegawai.id_pegawai')->where('id_perampungan', $perampungan->id_perampungan)
         ->get();
 
-        // $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        // ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
-        // ->select('tb_payroll_detail_perampungan.id_pegawai', 'id_1721a1')
-        // ->groupBy('tb_payroll_detail_perampungan.id_pegawai')
-        // ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        // ->get();
-
-        // return $gji;
-        
-        
-        
-
         $blt = date('m');
         $year = date('y');
 
         
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
-        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji','blt','year','gas'));
-
-        // $sumtunjangan = Detailgaji::with([
-        //     'Gaji'
-        // ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        // ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        // ->sum('total_tunjangan');
-        
-        // $sumpokok= Detailgaji::with([
-        //     'Gaji'
-        // ])->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        // ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        // ->sum('total_pokok');
-
-        // return $detailgaji;
-  
-
-        // $gajipokok = Mastergajipokok::sum('besaran_gaji');
-        // $gajipokoktahun = $gajipokok * 12;
-
-     
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji','blt','year','gas'));     
     }
 
     /**
@@ -176,9 +144,14 @@ class PerampunganControllerr extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_perampungan)
     {
-        //
+        $perampungan = Perampungan::findOrFail($id_perampungan);
+
+        $perampungan->save();
+        $perampungan->Detail()->sync($request->detail);
+
+        return $request;
     }
 
     /**
