@@ -124,11 +124,14 @@ class PerampunganControllerr extends Controller
         ->get();
 
 
-        $last = DetailPerampungan::with('Pegawai')->join('tb_payroll_detail_gaji', 'tb_payroll_detail_perampungan.id_pegawai', 'tb_payroll_detail_gaji.id_pegawai')
-        ->orderBy('updated_at', 'DESC')
+        $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
+        ->select('tb_payroll_detail_perampungan.id_pegawai', 'id_1721a1')
+        ->whereIn('id_pegawai', $tes)->groupBy('id_pegawai')
+        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        return $last;
+        return $gji;
         
         
 
