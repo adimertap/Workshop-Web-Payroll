@@ -334,7 +334,7 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <input type="input" name="kode_negara" class="form-control form-control-sm"
-                                                id="kode_negara">
+                                                id="kode_negara" value="-">
                                         </div>
                                     </div>
                                 </div>
@@ -913,7 +913,7 @@
             var form = $(datapegawai[index]).children().children()
             var id_pegawai = form.find('input[name="id_pegawai"]').val()
 
-            if (form.find('input[name="kode_negara"]').val() == '') {
+            if (form.find('input[name="kode_negara"]').val() == '-') {
                 var kode_negara = form.find('input[name="kode_negara"]').val(0)
             } else {
                 var kode_negara = form.find('input[name="kode_negara"]').val()
