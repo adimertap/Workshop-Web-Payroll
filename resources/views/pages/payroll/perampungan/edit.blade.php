@@ -916,7 +916,7 @@
             var kode_negara = form.find('input[name="kode_negara"]').val()
 
             var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
-            console.log(form, gaji_pokok_element)
+        
             var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
@@ -1125,7 +1125,6 @@
 
     function hitungpenghasilankenapajak(event, id_pegawai) {
         var netto_pph21_element = $(`#netto_pph21-${id_pegawai}`).val()
-        console.log(netto_pph21_element)
         var netto_pph21 = netto_pph21_element.replace('&nbsp;', '')
             .replace('.', '').replace('.', '').replace(',50', '').trim()
 
@@ -1147,8 +1146,6 @@
     function hitungpph21(event, id_pegawai) {
         var datapph21 = $('#tablepph21').children()
         var children = $(datapph21).children()
-
-        console.log(children)
 
         // 50JT
         var td1 = children[2]
@@ -1175,7 +1172,6 @@
         var tdpersen4 = children[15]
         var pphpersen4 = $($(tdpersen4)).html()
 
-        console.log(pph1, pph2, pph3)
 
         // Penghasilan Kena Pajak
         var pkpasik_element = $(`#pkp-${id_pegawai}`).val()
@@ -1198,7 +1194,7 @@
 
                 // FIX PPH Level 2
                 var pphlevel1tahun = a[0];
-                console.log(pphlevel1fix, pphlevel1tahun)
+              
 
                 if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
@@ -1219,11 +1215,11 @@
                 var pphkena15 = pkp - pph1
                 var pphkena15fix = pphkena15 * pphpersen2
                 var pphkena15sangat = pphkena15fix / 100
-                console.log(pphkena15sangat, pphkena5sangat)
+            
 
                 // Penambahan
                 var pphlevel2 = parseInt(pphkena5sangat + pphkena15sangat)
-                console.log(pphlevel2)
+              
                 // var pphlevel2hampir = pphlevel2 / 12
 
                 // Memecah Bilangan Decimal
@@ -1235,7 +1231,7 @@
                 // FIX PPH Level 2
                 var pphlevel2tahun = a[0];
 
-                console.log(pphlevel2tahun)
+              
                 $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel2tahun))
                 alert('PPH LEVEL 2')
 
