@@ -978,6 +978,9 @@
             if(pph21_terutang == 0){
                 var alert = $('#alertbelumhitung').show()
             }else{
+
+
+
                 detailperampungan.push({
                     id_pegawai: id_pegawai,
                     id_perampungan: id_perampungan,
@@ -1008,31 +1011,26 @@
                 })
             }
 
-            if (detailperampungan == '') {
-                var alert = $('#alertbelumhitung').show()
-            } else {
-                var data = {
-                    _token: _token,
-                    detail: detailperampungan
-                }
-
-               
-
-                $.ajax({
-                    method: 'put',
-                    url: '/payroll/perampungan/' + id_perampungan,
-                    data: data,
-                    success: function (response) {
-                        console.log(response)
-                        // window.location.href = '/payroll/perampungan'
-
-                    },
-                    error: function (response) {
-                        console.log(response)
-                        alert(error.responseJSON.message)
-                    }
-                });
+            var data = {
+                _token: _token,
+                detail: detailperampungan
             }
+
+            $.ajax({
+                method: 'put',
+                url: '/payroll/perampungan/' + id_perampungan,
+                data: data,
+                success: function (response) {
+                    console.log(response)
+                    // window.location.href = '/payroll/perampungan'
+
+                },
+                error: function (response) {
+                    console.log(response)
+                    alert(error.responseJSON.message)
+                }
+            });
+            
 
         }
 
