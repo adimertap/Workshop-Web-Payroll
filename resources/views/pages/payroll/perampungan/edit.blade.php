@@ -427,7 +427,7 @@
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm"
                                             id="tunjangan_lain-{{ $item->id_pegawai }}" name="tunjangan_lain"
-                                            value="{{ number_format($item->total_tunjangan,2) ?? '0' }}"
+                                            value="{{ number_format($item->total_tunjangan) ?? '0' }}"
                                             placeholder="Tunj Lain">
                                     </div>
                                 </div>
@@ -894,8 +894,9 @@
             }
 
             var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
+            console.log(gaji_pokok_element)
             var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
-                .replace(',', '').replace(',', '').replace(',50', '').trim()
+            .replace(',', '').replace(',', '').replace(',50', '').trim()
 
             var karyawan_asing = form.find('select[name=karyawan_asing]').val()
             var kode_objek_pajak = form.find('input[name="radio2"]:checked').val()
