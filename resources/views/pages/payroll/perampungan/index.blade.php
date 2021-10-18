@@ -66,18 +66,18 @@
                                                 aria-label="Name: activate to sort column descending"
                                                 style="width: 20px;">
                                                 No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 40px;">Tanggal Perampungan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 40px;">Nama Pemotong</th>
+                                                style="width: 70px;">Nama Pemotong</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 40px;">NPWP Pemotong</th>
+                                                style="width: 60px;">NPWP Pemotong</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 40px;">Tahun</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 150px;">Total PPh Terutang</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 90px;">Actions</th>
@@ -87,10 +87,10 @@
                                         @forelse ($perampungan as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
+                                            <td>{{ $item->tanggal_perampungan}}</td>
                                             <td>{{ $item->nama_pemotong}}</td>
                                             <td>{{ $item->npwp_pemotong}}</td>
                                             <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
-                                            <td>{{ $item->total_pph_terutang}}</td>
                                             <td>
                                                 <a href="{{ route('perampungan.show', $item->id_perampungan) }}"
                                                     class="btn btn-secondary btn-datatable" data-toggle="tooltip"
