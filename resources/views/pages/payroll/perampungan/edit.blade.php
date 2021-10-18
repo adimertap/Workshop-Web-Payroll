@@ -1016,7 +1016,7 @@
                     detail: detailperampungan
                 }
 
-                console.log(data)
+               
 
                 $.ajax({
                     method: 'put',
