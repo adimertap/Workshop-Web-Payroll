@@ -125,14 +125,18 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
-        ->select('tb_payroll_detail_perampungan.id_pegawai', 'id_1721a1','nama_pegawai','npwp_pegawai')
-        ->groupBy('tb_payroll_detail_perampungan.id_pegawai')
-        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        ->get();
+        $tes = DetailPerampungan::join('tb_kepeg_master_pegawai','tb_payroll_detail_perampungan.id_pegawai','tb_kepeg_master_pegawai.id_pegawai')->where('id_perampungan', $perampungan->id_perampungan)->get();
 
-        return $gji;
+        return $tes;
+
+        // $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        // ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
+        // ->select('tb_payroll_detail_perampungan.id_pegawai', 'id_1721a1')
+        // ->groupBy('tb_payroll_detail_perampungan.id_pegawai')
+        // ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        // ->get();
+
+        // return $gji;
         
         
         
