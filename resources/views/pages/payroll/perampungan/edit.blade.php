@@ -908,8 +908,11 @@
 
         var datapegawai = $('#gaji').children()
         for (let index = 0; index < datapegawai.length; index++) {
-            var children = $(datapegawai[index]).children()
+            var children = $(datapegawai[index])
             console.log(children)
+            
+
+
         }
 
 
