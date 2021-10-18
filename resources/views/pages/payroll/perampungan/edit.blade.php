@@ -906,7 +906,7 @@
         var _token = $('#form1').find('input[name="_token"]').val()
         var detailperampungan = []
 
-        var datapegawai = $('#gaji').children()
+        var datapegawai = $('#gaji')
         for (let index = 0; index < datapegawai.length; index++) {
             var form = $(datapegawai[index]).children()
 
