@@ -975,7 +975,7 @@
             var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
-            var nomor = $(`#nomor-${id_pegawai}`).html()
+            var nomor = $(`#nomor-${id_pegawai[index]}`).html()
 
             console.log(nomor)
 
