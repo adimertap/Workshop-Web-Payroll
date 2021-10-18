@@ -911,7 +911,7 @@
         // var datapegawai = $('#gaji')
         for (let index = 0; index < detailgaji.length; index++) {
             // var form = $(datapegawai[index]).children()
-            var form = $('#form2-' + detailgaji[i].id_pegawai)
+            var form = $('#form2-' + detailgaji[index].id_pegawai)
             var id_pegawai = form.find('input[name="id_pegawai"]').val()
             var kode_negara = form.find('input[name="kode_negara"]').val()
 
