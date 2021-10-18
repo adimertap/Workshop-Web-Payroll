@@ -62,13 +62,13 @@
                                             {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}
                                             </td> --}}
                                             <td>
-                                                <div id="{{ $item->id_pegawai }}-SudahTerhitung" style="display: none">
+                                                <div id="SudahTerhitung-{{ $item->id_pegawai }}" style="display: none">
                                                     <p class="text-success">Sudah Terhitung! <span
                                                             class="badge badge-success">
                                                             <i class="fas fa-check"></i></span>
                                                     </p>
                                                 </div>
-                                                <div id="{{ $item->id_pegawai }}-BelumTerhitung">
+                                                <div id="BelumTerhitung-{{ $item->id_pegawai }}">
                                                     <p class="text-danger">Belum Terhitung! <span
                                                             class="badge badge-danger">
                                                             <i class="fas fa-times"></i></span>
@@ -691,7 +691,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="pph21_telah_pot-{{ $item->id_pegawai }}"
-                                            name="pph21_telah_pot" value="{{ $item->total_pph21 }}" placeholder="PPh21 Telah Pot">
+                                            name="pph21_telah_pot" value="0" placeholder="PPh21 Telah Pot">
                                     </div>
                                 </div>
                             </div>
@@ -710,7 +710,7 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" id="hitungpph21terutang-{{ $item->id_pegawai }}" onclick="pph21terutang()"
+                                                <button class="btn btn-sm btn-primary" id="hitungpph21terutang-{{ $item->id_pegawai }}" onclick="pph21terutang(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm" id="pph21_terutang-{{ $item->id_pegawai }}"
@@ -730,7 +730,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="pph21_lunas-{{ $item->id_pegawai }}"
-                                            name="pph21_lunas" value="0" placeholder="PPh21 dan PPh26">
+                                            name="pph21_lunas" value="{{ number_format($item->total_pph21) }}" placeholder="PPh21 dan PPh26">
                                     </div>
                                 </div>
                             </div>
@@ -1052,32 +1052,26 @@
 
     }
 
-    function pph21terutang() {
-        var pph21_pkp = $('#pph21_pkp').val()
-        var pph21_telah_pot = $('#pph21_telah_pot').val()
+    function pph21terutang(event, id_pegawai) {
+        var pph21_pkp_element = $(`#pph21_pkp-${id_pegawai}`).val()
+        var pph21_pkp = pph21_pkp_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+        var pph21_telah_pot = $(`#pph21_telah_pot-${id_pegawai}`).val()
 
         if (pph21_pkp == 0) {
             alert('Anda Belum Melakukan Perhitungan PPh21')
         } else {
             var pph21_terutang = parseInt(pph21_pkp) + parseInt(pph21_telah_pot)
-            $('#pph21_terutang').val(pph21_terutang)
-
-            var pph_final_bulan = pph21_terutang / 12
-            var str = pph_final_bulan.toString();
-            var numarray = str.split('.');
-            var a = new Array();
-            a = numarray;
-
-            pph_final_bulan_fix = a[0];
-
-
-            $('#pph21_lunas').val(pph_final_bulan_fix)
+            $(`#pph21_terutang-${id_pegawai}`).val(new Intl.NumberFormat('id', {
+                }).format(pph21_terutang))
+            
+            $(`#SudahTerhitung-${id_pegawai}`).show()
+            $(`#BelumTerhitung-${id_pegawai}`).hide()
 
             alert('Berhasil Melakukan Perhitungan PPh21 Final')
         }
-
-
-
+        
     }
 
 </script>
