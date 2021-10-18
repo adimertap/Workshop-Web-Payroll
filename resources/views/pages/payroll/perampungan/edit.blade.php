@@ -975,34 +975,38 @@
             var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
-            detailperampungan.push({
-                id_pegawai: id_pegawai,
-                id_perampungan: id_perampungan,
-                kode_negara: kode_negara,
-                karyawan_asing: karyawan_asing,
-                kode_objek_pajak: kode_objek_pajak,
-                jenis_netto: jenis_netto,
-                gaji_pokok: gaji_pokok,
-                tunjangan_pph: tunjangan_pph,
-                tunjangan_lain: tunjangan_lain,
-                honorarium: honorarium,
-                premi_prsh: premi_prsh,
-                natura: natura,
-                bonusthr: bonusthr,
-                bruto: bruto,
-                biaya_jabatan: biaya_jabatan,
-                iuran_jht: iuran_jht,
-                total_pengurangan: total_pengurangan,
-                netto: netto,
-                netto_sebelumnya: netto_sebelumnya,
-                netto_pph21: netto_pph21,
-                ptkp: ptkp,
-                pkp: pkp,
-                pph21_pkp: pph21_pkp,
-                pph21_telah_pot: pph21_telah_pot,
-                pph21_terutang: pph21_terutang,
-                pph21_lunas: pph21_lunas
-            })
+            if(pph21_terutang == 0){
+                var alert = $('#alertbelumhitung').show()
+            }else{
+                detailperampungan.push({
+                    id_pegawai: id_pegawai,
+                    id_perampungan: id_perampungan,
+                    kode_negara: kode_negara,
+                    karyawan_asing: karyawan_asing,
+                    kode_objek_pajak: kode_objek_pajak,
+                    jenis_netto: jenis_netto,
+                    gaji_pokok: gaji_pokok,
+                    tunjangan_pph: tunjangan_pph,
+                    tunjangan_lain: tunjangan_lain,
+                    honorarium: honorarium,
+                    premi_prsh: premi_prsh,
+                    natura: natura,
+                    bonusthr: bonusthr,
+                    bruto: bruto,
+                    biaya_jabatan: biaya_jabatan,
+                    iuran_jht: iuran_jht,
+                    total_pengurangan: total_pengurangan,
+                    netto: netto,
+                    netto_sebelumnya: netto_sebelumnya,
+                    netto_pph21: netto_pph21,
+                    ptkp: ptkp,
+                    pkp: pkp,
+                    pph21_pkp: pph21_pkp,
+                    pph21_telah_pot: pph21_telah_pot,
+                    pph21_terutang: pph21_terutang,
+                    pph21_lunas: pph21_lunas
+                })
+            }
 
             if (detailperampungan == '') {
                 var alert = $('#alertbelumhitung').show()
