@@ -649,7 +649,7 @@
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
                                                 <button class="btn btn-sm btn-primary" id="hitungpkp-{{ $item->id_pegawai }}"
-                                                    onclick="hitungpenghasilankenapajak()" type="button">Hitung</button>
+                                                    onclick="hitungpenghasilankenapajak(event, {{ $item->id_pegawai }})" type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm" id="pkp-{{ $item->id_pegawai }}" name="pkp"
                                                 value="0" placeholder="Jumlah Penghasilan Kena Pajak">
@@ -895,6 +895,7 @@
 
     function hitungpenghasilankenapajak(event, id_pegawai) {
         var netto_pph21_element = $(`#netto_pph21-${id_pegawai}`).val()
+        console.log(netto_pph21_element)
         var netto_pph21 = netto_pph21_element.replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',50', '').trim()
         
