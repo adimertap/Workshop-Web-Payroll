@@ -99,9 +99,11 @@ class PerampunganControllerr extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_perampungan)
     {
-        //
+        $perampungan = Perampungan::with('Detail')->find($id_perampungan);
+
+        return view('pages.payroll.perampungan.detail',compact('perampungan'));
     }
 
     /**
