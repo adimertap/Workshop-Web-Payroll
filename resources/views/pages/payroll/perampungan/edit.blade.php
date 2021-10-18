@@ -906,7 +906,7 @@
         var _token = $('#form1').find('input[name="_token"]').val()
         var detailperampungan = []
 
-        var datapegawai = $('#gaji')
+        var datapegawai = $('#gaji').children()
         for (let index = 0; index < datapegawai.length; index++) {
             var form = $(datapegawai[index]).children()
 
@@ -975,9 +975,61 @@
             var pph21_lunas_element = form.find('input[name="pph21_lunas"]').val()
             var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
-            
-            
 
+            detailperampungan.push({
+                id_pegawai: id_pegawai,
+                id_perampungan: id_perampungan,
+                kode_negara: kode_negara,
+                karyawan_asing: karyawan_asing,
+                kode_objek_pajak: kode_objek_pajak,
+                jenis_netto: jenis_netto,
+                gaji_pokok: gaji_pokok,
+                tunjangan_pph: tunjangan_pph,
+                tunjangan_lain: tunjangan_lain,
+                honorarium: honorarium,
+                premi_prsh: premi_prsh,
+                natura: natura,
+                bonusthr: bonusthr,
+                bruto: bruto,
+                biaya_jabatan: biaya_jabatan,
+                iuran_jht: iuran_jht,
+                total_pengurangan: total_pengurangan,
+                netto: netto,
+                netto_sebelumnya: netto_sebelumnya,
+                netto_pph21: netto_pph21,
+                ptkp: ptkp,
+                pkp: pkp,
+                pph21_pkp: pph21_pkp,
+                pph21_telah_pot: pph21_telah_pot,
+                pph21_terutang: pph21_terutang,
+                pph21_lunas: pph21_lunas
+            })
+
+            if (detailperampungan == '') {
+                var alert = $('#alertbelumhitung').show()
+            } else {
+                var data = {
+                    _token: _token,
+                    detail: detailperampungan
+                }
+
+                console.log(data)
+
+                $.ajax({
+                    method: 'put',
+                    url: '/payroll/perampungan/' + id_perampungan,
+                    data: data,
+                    success: function (response) {
+                        console.log(response)
+                        // window.location.href = '/payroll/perampungan'
+
+                    },
+                    error: function (response) {
+                        console.log(response)
+                        alert(error.responseJSON.message)
+                    }
+                });
+            }
 
         }
 
