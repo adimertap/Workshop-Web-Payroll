@@ -148,7 +148,9 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-5">
-
+                                    <input style="display: none" type="input" class="form-control form-control-sm"
+                                        id="id_pegawai" name="id_pegawai" value="{{ $item->id_pegawai }}"
+                                        readonly>
                                 </div>
                             </div>
                             <div class="row">
@@ -909,6 +911,7 @@
         var datapegawai = $('#gaji').children()
         for (let index = 0; index < datapegawai.length; index++) {
             var form = $(datapegawai[index]).children()
+            var id_pegawai = form.find('input[name="id_pegawai"]').val()
 
             if (form.find('input[name="kode_negara"]').val() == '') {
                 var kode_negara = form.find('input[name="kode_negara"]').val(0)
