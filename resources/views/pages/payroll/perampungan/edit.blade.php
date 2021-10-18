@@ -41,10 +41,13 @@
                                                 No</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 40px;">Nama Pegawai</th>
+                                                style="width: 100px;">Nama Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 40px;">NPWP Pegawai</th>
+                                                style="width: 50px;">NPWP Pegawai</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                style="width: 60px;">Nomor</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 40px;">Status</th>
@@ -59,11 +62,7 @@
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->nama_pegawai}}</td>
                                             <td>{{ $item->npwp_pegawai}}</td>
-                                            <td>{{ $item->id_1721a1 }}</td>
-                                            
-
-                                            {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}
-                                            </td> --}}
+                                            <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
                                             <td>
                                                 <div id="SudahTerhitung-{{ $item->id_pegawai }}" style="display: none">
                                                     <p class="text-success">Sudah Terhitung! <span
