@@ -101,8 +101,8 @@ class PerampunganControllerr extends Controller
      */
     public function show($id_perampungan)
     {
-        $perampungan = Perampungan::with('Detail')->find($id_perampungan);
-
+        $perampungan = Perampungan::with('Detail','Detail.Pegawai')->find($id_perampungan);
+        return $perampungan;
         return view('pages.payroll.perampungan.detail',compact('perampungan'));
     }
 
