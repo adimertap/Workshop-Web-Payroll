@@ -910,7 +910,7 @@
 
         var datapegawai = $('#gaji').children()
         for (let index = 0; index < datapegawai.length; index++) {
-            var form = $(datapegawai[index]).children()
+            var form = $(datapegawai[index]).children().children()
             var id_pegawai = form.find('input[name="id_pegawai"]').val()
 
             if (form.find('input[name="kode_negara"]').val() == '') {
