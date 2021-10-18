@@ -55,8 +55,4 @@ class Perampungan extends Model
     {
         static::addGlobalScope(new OwnershipScope);
     }
-
-    public function Detailterakhir(){
-        return $this->hasMany(DetailPerampungan::class, 'id_perampungan', 'id_perampungan')->where('id_perampungan', 'id_perampungan')->orderBy('updated_at', 'DESC');
-    }
 }
