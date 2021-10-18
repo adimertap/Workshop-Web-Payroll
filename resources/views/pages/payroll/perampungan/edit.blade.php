@@ -14,7 +14,9 @@
                         </h1>
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
-
+                        <span class="small" style="color: gray">Cek aturan PPh21 <a data-toggle="modal"
+                            data-target="#Modalpph21" class="font-weight-500 text-primary"> disini
+                        </a></span>
                     </div>
                 </div>
             </div>
@@ -324,9 +326,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                                <span class="small" style="color: gray">Cek aturan PPh21 <a data-toggle="modal"
-                                        data-target="#Modalpph21" class="font-weight-500 text-primary"> disini
-                                    </a></span>
+                               
                             </div>
                         </div>
 
@@ -916,7 +916,6 @@
     }
 
     function hitungpph21(event, id_pegawai) {
-        console.log(id_pegawai)
         var datapph21 = $('#tablepph21').children()
         var children = $(datapph21).children()
 
@@ -968,9 +967,6 @@
                 // FIX PPH Level 2
                 var pphlevel1tahun = a[0];
                 console.log(pphlevel1fix, pphlevel1tahun)
-
-                // $('#pph21_pkp').val(pphlevel1tahun)
-                // alert('PPH LEVEL 1')
 
                 if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
