@@ -812,7 +812,6 @@
             </div>
         </div>
     </div>
-    </div>
     @empty
 
     @endforelse
