@@ -908,17 +908,19 @@
         var _token = $('#form1').find('input[name="_token"]').val()
         var detailperampungan = []
 
-        var datapegawai = $('#gaji')
-        for (let index = 0; index < datapegawai.length; index++) {
-            var form = $(datapegawai[index]).children()
-            var id_pegawai = form[index].find('input[name="id_pegawai"]').val()
-            var kode_negara = form[index].find('input[name="kode_negara"]').val()
-            var gaji_pokok_element = form[index].find('input[name="gaji_pokok"]').val()
-            console.log(gaji_pokok_element)
+        // var datapegawai = $('#gaji')
+        for (let index = 0; index < detailgaji.length; index++) {
+            // var form = $(datapegawai[index]).children()
+            var form = $('#form2-' + detailgaji[i].id_pegawai)
+            var id_pegawai = form.find('input[name="id_pegawai"]').val()
+            var kode_negara = form.find('input[name="kode_negara"]').val()
+
+            var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
+            console.log(form, gaji_pokok_element)
             var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
-            var karyawan_asing = form[index].find('select[name=karyawan_asing]').val()
+            var karyawan_asing = form.find('select[name=karyawan_asing]').val()
             var kode_objek_pajak = form.find('input[name="radio2"]:checked').val()
             var jenis_netto = form.find('input[name="jenis_netto"]:checked').val()
             var tunjangan_pph = form.find('input[name="tunjangan_pph"]').val()
