@@ -54,24 +54,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($kode as $item)
+                                        @forelse ($gas as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td>{{ $item->Pegawai->nama_pegawai}}</td>
-                                            <td>{{ $item->Pegawai->npwp_pegawai}}</td>
+                                            <td>{{ $item->nama_pegawai}}</td>
+                                            <td>{{ $item->npwp_pegawai}}</td>
                                             <td>{{ $item->id_1721a1 }}</td>
                                             
 
                                             {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}
                                             </td> --}}
                                             <td>
-                                                <div id="SudahTerhitung-{{ $item->Pegawai->id_pegawai }}" style="display: none">
+                                                <div id="SudahTerhitung-{{ $item->id_pegawai }}" style="display: none">
                                                     <p class="text-success">Sudah Terhitung! <span
                                                             class="badge badge-success">
                                                             <i class="fas fa-check"></i></span>
                                                     </p>
                                                 </div>
-                                                <div id="BelumTerhitung-{{ $item->Pegawai->id_pegawai }}">
+                                                <div id="BelumTerhitung-{{ $item->id_pegawai }}">
                                                     <p class="text-danger">Belum Terhitung! <span
                                                             class="badge badge-danger">
                                                             <i class="fas fa-times"></i></span>
