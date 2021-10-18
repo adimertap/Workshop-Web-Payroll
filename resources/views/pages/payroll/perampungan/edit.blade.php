@@ -54,23 +54,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @forelse ($detailgaji as $item)
+                                        @forelse ($kode as $item)
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->Pegawai->nama_pegawai}}</td>
                                             <td>{{ $item->Pegawai->npwp_pegawai}}</td>
+                                            <td>{{ $item->id_1721a1 }}</td>
                                             
 
                                             {{-- <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $perampungan->Detail->id_1721a1 }}
                                             </td> --}}
                                             <td>
-                                                <div id="SudahTerhitung-{{ $item->id_pegawai }}" style="display: none">
+                                                <div id="SudahTerhitung-{{ $item->Pegawai->id_pegawai }}" style="display: none">
                                                     <p class="text-success">Sudah Terhitung! <span
                                                             class="badge badge-success">
                                                             <i class="fas fa-check"></i></span>
                                                     </p>
                                                 </div>
-                                                <div id="BelumTerhitung-{{ $item->id_pegawai }}">
+                                                <div id="BelumTerhitung-{{ $item->Pegawai->id_pegawai }}">
                                                     <p class="text-danger">Belum Terhitung! <span
                                                             class="badge badge-danger">
                                                             <i class="fas fa-times"></i></span>
@@ -133,11 +134,8 @@
                                 <div class="form-group row">
                                     <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                                     <div class="col-sm-8">
-                                      
-                                        <input type="input" class="form-control form-control-sm" id="nomor" value="{{ $kode->id_1721a1 }}"
-                                            readonly>
-                        
-                                       
+                                      <input type="input" class="form-control form-control-sm" id="nomor" value=""
+                                        readonly>  
                                     </div>
                                 </div>
                             </div>

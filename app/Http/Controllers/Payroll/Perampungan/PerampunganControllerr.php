@@ -125,7 +125,7 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
-        $kode = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->orderBy('created_at','ASC')->get(['id_1721a1']);
+        $kode = DetailPerampungan::with('Pegawai')->where('id_perampungan', $perampungan->id_perampungan)->orderBy('created_at','ASC')->get();
 
         // $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
         // ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
