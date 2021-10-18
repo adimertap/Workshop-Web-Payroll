@@ -15,8 +15,8 @@
                     </div>
                     <div class="col-12 col-xl-auto mb-3">
                         <span class="small" style="color: gray">Cek aturan PPh21 <a data-toggle="modal"
-                            data-target="#Modalpph21" class="font-weight-500 text-primary"> disini
-                        </a></span>
+                                data-target="#Modalpph21" class="font-weight-500 text-primary"> disini
+                            </a></span>
                     </div>
                 </div>
             </div>
@@ -25,73 +25,92 @@
 
     <div class="container">
         <div class="card mb-4">
-            <div class="card-body ">
-                <div class="datatable">
-                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%"
-                                    cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
-                                    <thead>
-                                        <tr role="row">
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-sort="ascending"
-                                                aria-label="Name: activate to sort column descending"
-                                                style="width: 20px;">
-                                                No</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 100px;">Nama Pegawai</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 50px;">NPWP Pegawai</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 60px;">Nomor</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 40px;">Status</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 40px;">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @forelse ($gas as $item)
-                                        <tr role="row" class="odd">
-                                            <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td>{{ $item->nama_pegawai}}</td>
-                                            <td>{{ $item->npwp_pegawai}}</td>
-                                            <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
-                                            <td>
-                                                <div id="SudahTerhitung-{{ $item->id_pegawai }}" style="display: none">
-                                                    <p class="text-success">Sudah Terhitung! <span
-                                                            class="badge badge-success">
-                                                            <i class="fas fa-check"></i></span>
-                                                    </p>
-                                                </div>
-                                                <div id="BelumTerhitung-{{ $item->id_pegawai }}">
-                                                    <p class="text-danger">Belum Terhitung! <span
-                                                            class="badge badge-danger">
-                                                            <i class="fas fa-times"></i></span>
-                                                    </p>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <a class="btn btn-xs btn-primary" 
-                                                href="#collapseCardExample-{{ $item->id_pegawai }}" data-toggle="collapse"
-                                                role="button" aria-expanded="false" aria-controls="collapseCardExample">
-                                                    Form 1721-A1</a>
-                                            </td>
-                                            
-                                        </tr>
-                                        @empty
-                                        @endforelse
-                                    </tbody>
-                                </table>
+            <div class="card-body">
+                <div class="alert alert-danger" id="alertbelumhitung" role="alert" style="display:none"> <i
+                    class="fas fa-times"></i>
+                Error! Anda belum melakukan perhitungan PPH21!
+                <button class="close" type="button" onclick="$(this).parent().hide()" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1" class="d-inline">
+                    @csrf
+                    <div class="datatable">
+                        <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-bordered table-hover dataTable" id="dataTableA"
+                                        width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info"
+                                        style="width: 100%;">
+                                        <thead>
+                                            <tr role="row">
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                    colspan="1" aria-sort="ascending"
+                                                    aria-label="Name: activate to sort column descending"
+                                                    style="width: 20px;">
+                                                    No</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                    colspan="1" aria-label="Position: activate to sort column ascending"
+                                                    style="width: 100px;">Nama Pegawai</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                    colspan="1" aria-label="Position: activate to sort column ascending"
+                                                    style="width: 50px;">NPWP Pegawai</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                    colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                    style="width: 60px;">Nomor</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                    colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                    style="width: 40px;">Status</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                    colspan="1" aria-label="Actions: activate to sort column ascending"
+                                                    style="width: 40px;">Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @forelse ($gas as $item)
+                                            <tr role="row" class="odd">
+                                                <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}
+                                                </th>
+                                                <td>{{ $item->nama_pegawai}}</td>
+                                                <td>{{ $item->npwp_pegawai}}</td>
+                                                <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
+                                                <td>
+                                                    <div id="SudahTerhitung-{{ $item->id_pegawai }}"
+                                                        style="display: none">
+                                                        <p class="text-success">Sudah Terhitung! <span
+                                                                class="badge badge-success">
+                                                                <i class="fas fa-check"></i></span>
+                                                        </p>
+                                                    </div>
+                                                    <div id="BelumTerhitung-{{ $item->id_pegawai }}">
+                                                        <p class="text-danger">Belum Terhitung! <span
+                                                                class="badge badge-danger">
+                                                                <i class="fas fa-times"></i></span>
+                                                        </p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-xs btn-primary"
+                                                        href="#collapseCardExample-{{ $item->id_pegawai }}"
+                                                        data-toggle="collapse" role="button" aria-expanded="false"
+                                                        aria-controls="collapseCardExample">
+                                                        Form 1721-A1</a>
+                                                </td>
+
+                                            </tr>
+                                            @empty
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
+            </div>
+            <div class="card-footer">
+                <div class="text-right">
+                    <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
+                        data-target="#Modalsumbit">Simpan Data</button>
                 </div>
             </div>
         </div>
@@ -108,7 +127,8 @@
                     <i class="fas fa-chevron-down"></i>
                 </div>
             </a>
-            <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form1-{{ $item->id_pegawai }}" class="d-inline">
+            <form action="{{ route('gaji-pegawai.store') }}" method="POST" id="form2-{{ $item->id_pegawai }}"
+                class="d-inline">
                 @csrf
                 <div class="collapse" id="collapseCardExample-{{ $item->id_pegawai }}">
                     <div class="card-body">
@@ -133,8 +153,8 @@
                                 <div class="form-group row">
                                     <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                                     <div class="col-sm-8">
-                                      <input type="input" class="form-control form-control-sm" id="nomor" value=""
-                                        readonly>  
+                                        <input type="input" class="form-control form-control-sm" id="nomor"
+                                            placeholder="Otomatis Terisi" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -216,7 +236,8 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="id_ptkp"
-                                                value="{{ $item->Pegawai->PTKP->nama_ptkp }}, {{ $item->Pegawai->PTKP->keterangan_ptkp }}" readonly>
+                                            value="{{ $item->Pegawai->PTKP->nama_ptkp }}, {{ $item->Pegawai->PTKP->keterangan_ptkp }}"
+                                            readonly>
                                     </div>
                                 </div>
                             </div>
@@ -271,8 +292,8 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <select name="karyawan_asing" id="karyawan_asing" class="form-control form-control-sm"
-                                            value="{{ old('karyawan_asing') }}">
+                                        <select name="karyawan_asing" id="karyawan_asing"
+                                            class="form-control form-control-sm" value="{{ old('karyawan_asing') }}">
                                             <option value="Tidak">Tidak</option>
                                             <option value="Ya">Ya</option>
                                         </select>
@@ -302,7 +323,8 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="kode_negara">
+                                        <input type="input" name="kode_negara" class="form-control form-control-sm"
+                                            id="kode_negara">
                                     </div>
                                 </div>
                             </div>
@@ -322,7 +344,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-6">
-                               
+
                             </div>
                         </div>
 
@@ -370,8 +392,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="gaji_pokok-{{ $item->id_pegawai }}"
-                                            name="gaji_pokok" value="{{ number_format($item->total_pokok) ?? '0' }}"
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="gaji_pokok-{{ $item->id_pegawai }}" name="gaji_pokok"
+                                            value="{{ number_format($item->total_pokok) ?? '0' }}"
                                             placeholder="Gaji/Pensiun Atau THT/JHT">
                                     </div>
                                 </div>
@@ -385,8 +408,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="tunjangan_pph-{{ $item->id_pegawai }}"
-                                            name="tunjangan_pph" value="0" placeholder="Tunj PPh">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="tunjangan_pph-{{ $item->id_pegawai }}" name="tunjangan_pph" value="0"
+                                            placeholder="Tunj PPh">
                                     </div>
                                 </div>
                             </div>
@@ -401,8 +425,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="tunjangan_lain-{{ $item->id_pegawai }}"
-                                            name="tunjangan_lain" value="{{ number_format($item->total_tunjangan,2) ?? '0' }}"
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="tunjangan_lain-{{ $item->id_pegawai }}" name="tunjangan_lain"
+                                            value="{{ number_format($item->total_tunjangan,2) ?? '0' }}"
                                             placeholder="Tunj Lain">
                                     </div>
                                 </div>
@@ -416,8 +441,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="honorarium-{{ $item->id_pegawai }}"
-                                            name="honorarium" value="0" placeholder="Honorarium">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="honorarium-{{ $item->id_pegawai }}" name="honorarium" value="0"
+                                            placeholder="Honorarium">
                                     </div>
                                 </div>
                             </div>
@@ -432,8 +458,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="premi_prsh-{{ $item->id_pegawai }}"
-                                            name="premi_prsh" value="0" placeholder="Premi Asuransi">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="premi_prsh-{{ $item->id_pegawai }}" name="premi_prsh" value="0"
+                                            placeholder="Premi Asuransi">
                                     </div>
                                 </div>
                             </div>
@@ -446,8 +473,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="natura-{{ $item->id_pegawai }}"
-                                            name="natura" value="0" placeholder="Natura">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="natura-{{ $item->id_pegawai }}" name="natura" value="0"
+                                            placeholder="Natura">
                                     </div>
                                 </div>
                             </div>
@@ -462,8 +490,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="bonusthr-{{ $item->id_pegawai }}"
-                                            name="bonusthr" value="0" placeholder="Bonus THR">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="bonusthr-{{ $item->id_pegawai }}" name="bonusthr" value="0"
+                                            placeholder="Bonus THR">
                                     </div>
                                 </div>
                             </div>
@@ -477,11 +506,14 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button id="hitungbruto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary"
-                                                    onclick="hitungpenghasilanbruto(event, {{ $item->id_pegawai }})" type="button">Hitung</button>
+                                                <button id="hitungbruto-{{ $item->id_pegawai }}"
+                                                    class="btn btn-sm btn-primary"
+                                                    onclick="hitungpenghasilanbruto(event, {{ $item->id_pegawai }})"
+                                                    type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="bruto-{{ $item->id_pegawai }}"
-                                                name="bruto" value="0" placeholder="Jumlah Penghasilan">
+                                            <input type="input" class="form-control form-control-sm"
+                                                id="bruto-{{ $item->id_pegawai }}" name="bruto" value="0"
+                                                placeholder="Jumlah Penghasilan">
                                         </div>
 
                                     </div>
@@ -501,8 +533,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="biaya_jabatan-{{ $item->id_pegawai }}"
-                                            name="biaya_jabatan" value="0" placeholder="Biaya Jabatan">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="biaya_jabatan-{{ $item->id_pegawai }}" name="biaya_jabatan" value="0"
+                                            placeholder="Biaya Jabatan">
                                     </div>
                                 </div>
                             </div>
@@ -514,8 +547,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="iuran_jht-{{ $item->id_pegawai }}"
-                                            name="iuran_jht" value="0" placeholder="Iuran">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="iuran_jht-{{ $item->id_pegawai }}" name="iuran_jht" value="0"
+                                            placeholder="Iuran">
                                     </div>
                                 </div>
                             </div>
@@ -533,12 +567,14 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button id="buttonpengurangan-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpengurangan(event, {{ $item->id_pegawai }})"
+                                                <button id="buttonpengurangan-{{ $item->id_pegawai }}"
+                                                    class="btn btn-sm btn-primary"
+                                                    onclick="hitungpengurangan(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
                                             <input type="input" class="form-control form-control-sm"
-                                                id="total_pengurangan-{{ $item->id_pegawai }}" name="total_pengurangan" value="0"
-                                                placeholder="Jumlah Pengurangan">
+                                                id="total_pengurangan-{{ $item->id_pegawai }}" name="total_pengurangan"
+                                                value="0" placeholder="Jumlah Pengurangan">
                                         </div>
                                     </div>
                                 </div>
@@ -560,11 +596,14 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button id="buttonnetto-{{ $item->id_pegawai }}" class="btn btn-sm btn-primary" onclick="hitungpenghasilanneto(event, {{ $item->id_pegawai }})"
+                                                <button id="buttonnetto-{{ $item->id_pegawai }}"
+                                                    class="btn btn-sm btn-primary"
+                                                    onclick="hitungpenghasilanneto(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="netto-{{ $item->id_pegawai }}"
-                                                name="netto" value="0" placeholder="Jumlah Penghasilan Netto">
+                                            <input type="input" class="form-control form-control-sm"
+                                                id="netto-{{ $item->id_pegawai }}" name="netto" value="0"
+                                                placeholder="Jumlah Penghasilan Netto">
                                         </div>
 
                                     </div>
@@ -579,8 +618,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="netto_sebelumnya-{{ $item->id_pegawai }}"
-                                            name="netto_sebelumnya" value="0" placeholder="Netto Sebelumnya">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="netto_sebelumnya-{{ $item->id_pegawai }}" name="netto_sebelumnya"
+                                            value="0" placeholder="Netto Sebelumnya">
                                     </div>
                                 </div>
                             </div>
@@ -613,8 +653,9 @@
                             <div class="col-sm-6">
                                 <div class="form-group row">
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="netto_pph21-{{ $item->id_pegawai }}"
-                                            name="netto_pph21" value="0" placeholder="Jumlah Penghasilan Netto">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="netto_pph21-{{ $item->id_pegawai }}" name="netto_pph21" value="0"
+                                            placeholder="Jumlah Penghasilan Netto">
                                     </div>
                                 </div>
                             </div>
@@ -629,8 +670,10 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="ptkp-{{ $item->id_pegawai }}" name="ptkp"
-                                            value="{{ number_format($item->Pegawai->PTKP->besaran_ptkp) }}" placeholder="Besaran PTKP">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="ptkp-{{ $item->id_pegawai }}" name="ptkp"
+                                            value="{{ number_format($item->Pegawai->PTKP->besaran_ptkp) }}"
+                                            placeholder="Besaran PTKP">
                                     </div>
                                 </div>
                             </div>
@@ -644,11 +687,14 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" id="hitungpkp-{{ $item->id_pegawai }}"
-                                                    onclick="hitungpenghasilankenapajak(event, {{ $item->id_pegawai }})" type="button">Hitung</button>
+                                                <button class="btn btn-sm btn-primary"
+                                                    id="hitungpkp-{{ $item->id_pegawai }}"
+                                                    onclick="hitungpenghasilankenapajak(event, {{ $item->id_pegawai }})"
+                                                    type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="pkp-{{ $item->id_pegawai }}" name="pkp"
-                                                value="0" placeholder="Jumlah Penghasilan Kena Pajak">
+                                            <input type="input" class="form-control form-control-sm"
+                                                id="pkp-{{ $item->id_pegawai }}" name="pkp" value="0"
+                                                placeholder="Jumlah Penghasilan Kena Pajak">
                                         </div>
                                     </div>
                                 </div>
@@ -667,11 +713,13 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" onclick="hitungpph21(event, {{ $item->id_pegawai }})"
+                                                <button class="btn btn-sm btn-primary"
+                                                    onclick="hitungpph21(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="pph21_pkp-{{ $item->id_pegawai }}"
-                                                name="pph21_pkp" value="0" placeholder="PPh Pasal 21 PKP">
+                                            <input type="input" class="form-control form-control-sm"
+                                                id="pph21_pkp-{{ $item->id_pegawai }}" name="pph21_pkp" value="0"
+                                                placeholder="PPh Pasal 21 PKP">
                                         </div>
                                     </div>
                                 </div>
@@ -686,8 +734,9 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="pph21_telah_pot-{{ $item->id_pegawai }}"
-                                            name="pph21_telah_pot" value="0" placeholder="PPh21 Telah Pot">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="pph21_telah_pot-{{ $item->id_pegawai }}" name="pph21_telah_pot"
+                                            value="0" placeholder="PPh21 Telah Pot">
                                     </div>
                                 </div>
                             </div>
@@ -706,11 +755,14 @@
                                     <div class="col-sm-6">
                                         <div class="input-group input-group-joined">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-sm btn-primary" id="hitungpph21terutang-{{ $item->id_pegawai }}" onclick="pph21terutang(event, {{ $item->id_pegawai }})"
+                                                <button class="btn btn-sm btn-primary"
+                                                    id="hitungpph21terutang-{{ $item->id_pegawai }}"
+                                                    onclick="pph21terutang(event, {{ $item->id_pegawai }})"
                                                     type="button">Hitung</button>
                                             </div>
-                                            <input type="input" class="form-control form-control-sm" id="pph21_terutang-{{ $item->id_pegawai }}"
-                                                name="pph21_terutang" value="0" placeholder="PPh Pasal 21 Terutang">
+                                            <input type="input" class="form-control form-control-sm"
+                                                id="pph21_terutang-{{ $item->id_pegawai }}" name="pph21_terutang"
+                                                value="0" placeholder="PPh Pasal 21 Terutang">
                                         </div>
                                     </div>
                                 </div>
@@ -725,21 +777,23 @@
                                         <span> : </span>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="input" class="form-control form-control-sm" id="pph21_lunas-{{ $item->id_pegawai }}"
-                                            name="pph21_lunas" value="{{ number_format($item->total_pph21) }}" placeholder="PPh21 dan PPh26">
+                                        <input type="input" class="form-control form-control-sm"
+                                            id="pph21_lunas-{{ $item->id_pegawai }}" name="pph21_lunas"
+                                            value="{{ number_format($item->total_pph21) }}"
+                                            placeholder="PPh21 dan PPh26">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
     </div>
     @empty
 
     @endforelse
-
+    </form>
 </main>
 
 <div class="modal fade" id="Modalpph21" data-backdrop="static" tabindex="-1" role="dialog"
@@ -802,16 +856,180 @@
     </div>
 </div>
 
+<div class="modal fade" id="Modalsumbit" data-backdrop="static" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success-soft">
+                <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Simpan Data</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group text-center">Apakah Form yang Anda inputkan sudah benar?</div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary"
+                    onclick="simpandata(event,{{ $detailgaji }}, {{ $perampungan->id_perampungan }})">Ya
+                    Sudah!</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    function hitungpenghasilanbruto(event, id_pegawai) {
-        var gaji_pokok_element =  $(`#gaji_pokok-${id_pegawai}`).val()
-        var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
+    function simpandata(event, detailgaji, id_perampungan) {
+        event.preventDefault()
+        var _token = form1.find('input[name="_token"]').val()
+        var detailperampungan = []
+
+        for (var i = 0; i < detailgaji.length; i++) {
+            var form = $('#form2-' + detailgaji[i].id_pegawai)
+
+            if (form.find('input[name="kode_negara"]').val() == '') {
+                var kode_negara = form.find('input[name="kode_negara"]').val(0)
+            } else {
+                var kode_negara = form.find('input[name="kode_negara"]').val()
+            }
+
+            var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
+            var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            var karyawan_asing = form.find('select[name=karyawan_asing]').val()
+            var kode_objek_pajak = form.find('input[name="radio2"]:checked').val()
+            var jenis_netto = form.find('input[name="jenis_netto"]:checked').val()
+            var tunjangan_pph = form.find('input[name="tunjangan_pph"]').val()
+            var tunjangan_lain_element = form.find('input[name="tunjangan_lain"]').val()
+            var tunjangan_lain = tunjangan_lain_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            var honorarium = form.find('input[name="honorarium"]').val()
+            var premi_prsh = form.find('input[name="premi_prsh"]').val()
+            var natura = form.find('input[name="natura"]').val()
+            var bonusthr = form.find('input[name="bonusthr"]').val()
+            var bruto_element = form.find('input[name="bruto"]').val()
+            var bruto = bruto_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var biaya_jabatan_element = form.find('input[name="biaya_jabatan"]').val()
+            var biaya_jabatan = biaya_jabatan_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var iuran_jht = form.find('input[name="iuran_jht"]').val()
+            var total_pengurangan_element = form.find('input[name="total_pengurangan"]').val()
+            var total_pengurangan = total_pengurangan_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var netto_element = form.find('input[name="netto"]').val()
+            var netto = netto_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var netto_sebelumnya = form.find('input[name="netto_sebelumnya"]').val()
+            var netto_pph21_element = form.find('input[name="netto_pph21"]').val()
+            var netto_pph21 = netto_pph21_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var ptkp_element = form.find('input[name="ptkp"]').val()
+            var ptkp = ptkp_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            var pkp_element = form.find('input[name="pkp"]').val()
+            var pkp = pkp_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var pph21_pkp_element = form.find('input[name="pph21_pkp"]').val()
+            var pph21_pkp = pph21_pkp_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var pph21_telah_pot = form.find('input[name="pph21_telah_pot"]').val()
+            var pph21_terutang_element = form.find('input[name="pph21_terutang"]').val()
+            var pph21_terutang = pph21_terutang_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var pph21_lunas_element = form.find('input[name="pph21_lunas"]').val()
+            var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            if (pph21_terutang == 0) {
+                continue
+            } else {
+                var id_pegawai = detailgaji[i].id_pegawai
+                var obj = {
+                    id_pegawai: id_pegawai,
+                    id_perampungan: id_perampungan,
+                    kode_negara: kode_negara,
+                    karyawan_asing: karyawan_asing,
+                    kode_objek_pajak: kode_objek_pajak,
+                    jenis_netto: jenis_netto,
+                    gaji_pokok: gaji_pokok,
+                    tunjangan_pph: tunjangan_pph,
+                    tunjangan_lain: tunjangan_lain,
+                    honorarium: honorarium,
+                    premi_prsh: premi_prsh,
+                    natura: natura,
+                    bonusthr: bonusthr,
+                    bruto: bruto,
+                    biaya_jabatan: biaya_jabatan,
+                    iuran_jht: iuran_jht,
+                    total_pengurangan: total_pengurangan,
+                    netto: netto,
+                    netto_sebelumnya: netto_sebelumnya,
+                    netto_pph21: netto_pph21,
+                    ptkp: ptkp,
+                    pkp: pkp,
+                    pph21_pkp: pph21_pkp,
+                    pph21_telah_pot: pph21_telah_pot,
+                    pph21_terutang: pph21_terutang,
+                    pph21_lunas: pph21_lunas
+                }
+                detailperampungan.push(obj)
+            }
+
+            if (detailperampungan.length == 0) {
+                var alert = $('#alertbelumhitung').show()
+            } else {
+                var data = {
+                    _token: _token,
+                    detail: detailperampungan
+                }
+
+                console.log(data)
+
+                $.ajax({
+                    method: 'put',
+                    url: '/payroll/perampungan/' + id_perampungan,
+                    data: data,
+                    success: function (response) {
+                        console.log(response)
+                        // window.location.href = '/payroll/perampungan'
+
+                    },
+                    error: function (response) {
+                        console.log(response)
+                        alert(error.responseJSON.message)
+                    }
+                });
+            }
+
+
+        }
+
+
+    }
+
+
+
+    function hitungpenghasilanbruto(event, id_pegawai) {
+        var gaji_pokok_element = $(`#gaji_pokok-${id_pegawai}`).val()
+        var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
+            .replace(',', '').replace(',', '').replace(',50', '').trim()
 
         var tunjangan_pph = $(`#tunjangan_pph-${id_pegawai}`).val()
         var tunjangan_lain_element = $(`#tunjangan_lain-${id_pegawai}`).val()
         var tunjangan_lain = tunjangan_lain_element.replace('&nbsp;', '')
-                .replace(',', '').replace(',', '').replace(',50', '').trim()
+            .replace(',', '').replace(',', '').replace(',50', '').trim()
 
         var honorarium = $(`#honorarium-${id_pegawai}`).val()
         var premi_prsh = $(`#premi_prsh-${id_pegawai}`).val()
@@ -825,9 +1043,8 @@
 
 
 
-        $(`#bruto-${id_pegawai}`).val( 
-                new Intl.NumberFormat('id', {
-            }).format(brutofix))
+        $(`#bruto-${id_pegawai}`).val(
+            new Intl.NumberFormat('id', {}).format(brutofix))
 
 
         var biayajabatan = brutofix * 5
@@ -836,13 +1053,11 @@
 
 
         if (biayajabatanfix >= maxbiayajabatan) {
-            $(`#biaya_jabatan-${id_pegawai}`).val( 
-                new Intl.NumberFormat('id', {
-            }).format(maxbiayajabatan))
+            $(`#biaya_jabatan-${id_pegawai}`).val(
+                new Intl.NumberFormat('id', {}).format(maxbiayajabatan))
         } else {
-            $(`#biaya_jabatan-${id_pegawai}`).val( 
-                new Intl.NumberFormat('id', {
-            }).format(biayajabatanfix))
+            $(`#biaya_jabatan-${id_pegawai}`).val(
+                new Intl.NumberFormat('id', {}).format(biayajabatanfix))
         }
 
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
@@ -851,7 +1066,7 @@
     function hitungpengurangan(event, id_pegawai) {
         var biaya_jabatan_element = $(`#biaya_jabatan-${id_pegawai}`).val()
         var biaya_jabatan = biaya_jabatan_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',50', '').trim()
+            .replace('.', '').replace('.', '').replace(',50', '').trim()
 
         var iuran_jht = $(`#iuran_jht-${id_pegawai}`).val()
         var bruto = $(`#bruto-${id_pegawai}`).val()
@@ -860,8 +1075,7 @@
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto')
         } else {
             var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
-            $(`#total_pengurangan-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-            }).format(total_pengurangan))
+            $(`#total_pengurangan-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(total_pengurangan))
 
 
             alert('Jumlah Pengurangan Berhasil dihitung')
@@ -872,20 +1086,18 @@
 
         var gaji_bruto_element = $(`#bruto-${id_pegawai}`).val()
         var gaji_bruto = gaji_bruto_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',50', '').trim()
+            .replace('.', '').replace('.', '').replace(',50', '').trim()
 
         var total_pengurangan_element = $(`#total_pengurangan-${id_pegawai}`).val()
         var total_pengurangan = total_pengurangan_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',50', '').trim()
+            .replace('.', '').replace('.', '').replace(',50', '').trim()
 
         if (gaji_bruto == 0 && total_pengurangan == 0) {
             alert('Anda Belum Melakukan Perhitungan Gaji Bruto dan Jumlah Pengurangan')
         } else {
             var neto = parseInt(gaji_bruto) - parseInt(total_pengurangan)
-            $(`#netto-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-            }).format(neto))
-            $(`#netto_pph21-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-            }).format(neto))
+            $(`#netto-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(neto))
+            $(`#netto_pph21-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(neto))
         }
     }
 
@@ -893,11 +1105,11 @@
         var netto_pph21_element = $(`#netto_pph21-${id_pegawai}`).val()
         console.log(netto_pph21_element)
         var netto_pph21 = netto_pph21_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',50', '').trim()
-        
+            .replace('.', '').replace('.', '').replace(',50', '').trim()
+
         var ptkp_element = $(`#ptkp-${id_pegawai}`).val()
         var ptkp = ptkp_element.replace('&nbsp;', '')
-                .replace(',', '').replace(',', '').replace(',50', '').trim()
+            .replace(',', '').replace(',', '').replace(',50', '').trim()
 
         var netto = $(`#netto-${id_pegawai}`).val()
 
@@ -905,8 +1117,7 @@
             alert('Anda Belum Melakukan Perhitungan Gaji Netto')
         } else {
             var pkp = parseInt(netto_pph21) - parseInt(ptkp)
-            $(`#pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-            }).format(pkp))
+            $(`#pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pkp))
         }
 
     }
@@ -947,7 +1158,7 @@
         // Penghasilan Kena Pajak
         var pkpasik_element = $(`#pkp-${id_pegawai}`).val()
         var pkpasik = pkpasik_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',50', '').trim()
+            .replace('.', '').replace('.', '').replace(',50', '').trim()
 
         var pkp = parseInt(pkpasik)
 
@@ -969,12 +1180,10 @@
 
                 if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
-                    $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-                        }).format(pajaknull))
+                    $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pajaknull))
                     alert('BEBAS PAJAK')
                 } else {
-                    $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-                        }).format(pphlevel1tahun))
+                    $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel1tahun))
                     alert('PPH LEVEL 1')
                 }
 
@@ -1005,8 +1214,7 @@
                 var pphlevel2tahun = a[0];
 
                 console.log(pphlevel2tahun)
-                $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-                        }).format(pphlevel2tahun))
+                $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel2tahun))
                 alert('PPH LEVEL 2')
 
             } else if (pkp > pph2 && pkp <= pph3) {
@@ -1037,8 +1245,7 @@
 
                 // FIX PPH Level 2
                 var pphlevel3tahun = a[0];
-                $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-                        }).format(pphlevel3tahun))
+                $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel3tahun))
                 alert('PPH LEVEL 3')
             }
         }
@@ -1051,7 +1258,7 @@
     function pph21terutang(event, id_pegawai) {
         var pph21_pkp_element = $(`#pph21_pkp-${id_pegawai}`).val()
         var pph21_pkp = pph21_pkp_element.replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',50', '').trim()
+            .replace('.', '').replace('.', '').replace(',50', '').trim()
 
         var pph21_telah_pot = $(`#pph21_telah_pot-${id_pegawai}`).val()
 
@@ -1059,15 +1266,14 @@
             alert('Anda Belum Melakukan Perhitungan PPh21')
         } else {
             var pph21_terutang = parseInt(pph21_pkp) + parseInt(pph21_telah_pot)
-            $(`#pph21_terutang-${id_pegawai}`).val(new Intl.NumberFormat('id', {
-                }).format(pph21_terutang))
-            
+            $(`#pph21_terutang-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pph21_terutang))
+
             $(`#SudahTerhitung-${id_pegawai}`).show()
             $(`#BelumTerhitung-${id_pegawai}`).hide()
 
             alert('Berhasil Melakukan Perhitungan PPh21 Final')
         }
-        
+
     }
 
 </script>
