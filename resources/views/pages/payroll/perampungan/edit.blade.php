@@ -949,7 +949,10 @@
         console.log(pph1, pph2, pph3)
 
         // Penghasilan Kena Pajak
-        var pkpasik = $(`#pkp-${id_pegawai}`).val()
+        var pkpasik_element = $(`#pkp-${id_pegawai}`).val()
+        var pkpasik = pkpasik_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
         var pkp = parseInt(pkpasik)
 
         if (pkp == 0) {
@@ -970,10 +973,12 @@
 
                 if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
-                    $(`#pph21_pkp-${id_pegawai}`).val(pajaknull)
+                    $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
+                        }).format(pajaknull))
                     alert('BEBAS PAJAK')
                 } else {
-                    $(`#pph21_pkp-${id_pegawai}`).val(pphlevel1tahun)
+                    $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
+                        }).format(pphlevel1tahun))
                     alert('PPH LEVEL 1')
                 }
 
@@ -1004,7 +1009,8 @@
                 var pphlevel2tahun = a[0];
 
                 console.log(pphlevel2tahun)
-                $(`#pph21_pkp-${id_pegawai}`).val(pphlevel2tahun)
+                $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
+                        }).format(pphlevel2tahun))
                 alert('PPH LEVEL 2')
 
             } else if (pkp > pph2 && pkp <= pph3) {
@@ -1035,7 +1041,8 @@
 
                 // FIX PPH Level 2
                 var pphlevel3tahun = a[0];
-                $(`#pph21_pkp-${id_pegawai}`).val(pphlevel3tahun)
+                $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
+                        }).format(pphlevel3tahun))
                 alert('PPH LEVEL 3')
             }
         }
