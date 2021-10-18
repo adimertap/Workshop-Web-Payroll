@@ -159,7 +159,7 @@
                                         <label for="nomor"
                                             class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                                         <div class="col-sm-8">
-                                            <input type="input" class="form-control form-control-sm" id="nomor2-{{ $item->id_pegawai }}"
+                                            <input type="input" class="form-control form-control-sm" id="nomor2-{{ $item->id_pegawai }}" name="nomor"
                                                 placeholder="Otomatis Terisi" readonly>
                                         </div>
                                     </div>
@@ -911,10 +911,9 @@
         var datapegawai = $('#gaji').children()
         for (let index = 0; index < datapegawai.length; index++) {
             var form = $(datapegawai[index]).children().children()
-            // var form = $('#form2-' + detailgaji[index].id_pegawai)
             var id_pegawai = form.find('input[name="id_pegawai"]').val()
             var kode_negara = form.find('input[name="kode_negara"]').val()
-
+            var nomor = form.find('input[name="nomor"]').val()
             var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
 
             var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
@@ -1080,7 +1079,6 @@
 
         var nomor = $(`#nomor-${id_pegawai}`).html()
         var nomor_fix = $(`#nomor2-${id_pegawai}`).val(nomor)
-        console.log(nomor, nomor_fix)
 
 
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
