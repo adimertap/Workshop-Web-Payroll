@@ -908,17 +908,11 @@
         var _token = $('#form1').find('input[name="_token"]').val()
         var detailperampungan = []
 
-        var datapegawai = $('#gaji').children()
+        var datapegawai = $('#gaji')
         for (let index = 0; index < datapegawai.length; index++) {
-            var form = $(datapegawai[index]).children().children()
+            var form = $(datapegawai[index]).children()
             var id_pegawai = form.find('input[name="id_pegawai"]').val()
-
-            if (form.find('input[name="kode_negara"]').val() == '-') {
-                var kode_negara = form.find('input[name="kode_negara"]').val(0)
-            } else {
-                var kode_negara = form.find('input[name="kode_negara"]').val()
-            }
-
+            var kode_negara = form.find('input[name="kode_negara"]').val()
             var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
             console.log(gaji_pokok_element)
             var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
