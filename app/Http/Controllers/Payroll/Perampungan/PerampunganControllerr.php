@@ -113,8 +113,8 @@ class PerampunganControllerr extends Controller
     public function edit($id_perampungan)
     {
         $perampungan = Perampungan::with('Detail')->find($id_perampungan);
-        $kode = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->orderBy('created_at','ASC')->get();
-        return $kode;
+      
+        // return $kode;
 
         $tes = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_pegawai']);
 
@@ -125,6 +125,7 @@ class PerampunganControllerr extends Controller
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
+        $kode = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->orderBy('created_at','ASC')->get(['id_1721a1']);
 
         // $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
         // ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
@@ -144,7 +145,7 @@ class PerampunganControllerr extends Controller
         
         $pph21 = Masterpph21::get();
         $ptkp = MasterPTKP::get();
-        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji','blt','year'));
+        return view('pages.payroll.perampungan.edit',compact('perampungan','ptkp','pph21','detailgaji','blt','year','kode'));
 
         // $sumtunjangan = Detailgaji::with([
         //     'Gaji'
