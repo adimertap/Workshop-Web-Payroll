@@ -67,4 +67,5 @@ class DetailPerampungan extends Model
             ];
     }
 
+
 }
