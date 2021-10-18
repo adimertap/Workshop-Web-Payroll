@@ -51,7 +51,7 @@
                                                     No</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                     colspan="1" aria-label="Position: activate to sort column ascending"
-                                                    style="width: 100px;">Nama Pegawai</th>
+                                                    style="width: 90px;">Nama Pegawai</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                     colspan="1" aria-label="Position: activate to sort column ascending"
                                                     style="width: 50px;">NPWP Pegawai</th>
@@ -60,7 +60,7 @@
                                                     style="width: 60px;">Nomor</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                     colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                    style="width: 40px;">Status</th>
+                                                    style="width: 60px;">Status</th>
                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                     colspan="1" aria-label="Actions: activate to sort column ascending"
                                                     style="width: 40px;">Action</th>

@@ -149,7 +149,7 @@ class PerampunganControllerr extends Controller
         $perampungan = Perampungan::findOrFail($id_perampungan);
 
         $perampungan->save();
-        $perampungan->Detail()->attach($request->detail);
+        $perampungan->Detail()->sync($request->detail);
 
         return $request;
     }
