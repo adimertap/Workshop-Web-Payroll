@@ -113,25 +113,27 @@ class PerampunganControllerr extends Controller
     public function edit($id_perampungan)
     {
         $perampungan = Perampungan::with('Detail')->find($id_perampungan);
-        
         $tes = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->get(['id_pegawai']);
 
-        $detailgaji = Detailgaji::with('Pegawai')->join('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->whereIn('id_pegawai', $tes)->groupBy('id_pegawai')
+        $detailgaji = Detailgaji::with('Pegawai')->leftjoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+         ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
+        ->whereIn('tb_payroll_detail_perampungan.id_pegawai', $tes)->groupBy('id_pegawai')
         ->selectRaw('SUM(total_tunjangan) as total_tunjangan, SUM(total_gaji) as total_gaji, 
-            SUM(total_pph21) as total_pph21, SUM(total_pokok) as total_pokok, bulan_gaji, id_pegawai')
+            SUM(total_pph21) as total_pph21, SUM(total_pokok) as total_pokok, bulan_gaji, id_pegawai, id_1721a1')
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
         ->get();
 
+        return $detailgaji;
 
-        $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
-        ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
-        ->select('tb_payroll_detail_perampungan.id_pegawai', 'id_1721a1')
-        ->groupBy('tb_payroll_detail_perampungan.id_pegawai')
-        ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        ->get();
 
-        return $gji;
+        // $gji = Detailgaji::leftJoin('tb_payroll_perhitungan_gaji', 'tb_payroll_detail_gaji.id_gaji_pegawai', 'tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        // ->join('tb_payroll_detail_perampungan', 'tb_payroll_detail_gaji.id_pegawai', 'tb_payroll_detail_perampungan.id_pegawai')
+        // ->select('tb_payroll_detail_perampungan.id_pegawai', 'id_1721a1')
+        // ->groupBy('tb_payroll_detail_perampungan.id_pegawai')
+        // ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        // ->get();
+
+        // return $gji;
         
         
         
