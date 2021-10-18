@@ -886,6 +886,7 @@
 
         for (var i = 0; i < detailgaji.length; i++) {
             var form = $('#form2-' + detailgaji[i].id_pegawai)
+            console.log(form)
 
             if (form.find('input[name="kode_negara"]').val() == '') {
                 var kode_negara = form.find('input[name="kode_negara"]').val(0)
