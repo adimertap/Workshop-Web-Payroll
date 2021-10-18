@@ -74,7 +74,7 @@
                                                 <td>{{ $item->nama_pegawai}}</td>
                                                 <td>{{ $item->npwp_pegawai}}</td>
                                                 
-                                                <td id="{{ $item->id_pegawai }}-nomor">1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
+                                                <td id="nomor-{{ $item->id_pegawai }}">1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
                                                 <td>
                                                     <div id="SudahTerhitung-{{ $item->id_pegawai }}"
                                                         style="display: none">
@@ -159,7 +159,7 @@
                                         <label for="nomor"
                                             class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                                         <div class="col-sm-8">
-                                            <input type="input" class="form-control form-control-sm" id="nomor"
+                                            <input type="input" class="form-control form-control-sm" id="nomor2-{{ $item->id_pegawai }}"
                                                 placeholder="Otomatis Terisi" readonly>
                                         </div>
                                     </div>
@@ -169,7 +169,7 @@
                                         <label for="nomor" class="col-sm-3 col-form-label col-form-label-sm">Masa
                                             Perolehan</label>
                                         <div class="col-sm-2">
-                                            <input type="input" class="form-control form-control-sm" id="nomor"
+                                            <input type="input" class="form-control form-control-sm" id="s"
                                                 value="{{ date('m', strtotime($perampungan->masa_perolehan_awal)) }}"
                                                 readonly>
                                         </div>
@@ -177,14 +177,14 @@
                                             <span> - </span>
                                         </div>
                                         <div class="col-sm-2">
-                                            <input type="input" class="form-control form-control-sm" id="nomor"
+                                            <input type="input" class="form-control form-control-sm" id="s"
                                                 value="{{ date('m', strtotime($perampungan->masa_perolehan_akhir)) }}"
                                                 readonly>
                                         </div>
                                         <label for="nomor"
                                             class="col-sm-2 text-center  col-form-label col-form-label-sm">Tahun</label>
                                         <div class="col-sm-2">
-                                            <input type="input" class="form-control form-control-sm" id="nomor"
+                                            <input type="input" class="form-control form-control-sm" id="s"
                                                 value="{{ date('Y', strtotime($perampungan->masa_perolehan_awal)) }}"
                                                 readonly>
                                         </div>
@@ -1039,12 +1039,6 @@
     }
 
 
-
-
-
-
-
-
     function hitungpenghasilanbruto(event, id_pegawai) {
         var gaji_pokok_element = $(`#gaji_pokok-${id_pegawai}`).val()
         var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
@@ -1083,6 +1077,11 @@
             $(`#biaya_jabatan-${id_pegawai}`).val(
                 new Intl.NumberFormat('id', {}).format(biayajabatanfix))
         }
+
+        var nomor = $(`#nomor-${id_pegawai}`).html()
+        var nomor_fix = $(`#nomor2-${id_pegawai}`).html(nomor)
+
+
 
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
     }
