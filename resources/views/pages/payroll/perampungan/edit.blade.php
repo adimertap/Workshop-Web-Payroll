@@ -73,7 +73,7 @@
                                                 </th>
                                                 <td>{{ $item->nama_pegawai}}</td>
                                                 <td>{{ $item->npwp_pegawai}}</td>
-                                                <td>1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
+                                                <td id="nomor-{{ $item->id_pegawai }}">1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
                                                 <td>
                                                     <div id="SudahTerhitung-{{ $item->id_pegawai }}"
                                                         style="display: none">
@@ -973,6 +973,9 @@
             var pph21_lunas_element = form.find('input[name="pph21_lunas"]').val()
             var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            var nomor = $(`#nomor-${id_pegawai}`)
+            console.log(nomor)
 
             if (pph21_terutang == 0) {
                 var alert = $('#alertbelumhitung').show()
