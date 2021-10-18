@@ -26,6 +26,10 @@ class PerampunganControllerr extends Controller
     public function index()
     {
         $perampungan = Perampungan::get();
+
+        $tes = DetailPerampungan::where('id_perampungan', $id_perampungan)->count();
+        return $tes;
+
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
         $tahun = Carbon::now()->format('Y');
@@ -65,7 +69,6 @@ class PerampunganControllerr extends Controller
         $perampungan->nama_pemotong = Auth::user()->pegawai->nama_pegawai;
         $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pegawai;
         $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
-        $perampungan->total_pph_terutang = '0';
 
         $perampungan->save();
         $perampungan->Detail()->sync($request->pegawai);

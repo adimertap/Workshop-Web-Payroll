@@ -974,11 +974,6 @@
             var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
-            // var nomor = $(`#nomor-${id_pegawai}`)
-            var asu = $(`#${$.escapeSelector(id_pegawai)}-nomor`).html()
-
-            console.log(asu)
-
             if (pph21_terutang == 0) {
                 var alert = $('#alertbelumhitung').show()
             } else {
@@ -1025,7 +1020,7 @@
             data: data,
             success: function (response) {
                 console.log(response)
-                // window.location.href = '/payroll/perampungan'
+                window.location.href = '/payroll/perampungan'
 
             },
             error: function (response) {

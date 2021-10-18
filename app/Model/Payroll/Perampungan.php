@@ -24,7 +24,6 @@ class Perampungan extends Model
         'masa_perolehan_awal',
         'masa_perolehan_akhir',
         'tanggal_perampungan',
-        'total_pph_terutang'
     ];
 
     protected $hidden =[ 
