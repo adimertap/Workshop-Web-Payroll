@@ -894,15 +894,22 @@
     }
 
     function hitungpenghasilankenapajak(event, id_pegawai) {
-        var netto_pph21 = $(`#netto_pph21-${id_pegawai}`).val()
-        var ptkp = $(`#ptkp-${id_pegawai}`).val()
+        var netto_pph21_element = $(`#netto_pph21-${id_pegawai}`).val()
+        var netto_pph21 = netto_pph21_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+        
+        var ptkp_element = $(`#ptkp-${id_pegawai}`).val()
+        var ptkp = ptkp_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+
         var netto = $(`#netto-${id_pegawai}`).val()
 
         if (netto == 0) {
             alert('Anda Belum Melakukan Perhitungan Gaji Netto')
         } else {
             var pkp = parseInt(netto_pph21) - parseInt(ptkp)
-            $(`#pkp-${id_pegawai}`).val(pkp)
+            $(`#pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {
+            }).format(pkp))
         }
 
     }
