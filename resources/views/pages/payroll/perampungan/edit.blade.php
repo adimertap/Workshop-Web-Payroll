@@ -906,11 +906,76 @@
         var _token = $('#form1').find('input[name="_token"]').val()
         var detailperampungan = []
 
-        var datapegawai = $('#gaji')
+        var datapegawai = $('#gaji').children()
         for (let index = 0; index < datapegawai.length; index++) {
-            var form = $(datapegawai[index])
+            var form = $(datapegawai[index]).children()
+
+            if (form.find('input[name="kode_negara"]').val() == '') {
+                var kode_negara = form.find('input[name="kode_negara"]').val(0)
+            } else {
+                var kode_negara = form.find('input[name="kode_negara"]').val()
+            }
+
             var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
-            console.log(form, gaji_pokok_element)
+            console.log(gaji_pokok_element)
+            var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            var karyawan_asing = form.find('select[name=karyawan_asing]').val()
+            var kode_objek_pajak = form.find('input[name="radio2"]:checked').val()
+            var jenis_netto = form.find('input[name="jenis_netto"]:checked').val()
+            var tunjangan_pph = form.find('input[name="tunjangan_pph"]').val()
+            var tunjangan_lain_element = form.find('input[name="tunjangan_lain"]').val()
+            var tunjangan_lain = tunjangan_lain_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            var honorarium = form.find('input[name="honorarium"]').val()
+            var premi_prsh = form.find('input[name="premi_prsh"]').val()
+            var natura = form.find('input[name="natura"]').val()
+            var bonusthr = form.find('input[name="bonusthr"]').val()
+            var bruto_element = form.find('input[name="bruto"]').val()
+            var bruto = bruto_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var biaya_jabatan_element = form.find('input[name="biaya_jabatan"]').val()
+            var biaya_jabatan = biaya_jabatan_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var iuran_jht = form.find('input[name="iuran_jht"]').val()
+            var total_pengurangan_element = form.find('input[name="total_pengurangan"]').val()
+            var total_pengurangan = total_pengurangan_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var netto_element = form.find('input[name="netto"]').val()
+            var netto = netto_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var netto_sebelumnya = form.find('input[name="netto_sebelumnya"]').val()
+            var netto_pph21_element = form.find('input[name="netto_pph21"]').val()
+            var netto_pph21 = netto_pph21_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var ptkp_element = form.find('input[name="ptkp"]').val()
+            var ptkp = ptkp_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+
+            var pkp_element = form.find('input[name="pkp"]').val()
+            var pkp = pkp_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var pph21_pkp_element = form.find('input[name="pph21_pkp"]').val()
+            var pph21_pkp = pph21_pkp_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var pph21_telah_pot = form.find('input[name="pph21_telah_pot"]').val()
+            var pph21_terutang_element = form.find('input[name="pph21_terutang"]').val()
+            var pph21_terutang = pph21_terutang_element.replace('&nbsp;', '')
+                .replace('.', '').replace('.', '').replace(',50', '').trim()
+
+            var pph21_lunas_element = form.find('input[name="pph21_lunas"]').val()
+            var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
+                .replace(',', '').replace(',', '').replace(',50', '').trim()
+            
             
 
 
