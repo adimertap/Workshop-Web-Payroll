@@ -215,14 +215,6 @@
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="id_ptkp"
                                                 value="{{ $item->Pegawai->PTKP->nama_ptkp }}, {{ $item->Pegawai->PTKP->keterangan_ptkp }}" readonly>
-                                        {{-- <select class="form-control form-control-sm" name="id_ptkp" id="id_ptkp">
-                                            <option value="{{ $item->Pegawai->PTKP->id_ptkp }}">
-                                                {{ $item->Pegawai->PTKP->nama_ptkp }}</option>
-                                            @foreach ($ptkp as $itemptkp)
-                                            <option value="{{ $itemptkp->id_ptkp }}">{{ $itemptkp->nama_ptkp }}
-                                            </option>
-                                            @endforeach
-                                        </select> --}}
                                     </div>
                                 </div>
                             </div>
