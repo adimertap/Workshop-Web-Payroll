@@ -27,7 +27,7 @@ class PerampunganControllerr extends Controller
     {
         $perampungan = Perampungan::get();
 
-        $tes = DetailPerampungan::where('id_perampungan', $id_perampungan)->count();
+        $tes = DetailPerampungan::where('id_perampungan', $perampungan->id_perampungan)->count();
         return $tes;
 
         $today = Carbon::now()->isoFormat('dddd');
