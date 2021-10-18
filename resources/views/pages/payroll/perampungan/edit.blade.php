@@ -73,6 +73,7 @@
                                                 </th>
                                                 <td>{{ $item->nama_pegawai}}</td>
                                                 <td>{{ $item->npwp_pegawai}}</td>
+                                                
                                                 <td id="nomor-{{ $item->id_pegawai }}">1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
                                                 <td>
                                                     <div id="SudahTerhitung-{{ $item->id_pegawai }}"
@@ -974,7 +975,8 @@
             var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
-            var nomor = $(`#nomor-${id_pegawai}`)
+            var nomor = $(`#nomor-${id_pegawai}`).html()
+
             console.log(nomor)
 
             if (pph21_terutang == 0) {
