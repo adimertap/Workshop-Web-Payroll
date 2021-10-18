@@ -691,7 +691,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <input type="input" class="form-control form-control-sm" id="pph21_telah_pot-{{ $item->id_pegawai }}"
-                                            name="pph21_telah_pot" value="0" placeholder="PPh21 Telah Pot">
+                                            name="pph21_telah_pot" value="{{ $item->total_pph21 }}" placeholder="PPh21 Telah Pot">
                                     </div>
                                 </div>
                             </div>
