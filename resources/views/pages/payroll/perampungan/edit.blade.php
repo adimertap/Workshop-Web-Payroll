@@ -983,6 +983,7 @@
                 var alert = $('#alertbelumhitung').show()
             } else {
                 detailperampungan.push({
+                    nomor: nomor,
                     id_pegawai: id_pegawai,
                     id_perampungan: id_perampungan,
                     kode_negara: kode_negara,
