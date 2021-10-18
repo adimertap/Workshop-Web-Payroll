@@ -149,8 +149,7 @@
                                 </div>
                                 <div class="col-sm-5">
                                     <input style="display: none" type="input" class="form-control form-control-sm"
-                                        id="id_pegawai" name="id_pegawai" value="{{ $item->id_pegawai }}"
-                                        readonly>
+                                        id="id_pegawai" name="id_pegawai" value="{{ $item->id_pegawai }}" readonly>
                                 </div>
                             </div>
                             <div class="row">
@@ -894,8 +893,8 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary"
-                    onclick="simpandata(event,{{ $detailgaji }}, {{ $perampungan->id_perampungan }})">Ya
+                <button class="btn btn-primary" type="button"
+                    onclick="simpandata(event, {{ $perampungan->id_perampungan }})">Ya
                     Sudah!</button>
             </div>
         </div>
@@ -903,7 +902,7 @@
 </div>
 
 <script>
-    function simpandata(event, detailgaji, id_perampungan) {
+    function simpandata(event, id_perampungan) {
         event.preventDefault()
         var _token = $('#form1').find('input[name="_token"]').val()
         var detailperampungan = []
@@ -916,7 +915,7 @@
             var kode_negara = form.find('input[name="kode_negara"]').val()
 
             var gaji_pokok_element = form.find('input[name="gaji_pokok"]').val()
-        
+
             var gaji_pokok = gaji_pokok_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
@@ -975,12 +974,9 @@
             var pph21_lunas = pph21_lunas_element.replace('&nbsp;', '')
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
-            if(pph21_terutang == 0){
+            if (pph21_terutang == 0) {
                 var alert = $('#alertbelumhitung').show()
-            }else{
-
-
-
+            } else {
                 detailperampungan.push({
                     id_pegawai: id_pegawai,
                     id_perampungan: id_perampungan,
@@ -1010,34 +1006,35 @@
                     pph21_lunas: pph21_lunas
                 })
             }
-
-            var data = {
-                _token: _token,
-                detail: detailperampungan
-            }
-
-            $.ajax({
-                method: 'put',
-                url: '/payroll/perampungan/' + id_perampungan,
-                data: data,
-                success: function (response) {
-                    console.log(response)
-                    // window.location.href = '/payroll/perampungan'
-
-                },
-                error: function (response) {
-                    console.log(response)
-                    alert(error.responseJSON.message)
-                }
-            });
-            
-
         }
 
+        var data = {
+            _token: _token,
+            detail: detailperampungan
+        }
 
-     
+        $.ajax({
+            method: 'put',
+            url: '/payroll/perampungan/' + id_perampungan,
+            data: data,
+            success: function (response) {
+                console.log(response)
+                // window.location.href = '/payroll/perampungan'
+
+            },
+            error: function (response) {
+                console.log(response)
+                alert(error.responseJSON.message)
+            }
+        });
+
 
     }
+
+
+
+
+
 
 
 
@@ -1192,7 +1189,7 @@
 
                 // FIX PPH Level 2
                 var pphlevel1tahun = a[0];
-              
+
 
                 if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
@@ -1213,11 +1210,11 @@
                 var pphkena15 = pkp - pph1
                 var pphkena15fix = pphkena15 * pphpersen2
                 var pphkena15sangat = pphkena15fix / 100
-            
+
 
                 // Penambahan
                 var pphlevel2 = parseInt(pphkena5sangat + pphkena15sangat)
-              
+
                 // var pphlevel2hampir = pphlevel2 / 12
 
                 // Memecah Bilangan Decimal
@@ -1229,7 +1226,7 @@
                 // FIX PPH Level 2
                 var pphlevel2tahun = a[0];
 
-              
+
                 $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel2tahun))
                 alert('PPH LEVEL 2')
 
