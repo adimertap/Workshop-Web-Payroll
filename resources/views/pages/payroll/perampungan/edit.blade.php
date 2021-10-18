@@ -881,7 +881,7 @@
 <script>
     function simpandata(event, detailgaji, id_perampungan) {
         event.preventDefault()
-        var _token = form1.find('input[name="_token"]').val()
+        var _token = $('#form1').find('input[name="_token"]').val()
         var detailperampungan = []
 
         for (var i = 0; i < detailgaji.length; i++) {
