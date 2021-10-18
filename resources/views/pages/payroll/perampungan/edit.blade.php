@@ -1079,8 +1079,8 @@
         }
 
         var nomor = $(`#nomor-${id_pegawai}`).html()
-        var nomor_fix = $(`#nomor2-${id_pegawai}`).html(nomor)
-
+        var nomor_fix = $(`#nomor2-${id_pegawai}`).val(nomor)
+        console.log(nomor, nomor_fix)
 
 
         alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
