@@ -134,7 +134,7 @@
                                     <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
                                     <div class="col-sm-8">
                                       
-                                        <input type="input" class="form-control form-control-sm" id="nomor" value="{{ $kodes->id_1721a1 }}"
+                                        <input type="input" class="form-control form-control-sm" id="nomor" value="{{ $kode->id_1721a1 }}"
                                             readonly>
                         
                                        
