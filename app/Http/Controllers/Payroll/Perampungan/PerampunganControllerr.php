@@ -125,8 +125,7 @@ class PerampunganControllerr extends Controller
 
 
         $last = DetailPerampungan::with('Pegawai')->join('tb_payroll_detail_gaji', 'tb_payroll_detail_perampungan.id_pegawai', 'tb_payroll_detail_gaji.id_pegawai')
-        // ->whereIn('id_pegawai', $tes)->groupBy('id_pegawai')
-        ->whereBetween($detailgaji->bulan_gaji, [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
+        ->orderBy('updated_at', 'DESC')
         ->get();
 
         return $last;
