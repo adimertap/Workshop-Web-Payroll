@@ -546,7 +546,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $pemotong->npwp_pegawai }}</span>
+                                    <span class="small">{{ $perampungan->npwp_pegawai }}</span>
                                 </div>
                             </div>
                         </div>
@@ -572,7 +572,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $pemotong->nama_pemotong }}</span>
+                                    <span class="small">{{ $perampungan->nama_pemotong }}</span>
                                 </div>
                             </div>
                         </div>
