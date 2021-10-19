@@ -119,11 +119,10 @@ class GajipegawaiController extends Controller
             // 'Pegawai','Pegawai.Jabatan.Gajipokok','Pegawai.absensi','Detailtunjangan'
             'Detailpegawai','Jenistransaksi'
         ])->find($id);
-
-        return $gaji;
-
        
         $jenis_transaksi = Jenistransaksi::all();
+
+        
         $pegawai = Pegawai::with([
             'Jabatan.Gajipokok','PTKP'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')

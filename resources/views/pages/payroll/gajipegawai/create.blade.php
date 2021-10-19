@@ -196,7 +196,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @forelse ($pegawai as $item)
+                                                    @forelse ($gaji->Detailpegawai as $item)
                                                     <tr role="row" class="odd">
                                                         <th scope="row" class="small" class="sorting_1">
                                                             {{ $loop->iteration}}.</th>
