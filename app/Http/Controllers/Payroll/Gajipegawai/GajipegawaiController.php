@@ -70,7 +70,7 @@ class GajipegawaiController extends Controller
         $gaji->id_jenis_transaksi ='8';
 
         $gaji->save();
-        $gaji->Detail()->sync($request->detailgaji);
+        $gaji->Detailpegawai()->sync($request->detailgaji);
         return $gaji;
         
         // $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)

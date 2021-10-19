@@ -44,9 +44,9 @@ class Gajipegawai extends Model
         return $this->belongsToMany(Pegawai::class,'tb_payroll_detail_gaji','id_gaji_pegawai','id_pegawai')->withPivot('total_tunjangan','total_gaji','total_pph21','total_pokok');
     }
 
-    public function Detailpegawai2(){
-        return $this->hasMany(Detailgaji::class,'id_gaji_pegawai','id_gaji_pegawai')->count('id_pegawai');
-    }
+    // public function Detailpegawai2(){
+    //     return $this->hasMany(Detailgaji::class,'id_gaji_pegawai','id_gaji_pegawai')->count('id_pegawai');
+    // }
 
     public function Detailtunjangan()
     {
