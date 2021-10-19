@@ -268,7 +268,7 @@
                 class="d-inline">
                 @csrf
                 <div class="modal-body text-center">Apakah Anda Yakin untuk Melakukan Pembayaran Gaji Pegawai bulan
-                    {{ $item->bulan_gaji }}, tahun {{ $item->tahun_gaji }} Sebesar Rp.
+                    {{ date('M', strtotime($item->bulan_gaji)) }},Tahun {{ date('Y', strtotime($item->bulan_gaji)) }} Sebesar Rp.
                     {{ number_format($item->grand_total_gaji,2,',','.') }} ?</div>
                 <div class="modal-footer ">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -295,7 +295,7 @@
                 @csrf
                 @method('delete')
                 <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Pembayaran Gaji Pegawai bulan
-                    <b>{{ $item->bulan_gaji }}</b> , tahun <b>{{ $item->tahun_gaji }}</b> ?</div>
+                    {{ date('M', strtotime($item->bulan_gaji)) }},Tahun {{ date('Y', strtotime($item->bulan_gaji)) }} ?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-danger" type="submit">Ya! Hapus</button>
@@ -344,7 +344,9 @@
                                                 style="width: 40px;">Jabatan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 50px;">Actions</th>
+                                                style="width: 50px;"> <input onClick="toggle(this)"
+                                                name="chk[]" type="checkbox" />
+                                                Pilih Semua</th>
                                         </tr>
                                     </thead>
                                     <tbody id="pegawai">
@@ -358,7 +360,7 @@
                                             <td>
                                                 <div class="">
                                                     <input class="checkpegawai"
-                                                        id="customCheck1-{{ $item->id_pegawai }}" type="checkbox" />
+                                                        id="customCheck1-{{ $item->id_pegawai }}" type="checkbox" name="cek" />
                                                     <label class="" for="customCheck1">Pilih</label>
                                                 </div>
 
@@ -439,7 +441,7 @@
                 data: data,
                 success: function (response) {
                     console.log(response)
-                    window.location.href = '/payroll/perampungan/' + response.id_gaji_pegawai + '/edit'
+                    window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
                 },
                 error: function (error) {
                     console.log(error)
@@ -489,6 +491,14 @@
     $(document).ready(function () {
         $('#dataTablePegawai').DataTable()
     });
+
+    function toggle(source) {
+        checkboxes = document.getElementsByName('cek');
+        for(var i=0, n=checkboxes.length;i<n;i++) {
+            checkboxes[i].checked = source.checked;
+        }
+    }
+  
 
 </script>
 
