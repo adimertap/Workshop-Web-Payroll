@@ -265,7 +265,9 @@
                                                 style="width: 40px;">Jabatan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 50px;">Actions</th>
+                                                style="width: 50px;"> <input onClick="toggle(this)"
+                                                name="chk[]" type="checkbox" />
+                                                Pilih Semua</th>
                                         </tr>
                                     </thead>
                                     <tbody id="pegawai">
@@ -279,7 +281,7 @@
                                             <td>
                                                 <div class="">
                                                     <input class="checkpegawai"
-                                                        id="customCheck1-{{ $item->id_pegawai }}" type="checkbox" />
+                                                        id="customCheck1-{{ $item->id_pegawai }}" type="checkbox" name="cek" />
                                                     <label class="" for="customCheck1">Pilih</label>
                                                 </div>
 
@@ -415,6 +417,13 @@
     $(document).ready(function () {
         $('#dataTablePegawai').DataTable()
     });
+
+    function toggle(source) {
+        checkboxes = document.getElementsByName('cek');
+        for(var i=0, n=checkboxes.length;i<n;i++) {
+            checkboxes[i].checked = source.checked;
+        }
+    }
 
 </script>
 
