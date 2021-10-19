@@ -628,8 +628,10 @@
                 </div>
             </div>
         </div>
+    </div>
+    @empty
 
-        @empty
-
-        @endforelse
+    @endforelse
 </main>
+
+@endsection
