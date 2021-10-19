@@ -628,8 +628,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    @empty
 
-    @endforelse
+        @empty
+
+        @endforelse
 </main>
