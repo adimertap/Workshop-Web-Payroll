@@ -60,9 +60,8 @@
                                             <tr role="row" class="odd">
                                                 <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}
                                                 </th>
-                                                <td>{{ $item->Pegawai->nama_pegawai}}</td>
-                                                <td>{{ $item->Pegawai->npwp_pegawai}}</td>
-                                                
+                                                <td>{{ $item->nama_pegawai}}</td>
+                                                <td>{{ $item->npwp_pegawai}}</td>
                                                 <td>{{ $item->nomor }}</td>
                                                 <td>
                                                     <a class="btn btn-xs btn-primary"
