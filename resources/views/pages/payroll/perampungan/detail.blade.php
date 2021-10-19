@@ -28,7 +28,7 @@
                     <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                         <div class="row">
                             <div class="col-sm-12">
-                                <table class="table table-bordered table-hover dataTable" id="dataTableA" width="100%"
+                                <table class="table table-bordered table-hover dataTable" id="dataTable" width="100%"
                                     cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
@@ -48,9 +48,6 @@
                                                 style="width: 60px;">Nomor</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 60px;">Status</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 40px;">Action</th>
                                         </tr>
                                     </thead>
@@ -61,7 +58,7 @@
                                             </th>
                                             <td>{{ $item->nama_pegawai}}</td>
                                             <td>{{ $item->npwp_pegawai}}</td>
-                                            <td>{{ $item->nomor }}</td>
+                                            <td>{{ $item->pivot->nomor }}</td>
                                             <td>
                                                 <a class="btn btn-xs btn-primary"
                                                     href="#collapseCardExample-{{ $item->id_pegawai }}"
@@ -77,12 +74,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="card-footer">
-                <div class="text-right">
-                    <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
-                        data-target="#Modalsumbit">Simpan Data</button>
                 </div>
             </div>
         </div>
