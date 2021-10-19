@@ -325,7 +325,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->gaji_pokok }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->gaji_pokok) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -338,7 +338,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->tunjangan_pph }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->tunjangan_pph) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -353,7 +353,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->tunjangan_lain }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->tunjangan_lain) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -366,7 +366,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->honorarium }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->honorarium) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -382,7 +382,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->premi_prsh }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->premi_prsh) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -397,7 +397,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->natura }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->natura) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -413,7 +413,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->bonusthr }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->bonusthr) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -425,7 +425,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->bruto }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->bruto) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -443,7 +443,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->biaya_jabatan }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->biaya_jabatan) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -456,7 +456,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->iuran_jht }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->iuran_jht) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -472,7 +472,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->total_pengurangan }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->total_pengurangan) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -491,7 +491,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->netto }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->netto) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -504,7 +504,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->netto_sebelumnya }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->netto_sebelumnya) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -521,7 +521,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->jenis_netto }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->jenis_netto) }}</span>
                                 </div>
 
                             </div>
@@ -529,7 +529,7 @@
                         <div class="col-sm-6">
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->netto_pph21 }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->netto_pph21) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -545,7 +545,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->PTKP->besaran_ptkp }}</span>
+                                    <span class="small">Rp. {{ number_format($item->PTKP->besaran_ptkp) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -558,7 +558,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->pkp }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->pkp) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -574,7 +574,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->pph21_pkp }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->pph21_pkp) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -588,7 +588,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->pph21_telah_pot }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->pph21_telah_pot) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -605,7 +605,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->pph21_terutang }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->pph21_terutang) }}</span>
                                 </div>
                             </div>
                         </div>
@@ -620,7 +620,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->pph21_lunas }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->pph21_lunas) }}</span>
                                 </div>
                             </div>
                         </div>
