@@ -29,7 +29,7 @@
     <main>
 
         @forelse ($perampungan->Detail as $item)
-        <div class="container">
+        <div class="container-fluid mt-5">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
