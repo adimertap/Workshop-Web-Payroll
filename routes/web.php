@@ -82,6 +82,7 @@ Route::group(
             ->middleware(['owner', 'verified'])
             ->group(function () {
                 Route::resource('perampungan', 'PerampunganControllerr');
+                Route::get('form-perampungan/{id}', 'PerampunganControllerr@CetakForm')->name('cetak-perampungan');
             });
     }
 );

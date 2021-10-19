@@ -169,4 +169,9 @@ class PerampunganControllerr extends Controller
 
         return redirect()->back()->with('messagehapus','Berhasil menghapus data perampungan');
     }
+
+    public function CetakForm($id_perampungan){
+        $perampungan = Perampungan::with('Detail')->find($id_perampungan);
+        return view('print.Payroll.cetakperampungan',compact('perampungan'));
+    }
 }

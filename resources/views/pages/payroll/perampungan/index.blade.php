@@ -92,15 +92,14 @@
                                             <td>{{ $item->npwp_pemotong}}</td>
                                             <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
                                             <td>
+                                                <a href="{{ route('cetak-perampungan', $item->id_perampungan) }}" target="_blank" class="btn btn-teal btn-datatable" data-toggle="tooltip"
+                                                    data-placement="top" title="" data-original-title="Cetak Form 1721 A1">
+                                                    <i class="fas fa-print"></i></i>
+                                                </a>
                                                 <a href="{{ route('perampungan.show', $item->id_perampungan) }}"
                                                     class="btn btn-secondary btn-datatable" data-toggle="tooltip"
                                                     data-placement="top" title="" data-original-title="Detail">
                                                     <i class="fa fa-eye"></i>
-                                                </a>
-                                                <a href="{{ route('perampungan.edit', $item->id_perampungan) }}"
-                                                    class="btn btn-primary btn-datatable" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Edit">
-                                                    <i class="fas fa-edit"></i>
                                                 </a>
                                                 <a href="" class="btn btn-danger btn-datatable" type="button"
                                                     data-toggle="modal"
