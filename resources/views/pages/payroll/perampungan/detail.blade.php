@@ -521,7 +521,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">Rp. {{ number_format($item->pivot->jenis_netto) }}</span>
+                                    <span class="small">{{ $item->pivot->jenis_netto }}</span>
                                 </div>
 
                             </div>
