@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
 
-                                @forelse ($item->detailtunjangan as $tes)
+                                @forelse ($gaji->detailtunjangan as $tes)
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="d-flex flex-column font-weight-bold">
