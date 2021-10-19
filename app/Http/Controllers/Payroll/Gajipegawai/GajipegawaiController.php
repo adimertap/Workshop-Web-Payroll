@@ -35,13 +35,14 @@ class GajipegawaiController extends Controller
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
         $tahun_bayar = Carbon::now()->format('Y');
-        // $pegawai = Pegawai::with([
-        //     'Jabatan.Gajipokok'
-        // ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
-        // ->where('nama_jabatan', '!=', 'Owner')->get();
+        
+        $pegawai = Pegawai::with([
+            'Jabatan.Gajipokok'
+        ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
+        ->where('nama_jabatan', '!=', 'Owner')->get();
        
 
-        return view('pages.payroll.gajipegawai.gajipegawai', compact('gaji','tahun_bayar','today','tanggal'));
+        return view('pages.payroll.gajipegawai.gajipegawai', compact('gaji','tahun_bayar','today','tanggal','pegawai'));
     }
 
     /**
@@ -205,13 +206,6 @@ class GajipegawaiController extends Controller
     {
         $gaji = Gajipegawai::with('Detailpegawai','Detailpegawai.Jabatan.Gajipokok','Detailtunjangan','Detailpegawai.Detailtunjangan')
         ->find($id_gaji_pegawai);
-        
-        $tes = Detailgaji::join('tb_payroll_detail_tunjangan','tb_payroll_detail_gaji.id_pegawai','tb_payroll_detail_tunjangan.id_pegawai')
-        ->where('tb_payroll_detail_tunjangan.id_gaji_pegawai', $id_gaji_pegawai)->groupBy('id_pegawai')
-        ->get();
-
-        return $tes;
-
 
         $now = Carbon::now()->format('j F Y');
         return view('print.Payroll.cetakslip', compact('gaji','now'));
