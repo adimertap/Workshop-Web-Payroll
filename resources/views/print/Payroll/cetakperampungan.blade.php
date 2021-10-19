@@ -29,7 +29,7 @@
     <main>
 
         @forelse ($perampungan->Detail as $item)
-        <div class="container-fluid mt-5">
+        <div class="container-fluid mt-2">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -66,9 +66,9 @@
                     </div>
                    
 
-                    <hr>
+                
                     <h6>A. Identitas Penerima Penghasil yang Dipotong</h6>
-                    <hr>
+            
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -195,9 +195,9 @@
                     </div>
 
 
-                    <hr>
+        
                     <h6>B. Rincian Penghasilan dan Penghitungan PPh Pasal 21</h6>
-                    <hr>
+        
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -534,9 +534,9 @@
                     </div>
 
 
-                    <hr>
+             
                     <h6>C. Identitas Pemotong</h6>
-                    <hr>
+                
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -546,7 +546,7 @@
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $perampungan->npwp_pegawai }}</span>
+                                    <span class="small">{{ $perampungan->npwp_pemotong }}</span>
                                 </div>
                             </div>
                         </div>
