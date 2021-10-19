@@ -35,7 +35,7 @@ class GajipegawaiController extends Controller
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
         $tahun_bayar = Carbon::now()->format('Y');
-        
+
         $pegawai = Pegawai::with([
             'Jabatan.Gajipokok'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
@@ -63,22 +63,30 @@ class GajipegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
-        ->where('bulan_gaji', Carbon::create($request->bulan_gaji)->startOfMonth())->first();
-        // return $data;
 
-        if (empty($data)){
-            $gaji = Gajipegawai::create([
-                'bulan_gaji'=> Carbon::create($request->bulan_gaji)->startOfMonth(), 
-                'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
-                'id_jenis_transaksi' => '8'
-            ]); 
+        $gaji = new Gajipegawai;
+        $gaji->bulan_gaji = Carbon::create($request->bulan_gaji)->startOfMonth();
+        $gaji->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+        $gaji->id_jenis_transaksi ='8';
+
+        $gaji->save();
+        $gaji->Detail()->sync($request->detailgaji);
+        return $gaji;
+        
+        // $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
+        // ->where('bulan_gaji', Carbon::create($request->bulan_gaji)->startOfMonth())->first();
+
+        // if (empty($data)){
+        //     $gaji = Gajipegawai::create([
+        //         'bulan_gaji'=> Carbon::create($request->bulan_gaji)->startOfMonth(), 
+        //         'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
+        //         'id_jenis_transaksi' => '8'
+        //     ]); 
             
-            return $gaji;
-        }else{
-            throw new \Exception('Gaji Sudah Ada');
-        }
+        //     return $gaji;
+        // }else{
+        //     throw new \Exception('Gaji Sudah Ada');
+        // }
         
 
     }
@@ -111,6 +119,8 @@ class GajipegawaiController extends Controller
             // 'Pegawai','Pegawai.Jabatan.Gajipokok','Pegawai.absensi','Detailtunjangan'
             'Detailpegawai','Jenistransaksi'
         ])->find($id);
+
+        return $gaji;
 
        
         $jenis_transaksi = Jenistransaksi::all();

@@ -50,7 +50,7 @@ class Gajipegawai extends Model
 
     public function Detailtunjangan()
     {
-        return $this->belongsToMany(Mastertunjangan::class,'tb_payroll_detail_tunjangan','id_gaji_pegawai','id_tunjangan')->withPivot('id_pegawai');
+        return $this->belongsToMany(Mastertunjangan::class,'tb_payroll_detail_tunjangan','id_gaji_pegawai','id_tunjangan')->withPivot('id_pegawai','id_detail_pegawai');
     }
 
     public function Jenistransaksi(){
