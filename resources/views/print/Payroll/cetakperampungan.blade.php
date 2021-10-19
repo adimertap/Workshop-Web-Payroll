@@ -43,31 +43,17 @@
                             </div>
                         </div>
                         <div class="col-sm-5">
-                            <input style="display: none" type="input" class="form-control form-control-sm"
-                                id="id_pegawai" name="id_pegawai" value="{{ $item->id_pegawai }}" readonly>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="nomor" class="col-sm-2 col-form-label col-form-label-sm">Nomor</label>
-                                <div class="col-sm-8">
-                                    <span class="small">{{ $item->pivot->nomor }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-sm-6">
                             <div class="form-group row">
                                 <label for="nomor" class="col-sm-3 col-form-label col-form-label-sm">Masa
                                     Perolehan</label>
                                 <div class="col-sm-2">
-                                    <span class="small">{{ $perampungan->masa_perolehan_awal }}</span>
+                                    <span class="small">{{ date('m', strtotime($perampungan->masa_perolehan_awal)) }}</span>
                                 </div>
                                 <div class="col-sm-1 text-center">
                                     <span> - </span>
                                 </div>
                                 <div class="col-sm-2">
-                                    <span class="small">{{ $perampungan->masa_perolehan_akhir }}</span>
+                                    <span class="small">{{ date('m', strtotime($perampungan->masa_perolehan_akhir)) }}</span>
                                 </div>
                                 <label for="nomor"
                                     class="col-sm-2 text-center  col-form-label col-form-label-sm">Tahun</label>
@@ -78,32 +64,11 @@
                             </div>
                         </div>
                     </div>
+                   
 
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="id_pemotong"
-                                    class="col-sm-2 col-form-label col-form-label-sm">Pemotong</label>
-                                <div class="col-sm-8">
-                                    <span class="small">{{ $perampungan->nama_pemotong }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group row">
-                                <label for="npwp_pemotong" class="col-sm-3 col-form-label col-form-label-sm">NPWP
-                                    Pemotong</label>
-                                <div class="col-sm-6">
-                                    <span class="small">{{ $perampungan->npwp_pemotong }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <hr class="mt-2">
+                    <hr>
                     <h6>A. Identitas Penerima Penghasil yang Dipotong</h6>
-                    <hr class="mb-4">
+                    <hr>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -230,9 +195,9 @@
                     </div>
 
 
-                    <hr class="mt-2">
+                    <hr>
                     <h6>B. Rincian Penghasilan dan Penghitungan PPh Pasal 21</h6>
-                    <hr class="mb-4">
+                    <hr>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group row">
@@ -565,6 +530,54 @@
                                     <span class="small">Rp. {{ number_format($item->pivot->pph21_lunas) }}</span>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <h6>C. Identitas Pemotong</h6>
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label for="npwp_terpotong" class="col-sm-4 col-form-label col-form-label-sm">1.
+                                    NPWP</label>
+                                <div class="col-sm-1 text-center">
+                                    <span> : </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="small">{{ $pemotong->npwp_pegawai }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label for="id_ptkp" class="col-sm-4 col-form-label col-form-label-sm">6.
+                                   Tanggal</label>
+                                <div class="col-sm-1 text-center">
+                                    <span> : </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="small">{{ $perampungan->tanggal_perampungan }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group row">
+                                <label for="nik_terpotong" class="col-sm-4 col-form-label col-form-label-sm">2.
+                                    Nama Pemotong</label>
+                                <div class="col-sm-1 text-center">
+                                    <span> : </span>
+                                </div>
+                                <div class="col-sm-6">
+                                    <span class="small">{{ $pemotong->nama_pemotong }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                          
                         </div>
                     </div>
                 </div>
