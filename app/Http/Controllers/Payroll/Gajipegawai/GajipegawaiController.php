@@ -208,7 +208,7 @@ class GajipegawaiController extends Controller
         
         $tes = Detailgaji::join('tb_payroll_detail_tunjangan','tb_payroll_detail_gaji.id_pegawai','tb_payroll_detail_tunjangan.id_pegawai')
         ->where('tb_payroll_detail_tunjangan.id_pegawai','tb_payroll_detail_gaji.id_pegawai' )
-        ->where('tb_payroll_detail_tunjangan.id_gaji_pegawai','tb_payroll_perhitungan_gaji.id_gaji_pegawai')
+        ->where('tb_payroll_detail_tunjangan.id_gaji_pegawai', $id_gaji_pegawai)
         ->get();
 
         return $tes;
