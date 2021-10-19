@@ -204,9 +204,12 @@ class GajipegawaiController extends Controller
     public function CetakSlip($id_gaji_pegawai)
     {
         $gaji = Gajipegawai::with('Detailpegawai','Detailpegawai.Jabatan.Gajipokok','Detailtunjangan','Detailpegawai.Detailtunjangan')
+        ->join('tb_payroll_detail_tunjangan','tb_payroll_detail_gaji.id_gaji_pegawai','tb_payroll_detail_tunjangan.id_gaji_pegawai')
+        ->where('tb_payroll_detail_tunjangan.id_gaji_pegawai',$id_gaji_pegawai)
         ->find($id_gaji_pegawai);
+        
 
-        // return $gaji;
+        return $gaji;
 
 
         $now = Carbon::now()->format('j F Y');
