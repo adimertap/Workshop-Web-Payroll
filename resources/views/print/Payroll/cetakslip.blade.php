@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Cetak Slip Gaji {{ $gaji->bulan_gaji }}, {{ $gaji->tahun_gaji }}</title>
+    <title>Cetak Slip Gaji {{ date('M', strtotime($gaji->bulan_gaji)) }}, {{ date('Y', strtotime($gaji->bulan_gaji)) }}</title>
     <link href="{{ url('backend/dist/css/styles.css')}}" rel="stylesheet" />
     <link rel="shortcut icon" href="{{ asset('image/favicon.png') }}">
     <link rel="stylesheet" href="{{ url('/node_modules/sweetalert2/dist/sweetalert2.min.css') }}">
@@ -51,7 +51,7 @@
                     <hr class="mr-5 ml-5">
                     <div class="card-body">
                         <h5 class="text-center">Slip Gaji Pegawai</h5>
-                        <h6 class="text-dark text-center">Periode Bulan {{ $gaji->bulan_gaji }}, Tahun {{ $gaji->tahun_gaji }}</h6>
+                        <h6 class="text-dark text-center">Periode Bulan {{ date('M', strtotime($gaji->bulan_gaji)) }}, Tahun {{ date('Y', strtotime($gaji->bulan_gaji)) }}</h6>
 
                         <div class="row justify-content-between align-items-center mb-4 mt-4 ml-4">
                             <div class="col-6 text-lg-left" style="line-height: 1rem">

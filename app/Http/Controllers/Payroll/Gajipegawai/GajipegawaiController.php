@@ -206,8 +206,11 @@ class GajipegawaiController extends Controller
         $gaji = Gajipegawai::with('Detailpegawai','Detailpegawai.Jabatan.Gajipokok','Detailtunjangan','Detailpegawai.Detailtunjangan')
         ->find($id_gaji_pegawai);
         
+        $tes = Detailgaji::join('tb_payroll_detail_tunjangan','tb_payroll_detail_gaji.id_pegawai','tb_payroll_detail_tunjangan.id_pegawai')
+        ->where('id_gaji_pegawai', $id_gaji_pegawai)
+        ->get();
 
-        // return $gaji;
+        return $tes;
 
 
         $now = Carbon::now()->format('j F Y');
