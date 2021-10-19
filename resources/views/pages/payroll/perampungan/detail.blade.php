@@ -516,12 +516,12 @@
                                 <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">14.
                                     Jumlah
                                     Penghasilan Neto untuk Penghitungan PPh Pasal 21
-                                    (Setahun/Disetahunkan)</label>
+                                    ({{ $item->pivot->jenis_netto }})</label>
                                 <div class="col-sm-1 text-center">
                                     <span> : </span>
                                 </div>
                                 <div class="col-sm-6">
-                                    <span class="small">{{ $item->pivot->jenis_netto }}</span>
+                                    <span class="small">Rp. {{ number_format($item->pivot->netto_pph21) }}</span>
                                 </div>
 
                             </div>
@@ -529,7 +529,7 @@
                         <div class="col-sm-6">
                             <div class="form-group row">
                                 <div class="col-sm-6">
-                                    <span class="small">Rp. {{ number_format($item->pivot->netto_pph21) }}</span>
+                                   
                                 </div>
                             </div>
                         </div>
