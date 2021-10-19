@@ -207,7 +207,7 @@ class GajipegawaiController extends Controller
         ->find($id_gaji_pegawai);
         
 
-        return $gaji;
+        // return $gaji;
 
 
         $now = Carbon::now()->format('j F Y');
