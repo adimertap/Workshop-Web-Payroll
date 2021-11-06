@@ -970,8 +970,12 @@
             })
         }
 
-        if (pegawai == '') {
-            var alert = $('#alertdatakosong').show()
+        if (pegawai == '' | pegawai == 0) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Anda Belum Memilih Pegawai',
+            })
         } else {
             var data = {
                 _token: _token,
@@ -988,11 +992,32 @@
                 method: 'put',
                 url: '/payroll/gaji-pegawai/' + id_gaji_pegawai,
                 data: data,
+                beforeSend: function () {
+                    swal.fire({
+                        title: 'Mohon Tunggu!',
+                        html: 'Data Gaji Pegawai Sedang Diproses...',
+                        showConfirmButton: false,
+                        onRender: function () {
+                            // there will only ever be one sweet alert open.
+                            $('.swal2-content').prepend(sweet_loader);
+                        }
+                    });
+                },
                 success: function (response) {
+                    swal.fire({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        html: '<h5>Success!</h5>'
+                    });
                     window.location.href = '/payroll/gaji-pegawai'
 
                 },
                 error: function (response) {
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        html: '<h5>Error!</h5>'
+                    });
                     console.log(response)
                 }
             });
@@ -1008,7 +1033,6 @@
         var id = kode.split('pegawai-')[1]
         $(`#${id}-button`).trigger('click');
 
-
     }
 
 
@@ -1023,7 +1047,7 @@
 
         swalWithBootstrapButtons.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "Menghapus Data Gaji Pegawai!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!',
