@@ -78,25 +78,6 @@ class GajipegawaiController extends Controller
         }else{
             throw new \Exception('Gaji Sudah Ada');
         }
-
-       
-        
-        // $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
-        // ->where('bulan_gaji', Carbon::create($request->bulan_gaji)->startOfMonth())->first();
-
-        // if (empty($data)){
-        //     $gaji = Gajipegawai::create([
-        //         'bulan_gaji'=> Carbon::create($request->bulan_gaji)->startOfMonth(), 
-        //         'id_bengkel' => $request['id_bengkel'] = Auth::user()->id_bengkel,
-        //         'id_jenis_transaksi' => '8'
-        //     ]); 
-            
-        //     return $gaji;
-        // }else{
-        //     throw new \Exception('Gaji Sudah Ada');
-        // }
-        
-
     }
 
     /**
