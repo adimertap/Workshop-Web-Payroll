@@ -560,7 +560,8 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                    <button class="btn btn-primary" type="button" onclick="tambahgajipokok(event, $gaji->id_gaji_pegawai)">Tambah</button>
+                    <button class="btn btn-primary" type="button"
+                        onclick="tambahgajipokok(event, $gaji->id_gaji_pegawai)">Tambah</button>
                 </div>
             </form>
         </div>
@@ -600,10 +601,11 @@
 
         $.ajax({
             method: 'post',
-            url: '/payroll/gaji-pokok/tambahgajipokok/'
+            url: '/payroll/gaji-pokok/tambahgajipokok/',
             data: data,
             success: function (response) {
                 window.location.href = '/payroll/gaji-pegawai/' + id_gaji_pegawai + '/edit'
+                
 
             },
             error: function (response) {
@@ -1061,7 +1063,7 @@
                     }
                 }
             ]
-        });
+        }); 
     });
 
 </script>
