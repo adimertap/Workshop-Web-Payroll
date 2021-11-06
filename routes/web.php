@@ -35,7 +35,7 @@ Route::group(
     ['middleware' => 'auth'],
     function () {
         // MASTER DATA ------------------------------------------------------------ Master Data Payroll
-        Route::prefix('payroll')
+        Route::prefix('payroll/gaji-pokok')
             ->namespace('Payroll\Masterdata')
             ->middleware(['owner', 'verified'])
             ->group(function () {
@@ -43,7 +43,7 @@ Route::group(
                     ->name('masterdatagajipokok');
 
                 Route::resource('gaji-pokok', 'MasterdatagajipokokController');
-                Route::post('gaji-pokok/tambahgajipokok', 'MasterdatagajipokokController@tambahgajipokok')
+                Route::post('/tambahgajipokok', 'MasterdatagajipokokController@tambahgajipokok')
                     ->name('gaji-pokok-tambah');
             });
 
