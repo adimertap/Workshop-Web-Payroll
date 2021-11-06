@@ -439,10 +439,8 @@
             })
         }
 
-
         var _token = $('#form1').find('input[name="_token"]').val()
         var bulan_gaji = $('#bulan_gaji').val()
-
 
         var data = {
             _token: _token,
@@ -450,9 +448,7 @@
             detailgaji: detailgaji
         }
 
-
-
-        if (bulan_gaji == '' | ) {
+        if (bulan_gaji == '') {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
