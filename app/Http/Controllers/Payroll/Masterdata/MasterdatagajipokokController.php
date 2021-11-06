@@ -22,8 +22,6 @@ class MasterdatagajipokokController extends Controller
             'Jabatan'])->get();
 
         $jabatan = Jabatan::where('nama_jabatan', '!=', 'Owner')->get();
-        // // Cek nilai merksparepart -> array
-        // // dd($merksparepart); 
         
         
         return view('pages.payroll.masterdata.gajipokok',compact('gajipokok','jabatan'));
@@ -45,7 +43,7 @@ class MasterdatagajipokokController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Mastergajipokokrequest $request)
+    public function store(Request $request)
     {
 
         $gajipokok = new Mastergajipokok;
