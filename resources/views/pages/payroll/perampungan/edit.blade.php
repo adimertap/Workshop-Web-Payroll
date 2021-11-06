@@ -1301,7 +1301,7 @@
                         icon: 'success',
                         title: 'Berhasil',
                         html: 'Pegawai Tidak dikenakan PPh21',
-                        timer: 1500,
+                        timer: 2500,
                         timerProgressBar: true,
                     });
                    
@@ -1311,7 +1311,7 @@
                         icon: 'success',
                         title: 'Berhasil Menghitung PPh21' ,
                         html: 'Pegawai dikenakan sebesar Rp.' + pphlevel1tahun,
-                        timer: 1500,
+                        timer: 2500,
                         timerProgressBar: true,
                     });
                 }
@@ -1348,7 +1348,7 @@
                         icon: 'success',
                         title: 'Berhasil Menghitung PPh21' ,
                         html: 'Pegawai dikenakan sebesar Rp.' + pphlevel2tahun,
-                        timer: 1500,
+                        timer: 2500,
                         timerProgressBar: true,
                     });
 
@@ -1385,7 +1385,7 @@
                         icon: 'success',
                         title: 'Berhasil Menghitung PPh21' ,
                         html: 'Pegawai dikenakan sebesar Rp.' + pphlevel3tahun,
-                        timer: 1500,
+                        timer: 2500,
                         timerProgressBar: true,
                     });
 
@@ -1422,8 +1422,8 @@
             swal.fire({
                 icon: 'success',
                 title: 'Berhasil' ,
-                html: 'Berhasil Menghitung PPh21 Final',
-                timer: 2500,
+                html: 'Berhasil Menghitung PPh21 Final Sebesar Rp.' + pph21_terutang,
+                timer: 3000,
                 timerProgressBar: true,
             });
         }
