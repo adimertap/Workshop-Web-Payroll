@@ -707,7 +707,7 @@
 
                 swal.fire({
                         icon: 'success',
-                        title: 'Berhasil Menambah Data Gaji' nama_pegawai
+                        title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
                         html: 'Pegawai tidak dikenakan Pajak'
                     });
 
@@ -763,8 +763,8 @@
 
                 swal.fire({
                         icon: 'success',
-                        title: 'Berhasil Menambah Data Gaji' nama_pegawai
-                        html: 'PPh21 sebesar' jumlahpph21fix
+                        title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
+                        html: 'PPh21 sebesar' + jumlahpph21fix
                 });
 
 
