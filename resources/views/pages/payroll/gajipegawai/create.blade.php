@@ -596,7 +596,7 @@
         console.log(id_jabatan, besaran_gaji, _token)
 
         var data = {
-            _token: $('#token2').val()
+            _token: $('#token2').val(),
             id_jabatan: id_jabatan,
             besaran_gaji: besaran_gaji,
         }
