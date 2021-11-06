@@ -932,42 +932,49 @@
             var children = $(datapegawai[index]).children()
             var td = children[1]
             var span = $(td).children()[0]
-
             var id_pegawai = $(span).attr('id')
-            var id = id_pegawai.split('pegawai-')[1]
-            var tes1 = $($(td).parent().children())
-            var total_pokok = $($(td).parent().children()[3]).html().split('Rp.')[1].replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_tunjangan = $($(td).parent().children()[4]).html().split('Rp')[1].replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_gaji = $($(td).parent().children()[5]).html().split('Rp')[1].replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_pph21 = $($(td).parent().children()[6]).html().split('Rp')[1].replace('&nbsp;', '')
-                .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+            if(id_pegawai == ''){
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Anda Belum Memilih Pegawai',
+                })
+            }else{
+                var id = id_pegawai.split('pegawai-')[1]
+                var tes1 = $($(td).parent().children())
+                var total_pokok = $($(td).parent().children()[3]).html().split('Rp.')[1].replace('&nbsp;', '')
+                    .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+                var total_tunjangan = $($(td).parent().children()[4]).html().split('Rp')[1].replace('&nbsp;', '')
+                    .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+                var total_gaji = $($(td).parent().children()[5]).html().split('Rp')[1].replace('&nbsp;', '')
+                    .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
+                var total_pph21 = $($(td).parent().children()[6]).html().split('Rp')[1].replace('&nbsp;', '')
+                    .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
-            pegawai.push({
-                id_pegawai: id,
-                total_tunjangan: total_tunjangan,
-                total_gaji: total_gaji,
-                total_pph21: total_pph21,
-                total_pokok: total_pokok
-            })
+                pegawai.push({
+                    id_pegawai: id,
+                    total_tunjangan: total_tunjangan,
+                    total_gaji: total_gaji,
+                    total_pph21: total_pph21,
+                    total_pokok: total_pokok
+                })
 
-            var tbody = $(`#tunjangan-${id}`)
-            var check = tbody.find('.checktunjangan').each(function (index, element) {
-                var value = $(element).is(':checked')
-                if (value == true) {
-                    var tr = $(element).parent().parent().parent()
-                    var id_tunjangan = $(tr).attr('id').split('item-')[1]
+                var tbody = $(`#tunjangan-${id}`)
+                var check = tbody.find('.checktunjangan').each(function (index, element) {
+                    var value = $(element).is(':checked')
+                    if (value == true) {
+                        var tr = $(element).parent().parent().parent()
+                        var id_tunjangan = $(tr).attr('id').split('item-')[1]
 
-                    tunjangan.push({
-                        id_pegawai: id,
-                        id_tunjangan: id_tunjangan,
-                    })
+                        tunjangan.push({
+                            id_pegawai: id,
+                            id_tunjangan: id_tunjangan,
+                        })
 
-                }
+                    }
 
-            })
+                })
+            }
         }
 
         if (pegawai == '' | pegawai == 0) {
@@ -996,6 +1003,7 @@
                     swal.fire({
                         title: 'Mohon Tunggu!',
                         html: 'Data Gaji Pegawai Sedang Diproses...',
+                        
                         showConfirmButton: false,
                         onRender: function () {
                             // there will only ever be one sweet alert open.
