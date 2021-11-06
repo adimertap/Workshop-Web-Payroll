@@ -177,19 +177,8 @@
                     <div class="form-group">
                         <label class="small mb-1">Masa Perolehan Penghasilan</label><span class="mr-4 mb-3"
                             style="color: red">*</span>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input class="form-control" id="masa_perolehan_awal" type="month"
-                                    name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
-                            </div>
-                            {{-- <div class="col-md-1">
-                                <h3 class="mt-2 ml-2"> - </h3>
-                            </div>
-                            <div class="col-md-6">
-                                <input class="form-control" id="masa_perolehan_akhir" type="month"
-                                    name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
-                            </div> --}}
-                        </div>
+                            <input class="form-control" id="masa_perolehan_awal" type="month"
+                                name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                     </div>
                 </div>
                 <div class="modal-footer">
