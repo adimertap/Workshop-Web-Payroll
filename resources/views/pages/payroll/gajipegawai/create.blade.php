@@ -310,16 +310,7 @@
                                             </tr>
                                         </thead>
                                         <tbody id='konfirmasi'>
-                                            {{-- @forelse ($gaji->Detailtunjangan as $items)
-                                            <tr role="row" class="odd">
-                                                <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}.
-                                            </th>
-                                            <td>{{ $items->nama_tunjangan }}</td>
-                                            <td>Rp {{ number_format($items->jumlah_tunjangan,2,',','.') }}</td>
-                                            <td></td>
-                                            @empty
-
-                                            @endforelse --}}
+                                           
                                         </tbody>
                                     </table>
                                 </div>
@@ -715,7 +706,7 @@
 
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
-                    nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                    nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -739,7 +730,7 @@
                 $('#gaji_diterima').val(jumlahfix3)
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
-                    nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                    nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -808,7 +799,7 @@
             $('#gaji_diterima').val(jumlahfix3)
 
             $('#dataTableKonfirmasi').DataTable().row.add([
-                nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
@@ -880,7 +871,7 @@
 
 
             $('#dataTableKonfirmasi').DataTable().row.add([
-                nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
@@ -932,9 +923,10 @@
             var children = $(datapegawai[index]).children()
             var td = children[1]
             var span = $(td).children()[0]
-
             var id_pegawai = $(span).attr('id')
-            var id = id_pegawai.split('pegawai-')[1]
+
+
+            // var id = id_pegawai.split('pegawai-')[1]
             var tes1 = $($(td).parent().children())
             var total_pokok = $($(td).parent().children()[3]).html().split('Rp.')[1].replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
@@ -946,7 +938,7 @@
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
             pegawai.push({
-                id_pegawai: id,
+                id_pegawai: id_pegawai,
                 total_tunjangan: total_tunjangan,
                 total_gaji: total_gaji,
                 total_pph21: total_pph21,
