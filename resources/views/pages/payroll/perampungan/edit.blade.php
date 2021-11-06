@@ -606,7 +606,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-group row">
                                         <label for="netto" class="col-sm-5 col-form-label col-form-label-sm">12. Jumlah
-                                            Penghasilan Neto (8-11)</label>
+                                            Penghasilan Netto (8-11)</label>
                                         <div class="col-sm-1 text-center">
                                             <span> : </span>
                                         </div>
@@ -647,10 +647,18 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group row">
+                                        <label for="netto" class="col-sm-5 col-form-label col-form-label-sm">14. Jumlah
+                                            Penghasilan Netto untuk Perhitungan PPh Pasal 21(Setahun/Disetahunkan) </label>
+                                        <div class="col-sm-1 text-center">
+                                            <span> : </span>
+                                        </div>
                                         <div class="col-sm-6">
-                                            <input type="input" class="form-control form-control-sm"
-                                                id="netto_pph21-{{ $item->id_pegawai }}" name="netto_pph21" value="0"
-                                                placeholder="Jumlah Penghasilan Netto">
+                                            
+                                                <input type="input" class="form-control form-control-sm"
+                                                    id="netto_pph21-{{ $item->id_pegawai }}" name="netto_pph21" value="0"
+                                                    placeholder="Jumlah Penghasilan Netto">
+                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -659,6 +667,7 @@
                                 </div>
                             </div>
 
+                           
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group row">
