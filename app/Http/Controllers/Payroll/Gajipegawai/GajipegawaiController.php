@@ -63,7 +63,7 @@ class GajipegawaiController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
+        $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)->where('status_aktif', 'Aktif')
         ->where('bulan_gaji', Carbon::create($request->bulan_gaji)->startOfMonth())->first();
 
          if (empty($data)){
@@ -71,6 +71,7 @@ class GajipegawaiController extends Controller
             $gaji->bulan_gaji = Carbon::create($request->bulan_gaji)->startOfMonth();
             $gaji->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
             $gaji->id_jenis_transaksi ='8';
+            $gaji->status_aktif = 'Tidak Aktif';
 
             $gaji->save();
             $gaji->Detailpegawai()->sync($request->detailgaji);
@@ -160,6 +161,7 @@ class GajipegawaiController extends Controller
         $gaji->grand_total_tunjangan = $request->grand_total_tunjangan;
         $gaji->grand_total_pph21 = $request->grand_total_pph21;
         $gaji->keterangan = $request->keterangan;
+        $gaji->status_aktif = 'Aktif';
         $gaji->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
         
         $gaji->save();
