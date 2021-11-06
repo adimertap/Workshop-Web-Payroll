@@ -209,8 +209,8 @@
             <form action="{{ route('perampungan.destroy', $item->id_perampungan) }}" method="POST" class="d-inline">
                 @csrf
                 @method('delete')
-                <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Perampungan dengan Nomor
-                    <b>{{ $item->nomor }}</b> ?</div>
+                <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Perampungan Tahun
+                    <b>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</b> ?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-danger" type="submit">Ya! Hapus</button>
