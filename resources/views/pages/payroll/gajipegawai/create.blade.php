@@ -593,6 +593,8 @@
         var besaran_gaji = form1.find('input[name="besaran_gaji"]').val()
         var _token = form1.find('input[name="_token"]').val()
 
+        console.log(id_jabatan, besaran_gaji, _token)
+
         var data = {
             _token: _token,
             id_jabatan: id_jabatan,
