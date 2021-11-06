@@ -528,15 +528,12 @@
                     <div class="form-group">
                         <label class="small mb-1 mr-1" for="id_jabatan">Pilih Jabatan</label><span class="mr-4 mb-3"
                             style="color: red">*</span>
-                        <select class="form-control" name="id_jabatan" id="id_jabatan"
-                            class="form-control @error('id_jabatan') is-invalid @enderror">
+                        <select class="form-control" name="id_jabatan" id="id_jabatan" required>
                             <option>Pilih Jabatan</option>
                             @foreach ($jabatan as $item)
                             <option value="{{ $item->id_jabatan }}">{{ $item->nama_jabatan }}</option>
                             @endforeach
                         </select>
-                        @error('id_jabatan')<div class="text-danger small mb-1">{{ $message }}
-                        </div> @enderror
                     </div>
                     <div class="form-group">
                         <div class="row justify-content-between align-items-center">
@@ -551,11 +548,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input class="form-control" name="besaran_gaji" type="number" id="besaran_gaji"  min="1000"
-                            placeholder="Input Besaran Gaji" value="{{ old('besaran_gaji') }}"
-                            class="form-control @error('besaran_gaji') is-invalid @enderror" />
-                        @error('besaran_gaji')<div class="text-danger small mb-1">{{ $message }}
-                        </div> @enderror
+                        <input class="form-control" name="besaran_gaji" type="number" id="besaran_gaji_pokok_tambah"  min="1000"
+                            placeholder="Input Besaran Gaji" value="{{ old('besaran_gaji') }}" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -590,10 +584,7 @@
         event.preventDefault()
         var form3 = $('#form3')
         var id_jabatan = $('#id_jabatan').val()
-        var besaran_gaji = form3.find('input[name="besaran_gaji"]').val()
-        var _token = form3.find('input[name="_token"]').val()
-
-        console.log(id_jabatan, besaran_gaji, _token)
+        var besaran_gaji = $('#besaran_gaji_pokok_tambah').val()
 
         var data = {
             _token: $('#token2').val(),
