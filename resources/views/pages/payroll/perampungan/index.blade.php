@@ -74,13 +74,13 @@
                                                 style="width: 90px;">Masa Perolehan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 30px;">Tahun</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 70px;">Nama Pemotong</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 40px;">NPWP Pemotong</th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 30px;">Tahun</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 60px;">Actions</th>
@@ -92,9 +92,9 @@
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->tanggal_perampungan}}</td>
                                             <td>{{ date('F', strtotime($item->masa_perolehan_awal)) }} -  {{ date('F', strtotime($item->masa_perolehan_akhir)) }}</td>
+                                            <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
                                             <td>{{ $item->nama_pemotong}}</td>
                                             <td>{{ $item->npwp_pemotong}}</td>
-                                            <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
                                             <td>
                                                 <a href="{{ route('cetak-perampungan', $item->id_perampungan) }}" target="_blank" class="btn btn-teal btn-datatable" data-toggle="tooltip"
                                                     data-placement="top" title="" data-original-title="Cetak Form 1721 A1">
@@ -305,6 +305,24 @@
     function tambahpegawai(event){
         var Terpilih = 'Pegawai Telah Dipilih'
         var detailpegawai = $('#detailpegawai').val(Terpilih)
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Berhasil Menambahkan Data Pegawai'
+        })
+
     }
 
 
@@ -344,23 +362,53 @@
             pegawai: pegawai
         }
 
-        console.log(data)
+        
 
-        if (tanggal_perampungan == '' | pegawai == '' | masa_perolehan_awal == '') {
-            $('#alertdatakosong').show()
+        if (tanggal_perampungan == '' | masa_perolehan_awal == '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Terdapat Field Kosong!',
+            })
+        } else if(pegawai == ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Pegawai belum dipilih!',
+            })
         } else {
+            var sweet_loader =
+                '<div class="sweet_loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
 
             $.ajax({
                 method: 'post',
                 url: "/payroll/perampungan",
                 data: data,
+                beforeSend: function () {
+                    swal.fire({
+                        title: 'Mohon Tunggu!',
+                        html: 'Data Perampungan Sedang Diproses...',
+                        showConfirmButton: false,
+                        onRender: function () {
+                            // there will only ever be one sweet alert open.
+                            $('.swal2-content').prepend(sweet_loader);
+                        }
+                    });
+                },
                 success: function (response) {
-                    console.log(response)
+                    swal.fire({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        html: '<h5>Success!</h5>'
+                    });
                     window.location.href = '/payroll/perampungan/' + response.id_perampungan + '/edit'
                 },
                 error: function (error) {
-                    console.log(error)
-                    alert(error.responseJSON.message)
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        html: error.responseJSON.message
+                    });
                 }
             });
         }

@@ -59,39 +59,26 @@ class PerampunganControllerr extends Controller
      */
     public function store(Request $request)
     {
-        $perampungan = new Perampungan;
-        $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
-        $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_awal)->addMonths(11);
-        $perampungan->status_aktif = 'Tidak Aktif';
-        $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
-        $perampungan->nama_pemotong = Auth::user()->pegawai->nama_pegawai;
-        $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pegawai;
-        $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
+        $data = Perampungan::where('id_bengkel', Auth::user()->id_bengkel)->where('status_aktif', 'Aktif')
+            ->where('masa_perolehan_awal', Carbon::create($request->masa_perolehan_awal)->startOfMonth())->first();
 
-        $perampungan->save();
-        $perampungan->Detail()->sync($request->pegawai);
-        return $perampungan;
+        if (empty($data)){
+            $perampungan = new Perampungan;
+            $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
+            $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_awal)->addMonths(11);
+            $perampungan->status_aktif = 'Tidak Aktif';
+            $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+            $perampungan->nama_pemotong = Auth::user()->pegawai->nama_pegawai;
+            $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pegawai;
+            $perampungan->tanggal_perampungan = $request->tanggal_perampungan;
+    
+            $perampungan->save();
+            $perampungan->Detail()->sync($request->pegawai);
+            return $perampungan;
+        }else{
+            throw new \Exception('Data Perampungan Sudah Ada');
+        }
 
-        // $id = Perampungan::getId();
-        // foreach($id as $value);
-        // $idlama = $value->id_perampungan;
-        // $idbaru = $idlama + 1;
-        // $blt = date('m');
-        // $year = date('y');
-        
-        // $kode_perampungan = '1.1-'.$blt.'.'.$year.'-000000'.$idbaru;
-
-        // $data = Perampungan::where('id_bengkel', Auth::user()->id_bengkel)
-        // ->where('masa_perolehan_awal', Carbon::create($request->masa_perolehan_awal)->startOfMonth())
-        // ->where('masa_perolehan_akhir', Carbon::create($request->masa_perolehan_akhir)->startOfMonth())
-        // ->first();
-
-        // if (empty($data)){
-          
-           
-        // }else{
-        //     throw new \Exception('Data Perampungan Sudah Ada');
-        // }
     }
 
     /**
