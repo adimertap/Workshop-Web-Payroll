@@ -25,7 +25,7 @@ class PerampunganControllerr extends Controller
      */
     public function index()
     {
-        $perampungan = Perampungan::get();
+        $perampungan = Perampungan::where('status_aktif', 'Aktif')->get();
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
@@ -62,7 +62,7 @@ class PerampunganControllerr extends Controller
         $perampungan = new Perampungan;
         $perampungan->masa_perolehan_awal = Carbon::create($request->masa_perolehan_awal)->startOfMonth();
         $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_awal)->addMonths(11);
-        // $perampungan->masa_perolehan_akhir = Carbon::create($request->masa_perolehan_akhir)->startOfMonth();
+        $perampungan->status_aktif = 'Tidak Aktif';
         $perampungan->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
         $perampungan->nama_pemotong = Auth::user()->pegawai->nama_pegawai;
         $perampungan->npwp_pemotong = Auth::user()->pegawai->npwp_pegawai;
@@ -149,6 +149,7 @@ class PerampunganControllerr extends Controller
     public function update(Request $request, $id_perampungan)
     {
         $perampungan = Perampungan::findOrFail($id_perampungan);
+        $perampungan->status_aktif = 'Aktif';
 
         $perampungan->save();
         $perampungan->Detail()->sync($request->detail);

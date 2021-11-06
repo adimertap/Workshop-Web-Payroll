@@ -66,21 +66,24 @@
                                                 aria-label="Name: activate to sort column descending"
                                                 style="width: 20px;">
                                                 No</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 40px;">Tanggal Perampungan</th>
+                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Position: activate to sort column ascending"
+                                                style="width: 90px;">Masa Perolehan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
                                                 style="width: 70px;">Nama Pemotong</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 60px;">NPWP Pemotong</th>
+                                                style="width: 40px;">NPWP Pemotong</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 40px;">Tahun</th>
+                                                style="width: 30px;">Tahun</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 90px;">Actions</th>
+                                                style="width: 60px;">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -88,6 +91,7 @@
                                         <tr role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
                                             <td>{{ $item->tanggal_perampungan}}</td>
+                                            <td>{{ date('F', strtotime($item->masa_perolehan_awal)) }} -  {{ date('F', strtotime($item->masa_perolehan_akhir)) }}</td>
                                             <td>{{ $item->nama_pemotong}}</td>
                                             <td>{{ $item->npwp_pemotong}}</td>
                                             <td>{{ date('Y', strtotime($item->masa_perolehan_awal)) }}</td>
