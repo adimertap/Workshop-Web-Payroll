@@ -30,7 +30,7 @@ class GajipegawaiController extends Controller
 
         $gaji = Gajipegawai::with([
             'Detailpegawai','Jenistransaksi'
-        ])->get();
+        ])->where('status_aktif', 'Aktif')->get();
 
         $today = Carbon::now()->isoFormat('dddd');
         $tanggal = Carbon::now()->format('j F Y');
