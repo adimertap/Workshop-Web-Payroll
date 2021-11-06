@@ -975,7 +975,7 @@
 
         
 
-        if (pegawai == '' | pegawai == 0) {
+        if (pegawai == '' | pegawai == undefined ) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
