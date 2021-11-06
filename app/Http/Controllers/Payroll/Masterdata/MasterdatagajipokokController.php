@@ -43,7 +43,7 @@ class MasterdatagajipokokController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Mastergajipokokrequest $request)
     {
 
         $gajipokok = new Mastergajipokok;
@@ -106,5 +106,17 @@ class MasterdatagajipokokController extends Controller
         $gajipokok->delete();
 
         return redirect()->back()->with('messagehapus','Data Gaji Pokok Berhasil dihapus');
+    }
+
+    public function tambahgajipokok(Request $request)
+    {
+
+        $gajipokok = new Mastergajipokok;
+        $gajipokok->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+        $gajipokok->id_jabatan = $request->id_jabatan;
+        $gajipokok->besaran_gaji = $request->besaran_gaji;
+       
+        $gajipokok->save(); 
+        return redirect()->back()->with('messageberhasil','Data Gaji Pokok Berhasil ditambahkan');
     }
 }
