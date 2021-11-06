@@ -310,7 +310,16 @@
                                             </tr>
                                         </thead>
                                         <tbody id='konfirmasi'>
-                                           
+                                            {{-- @forelse ($gaji->Detailtunjangan as $items)
+                                            <tr role="row" class="odd">
+                                                <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}.
+                                            </th>
+                                            <td>{{ $items->nama_tunjangan }}</td>
+                                            <td>Rp {{ number_format($items->jumlah_tunjangan,2,',','.') }}</td>
+                                            <td></td>
+                                            @empty
+
+                                            @endforelse --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -706,7 +715,7 @@
 
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
-                    nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                    nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -730,7 +739,7 @@
                 $('#gaji_diterima').val(jumlahfix3)
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
-                    nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                    nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -799,7 +808,7 @@
             $('#gaji_diterima').val(jumlahfix3)
 
             $('#dataTableKonfirmasi').DataTable().row.add([
-                nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
@@ -871,7 +880,7 @@
 
 
             $('#dataTableKonfirmasi').DataTable().row.add([
-                nama_pegawai, `<span id=${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
+                nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
@@ -923,44 +932,38 @@
             var children = $(datapegawai[index]).children()
             var td = children[1]
             var span = $(td).children()[0]
+
             var id_pegawai = $(span).attr('id')
-
-
-            // var id = id_pegawai.split('pegawai-')[1]
+            var id = id_pegawai.split('pegawai-')[1]
             var tes1 = $($(td).parent().children())
-            var total_pokok = $($(td).parent().children()[3]).html().replace('Rp.', '').replace('&nbsp;', '')
+            var total_pokok = $($(td).parent().children()[3]).html().split('Rp.')[1].replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_tunjangan = $($(td).parent().children()[4]).html().replace('Rp.', '').replace('&nbsp;', '')
+            var total_tunjangan = $($(td).parent().children()[4]).html().split('Rp')[1].replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_gaji = $($(td).parent().children()[5]).html().replace('Rp.', '').replace('&nbsp;', '')
+            var total_gaji = $($(td).parent().children()[5]).html().split('Rp')[1].replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_pph21 = $($(td).parent().children()[6]).html().replace('Rp.', '').replace('&nbsp;', '')
+            var total_pph21 = $($(td).parent().children()[6]).html().split('Rp')[1].replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
-            var objpegawai = {
-                id_pegawai: id_pegawai,
+            pegawai.push({
+                id_pegawai: id,
                 total_tunjangan: total_tunjangan,
                 total_gaji: total_gaji,
                 total_pph21: total_pph21,
                 total_pokok: total_pokok
-            }
-            
-            pegawai.push(objpegawai)
+            })
 
-
-            var tbody = $(`#tunjangan-${id_pegawai}`)
+            var tbody = $(`#tunjangan-${id}`)
             var check = tbody.find('.checktunjangan').each(function (index, element) {
                 var value = $(element).is(':checked')
                 if (value == true) {
                     var tr = $(element).parent().parent().parent()
                     var id_tunjangan = $(tr).attr('id').split('item-')[1]
 
-                    var objtunjangan= {
-                        id_pegawai: id_pegawai,
+                    tunjangan.push({
+                        id_pegawai: id,
                         id_tunjangan: id_tunjangan,
-                    }
-                    
-                    tunjangan.push(objtunjangan)
+                    })
 
                 }
 
@@ -974,9 +977,6 @@
                 text: 'Anda Belum Memilih Pegawai',
             })
         } else {
-            var sweet_loader =
-                '<div class="sweet_loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
-                
             var data = {
                 _token: _token,
                 grand_total_gaji: grand_total_gaji,
