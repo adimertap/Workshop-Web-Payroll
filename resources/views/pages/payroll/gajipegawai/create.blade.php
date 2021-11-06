@@ -548,8 +548,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input class="form-control" name="besaran_gaji" type="number" id="besaran_gaji_pokok_tambah"  min="1000"
-                            placeholder="Input Besaran Gaji" value="{{ old('besaran_gaji') }}" required>
+                        <input class="form-control" name="besaran_gaji" type="number" id="besaran_gaji_pokok_tambah"
+                            min="1000" placeholder="Input Besaran Gaji" value="{{ old('besaran_gaji') }}" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -594,11 +594,12 @@
 
         $.ajax({
             method: 'POST',
-            url: '{{ route('gaji-pokok-tambah') }}',
+            url: '{{ route('
+            gaji - pokok - tambah ') }}',
             data: data,
             success: function (response) {
                 window.location.href = '/payroll/gaji-pegawai/' + id_gaji_pegawai + '/edit'
-                
+
 
             },
             error: function (response) {
@@ -706,12 +707,12 @@
                 $('#gaji_diterima').val(jumlahfix3)
 
                 swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                        html: 'Pegawai tidak dikenakan PPh21',
-                        timer: 2000,
-                        timerProgressBar: true,
-                    });
+                    icon: 'success',
+                    title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
+                    html: 'Pegawai tidak dikenakan PPh21',
+                    timer: 3000,
+                    timerProgressBar: true,
+                });
 
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
@@ -760,16 +761,16 @@
                 $('#total_pph21').val(jumlahpph21fix)
 
                 var pphpakealert = new Intl.NumberFormat('id', {
-                        style: 'currency',
-                        currency: 'IDR'
-                    }).format(jumlahpph21fix);
+                    style: 'currency',
+                    currency: 'IDR'
+                }).format(jumlahpph21fix);
 
                 swal.fire({
-                        icon: 'success',
-                        title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                        html: 'PPh21 sebesar ' + pphpakealert,
-                        timer: 2000,
-                        timerProgressBar: true,
+                    icon: 'success',
+                    title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
+                    html: 'PPh21 sebesar ' + pphpakealert,
+                    timer: 3000,
+                    timerProgressBar: true,
                 });
 
 
@@ -828,17 +829,17 @@
             $('#total_pph21').val(jumlahpph21fix)
 
             var pphpakealert = new Intl.NumberFormat('id', {
-                        style: 'currency',
-                        currency: 'IDR'
-                    }).format(jumlahpph21fix);
+                style: 'currency',
+                currency: 'IDR'
+            }).format(jumlahpph21fix);
 
             swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                    html: 'PPh21 sebesar ' + pphpakealert,
-                    timer: 2000,
-                    timerProgressBar: true,
-                });
+                icon: 'success',
+                title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
+                html: 'PPh21 sebesar ' + pphpakealert,
+                timer: 3000,
+                timerProgressBar: true,
+            });
 
         } else if (gajikenapajak > pph2 && gajikenapajak <= pph3) {
 
@@ -900,17 +901,17 @@
             $('#total_pph21').val(jumlahpph21fix)
 
             var pphpakealert = new Intl.NumberFormat('id', {
-                        style: 'currency',
-                        currency: 'IDR'
-                    }).format(jumlahpph21fix);
+                style: 'currency',
+                currency: 'IDR'
+            }).format(jumlahpph21fix);
 
             swal.fire({
-                    icon: 'success',
-                    title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                    html: 'PPh21 sebesar ' + pphpakealert,
-                    timer: 2000,
-                    timerProgressBar: true,
-                });
+                icon: 'success',
+                title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
+                html: 'PPh21 sebesar ' + pphpakealert,
+                timer: 3000,
+                timerProgressBar: true,
+            });
 
         }
     }
@@ -1002,7 +1003,6 @@
 
     function editgaji(element) {
         var table = $('#dataTablekonfirmasi').DataTable()
-        // Akses Parent Sampai <tr></tr>
         var row = $(element).parent().parent()
         var children = $(row).children()[1]
         var kode = $($(children).children()[0]).attr('id')
@@ -1014,50 +1014,91 @@
 
 
     function hapusgaji(element) {
-        var table = $('#dataTableKonfirmasi').DataTable()
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        })
 
-        // Akses Parent Sampai <tr></tr>
-        var row = $(element).parent().parent()
-        table.row(row).remove().draw();
-        alert('Data Tunjangan Berhasil di Hapus')
-        // draw() Reset Ulang Table
-        var table = $('#dataTable').DataTable()
-        var table2 = $('#dataTabletunjangankonfirmasi').DataTable()
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                var table = $('#dataTableKonfirmasi').DataTable()
 
-        // Akses Parent Sampai <tr></tr>
-        var row2 = $(element).parent().parent()
+                // Akses Parent Sampai <tr></tr>
+                var row = $(element).parent().parent()
+                table.row(row).remove().draw();
+                alert('Data Tunjangan Berhasil di Hapus')
+                // draw() Reset Ulang Table
+                var table = $('#dataTable').DataTable()
+                var table2 = $('#dataTabletunjangankonfirmasi').DataTable()
 
-        // Pengurangan Total Gaji Pokok
-        var totalgajipokok = $('#total_gaji').val()
-        var gajipokok = $(row2.children()[3]).html()
-        var splitgajipokok = parseInt(totalgajipokok) - parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace(
-            '.',
-            '').replace(',00', '').trim())
-        $('#total_gaji').val(splitgajipokok)
+                // Akses Parent Sampai <tr></tr>
+                var row2 = $(element).parent().parent()
 
-        // Pengurangan Tunjangan
-        var totaltunjangan = $('#total_tunjangan').val()
-        var tunjangan = $(row2.children()[4]).html()
-        var splittunjangan = parseInt(totaltunjangan) - parseInt(tunjangan.split('Rp')[1].replace('&nbsp;', '')
-            .replace(
-                '.', '').replace(',00', '').trim())
+                // Pengurangan Total Gaji Pokok
+                var totalgajipokok = $('#total_gaji').val()
+                var gajipokok = $(row2.children()[3]).html()
+                var splitgajipokok = parseInt(totalgajipokok) - parseInt(gajipokok.split('Rp.')[1].replace('.',
+                    '').replace(
+                    '.',
+                    '').replace(',00', '').trim())
+                $('#total_gaji').val(splitgajipokok)
 
-        $('#total_tunjangan').val(splittunjangan)
+                // Pengurangan Tunjangan
+                var totaltunjangan = $('#total_tunjangan').val()
+                var tunjangan = $(row2.children()[4]).html()
+                var splittunjangan = parseInt(totaltunjangan) - parseInt(tunjangan.split('Rp')[1].replace(
+                        '&nbsp;', '')
+                    .replace(
+                        '.', '').replace(',00', '').trim())
 
-        var totalpph21 = $('#total_pph21').val()
-        var pph21 = $(row2.children()[6]).html()
-        var pph21fix = pph21.split('Rp')[1].replace('&nbsp;', '').replace('.', '').replace('.', '').replace(',00', '')
-            .trim()
-        var splitpph = parseInt(totalpph21) - parseInt(pph21fix)
-        $('#total_pph21').val(splitpph)
+                $('#total_tunjangan').val(splittunjangan)
 
-        // Pengurangan Grand Total Keseluruhan
-        var grandtotal = $('#gaji_diterima').val()
-        var grand = $(row2.children()[5]).html()
-        var splitgrand = parseInt(grandtotal) - parseInt(grand.split('Rp')[1].replace('&nbsp;', '').replace('.', '')
-            .replace('.', '').replace(',00', '').trim())
+                var totalpph21 = $('#total_pph21').val()
+                var pph21 = $(row2.children()[6]).html()
+                var pph21fix = pph21.split('Rp')[1].replace('&nbsp;', '').replace('.', '').replace('.', '')
+                    .replace(',00', '')
+                    .trim()
+                var splitpph = parseInt(totalpph21) - parseInt(pph21fix)
+                $('#total_pph21').val(splitpph)
 
-        $('#gaji_diterima').val(splitgrand)
+                // Pengurangan Grand Total Keseluruhan
+                var grandtotal = $('#gaji_diterima').val()
+                var grand = $(row2.children()[5]).html()
+                var splitgrand = parseInt(grandtotal) - parseInt(grand.split('Rp')[1].replace('&nbsp;', '')
+                    .replace('.', '')
+                    .replace('.', '').replace(',00', '').trim())
+
+                $('#gaji_diterima').val(splitgrand)
+
+                swalWithBootstrapButtons.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            } else if (
+                /* Read more about handling dismissals below */
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelled',
+                    'Your imaginary file is safe :)',
+                    'error'
+                )
+            }
+        })
+
+
     }
 
     $(document).ready(function () {
@@ -1097,7 +1138,7 @@
                     }
                 }
             ]
-        }); 
+        });
     });
 
 </script>
