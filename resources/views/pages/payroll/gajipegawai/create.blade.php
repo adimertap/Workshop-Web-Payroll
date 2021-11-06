@@ -594,8 +594,7 @@
 
         $.ajax({
             method: 'POST',
-            url: '{{ route('
-            gaji - pokok - tambah ') }}',
+            url: '{{ route('gaji-pokok-tambah') }}',
             data: data,
             success: function (response) {
                 window.location.href = '/payroll/gaji-pegawai/' + id_gaji_pegawai + '/edit'
