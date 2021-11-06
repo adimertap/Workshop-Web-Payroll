@@ -713,7 +713,6 @@
                     timerProgressBar: true,
                 });
 
-
                 $('#dataTableKonfirmasi').DataTable().row.add([
                     nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                     new Intl.NumberFormat('id', {
@@ -771,11 +770,7 @@
                     timer: 3000,
                     timerProgressBar: true,
                 });
-
-
-
             }
-
 
         } else if (gajikenapajak > pph1 && gajikenapajak <= pph2) {
 

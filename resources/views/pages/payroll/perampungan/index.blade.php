@@ -178,17 +178,17 @@
                         <label class="small mb-1">Masa Perolehan Penghasilan</label><span class="mr-4 mb-3"
                             style="color: red">*</span>
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-12">
                                 <input class="form-control" id="masa_perolehan_awal" type="month"
                                     name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
                             </div>
-                            <div class="col-md-1">
+                            {{-- <div class="col-md-1">
                                 <h3 class="mt-2 ml-2"> - </h3>
                             </div>
                             <div class="col-md-6">
                                 <input class="form-control" id="masa_perolehan_akhir" type="month"
                                     name="masa_perolehan_akhir" value="{{ old('masa_perolehan_akhir') }}">
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -284,7 +284,6 @@
                                                         id="customCheck1-{{ $item->id_pegawai }}" type="checkbox" name="cek" />
                                                     <label class="" for="customCheck1">Pilih</label>
                                                 </div>
-
                                             </td>
                                         </tr>
                                         @empty
@@ -339,18 +338,16 @@
             })
         }
 
-
         var _token = $('#form1').find('input[name="_token"]').val()
         var tanggal_perampungan = $('#tanggal_perampungan').val()
         var masa_perolehan_awal = $('#masa_perolehan_awal').val()
-        var masa_perolehan_akhir = $('#masa_perolehan_akhir').val()
-
+        // var masa_perolehan_akhir = $('#masa_perolehan_akhir').val()
 
         var data = {
             _token: _token,
             tanggal_perampungan: tanggal_perampungan,
             masa_perolehan_awal: masa_perolehan_awal,
-            masa_perolehan_akhir: masa_perolehan_akhir,
+            // masa_perolehan_akhir: masa_perolehan_akhir,
             pegawai: pegawai
         }
 
