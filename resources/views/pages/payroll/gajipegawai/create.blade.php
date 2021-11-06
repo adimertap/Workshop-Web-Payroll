@@ -711,7 +711,6 @@
                         html: 'Pegawai tidak dikenakan Pajak'
                     });
 
-                alert('Berhasil Menambahkan Gaji Pegawai, Pegawai tidak dikenakan Pajak')
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
                     nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
@@ -737,8 +736,7 @@
                 var jumlahfix3 = totalgajisangatfix + parseInt(totaltambahtunjangan)
                 $('#gaji_diterima').val(jumlahfix3)
 
-               
-                alert('Berhasil Menambahkan Pegawai dan Tunjangan')
+
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
                     nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
@@ -761,10 +759,15 @@
                 var jumlahpph21fix = parseInt(pphlevel1bulan) + parseInt(totalpph21)
                 $('#total_pph21').val(jumlahpph21fix)
 
+                var pphpakealert = new Intl.NumberFormat('id', {
+                        style: 'currency',
+                        currency: 'IDR'
+                    }).format(jumlahpph21fix),
+
                 swal.fire({
                         icon: 'success',
                         title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                        html: 'PPh21 sebesar' + jumlahpph21fix
+                        html: 'PPh21 sebesar ' + pphpakealert
                 });
 
 
