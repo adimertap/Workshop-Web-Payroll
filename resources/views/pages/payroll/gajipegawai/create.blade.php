@@ -948,7 +948,7 @@
             pegawai.push(objpegawai)
 
 
-            var tbody = $(`#tunjangan-${id}`)
+            var tbody = $(`#tunjangan-${id_pegawai}`)
             var check = tbody.find('.checktunjangan').each(function (index, element) {
                 var value = $(element).is(':checked')
                 if (value == true) {
@@ -956,7 +956,7 @@
                     var id_tunjangan = $(tr).attr('id').split('item-')[1]
 
                     var objtunjangan= {
-                        id_pegawai: id,
+                        id_pegawai: id_pegawai,
                         id_tunjangan: id_tunjangan,
                     }
                     
@@ -967,7 +967,7 @@
             })
         }
 
-        if (id_pegawai == '') {
+        if (pegawai == '' | pegawai == 0) {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
