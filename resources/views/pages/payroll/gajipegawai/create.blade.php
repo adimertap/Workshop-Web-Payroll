@@ -708,7 +708,7 @@
                 swal.fire({
                         icon: 'success',
                         title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                        html: 'Pegawai tidak dikenakan Pajak'
+                        html: 'Pegawai tidak dikenakan PPh21'
                     });
 
 
@@ -736,8 +736,6 @@
                 var jumlahfix3 = totalgajisangatfix + parseInt(totaltambahtunjangan)
                 $('#gaji_diterima').val(jumlahfix3)
 
-
-
                 $('#dataTableKonfirmasi').DataTable().row.add([
                     nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                     new Intl.NumberFormat('id', {
@@ -762,7 +760,7 @@
                 var pphpakealert = new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(jumlahpph21fix),
+                    }).format(jumlahpph21fix);
 
                 swal.fire({
                         icon: 'success',
