@@ -519,8 +519,8 @@
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">×</span></button>
             </div>
-            <form action="{{ route('gaji-pokok.store') }}" method="POST" id="formpokok">
-                @csrf
+            <form action="{{ route('gaji-pokok.store') }}" method="POST" id="form3">
+                <input type="hidden" name="_token2" id="token2" value="{{ csrf_token() }}">
                 <div class="modal-body">
                     <label class="small mb-1">Isikan Form Dibawah Ini</label>
                     <hr>
@@ -551,7 +551,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input class="form-control" name="besaran_gaji" type="number" id="besaran_gaji"
+                        <input class="form-control" name="besaran_gaji" type="number" id="besaran_gaji"  min="1000"
                             placeholder="Input Besaran Gaji" value="{{ old('besaran_gaji') }}"
                             class="form-control @error('besaran_gaji') is-invalid @enderror" />
                         @error('besaran_gaji')<div class="text-danger small mb-1">{{ $message }}
@@ -588,15 +588,15 @@
 <script>
     function tambahgajipokok(event, id_gaji_pegawai) {
         event.preventDefault()
-        var form1 = $('#formpokok')
+        var form3 = $('#form3')
         var id_jabatan = $('#id_jabatan').val()
-        var besaran_gaji = form1.find('input[name="besaran_gaji"]').val()
-        var _token = form1.find('input[name="_token"]').val()
+        var besaran_gaji = form3.find('input[name="besaran_gaji"]').val()
+        var _token = form3.find('input[name="_token"]').val()
 
         console.log(id_jabatan, besaran_gaji, _token)
 
         var data = {
-            _token: _token,
+            _token: $('#token2').val()
             id_jabatan: id_jabatan,
             besaran_gaji: besaran_gaji,
         }
@@ -796,9 +796,7 @@
             var jumlahfix3 = totalgajisangatfix1 + parseInt(totaltambahtunjangan)
             $('#gaji_diterima').val(jumlahfix3)
 
-
             alert('Berhasil Menambahkan Gaji Pegawai')
-
 
             $('#dataTableKonfirmasi').DataTable().row.add([
                 nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
