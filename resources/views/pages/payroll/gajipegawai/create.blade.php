@@ -1083,7 +1083,7 @@
 
                 swalWithBootstrapButtons.fire(
                     'Deleted!',
-                    'Your file has been deleted.',
+                    'Gaji Pegawai Terhapus.',
                     'success'
                 )
             } else if (
@@ -1092,7 +1092,7 @@
             ) {
                 swalWithBootstrapButtons.fire(
                     'Cancelled',
-                    'Your imaginary file is safe :)',
+                    'Data Tidak jadi Terhapus',
                     'error'
                 )
             }
