@@ -353,8 +353,7 @@
 
         console.log(data)
 
-        if (tanggal_perampungan == '' | pegawai == '' | masa_perolehan_awal == '' |
-            masa_perolehan_akhir == '') {
+        if (tanggal_perampungan == '' | pegawai == '' | masa_perolehan_awal == '') {
             $('#alertdatakosong').show()
         } else {
 
