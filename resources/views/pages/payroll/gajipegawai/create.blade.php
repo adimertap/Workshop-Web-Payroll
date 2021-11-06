@@ -932,6 +932,8 @@
             var children = $(datapegawai[index]).children()
             var td = children[1]
             var span = $(td).children()[0]
+            console.log(pegawai, id_pegawai, span)
+            console.log(datapegawai)
             var id_pegawai = $(span).attr('id')
             
             var id = id_pegawai.split('pegawai-')[1]
@@ -971,8 +973,7 @@
             
         }
 
-        console.log(pegawai, id_pegawai, span)
-        console.log(datapegawai)
+        
 
         if (pegawai == '' | pegawai == 0) {
             Swal.fire({
