@@ -967,7 +967,7 @@
             })
         }
 
-        if (pegawai == '' | pegawai == 0) {
+        if (id_pegawai == '') {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
