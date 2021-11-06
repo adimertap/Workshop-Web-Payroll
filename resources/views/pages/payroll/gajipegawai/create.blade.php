@@ -708,7 +708,9 @@
                 swal.fire({
                         icon: 'success',
                         title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                        html: 'Pegawai tidak dikenakan PPh21'
+                        html: 'Pegawai tidak dikenakan PPh21',
+                        timer: 2000,
+                        timerProgressBar: true,
                     });
 
 
@@ -765,7 +767,9 @@
                 swal.fire({
                         icon: 'success',
                         title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
-                        html: 'PPh21 sebesar ' + pphpakealert
+                        html: 'PPh21 sebesar ' + pphpakealert,
+                        timer: 2000,
+                        timerProgressBar: true,
                 });
 
 
@@ -803,8 +807,6 @@
             var jumlahfix3 = totalgajisangatfix1 + parseInt(totaltambahtunjangan)
             $('#gaji_diterima').val(jumlahfix3)
 
-            alert('Berhasil Menambahkan Gaji Pegawai')
-
             $('#dataTableKonfirmasi').DataTable().row.add([
                 nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
                 new Intl.NumberFormat('id', {
@@ -824,6 +826,19 @@
             var totalpph21 = $('#total_pph21').val()
             var jumlahpph21fix = parseInt(pphlevel2bulan) + parseInt(totalpph21)
             $('#total_pph21').val(jumlahpph21fix)
+
+            var pphpakealert = new Intl.NumberFormat('id', {
+                        style: 'currency',
+                        currency: 'IDR'
+                    }).format(jumlahpph21fix);
+
+            swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
+                    html: 'PPh21 sebesar ' + pphpakealert,
+                    timer: 2000,
+                    timerProgressBar: true,
+                });
 
         } else if (gajikenapajak > pph2 && gajikenapajak <= pph3) {
 
@@ -863,7 +878,6 @@
             var jumlahfix3 = totalgajisangatfix2 + parseInt(totaltambahtunjangan)
             $('#gaji_diterima').val(jumlahfix3)
 
-            alert('Berhasil Menambahkan Gaji Pegawai')
 
             $('#dataTableKonfirmasi').DataTable().row.add([
                 nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
@@ -884,6 +898,19 @@
             var totalpph21 = $('#total_pph21').val()
             var jumlahpph21fix = parseInt(pphlevel3bulan) + parseInt(totalpph21)
             $('#total_pph21').val(jumlahpph21fix)
+
+            var pphpakealert = new Intl.NumberFormat('id', {
+                        style: 'currency',
+                        currency: 'IDR'
+                    }).format(jumlahpph21fix);
+
+            swal.fire({
+                    icon: 'success',
+                    title: 'Berhasil Menambah Data Gaji' + nama_pegawai,
+                    html: 'PPh21 sebesar ' + pphpakealert,
+                    timer: 2000,
+                    timerProgressBar: true,
+                });
 
         }
     }
