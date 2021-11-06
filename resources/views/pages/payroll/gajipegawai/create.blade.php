@@ -705,6 +705,12 @@
                 var jumlahfix3 = totalgaji + parseInt(totaltambahtunjangan)
                 $('#gaji_diterima').val(jumlahfix3)
 
+                swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menambah Data Gaji' nama_pegawai
+                        html: 'Pegawai tidak dikenakan Pajak'
+                    });
+
                 alert('Berhasil Menambahkan Gaji Pegawai, Pegawai tidak dikenakan Pajak')
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
@@ -730,6 +736,8 @@
                 var totalgajisangatfix = totalgaji - pphlevel1bulan
                 var jumlahfix3 = totalgajisangatfix + parseInt(totaltambahtunjangan)
                 $('#gaji_diterima').val(jumlahfix3)
+
+               
                 alert('Berhasil Menambahkan Pegawai dan Tunjangan')
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
@@ -752,6 +760,13 @@
                 var totalpph21 = $('#total_pph21').val()
                 var jumlahpph21fix = parseInt(pphlevel1bulan) + parseInt(totalpph21)
                 $('#total_pph21').val(jumlahpph21fix)
+
+                swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menambah Data Gaji' nama_pegawai
+                        html: 'PPh21 sebesar' jumlahpph21fix
+                });
+
 
 
             }
