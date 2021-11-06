@@ -268,7 +268,8 @@
                 class="d-inline">
                 @csrf
                 <div class="modal-body text-center">Apakah Anda Yakin untuk Melakukan Pembayaran Gaji Pegawai bulan
-                    {{ date('M', strtotime($item->bulan_gaji)) }},Tahun {{ date('Y', strtotime($item->bulan_gaji)) }} Sebesar Rp.
+                    {{ date('M', strtotime($item->bulan_gaji)) }},Tahun {{ date('Y', strtotime($item->bulan_gaji)) }}
+                    Sebesar Rp.
                     {{ number_format($item->grand_total_gaji,2,',','.') }} ?</div>
                 <div class="modal-footer ">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
@@ -295,7 +296,8 @@
                 @csrf
                 @method('delete')
                 <div class="modal-body text-center">Apakah Anda Yakin Menghapus Data Pembayaran Gaji Pegawai bulan
-                    {{ date('M', strtotime($item->bulan_gaji)) }},Tahun {{ date('Y', strtotime($item->bulan_gaji)) }} ?</div>
+                    {{ date('M', strtotime($item->bulan_gaji)) }},Tahun {{ date('Y', strtotime($item->bulan_gaji)) }} ?
+                </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
                     <button class="btn btn-danger" type="submit">Ya! Hapus</button>
@@ -344,8 +346,8 @@
                                                 style="width: 40px;">Jabatan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
-                                                style="width: 50px;"> <input onClick="toggle(this)"
-                                                name="chk[]" type="checkbox" />
+                                                style="width: 50px;"> <input onClick="toggle(this)" name="chk[]"
+                                                    type="checkbox" />
                                                 Pilih Semua</th>
                                         </tr>
                                     </thead>
@@ -360,7 +362,8 @@
                                             <td>
                                                 <div class="">
                                                     <input class="checkpegawai"
-                                                        id="customCheck1-{{ $item->id_pegawai }}" type="checkbox" name="cek" />
+                                                        id="customCheck1-{{ $item->id_pegawai }}" type="checkbox"
+                                                        name="cek" />
                                                     <label class="" for="customCheck1">Pilih</label>
                                                 </div>
 
@@ -394,6 +397,24 @@
     function tambahpegawai(event) {
         var Terpilih = 'Pegawai Telah Dipilih'
         var detailpegawai = $('#detailpegawai').val(Terpilih)
+
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+
+        Toast.fire({
+            icon: 'success',
+            title: 'Berhasil Menambahkan Data Pegawai'
+        })
+
     }
 
     function submit1(event) {
@@ -429,23 +450,54 @@
             detailgaji: detailgaji
         }
 
-        console.log(data)
 
-        if (bulan_gaji == '' | detailgaji == '') {
-            $('#alertdatakosong').show()
+
+        if (bulan_gaji == '' | ) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Bulan Gaji Belum Dipilih',
+            })
+        } else if (detailgaji == '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Anda Belum Memilih Pegawai',
+            })
         } else {
+            var sweet_loader =
+                '<div class="sweet_loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
 
             $.ajax({
                 method: 'post',
                 url: "/payroll/gaji-pegawai",
                 data: data,
+                beforeSend: function () {
+                    swal.fire({
+                        title: 'Mohon Tunggu!',
+                        html: 'Data Gaji Pegawai Sedang Diproses...',
+                        showConfirmButton: false,
+                        onRender: function () {
+                            // there will only ever be one sweet alert open.
+                            $('.swal2-content').prepend(sweet_loader);
+                        }
+                    });
+                },
                 success: function (response) {
-                    console.log(response)
+                    swal.fire({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        html: '<h5>Success!</h5>'
+                    });
                     window.location.href = '/payroll/gaji-pegawai/' + response.id_gaji_pegawai + '/edit'
                 },
                 error: function (error) {
                     console.log(error)
-                    alert(error.responseJSON.message)
+                    swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        html: error.responseJSON.message
+                    });
                 }
             });
         }
@@ -494,11 +546,10 @@
 
     function toggle(source) {
         checkboxes = document.getElementsByName('cek');
-        for(var i=0, n=checkboxes.length;i<n;i++) {
+        for (var i = 0, n = checkboxes.length; i < n; i++) {
             checkboxes[i].checked = source.checked;
         }
     }
-  
 
 </script>
 
