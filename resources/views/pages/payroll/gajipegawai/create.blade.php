@@ -917,7 +917,6 @@
                 keterangan: keterangan,
                 pegawai: pegawai,
                 tunjangan: tunjangan
-                // tunjangan: dataform2
             }
 
 

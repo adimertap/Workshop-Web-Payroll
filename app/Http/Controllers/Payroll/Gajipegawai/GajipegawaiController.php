@@ -63,15 +63,23 @@ class GajipegawaiController extends Controller
      */
     public function store(Request $request)
     {
+        $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
+        ->where('bulan_gaji', Carbon::create($request->bulan_gaji)->startOfMonth())->first();
 
-        $gaji = new Gajipegawai;
-        $gaji->bulan_gaji = Carbon::create($request->bulan_gaji)->startOfMonth();
-        $gaji->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
-        $gaji->id_jenis_transaksi ='8';
+         if (empty($data)){
+            $gaji = new Gajipegawai;
+            $gaji->bulan_gaji = Carbon::create($request->bulan_gaji)->startOfMonth();
+            $gaji->id_bengkel = $request['id_bengkel'] = Auth::user()->id_bengkel;
+            $gaji->id_jenis_transaksi ='8';
 
-        $gaji->save();
-        $gaji->Detailpegawai()->sync($request->detailgaji);
-        return $gaji;
+            $gaji->save();
+            $gaji->Detailpegawai()->sync($request->detailgaji);
+            return $gaji;
+        }else{
+            throw new \Exception('Gaji Sudah Ada');
+        }
+
+       
         
         // $data = Gajipegawai::where('id_bengkel', Auth::user()->id_bengkel)
         // ->where('bulan_gaji', Carbon::create($request->bulan_gaji)->startOfMonth())->first();
