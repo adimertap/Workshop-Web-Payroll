@@ -647,36 +647,15 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group row">
-                                        <label for="tunjangan_pph" class="col-sm-5 col-form-label col-form-label-sm">14.
-                                            Jumlah
-                                            Penghasilan Neto untuk Penghitungan PPh Pasal 21
-                                            (Setahun/Disetahunkan)</label>
-                                        <div class="col-sm-1 text-center">
-                                            <span> : </span>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="row" id="radio2-{{ $item->id_pegawai }}">
-                                                <div class="col-md-6">
-                                                    <input class="mr-1 small" value="setahun" type="radio"
-                                                        name="jenis_netto" checked><span class="small">Setahun</span>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <input class="mr-1 small" value="disetahunkan" type="radio"
-                                                        name="jenis_netto"><span class="small">Disetahunkan</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="form-group row">
                                         <div class="col-sm-6">
                                             <input type="input" class="form-control form-control-sm"
                                                 id="netto_pph21-{{ $item->id_pegawai }}" name="netto_pph21" value="0"
                                                 placeholder="Jumlah Penghasilan Netto">
                                         </div>
                                     </div>
+                                </div>
+                                <div class="col-sm-6">
+                                   
                                 </div>
                             </div>
 
@@ -921,7 +900,6 @@
 
             var karyawan_asing = form.find('select[name=karyawan_asing]').val()
             var kode_objek_pajak = form.find('input[name="radio2"]:checked').val()
-            var jenis_netto = form.find('input[name="jenis_netto"]:checked').val()
             var tunjangan_pph = form.find('input[name="tunjangan_pph"]').val()
             var tunjangan_lain_element = form.find('input[name="tunjangan_lain"]').val()
             var tunjangan_lain = tunjangan_lain_element.replace('&nbsp;', '')
@@ -975,7 +953,11 @@
                 .replace(',', '').replace(',', '').replace(',50', '').trim()
 
             if (pph21_terutang == 0) {
-                var alert = $('#alertbelumhitung').show()
+                Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Anda Belum Melakukan Perhitungan PPh21 Final!',
+            })
             } else {
                 detailperampungan.push({
                     nomor: nomor,
@@ -984,7 +966,6 @@
                     kode_negara: kode_negara,
                     karyawan_asing: karyawan_asing,
                     kode_objek_pajak: kode_objek_pajak,
-                    jenis_netto: jenis_netto,
                     gaji_pokok: gaji_pokok,
                     tunjangan_pph: tunjangan_pph,
                     tunjangan_lain: tunjangan_lain,
@@ -1014,18 +995,41 @@
             detail: detailperampungan
         }
 
+        var sweet_loader =
+                '<div class="sweet_loader"><svg viewBox="0 0 140 140" width="140" height="140"><g class="outline"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="rgba(0,0,0,0.1)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></g><g class="circle"><path d="m 70 28 a 1 1 0 0 0 0 84 a 1 1 0 0 0 0 -84" stroke="#71BBFF" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dashoffset="200" stroke-dasharray="300"></path></g></svg></div>';
+                
         $.ajax({
             method: 'put',
             url: '/payroll/perampungan/' + id_perampungan,
             data: data,
+            beforeSend: function () {
+                    swal.fire({
+                        title: 'Mohon Tunggu!',
+                        html: 'Data Perampungan Sedang Diproses...',
+                        showConfirmButton: false,
+                        onRender: function () {
+                            // there will only ever be one sweet alert open.
+                            $('.swal2-content').prepend(sweet_loader);
+                        }
+                    });
+                },
             success: function (response) {
                 console.log(response)
+                swal.fire({
+                        icon: 'success',
+                        showConfirmButton: false,
+                        html: '<h5>Success!</h5>'
+                    });
                 window.location.href = '/payroll/perampungan'
 
             },
             error: function (response) {
                 console.log(response)
-                alert(error.responseJSON.message)
+                swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        html: error.responseJSON.message
+                    });
             }
         });
 
@@ -1075,8 +1079,22 @@
         var nomor = $(`#nomor-${id_pegawai}`).html()
         var nomor_fix = $(`#nomor2-${id_pegawai}`).val(nomor)
 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
 
-        alert('Penghasilan Bruto dan Biaya Jabatan Berhasil Dihitung')
+        Toast.fire({
+            icon: 'success',
+            title: 'Berhasil Menghitung Bruto dan Biaya Jabatan'
+        })
     }
 
     function hitungpengurangan(event, id_pegawai) {
@@ -1088,13 +1106,34 @@
         var bruto = $(`#bruto-${id_pegawai}`).val()
 
         if (bruto == 0) {
-            alert('Anda Belum Melakukan Perhitungan Gaji Bruto')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Belum Menghitung Gaji Bruto',
+                timer: 2000,
+                timerProgressBar: true,
+            })
         } else {
             var total_pengurangan = parseInt(biaya_jabatan) + parseInt(iuran_jht)
             $(`#total_pengurangan-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(total_pengurangan))
+            
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
 
+            Toast.fire({
+                icon: 'success',
+                title: 'Jumlah Pengurangan Berhasil dihitung'
+            })
 
-            alert('Jumlah Pengurangan Berhasil dihitung')
         }
     }
 
@@ -1109,11 +1148,36 @@
             .replace('.', '').replace('.', '').replace(',50', '').trim()
 
         if (gaji_bruto == 0 && total_pengurangan == 0) {
-            alert('Anda Belum Melakukan Perhitungan Gaji Bruto dan Jumlah Pengurangan')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Belum Menghitung Gaji Bruto dan Jumlah Pengurangan',
+                timer: 2000,
+                timerProgressBar: true,
+            })
         } else {
             var neto = parseInt(gaji_bruto) - parseInt(total_pengurangan)
             $(`#netto-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(neto))
             $(`#netto_pph21-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(neto))
+
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Penghasilan Netto Berhasil dihitung'
+            })
+
+
         }
     }
 
@@ -1129,10 +1193,35 @@
         var netto = $(`#netto-${id_pegawai}`).val()
 
         if (netto == 0) {
-            alert('Anda Belum Melakukan Perhitungan Gaji Netto')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Belum Menghitung Gaji Netto',
+                timer: 2000,
+                timerProgressBar: true,
+            })
         } else {
             var pkp = parseInt(netto_pph21) - parseInt(ptkp)
             $(`#pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pkp))
+            
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: 'Jumlah PKP Berhasil dihitung'
+            })
+
+
         }
 
     }
@@ -1175,7 +1264,13 @@
         var pkp = parseInt(pkpasik)
 
         if (pkp == 0) {
-            alert('Anda Belum Melakukan Perhitungan PKP')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Belum Menghitung PKP',
+                timer: 2000,
+                timerProgressBar: true,
+            })
         } else {
             if (pkp <= pph1) {
                 var pphlevel1 = pkp * pphpersen1
@@ -1193,10 +1288,23 @@
                 if (pphlevel1tahun <= 0) {
                     var pajaknull = 0
                     $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pajaknull))
-                    alert('BEBAS PAJAK')
+                    swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil',
+                        html: 'Pegawai Tidak dikenakan PPh21',
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+                   
                 } else {
                     $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel1tahun))
-                    alert('PPH LEVEL 1')
+                    swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menghitung PPh21' ,
+                        html: 'Pegawai dikenakan sebesar Rp.' + pphlevel1tahun,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
                 }
 
             } else if (pkp > pph1 && pkp <= pph2) {
@@ -1227,7 +1335,13 @@
 
 
                 $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel2tahun))
-                alert('PPH LEVEL 2')
+                swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menghitung PPh21' ,
+                        html: 'Pegawai dikenakan sebesar Rp.' + pphlevel2tahun,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
 
             } else if (pkp > pph2 && pkp <= pph3) {
                 // Perhitungan 5%
@@ -1258,7 +1372,14 @@
                 // FIX PPH Level 2
                 var pphlevel3tahun = a[0];
                 $(`#pph21_pkp-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pphlevel3tahun))
-                alert('PPH LEVEL 3')
+                swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil Menghitung PPh21' ,
+                        html: 'Pegawai dikenakan sebesar Rp.' + pphlevel3tahun,
+                        timer: 1500,
+                        timerProgressBar: true,
+                    });
+
             }
         }
 
@@ -1275,7 +1396,13 @@
         var pph21_telah_pot = $(`#pph21_telah_pot-${id_pegawai}`).val()
 
         if (pph21_pkp == 0) {
-            alert('Anda Belum Melakukan Perhitungan PPh21')
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Belum Menghitung PPh21',
+                timer: 2000,
+                timerProgressBar: true,
+            })
         } else {
             var pph21_terutang = parseInt(pph21_pkp) + parseInt(pph21_telah_pot)
             $(`#pph21_terutang-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pph21_terutang))
@@ -1283,7 +1410,13 @@
             $(`#SudahTerhitung-${id_pegawai}`).show()
             $(`#BelumTerhitung-${id_pegawai}`).hide()
 
-            alert('Berhasil Melakukan Perhitungan PPh21 Final')
+            swal.fire({
+                icon: 'success',
+                title: 'Berhasil' ,
+                html: 'Berhasil Menghitung PPh21 Final',
+                timer: 2500,
+                timerProgressBar: true,
+            });
         }
 
     }
