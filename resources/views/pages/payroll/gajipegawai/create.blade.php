@@ -1036,7 +1036,6 @@
                 // Akses Parent Sampai <tr></tr>
                 var row = $(element).parent().parent()
                 table.row(row).remove().draw();
-                alert('Data Tunjangan Berhasil di Hapus')
                 // draw() Reset Ulang Table
                 var table = $('#dataTable').DataTable()
                 var table2 = $('#dataTabletunjangankonfirmasi').DataTable()
@@ -1080,11 +1079,24 @@
 
                 $('#gaji_diterima').val(splitgrand)
 
-                swalWithBootstrapButtons.fire(
-                    'Deleted!',
-                    'Gaji Pegawai Terhapus.',
-                    'success'
-                )
+               
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.addEventListener('mouseenter', Swal.stopTimer)
+                        toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+
+                Toast.fire({
+                    icon: 'success',
+                    title: 'Gaji Pegawai Telah Dihapus'
+                })
+
             } else if (
                 /* Read more about handling dismissals below */
                 result.dismiss === Swal.DismissReason.cancel
