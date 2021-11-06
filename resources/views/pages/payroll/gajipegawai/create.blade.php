@@ -1019,7 +1019,7 @@
 
     $(document).ready(function () {
 
-        $('#besaran_gaji').on('input', function () {
+        $('#besaran_gaji_pokok_tambah').on('input', function () {
             var nominal = $(this).val()
             var nominal_fix = new Intl.NumberFormat('id', {
                 style: 'currency',
