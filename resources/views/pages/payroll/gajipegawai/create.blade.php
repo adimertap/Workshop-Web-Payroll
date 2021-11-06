@@ -928,22 +928,25 @@
 
             // var id = id_pegawai.split('pegawai-')[1]
             var tes1 = $($(td).parent().children())
-            var total_pokok = $($(td).parent().children()[3]).html().split('Rp.')[1].replace('&nbsp;', '')
+            var total_pokok = $($(td).parent().children()[3]).html().replace('Rp.', '').replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_tunjangan = $($(td).parent().children()[4]).html().split('Rp')[1].replace('&nbsp;', '')
+            var total_tunjangan = $($(td).parent().children()[4]).html().replace('Rp.', '').replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_gaji = $($(td).parent().children()[5]).html().split('Rp')[1].replace('&nbsp;', '')
+            var total_gaji = $($(td).parent().children()[5]).html().replace('Rp.', '').replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
-            var total_pph21 = $($(td).parent().children()[6]).html().split('Rp')[1].replace('&nbsp;', '')
+            var total_pph21 = $($(td).parent().children()[6]).html().replace('Rp.', '').replace('&nbsp;', '')
                 .replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').trim()
 
-            pegawai.push({
+            var objpegawai = {
                 id_pegawai: id_pegawai,
                 total_tunjangan: total_tunjangan,
                 total_gaji: total_gaji,
                 total_pph21: total_pph21,
                 total_pokok: total_pokok
-            })
+            }
+            
+            pegawai.push(objpegawai)
+
 
             var tbody = $(`#tunjangan-${id}`)
             var check = tbody.find('.checktunjangan').each(function (index, element) {
@@ -952,10 +955,12 @@
                     var tr = $(element).parent().parent().parent()
                     var id_tunjangan = $(tr).attr('id').split('item-')[1]
 
-                    tunjangan.push({
+                    var objtunjangan= {
                         id_pegawai: id,
                         id_tunjangan: id_tunjangan,
-                    })
+                    }
+                    
+                    tunjangan.push(objtunjangan)
 
                 }
 
