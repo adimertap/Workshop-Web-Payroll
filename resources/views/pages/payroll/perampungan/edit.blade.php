@@ -1422,7 +1422,7 @@
             swal.fire({
                 icon: 'success',
                 title: 'Berhasil' ,
-                html: 'Berhasil Menghitung PPh21 Final Sebesar Rp.' + pph21_terutang,
+                html: 'Berhasil Menghitung PPh21 Final',
                 timer: 3000,
                 timerProgressBar: true,
             });
