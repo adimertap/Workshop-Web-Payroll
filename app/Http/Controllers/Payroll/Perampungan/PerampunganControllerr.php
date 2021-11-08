@@ -117,6 +117,8 @@ class PerampunganControllerr extends Controller
         $gas = DetailPerampungan::join('tb_kepeg_master_pegawai','tb_payroll_detail_perampungan.id_pegawai','tb_kepeg_master_pegawai.id_pegawai')->where('id_perampungan', $perampungan->id_perampungan)
         ->get();
 
+        return $gas;
+
         $blt = date('m');
         $year = date('y');
 
