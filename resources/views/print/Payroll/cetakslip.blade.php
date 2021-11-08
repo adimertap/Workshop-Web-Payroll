@@ -138,22 +138,19 @@
                                         <label class="small">= Rp. {{ number_format($item->Jabatan->Gajipokok->besaran_gaji,2,',','.') }}</label>
                                     </div>
                                 </div>
-
-                                @forelse ($gaji->detailtunjangan as $tes)
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="d-flex flex-column font-weight-bold">
-                                                <label class="small">Tunjangan {{ $tes->nama_tunjangan }} </label>
-                                            </div>
-                                        </div>
-                                        <div class="col">
-                                            <span class="small">=</span>
-                                            <label class="small">Rp. {{ number_format($tes->jumlah_tunjangan,2,',','.') }}</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="d-flex flex-column font-weight-bold">
+                                            <label class="small"> Total Tunjangan</label>
                                         </div>
                                     </div>
-                                @empty
-                                    
-                                @endforelse
+                                    <div class="col">
+                                        <label class="small">= Rp. {{ number_format($item->pivot->total_tunjangan,2,',','.') }}</label>
+                                    </div>
+                                </div>
+
+
+                               
 
                                 <hr class="mr-5">
                                 <div class="row">
