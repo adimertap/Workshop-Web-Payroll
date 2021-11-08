@@ -131,7 +131,7 @@ class GajipegawaiController extends Controller
         $gaji = Gajipegawai::with([
             'Detailpegawai','Detailpegawai.Jabatan.Gajipokok','Detailtunjangan','Jenistransaksi'
         ])->find($id_gaji_pegawai);
-        
+
 
         $pegawai = Pegawai::with([
             'Jabatan.Gajipokok'
@@ -143,8 +143,9 @@ class GajipegawaiController extends Controller
         $seluruhpegawai = Pegawai::all();
         $tunjangan = Mastertunjangan::all();
         $today = Carbon::now()->format('D, d/m/Y');
+        $pph21 = Masterpph21::get();
 
-        return view('pages.payroll.gajipegawai.edit',['gaji_total' => Gajipegawai::sum('grand_total_gaji')], compact('gaji','seluruhpegawai','tunjangan','today','jenis_transaksi','jabatan','pegawai'));
+        return view('pages.payroll.gajipegawai.edit',['gaji_total' => Gajipegawai::sum('grand_total_gaji')], compact('gaji','seluruhpegawai','tunjangan','today','jenis_transaksi','jabatan','pegawai','pph21'));
     }
 
 
