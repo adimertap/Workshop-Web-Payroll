@@ -112,7 +112,7 @@ class PerampunganControllerr extends Controller
         ->selectRaw('SUM(total_tunjangan) as total_tunjangan, SUM(total_gaji) as total_gaji, 
             SUM(total_pph21) as total_pph21, SUM(total_pokok) as total_pokok, bulan_gaji, id_pegawai')
         ->whereBetween('bulan_gaji', [$perampungan->masa_perolehan_awal, $perampungan->masa_perolehan_akhir])
-        ->where('total_tunjangan' > '0')
+        ->where('total_tunjangan' > 0 || null)
         ->get();
 
         $gas = DetailPerampungan::join('tb_kepeg_master_pegawai','tb_payroll_detail_perampungan.id_pegawai','tb_kepeg_master_pegawai.id_pegawai')->where('id_perampungan', $perampungan->id_perampungan)
