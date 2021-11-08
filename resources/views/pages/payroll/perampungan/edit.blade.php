@@ -67,23 +67,22 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($gas as $item)
+                                            @forelse ($gas as $tes)
                                             <tr role="row" class="odd">
-                                                <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}
-                                                </th>
-                                                <td>{{ $item->nama_pegawai}}</td>
-                                                <td>{{ $item->npwp_pegawai}}</td>
+                                                <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
+                                                <td>{{ $tes->nama_pegawai}}</td>
+                                                <td>{{ $tes->npwp_pegawai}}</td>
                                                 
-                                                <td id="nomor-{{ $item->id_pegawai }}">1.1-{{ $blt }}.{{ $year }}-00000{{ $item->id_1721a1 }}</td>
+                                                <td id="nomor-{{ $tes->id_pegawai }}">1.1-{{ $blt }}.{{ $year }}-00000{{ $tes->id_1721a1 }}</td>
                                                 <td>
-                                                    <div id="SudahTerhitung-{{ $item->id_pegawai }}"
+                                                    <div id="SudahTerhitung-{{ $tes->id_pegawai }}"
                                                         style="display: none">
                                                         <p class="text-success">Sudah Terhitung! <span
                                                                 class="badge badge-success">
                                                                 <i class="fas fa-check"></i></span>
                                                         </p>
                                                     </div>
-                                                    <div id="BelumTerhitung-{{ $item->id_pegawai }}">
+                                                    <div id="BelumTerhitung-{{ $tes->id_pegawai }}">
                                                         <p class="text-danger">Belum Terhitung! <span
                                                                 class="badge badge-danger">
                                                                 <i class="fas fa-times"></i></span>
