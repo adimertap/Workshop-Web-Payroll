@@ -130,9 +130,6 @@
                             </div>
                             <div class="form-group text-right">
                                 <hr>
-                                <a href="{{ route('laporanabsensi') }}" target="_blank" class="btn btn-secondary btn-sm" type="button" >
-                                    Cek Absensi Pegawai
-                                </a>
                                 <button class="btn btn-primary btn-sm" type="button" data-toggle="modal"
                                     data-target="#Modalsumbit">Simpan</button>
                             </div>
