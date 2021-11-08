@@ -203,6 +203,7 @@
                                                         <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}.</th>
                                                         <td id="nama_pegawai-{{ $item->id_pegawai }}">{{ $item->nama_pegawai}}</td>
                                                         <td id="jabatan-{{ $item->id_pegawai }}">{{ $item->Jabatan->nama_jabatan}}</td>
+                                                        <td id="ptkp-{{ $item->id_pegawai }}">{{ $item->PTKP->nama_ptkp}}</td>
                                                         <td id="gajipokok-{{ $item->id_pegawai }}">
                                                             @if ($item->Jabatan->Gajipokok == null | $item->Jabatan->Gajipokok == '' )
                                                                 <button class="btn btn-xs btn-primary" type="button" data-toggle="modal"
