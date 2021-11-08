@@ -129,8 +129,9 @@ class GajipegawaiController extends Controller
     public function edit2(Request $request, $id_gaji_pegawai)
     {
         $gaji = Gajipegawai::with([
-            'Detailpegawai','Detailpegawai.Jabatan.Gajipokok','Detailtunjangan'
+            'Detailpegawai','Detailpegawai.Jabatan.Gajipokok','Detailtunjangan','Jenistransaksi'
         ])->find($id_gaji_pegawai);
+        
 
         $pegawai = Pegawai::with([
             'Jabatan.Gajipokok'

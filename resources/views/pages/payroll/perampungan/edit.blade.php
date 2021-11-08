@@ -1415,7 +1415,6 @@
         } else {
             var pph21_terutang = parseInt(pph21_pkp) + parseInt(pph21_telah_pot)
             $(`#pph21_terutang-${id_pegawai}`).val(new Intl.NumberFormat('id', {}).format(pph21_terutang))
-
             $(`#SudahTerhitung-${id_pegawai}`).show()
             $(`#BelumTerhitung-${id_pegawai}`).hide()
 
