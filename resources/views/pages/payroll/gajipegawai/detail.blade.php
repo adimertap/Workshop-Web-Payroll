@@ -159,10 +159,6 @@
                                                     colspan="1" aria-label="Position: activate to sort column ascending"
                                                     style="width: 70px;">
                                                     Total PPh21</th>
-                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                                    colspan="1" aria-label="Position: activate to sort column ascending"
-                                                    style="width: 60px;">
-                                                    Tunjangan</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -176,13 +172,7 @@
                                                 <td>Rp {{ number_format($item->pivot->total_tunjangan,2,',','.') }}</td>
                                                 <td>Rp {{ number_format($item->pivot->total_gaji,2,',','.') }}</td>
                                                 <td>Rp {{ number_format($item->pivot->total_pph21,2,',','.') }}</td>
-                                                <td class="text-center">
-                                                    <a href="" class="btn btn-secondary btn-xs" type="button"
-                                                        data-toggle="modal"
-                                                        data-target="#Modaltunjangan-{{ $item->id_pegawai }}">
-                                                        Lihat Tunjangan
-                                                    </a>
-                                                </td>
+                                               
                                             </tr>
                                             @empty
                                                 
@@ -214,7 +204,7 @@
     </div>
 </main>
 
-@forelse ($gaji->Detailpegawai as $item)
+{{-- @forelse ($gaji->Detailpegawai as $item)
 <div class="modal fade" id="Modaltunjangan-{{ $item->id_pegawai }}" tabindex="-1" role="dialog"
     aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -271,7 +261,7 @@
 </div>
 @empty
     
-@endforelse
+@endforelse --}}
 
 
 
