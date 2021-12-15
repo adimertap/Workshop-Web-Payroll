@@ -626,7 +626,7 @@
 
         var nama_pegawai = $(`#nama_pegawai-${id_pegawai}`).html()
         var jabatan = $(`#jabatan-${id_pegawai}`).html()
-        var gajipokok = $(`#gajipokok-${id_pegawai}`).html().replace(',50', '')
+        var gajipokok = $(`#gajipokok-${id_pegawai}`).html()
 
         var totalgaji = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').replace(',5', '').replace('.50', '').replace('.5', '')
             .trim()) + tunjangan
@@ -717,7 +717,7 @@
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(tunjangan).replace(',50', ''),
+                    }).format(tunjangan).replace(',50', '').replace(',00', ''),
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -741,7 +741,7 @@
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(tunjangan).replace(',50', ''),
+                    }).format(tunjangan).replace(',50', '').replace(',00', ''),
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -806,7 +806,7 @@
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(tunjangan).replace(',50', ''),
+                }).format(tunjangan).replace(',50', '').replace(',00', ''),
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
@@ -878,7 +878,7 @@
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(tunjangan).replace(',50', ''),
+                }).format(tunjangan).replace(',50', '').replace(',00', ''),
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
