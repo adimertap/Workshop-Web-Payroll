@@ -721,7 +721,7 @@
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(totalgaji),
+                    }).format(totalgaji).replace(',50', ''),
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
