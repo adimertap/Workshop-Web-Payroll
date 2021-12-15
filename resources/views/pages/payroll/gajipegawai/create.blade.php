@@ -626,9 +626,9 @@
 
         var nama_pegawai = $(`#nama_pegawai-${id_pegawai}`).html()
         var jabatan = $(`#jabatan-${id_pegawai}`).html()
-        var gajipokok = $(`#gajipokok-${id_pegawai}`).html()
+        var gajipokok = $(`#gajipokok-${id_pegawai}`).html().replace(',50', '')
 
-        var totalgaji = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').replace(',5', '')
+        var totalgaji = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').replace(',5', '').replace('.50', '').replace('.5', '')
             .trim()) + tunjangan
 
         var table = $('#dataTableKonfirmasi').DataTable()
@@ -717,7 +717,7 @@
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(tunjangan),
+                    }).format(tunjangan).replace(',50', ''),
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -741,7 +741,7 @@
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(tunjangan),
+                    }).format(tunjangan).replace(',50', ''),
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
@@ -806,15 +806,15 @@
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(tunjangan),
+                }).format(tunjangan).replace(',50', ''),
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(totalgajisangatfix1),
+                }).format(totalgajisangatfix1).replace(',50', ''),
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(pphlevel2bulan),
+                }).format(pphlevel2bulan).replace(',50', ''),
             ]).draw();
 
             var totalpph21 = $('#total_pph21').val()
@@ -878,15 +878,15 @@
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(tunjangan),
+                }).format(tunjangan).replace(',50', ''),
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(totalgajisangatfix2),
+                }).format(totalgajisangatfix2).replace(',50', ''),
                 new Intl.NumberFormat('id', {
                     style: 'currency',
                     currency: 'IDR'
-                }).format(pphlevel3bulan),
+                }).format(pphlevel3bulan).replace(',50', ''),
             ]).draw();
 
             var totalpph21 = $('#total_pph21').val()
