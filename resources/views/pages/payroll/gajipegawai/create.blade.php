@@ -701,7 +701,7 @@
 
             if (pphlevel1bulan < 0) {
                 var totaltambahtunjangan = $('#gaji_diterima').val()
-                var jumlahfix3 = totalgaji + parseInt(totaltambahtunjangan)
+                var jumlahfix3 = parseInt(totalgaji) + parseInt(totaltambahtunjangan)
                 $('#gaji_diterima').val(jumlahfix3)
 
                 swal.fire({
@@ -733,7 +733,7 @@
                 // Total gaji - PPH perbulan dan Penambahan pada Grand Total
                 var totaltambahtunjangan = $('#gaji_diterima').val()
                 var totalgajisangatfix = totalgaji - pphlevel1bulan
-                var jumlahfix3 = totalgajisangatfix + parseInt(totaltambahtunjangan)
+                var jumlahfix3 = parseInt(totalgajisangatfix) + parseInt(totaltambahtunjangan)
                 $('#gaji_diterima').val(jumlahfix3)
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
@@ -798,7 +798,7 @@
             // Total gaji - PPH perbulan dan Penambahan pada Grand Total
             var totaltambahtunjangan = $('#gaji_diterima').val()
             var totalgajisangatfix1 = totalgaji - pphlevel2bulan
-            var jumlahfix3 = totalgajisangatfix1 + parseInt(totaltambahtunjangan)
+            var jumlahfix3 = parseInt(totalgajisangatfix1) + parseInt(totaltambahtunjangan)
             $('#gaji_diterima').val(jumlahfix3)
 
             $('#dataTableKonfirmasi').DataTable().row.add([
@@ -869,7 +869,7 @@
             // Total gaji - PPH perbulan dan Penambahan pada Grand Total
             var totaltambahtunjangan = $('#gaji_diterima').val()
             var totalgajisangatfix2 = totalgaji - pphlevel3bulan
-            var jumlahfix3 = totalgajisangatfix2 + parseInt(totaltambahtunjangan)
+            var jumlahfix3 = parseInt(totalgajisangatfix2) + parseInt(totaltambahtunjangan)
             $('#gaji_diterima').val(jumlahfix3)
 
 
