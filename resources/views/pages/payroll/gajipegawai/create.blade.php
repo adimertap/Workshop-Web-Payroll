@@ -745,11 +745,11 @@
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(totalgajisangatfix),
+                    }).format(totalgajisangatfix).replace(',50', ''),
                     new Intl.NumberFormat('id', {
                         style: 'currency',
                         currency: 'IDR'
-                    }).format(pphlevel1bulan),
+                    }).format(pphlevel1bulan).replace(',50', ''),
                 ]).draw();
 
 
