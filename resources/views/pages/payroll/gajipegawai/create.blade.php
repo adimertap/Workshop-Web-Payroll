@@ -628,7 +628,7 @@
         var jabatan = $(`#jabatan-${id_pegawai}`).html()
         var gajipokok = $(`#gajipokok-${id_pegawai}`).html()
 
-        var totalgaji = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '')
+        var totalgaji = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').replace(',5', '')
             .trim()) + tunjangan
 
         var table = $('#dataTableKonfirmasi').DataTable()
@@ -636,7 +636,7 @@
         table.row(row).remove().draw();
 
         var totalgajipokok = $('#total_gaji').val()
-        var splitgajipokok = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '')
+        var splitgajipokok = parseInt(gajipokok.split('Rp.')[1].replace('.', '').replace('.', '').replace(',00', '').replace(',50', '').replace(',5', '')
             .trim())
         var jumlahfix2 = splitgajipokok + parseInt(totalgajipokok)
 
@@ -688,8 +688,7 @@
 
         // PERHITUNGAN DENGAN PPH21 dan PTKP ---------------------------------------------------------------
         var besaranptkp = $(`#besaran_ptkp-${id_pegawai}`).html().split('Rp')[1].replace('.', '').replace('.', '')
-            .replace('.', '').replace(',00',
-                '').trim()
+            .replace('.', '').replace(',00','')..replace(',50', '').replace(',5', '')trim()
 
         var gajitahunan = gajinetto * 12
         var gajikenapajak = gajitahunan - besaranptkp
