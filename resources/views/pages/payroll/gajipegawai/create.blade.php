@@ -701,8 +701,8 @@
 
             if (pphlevel1bulan < 0) {
                 var totaltambahtunjangan = $('#gaji_diterima').val()
-                var jumlahfix3 = totalgaji + parseInt(totaltambahtunjangan)
-                $('#gaji_diterima').val(jumlahfix3).replace('.5','').replace('.50','')
+                var jumlahfix3 = totalgaji + parseInt(totaltambahtunjangan).replace('.5','').replace('.50','')
+                $('#gaji_diterima').val(jumlahfix3)
 
                 swal.fire({
                     icon: 'success',
@@ -733,8 +733,8 @@
                 // Total gaji - PPH perbulan dan Penambahan pada Grand Total
                 var totaltambahtunjangan = $('#gaji_diterima').val()
                 var totalgajisangatfix = totalgaji - pphlevel1bulan
-                var jumlahfix3 = totalgajisangatfix + parseInt(totaltambahtunjangan)
-                $('#gaji_diterima').val(jumlahfix3).replace('.5','').replace('.50','')
+                var jumlahfix3 = totalgajisangatfix + parseInt(totaltambahtunjangan).replace('.5','').replace('.50','')
+                $('#gaji_diterima').val(jumlahfix3)
 
                 $('#dataTableKonfirmasi').DataTable().row.add([
                     nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
@@ -755,7 +755,7 @@
 
                 var totalpph21 = $('#total_pph21').val()
                 var jumlahpph21fix = parseInt(pphlevel1bulan) + parseInt(totalpph21)
-                $('#total_pph21').val(jumlahpph21fix).replace('.5','').replace('.50','')
+                $('#total_pph21').val(jumlahpph21fix)
 
                 var pphpakealert = new Intl.NumberFormat('id', {
                     style: 'currency',
@@ -799,7 +799,7 @@
             var totaltambahtunjangan = $('#gaji_diterima').val()
             var totalgajisangatfix1 = totalgaji - pphlevel2bulan
             var jumlahfix3 = totalgajisangatfix1 + parseInt(totaltambahtunjangan)
-            $('#gaji_diterima').val(jumlahfix3).replace('.5','').replace('.50','')
+            $('#gaji_diterima').val(jumlahfix3)
 
             $('#dataTableKonfirmasi').DataTable().row.add([
                 nama_pegawai, `<span id=pegawai-${id_pegawai}>${nama_pegawai}</span>`, jabatan, gajipokok,
