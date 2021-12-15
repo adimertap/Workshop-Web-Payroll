@@ -688,7 +688,7 @@
 
         // PERHITUNGAN DENGAN PPH21 dan PTKP ---------------------------------------------------------------
         var besaranptkp = $(`#besaran_ptkp-${id_pegawai}`).html().split('Rp')[1].replace('.', '').replace('.', '')
-            .replace('.', '').replace(',00','')..replace(',50', '').replace(',5', '')trim()
+            .replace('.', '').replace(',00','')..replace(',50', '').replace(',5', '').trim()
 
         var gajitahunan = gajinetto * 12
         var gajikenapajak = gajitahunan - besaranptkp
