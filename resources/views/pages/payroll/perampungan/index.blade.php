@@ -252,10 +252,13 @@
                                                 style="width: 150px;">Nama Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Position: activate to sort column ascending"
-                                                style="width: 70px;">NPWP Pegawai</th>
+                                                style="width: 50px;">NPWP Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Start date: activate to sort column ascending"
                                                 style="width: 40px;">Jabatan</th>
+                                            <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                                colspan="1" aria-label="Start date: activate to sort column ascending"
+                                                style="width: 80px;">Penempatan</th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1"
                                                 colspan="1" aria-label="Actions: activate to sort column ascending"
                                                 style="width: 50px;"> <input onClick="toggle(this)"
@@ -271,6 +274,11 @@
                                                     id="{{ $item->id_pegawai }}">{{ $item->nama_pegawai }}</span></td>
                                             <td class="npwp_pegawai">{{ $item->npwp_pegawai }}</td>
                                             <td class="nama_jabatan">{{ $item->Jabatan->nama_jabatan }}</td>
+                                            @if ($item->Cabang == null)
+                                                <td>Pegawai Pusat</td>
+                                            @else
+                                                <td>{{ $item->Cabang->nama_cabang }}</td>
+                                            @endif
                                             <td>
                                                 <div class="">
                                                     <input class="checkpegawai"
