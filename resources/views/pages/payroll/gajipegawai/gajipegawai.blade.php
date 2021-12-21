@@ -362,7 +362,12 @@
                                                     id="{{ $item->id_pegawai }}">{{ $item->nama_pegawai }}</span></td>
                                             <td class="npwp_pegawai">{{ $item->npwp_pegawai }}</td>
                                             <td class="nama_jabatan">{{ $item->Jabatan->nama_jabatan }}</td>
-                                            <td>{{ $item->Cabang->nama_cabang }}</td>
+                                            @if ($item->Cabang == null)
+                                                <td>Pegawai Pusat</td>
+                                            @else
+                                                <td>{{ $item->Cabang->nama_cabang }}</td>
+                                            @endif
+                                          
                                             <td>
                                                 <div class="">
                                                     <input class="checkpegawai"
