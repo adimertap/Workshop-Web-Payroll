@@ -212,9 +212,9 @@
                                                         <td id="jabatan-{{ $item->id_pegawai }}">
                                                             {{ $item->Jabatan->nama_jabatan}}</td>
                                                         @if ($item->Cabang == null)
-                                                            <td>{{ $item->Cabang->nama_cabang }}</td>
-                                                        @else
                                                             <td>Pegawai Pusat</td>
+                                                        @else
+                                                            <td>{{ $item->Cabang->nama_cabang }}</td>
                                                         @endif
                                                         
                                                         <td id="ptkp-{{ $item->id_pegawai }}">
