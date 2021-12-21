@@ -114,7 +114,7 @@ class GajipegawaiController extends Controller
 
         
         $pegawai = Pegawai::with([
-            'Jabatan.Gajipokok','PTKP'
+            'Jabatan.Gajipokok','PTKP','Cabang'
         ])->join('tb_kepeg_master_jabatan', 'tb_kepeg_master_pegawai.id_jabatan', 'tb_kepeg_master_jabatan.id_jabatan')
         ->where('nama_jabatan', '!=', 'Owner')->get();
 

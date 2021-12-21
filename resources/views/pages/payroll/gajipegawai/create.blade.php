@@ -180,6 +180,11 @@
                                                             aria-label="Position: activate to sort column ascending"
                                                             style="width: 80px;">
                                                             Jabatan</th>
+                                                            <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1"
+                                                            aria-label="Position: activate to sort column ascending"
+                                                            style="width: 80px;">
+                                                            Penempatan</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
@@ -206,6 +211,12 @@
                                                             {{ $item->nama_pegawai}}</td>
                                                         <td id="jabatan-{{ $item->id_pegawai }}">
                                                             {{ $item->Jabatan->nama_jabatan}}</td>
+                                                        @if ($item->Cabang == null)
+                                                            <td>{{ $item->Cabang->nama_cabang }}</td>
+                                                        @else
+                                                            <td>Pegawai Pusat</td>
+                                                        @endif
+                                                        
                                                         <td id="ptkp-{{ $item->id_pegawai }}">
                                                             {{ $item->PTKP->nama_ptkp}}</td>
                                                         <td id="gajipokok-{{ $item->id_pegawai }}">
