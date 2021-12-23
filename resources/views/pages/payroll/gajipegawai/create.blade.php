@@ -175,6 +175,11 @@
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
                                                             style="width: 150px;">Nama Pegawai</th>
+                                                            <th class="sorting" tabindex="0" aria-controls="dataTable"
+                                                            rowspan="1" colspan="1"
+                                                            aria-label="Position: activate to sort column ascending"
+                                                            style="width: 30px;">
+                                                            Jabatan</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
