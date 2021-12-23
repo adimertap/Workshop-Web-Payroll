@@ -270,8 +270,7 @@
                                         @forelse ($pegawai as $item)
                                         <tr id="item-{{ $item->id_pegawai }}" role="row" class="odd">
                                             <th scope="row" class="small" class="sorting_1">{{ $loop->iteration}}</th>
-                                            <td class="nama_pegawai"><span
-                                                    id="{{ $item->id_pegawai }}">{{ $item->nama_pegawai }}</span></td>
+                                            <td class="nama_pegawai"><span id="{{ $item->id_pegawai }}">{{ $item->nama_pegawai }}</span></td>
                                             <td class="npwp_pegawai">{{ $item->npwp_pegawai }}</td>
                                             <td class="nama_jabatan">{{ $item->Jabatan->nama_jabatan }}</td>
                                             @if ($item->Cabang == null)
