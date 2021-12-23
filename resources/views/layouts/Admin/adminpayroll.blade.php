@@ -26,68 +26,75 @@
 
 <body class="nav-fixed">
     <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
-        <a class="navbar-brand" href="{{ route('gaji-pegawai.index')}}"><i class="fas fa-calculator mr-3"></i>Payroll</a>
+        <a class="navbar-brand" href="{{ route('gaji-pegawai.index')}}"><i
+                class="fas fa-calculator mr-3"></i>Payroll</a>
         <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i
                 data-feather="menu"></i></button>
 
         <div class="small">
             <i class="fa fa-cogs" aria-hidden="true"></i>
             Bengkel
-            <span class="font-weight-500 text-primary">{{ Auth::user()->bengkel->nama_bengkel}}</span>
+            <span class="font-weight-500 text-primary">{{ Auth::user()->bengkel->nama_bengkel}}
+                @if (Auth::user()->pegawai->cabang != null)
+                {{ Auth::user()->pegawai->cabang->nama_cabang }}
+                @else
+
+                @endif
+            </span>
         </div>
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item dropdown no-caret mr-2 dropdown-user">
                 @if (Auth::user()->Pegawai->jenis_kelamin == 'Laki-Laki')
 
                 <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
-                href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false"><img class="img-fluid"
-                    src="/backend/src/assets/img/freepik/profiles/profile-6.png" />
+                    href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false"><img class="img-fluid"
+                        src="/backend/src/assets/img/freepik/profiles/profile-6.png" />
                 </a>
                 <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
-                aria-labelledby="navbarDropdownUserImage">
-                <h6 class="dropdown-header d-flex align-items-center">
-                    <img class="dropdown-user-img" src="/backend/src/assets/img/freepik/profiles/profile-6.png" />
-                    <div class="dropdown-user-details">
-                        <div class="dropdown-user-details-name">{{ Auth::user()->pegawai->nama_pegawai }}</div>
-                        <div class="dropdown-user-details-email">{{ Auth::user()->email }}</div>
-                    </div>
-                </h6>
-
-
-                @elseif (Auth::user()->Pegawai->jenis_kelamin == 'Perempuan')
-
-                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
-                href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false"><img class="img-fluid"
-                    src="/backend/src/assets/img/freepik/profiles/profile-5.png" /></a>
-                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
                     aria-labelledby="navbarDropdownUserImage">
                     <h6 class="dropdown-header d-flex align-items-center">
-                        <img class="dropdown-user-img" src="/backend/src/assets/img/freepik/profiles/profile-5.png" />
+                        <img class="dropdown-user-img" src="/backend/src/assets/img/freepik/profiles/profile-6.png" />
                         <div class="dropdown-user-details">
                             <div class="dropdown-user-details-name">{{ Auth::user()->pegawai->nama_pegawai }}</div>
                             <div class="dropdown-user-details-email">{{ Auth::user()->email }}</div>
                         </div>
                     </h6>
-                
-                @endif
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="https://sso.bengkel-kuy.com/">
-                        <div class="dropdown-item-icon"><i data-feather="columns"></i></div>
-                        Dashboard SSO
-                    </a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
-                        onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
-                        Logout
-                    </a> 
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
+
+                    @elseif (Auth::user()->Pegawai->jenis_kelamin == 'Perempuan')
+
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage"
+                        href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"><img class="img-fluid"
+                            src="/backend/src/assets/img/freepik/profiles/profile-5.png" /></a>
+                    <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up"
+                        aria-labelledby="navbarDropdownUserImage">
+                        <h6 class="dropdown-header d-flex align-items-center">
+                            <img class="dropdown-user-img"
+                                src="/backend/src/assets/img/freepik/profiles/profile-5.png" />
+                            <div class="dropdown-user-details">
+                                <div class="dropdown-user-details-name">{{ Auth::user()->pegawai->nama_pegawai }}</div>
+                                <div class="dropdown-user-details-email">{{ Auth::user()->email }}</div>
+                            </div>
+                        </h6>
+
+                        @endif
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="https://sso.bengkel-kuy.com/">
+                            <div class="dropdown-item-icon"><i data-feather="columns"></i></div>
+                            Dashboard SSO
+                        </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                            <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
             </li>
         </ul>
     </nav>
