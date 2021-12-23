@@ -178,16 +178,6 @@
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
                                                             rowspan="1" colspan="1"
                                                             aria-label="Position: activate to sort column ascending"
-                                                            style="width: 80px;">
-                                                            Jabatan</th>
-                                                            <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
-                                                            style="width: 80px;">
-                                                            Penempatan</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="dataTable"
-                                                            rowspan="1" colspan="1"
-                                                            aria-label="Position: activate to sort column ascending"
                                                             style="width: 30px;">
                                                             Status</th>
                                                         <th class="sorting" tabindex="0" aria-controls="dataTable"
@@ -211,11 +201,7 @@
                                                             {{ $item->nama_pegawai}}</td>
                                                         <td id="jabatan-{{ $item->id_pegawai }}">
                                                             {{ $item->Jabatan->nama_jabatan}}</td>
-                                                        @if ($item->Cabang == null)
-                                                            <td>Pegawai Pusat</td>
-                                                        @else
-                                                            <td>{{ $item->Cabang->nama_cabang }}</td>
-                                                        @endif
+                                                       
                                                         
                                                         <td id="ptkp-{{ $item->id_pegawai }}">
                                                             {{ $item->PTKP->nama_ptkp}}</td>
@@ -430,6 +416,15 @@
                             id="besaran_ptkp-{{ $items->id_pegawai }}">
                             Rp.{{ number_format($items->PTKP->besaran_ptkp,2,',','.') }}</span></span>
                 </div>
+                <div class="small mb-2">
+                    @if ($item->Cabang == null)
+                    <span class="">Penempatan <span class="small font-weight-500">Pegawai Pusat</span></span>
+                    @else
+                    <span class="">Penempatan <span class="small font-weight-500">{{ $item->Cabang->nama_cabang }}</span></span>
+                    @endif
+                    
+                </div>
+              
                 <div class="form-group">
                     <div class="datatable">
                         <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
