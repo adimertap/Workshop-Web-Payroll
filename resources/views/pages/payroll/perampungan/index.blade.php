@@ -180,7 +180,7 @@
                     </div>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <label class="small mb-1">Masa Perolehan Penghasilan</label><span class="mr-4 mb-3"
+                            <label class="small mb-1">Masa Perolehan Awal</label><span class="mr-4 mb-3"
                                 style="color: red">*</span>
                                 <input class="form-control" id="masa_perolehan_awal" type="month"
                                     name="masa_perolehan_awal" value="{{ old('masa_perolehan_awal') }}">
