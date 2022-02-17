@@ -16,6 +16,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "2.0",
+        "realrashid/sweet-alert": "^5.0",
         "sentry/sentry-laravel": "^2.3",
         "spatie/laravel-permission": "^4.0"
     },

@@ -100,12 +100,6 @@
                             placeholder="Input Tahun Gaji" value="{{ $gaji->status_diterima }}" readonly />
                     </div>
                 </div>
-               
-               
-                {{-- <div class="form-group text-right">
-                    <hr>
-                    <a href="{{ route('gaji-pegawai.index') }}" class="btn btn-sm btn-light ">Kembali</a>
-                </div> --}}
             </div>
         </div>
     </div>
