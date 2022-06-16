@@ -976,7 +976,7 @@
                     id_pegawai: id_pegawai,
                     id_perampungan: id_perampungan,
                     kode_negara: kode_negara,
-                    karyawan_asing: karyawan_asing, 
+                    karyawan_asing: karyawan_asing,
                     kode_objek_pajak: kode_objek_pajak,
                     gaji_pokok: gaji_pokok,
                     tunjangan_pph: tunjangan_pph,
