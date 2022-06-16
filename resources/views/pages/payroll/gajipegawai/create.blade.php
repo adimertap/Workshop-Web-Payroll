@@ -137,7 +137,7 @@
                             </div>
                             <div class="form-group text-right">
                                 <hr>
-                                <a href="{{ url('https://employee.bengkel-kuy.com/kepegawaian/LaporanAbsensi')}}"
+                                <a href="{{ url('https://employee.e-bengkelku.com/kepegawaian/LaporanAbsensi')}}"
                                     target="_blank" class="btn btn-secondary btn-sm" type="button">
                                     Absensi
                                 </a>
